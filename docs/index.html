@@ -33,7 +33,8 @@ p{margin:0;max-width:65ch}
 .hero{display:grid;gap:18px}
 .lede{font-size:1.15rem;color:var(--muted)}
 .lede b{color:var(--ink);font-weight:600}
-section{display:grid;gap:18px}
+section{display:grid;gap:18px;min-width:0}
+.wrap>*,.panel>*,section>*{min-width:0}
 .note{font-size:.85rem;color:var(--muted)}
 .panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;display:grid;gap:16px}
 .gridscroll{overflow-x:auto}
@@ -67,7 +68,7 @@ button.primary{background:var(--accent);border-color:var(--accent);color:var(--b
 .badges{display:flex;flex-wrap:wrap;gap:4px}
 .badge{font:500 .68rem var(--mono);padding:2px 6px;border-radius:99px;color:#fff}
 .badge.opus{background:var(--opus)} .badge.haiku{background:var(--haiku)} .badge.decoder{background:var(--decoder)} .badge.you{background:var(--you)}
-@media (max-width:620px){.mouse{grid-template-columns:1fr}.qgrid canvas{width:100%;max-width:240px}}
+@media (max-width:620px){.mouse{grid-template-columns:1fr}.qgrid canvas{width:96px}.frames{gap:8px}}
 /* game */
 .progress{font:500 .8rem var(--mono);color:var(--muted)}
 #hverdict,#mverdict{min-height:1.6em}
