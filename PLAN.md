@@ -8,7 +8,7 @@ Story: **"Can a model read a brain?"** Frontier models get raw neuron spike coun
 | 1 | **Movie frames**: mouse options shown as the real movie stills; spikes + 4 frames + Opus pick + decoder pick | Claude | DONE, on the page | Sat 11pm |
 | 2 | **Room plays along**: "Try one yourself" with 10 human-neuron questions, live leaderboard humans vs Haiku vs Opus vs decoder | Claude builds, Federico runs it at the demo | DONE (leaderboard per device off claude.ai) | - |
 | 3 | **Code twist**: Opus with Python on the same 20 questions | Claude | DONE: Opus+Python writes a nearest-centroid decoder; human 4/10, mouse 8/10 (no gain over plain Opus) | Sat 10pm |
-| 3b | **Full Opus run** on every question (human 40, mouse 60 + 30) so all numbers are same-question comparisons | Claude | Queued after 3 | Sun 1am |
+| 3b | **Full Opus run** | Claude | DONE: human 68% vs 65%, mouse 87% vs 87%, mouse-8 67% vs 67% | - |
 | 4 | **Vals run**: GPT, Gemini, open Qwen; all sets incl. controls; confidence intervals | Federico: get depontefede@gmail.com invited to the Valkyrie org (ask Olivia, Langston or Jarett). Claude: push + run | Blocked on invite | Sun 10am |
 | 5 | **Demo**: final page, 3-minute script, one headline chart | Claude drafts, Federico rehearses | After 3b | Sun 11am |
 | 6 | **After**: arXiv preprint; outreach to Rutishauser lab + Allen Institute; @ValsAI post | Claude drafts, Federico approves every message | - | Next week |

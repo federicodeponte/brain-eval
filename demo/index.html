@@ -146,9 +146,9 @@ footer{font-size:.85rem;color:var(--muted);display:grid;gap:6px;border-top:1px s
   </section>
 
   <section>
-    <div class="eyebrow">First results</div>
-    <h2>Opus keeps up with a classic decoder. Haiku doesn't.</h2>
-    <p>Pilot run: the same 10 questions per task for every solver, one shot per question, no tools. The decoder is nearest-centroid on the labeled rows in the prompt, so it gets exactly the information the model gets. The full run on every question is in progress.</p>
+    <div class="eyebrow">Results</div>
+    <h2>Opus reads neurons as well as a classic decoder</h2>
+    <p>Every question, same examples for every solver, one shot, no tools. Human 40 questions, mouse 60 and 30. The decoder is nearest-centroid on the labeled rows in the prompt. Opus ties it on all three tasks, yet gets different questions right: on human neurons, 5 that only Opus solved and 4 that only the decoder solved. Haiku bars are from 10 questions.</p>
     <div class="panel chart">
       <div class="legend">
         <span><i style="background:var(--chance)"></i>Chance</span>
@@ -158,7 +158,7 @@ footer{font-size:.85rem;color:var(--muted);display:grid;gap:6px;border-top:1px s
       </div>
       <svg id="bars" viewBox="0 0 820 300" width="100%" role="img" aria-label="Accuracy by task and solver"></svg>
     </div>
-    <p class="note">With 10 questions each bar is about ±15 points. When Opus may run Python, it writes a nearest-centroid decoder and makes the same picks as the decoder.</p>
+    <p class="note">At n=40 a bar is about ±15 points, at n=60 about ±9. When Opus may run Python, it writes a nearest-centroid decoder and makes the same picks as the decoder.</p>
   </section>
 
   <section>
@@ -299,9 +299,9 @@ document.getElementById("hsave").onclick=async()=>{
 
 /* ---------- chart ---------- */
 const tasks=[
-  {name:"Human neurons",sub:"4 photo categories",chance:25,haiku:50,opus:50,decoder:40},
-  {name:"Mouse, 4 clips",sub:"visual cortex, movie",chance:25,haiku:60,opus:80,decoder:90},
-  {name:"Mouse, 8 clips",sub:"visual cortex, movie",chance:12.5,haiku:null,opus:70,decoder:60},
+  {name:"Human neurons",sub:"4 photo categories · n=40",chance:25,haiku:50,opus:68,decoder:65},
+  {name:"Mouse, 4 clips",sub:"visual cortex · n=60",chance:25,haiku:60,opus:87,decoder:87},
+  {name:"Mouse, 8 clips",sub:"visual cortex · n=30",chance:12.5,haiku:null,opus:67,decoder:67},
 ];
 const svg=document.getElementById("bars"),W=820,T0=20,bottom=250,left=40;
 const y=v=>bottom-(v/100)*(bottom-T0);

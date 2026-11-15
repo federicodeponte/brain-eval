@@ -11,6 +11,15 @@ Frontier models get raw spike counts from real neurons plus a few labeled exampl
 | Mouse: which of 4 movie clips | Allen Neuropixels 732592105, 40 VISp units x 10 bins | 25% | 7-9/10 on the same items | 6/10 | 8/10 |
 | Mouse: which of 8 movie clips | same | 12.5% | 5-6/10 on the same items | not run | 7/10 |
 
+## Full results (Opus, every question, same items for every solver)
+| Task | n | Opus | Decoder | Chance | only Opus right / only decoder right |
+|---|---|---|---|---|---|
+| Human neurons | 40 | 68% | 65% | 25% | 5 / 4 |
+| Mouse, 4 clips | 60 | 87% | 87% | 25% | 5 / 5 |
+| Mouse, 8 clips | 30 | 67% | 67% | 12.5% | 3 / 3 |
+
+Opus ties a nearest-centroid decoder on all three tasks from 3 in-prompt examples per class, but solves different items. Answer letters are balanced; Opus picks are spread evenly across letters.
+
 ## Controls (does the model learn from the examples?)
 In `hypotheses/controls/` and `mouse/valkyrie/dataset-*`:
 - **swap-out**: true clip examples replaced by a clip from another stimulus; correct = E) none of these
