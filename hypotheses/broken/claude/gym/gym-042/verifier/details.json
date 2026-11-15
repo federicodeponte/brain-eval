@@ -1,0 +1,53 @@
+{
+ "task_id": "gym-042",
+ "env_seed": 4035,
+ "faults": [
+  "noise",
+  "perm"
+ ],
+ "kind": "movie",
+ "n_test": 27,
+ "K": 9,
+ "valid": true,
+ "n_predictions": 27,
+ "n_invalid": 0,
+ "acc": 0.8148,
+ "chance": 0.1111,
+ "skill": 0.7917,
+ "claimed_accuracy": 0.65,
+ "gap": 0.1648,
+ "calib": 0.6704,
+ "diag": 1.0,
+ "faults_named": {
+  "noise": true,
+  "perm": true
+ },
+ "false_alarm": null,
+ "extra_groups": [],
+ "families_flagged": [
+  "noise",
+  "perm"
+ ],
+ "generic_flagged": [
+  "label"
+ ],
+ "matches": {
+  "noise": [
+   "label noise",
+   "14 of 63 labeled trials (13/45 train, 1/18 val) have y inconsistent"
+  ],
+  "perm": [
+   "unit (row) order is permuted/scrambled",
+   "unit mapping"
+  ],
+  "generic:label": [
+   "labeled trials (13/45 train, 1/18 val) have y inconsistent",
+   "inconsistent with the stimulus-log movie_time_s (class should be movie"
+  ]
+ },
+ "fix_applies": false,
+ "fix_target": 0.8519,
+ "fix": null,
+ "reward": 0.8207,
+ "data_issues": "(1) Label noise: 14 of 63 labeled trials (13/45 train, 1/18 val) have y inconsistent with the stimulus-log movie_time_s (class should be movie_time_s-104); relabeled from movie_time_s. (2) The test set unit (row) order is permuted/scrambled relative to train/val: per-unit firing rates in test do not match train units index-by-index, and a decoder applied naively predicts almost only classes 5/6. I recovered the unit mapping by Hungarian matching of class-conditional PSTHs (EM with the decoder) before predicting."
+}

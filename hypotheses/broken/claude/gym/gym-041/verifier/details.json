@@ -1,0 +1,61 @@
+{
+ "task_id": "gym-041",
+ "env_seed": 4032,
+ "faults": [
+  "noise",
+  "dead"
+ ],
+ "kind": "gratings",
+ "n_test": 152,
+ "K": 8,
+ "valid": true,
+ "n_predictions": 152,
+ "n_invalid": 0,
+ "acc": 0.3355,
+ "chance": 0.125,
+ "skill": 0.2406,
+ "claimed_accuracy": 0.34,
+ "gap": 0.0045,
+ "calib": 0.9911,
+ "diag": 1.0,
+ "faults_named": {
+  "noise": true,
+  "dead": true
+ },
+ "false_alarm": null,
+ "extra_groups": [],
+ "families_flagged": [
+  "dead",
+  "noise"
+ ],
+ "generic_flagged": [
+  "input",
+  "label"
+ ],
+ "matches": {
+  "noise": [
+   "label noise",
+   "28% of train and ~21% of val trials (stim_class is corrupted"
+  ],
+  "dead": [
+   "silent",
+   "all zero",
+   "zero counts",
+   "dead",
+   "dropout"
+  ],
+  "generic:label": [
+   "class disagrees",
+   "orientation_deg on ~28% of train and ~21% of val trials (stim_class is corrupted",
+   "disagrees with the stimulus-log orientation"
+  ],
+  "generic:input": [
+   "covariate shift"
+  ]
+ },
+ "fix_applies": true,
+ "fix_target": 0.2829,
+ "fix": 1.0,
+ "reward": 0.8079,
+ "data_issues": "Label noise: stim_class disagrees with the stimulus-log orientation_deg on ~28% of train and ~21% of val trials (stim_class is corrupted; orientation_deg is the true label, which decodes far better). Also, 5 units (indices 5,7,9,12,18) are silent (all zero counts) in the test set but active in train/val (dead units / channel dropout in test, covariate shift); the decoder was trained without them, which lowers achievable accuracy."
+}

@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 30928,
+ "stop_reason": "end_turn",
+ "session_id": "e91aebf1-28a7-4717-bad6-8ac552fb7381",
+ "total_cost_usd": 0.1052052,
+ "usage": {
+  "input_tokens": 10,
+  "cache_creation_input_tokens": 5428,
+  "cache_read_input_tokens": 46606,
+  "output_tokens": 2621,
+  "output_tokens_details": {
+   "thinking_tokens": 194
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 5428,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 568,
+    "cache_read_input_tokens": 11464,
+    "cache_creation_input_tokens": 558,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 558
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 10,
+   "outputTokens": 2621,
+   "cacheReadInputTokens": 46606,
+   "cacheCreationInputTokens": 5428,
+   "webSearchRequests": 0,
+   "costUSD": 0.1052052,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 194,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 5428,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 5,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I wrote predictions for all 114 test trials to `output/predictions.json`. I estimate they will be about **69% accurate**, and I didn't find any problems with the data.\n\n**Decoder:** I used logistic regression on two counts per unit: total spikes over the full 2 s, and spikes in the first 1 s, both square-root transformed and standardised. The final model was trained on the train and validation trials together (282 trials).\n\n**Accuracy estimate:**\n- Trained on train only and scored on validation, it got about 70%.\n- 10-fold cross-validation over train and validation together gave about 69%.\n- So `claimed_accuracy` is 0.69.\n- Most errors are between 135\u00b0 and 315\u00b0, and among 90\u00b0, 270\u00b0 and 315\u00b0. 135\u00b0 and 315\u00b0 are opposite directions of the same orientation, so those mix-ups are expected.\n\n**Data checks (`data_issues`: \"none\"):**\n- **Labels:** `y` matches `orientation_deg` exactly in both labeled splits, and every class has the same number of trials (33 per class in train, 14 in validation).\n- **Duplicates:** no trial appears twice, within or across the three files.\n- **Silent trials:** none; every trial has at least one spike.\n- **Firing rates:** per-unit and per-bin rates look alike in train, validation and test. A classifier trying to tell labeled from test trials did no better than chance (AUC 0.41).\n- **Consistency:** each class's average response in train lines up best with the same class in validation (correlations 0.6\u20130.9).\n\nOne oddity I didn't treat as a problem: the training trials show almost no burst of firing at stimulus onset, which you might expect in visual cortex. Firing stays about flat across the 10 time bins.",
+ "ttft_ms": 3670,
+ "type": "result",
+ "duration_ms": 61008,
+ "uuid": "846a77a3-3a5b-4800-91e8-b06044c517d2",
+ "ttft_stream_ms": 1894,
+ "time_to_request_ms": 73,
+ "first_content_frame_ms": 1894,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 62.0
+}

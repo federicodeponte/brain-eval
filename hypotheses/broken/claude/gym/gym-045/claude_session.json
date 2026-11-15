@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 52798,
+ "stop_reason": "end_turn",
+ "session_id": "73aedca7-9309-4118-b19e-2e647109be78",
+ "total_cost_usd": 0.1860172,
+ "usage": {
+  "input_tokens": 16,
+  "cache_creation_input_tokens": 9514,
+  "cache_read_input_tokens": 89106,
+  "output_tokens": 4601,
+  "output_tokens_details": {
+   "thinking_tokens": 386
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 9514,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 582,
+    "cache_read_input_tokens": 15212,
+    "cache_creation_input_tokens": 896,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 896
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 16,
+   "outputTokens": 4601,
+   "cacheReadInputTokens": 89106,
+   "cacheCreationInputTokens": 9514,
+   "webSearchRequests": 0,
+   "costUSD": 0.1860172,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 386,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 9514,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 8,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I wrote predictions for all 48 test trials to `output/predictions.json`, with a claimed accuracy of **0.25**. Chance is 0.125, so the decoder beats chance but not by much, because of a problem with the test data.\n\n**The problem:** 9 of the 27 units (indices 0, 1, 2, 11, 12, 13, 14, 15, 20) have zero spikes in every one of the 48 test trials. In train and val they fire normally, and several are among the highest-firing units. As a result, a test trial averages about 45 spikes against about 111 in train. The test recordings look like they lost those units. A decoder trained on all 27 units would get inputs on test that look nothing like what it learned from.\n\n**Decoder:** I dropped the 9 silent units and trained a logistic regression (C=0.1) on the square root of the counts from the other 18 units. That covers all 5 time bins, and I trained on train and val combined.\n\n**Accuracy estimate:**\n- With all 27 units, repeated cross-validation gave about 0.6 and the val split gave 0.75. Those numbers don't carry over to test, because test is missing those units.\n- With only the 18 units that still fire in test, the best of several model types (logistic regression, LDA, Poisson and Gaussian naive Bayes, SVM, random forest, k-NN) reached about 0.22\u20130.27. That's where the 0.25 comes from.\n- The predictions lean toward class 6 (12 of 48 trials), so true test accuracy could land a few points either side of 0.25.\n\nThe rest of the data looks fine. Labels match `movie_time_s` in train and val, the 8 classes are balanced, and no trial is duplicated in or across the splits.",
+ "ttft_ms": 3682,
+ "type": "result",
+ "duration_ms": 139418,
+ "uuid": "5e63ba1e-61b0-4afc-9fbc-17c4d35a5897",
+ "ttft_stream_ms": 2125,
+ "time_to_request_ms": 73,
+ "first_content_frame_ms": 2125,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 140.3
+}

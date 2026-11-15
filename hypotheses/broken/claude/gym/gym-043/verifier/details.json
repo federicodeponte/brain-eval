@@ -1,0 +1,46 @@
+{
+ "task_id": "gym-043",
+ "env_seed": 4033,
+ "faults": [
+  "leak",
+  "perm"
+ ],
+ "kind": "movie",
+ "n_test": 54,
+ "K": 9,
+ "valid": true,
+ "n_predictions": 54,
+ "n_invalid": 0,
+ "acc": 0.8704,
+ "chance": 0.1111,
+ "skill": 0.8542,
+ "claimed_accuracy": 0.9,
+ "gap": 0.0296,
+ "calib": 0.9407,
+ "diag": 0.5,
+ "faults_named": {
+  "leak": false,
+  "perm": true
+ },
+ "false_alarm": null,
+ "extra_groups": [],
+ "families_flagged": [
+  "dead",
+  "perm"
+ ],
+ "generic_flagged": [],
+ "matches": {
+  "dead": [
+   "silent"
+  ],
+  "perm": [
+   "unit permutation",
+   "scrambled val units"
+  ]
+ },
+ "fix_applies": true,
+ "fix_target": 0.9444,
+ "fix": 1.0,
+ "reward": 0.8237,
+ "data_issues": "The unit (row) order of the test spikes is scrambled relative to train/val: test per-unit mean firing rates do not match the train/val units (e.g. test units 1,2,6,16,26 are nearly silent where the corresponding train units fire >1 spike/bin). Train and val are mutually consistent and stim_class matches movie_time_s exactly. I recovered the unit permutation by Hungarian matching of firing statistics refined with an EM/Poisson-likelihood assignment against class templates (validated: recovers scrambled val units and full accuracy), then decoded with a Poisson template decoder with per-trial gain (val acc 1.0). Test trials also have ~12% lower overall firing than train/val, so the decoder was made gain-invariant. Recovered mapping (train unit i -> test row): [3, 7, 9, 13, 18, 21, 12, 25, 4, 2, 15, 11, 5, 26, 14, 1, 19, 17, 24, 20, 27, 6, 22, 23, 10, 16, 8, 0, 28]"
+}

@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 28514,
+ "stop_reason": "end_turn",
+ "session_id": "9651813f-d5fb-4e2d-a2e5-d08f3648d4da",
+ "total_cost_usd": 0.0847418,
+ "usage": {
+  "input_tokens": 8,
+  "cache_creation_input_tokens": 4360,
+  "cache_read_input_tokens": 34549,
+  "output_tokens": 2146,
+  "output_tokens_details": {
+   "thinking_tokens": 165
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 4360,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 581,
+    "cache_read_input_tokens": 10260,
+    "cache_creation_input_tokens": 694,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 694
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 8,
+   "outputTokens": 2146,
+   "cacheReadInputTokens": 34549,
+   "cacheCreationInputTokens": 4360,
+   "webSearchRequests": 0,
+   "costUSD": 0.0847418,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 165,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 4360,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 4,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I wrote predictions for all 160 test trials to `/tmp/claude-broken/gym-040-ocnctai6/output/predictions.json`. I estimate test accuracy at about 0.82, and I found no problems with the data.\n\n**Decoder:** logistic regression on the square root of the spike counts, with standardised features and strong regularisation (C=0.05). I trained the final model on train and validation together (84 trials).\n\n**Accuracy estimate:**\n- Repeated 5-fold cross-validation on the 84 labelled trials gave about 0.83. Plain counts without the square root gave 0.83, and a naive Bayes model only 0.65.\n- Training on train alone and scoring on validation gave 0.89, but that is only 19 trials, so I gave it little weight.\n- With so few labelled trials, expect the real test score to land within roughly \u00b10.07 of 0.82.\n\n**Data checks (`data_issues: \"none\"`):**\n- `label` matches `category` on every labelled trial in both train and validation.\n- The classes are roughly balanced.\n- No trial appears twice, within or across splits.\n- Every neuron varies across trials; none is constant.\n- Most neurons respond differently to the four categories (ANOVA p < 0.05 for 31 of 35), so the signal is real.\n- Average firing rates per neuron are similar in test and training. A few low-rate neurons run up to about 1.8\u00d7 higher in test, which looks like noise in small counts rather than a systematic shift.\n\nThe predicted test classes come out as 44 houses, 51 mobility, 35 phones and 30 small animals.",
+ "ttft_ms": 5255,
+ "type": "result",
+ "duration_ms": 53794,
+ "uuid": "4cbe1ef4-59fd-420e-875b-9f2db6c90ca0",
+ "ttft_stream_ms": 3368,
+ "time_to_request_ms": 66,
+ "first_content_frame_ms": 3369,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 54.6
+}

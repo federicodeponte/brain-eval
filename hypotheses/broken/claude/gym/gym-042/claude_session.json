@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 73831,
+ "stop_reason": "end_turn",
+ "session_id": "dbd19d86-e6b0-4c35-974c-c0d3cd188f39",
+ "total_cost_usd": 0.2408302,
+ "usage": {
+  "input_tokens": 18,
+  "cache_creation_input_tokens": 11215,
+  "cache_read_input_tokens": 108491,
+  "output_tokens": 6467,
+  "output_tokens_details": {
+   "thinking_tokens": 1035
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 11215,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 763,
+    "cache_read_input_tokens": 16932,
+    "cache_creation_input_tokens": 877,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 877
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 18,
+   "outputTokens": 6467,
+   "cacheReadInputTokens": 108491,
+   "cacheCreationInputTokens": 11215,
+   "webSearchRequests": 0,
+   "costUSD": 0.2408302,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 1035,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 11215,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 9,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I've written all 27 test predictions to `output/predictions.json`, with `claimed_accuracy` set to **0.65**. That number is a judgement call and could easily be off by 0.1 either way.\n\n**Problems found in the data:**\n\n1. **Wrong labels.** 14 of the 63 labeled trials (13 of 45 in train, 1 of 18 in val) have a class `y` that doesn't match their own stimulus-log time. The class should equal `movie_time_s \u2212 104`. For example, some trials logged at 107 s are labeled 4 or 8. Since the labels were derived from the log, I treated the log as correct and relabeled those trials before training. Trained on the original labels, the decoder scores about 0.49 in leave-one-out cross-validation; on the corrected labels it scores about 0.78.\n2. **The test units appear to be in a different order.** Each unit's average firing rate in test doesn't line up with the same-numbered unit in train/val. The decoder applied directly predicted almost every test trial as class 5 or 6, when about 3 trials per class would be expected. This is my inference: nothing in the files says the units were reordered, but no other explanation I checked fits.\n\n**Decoder:** logistic regression (C=1) on square-root spike counts summed into 100 ms bins, trained on all 63 labeled trials. To handle the reordering, I paired test units with training units by how well their average response to each class matched, alternating with the decoder's predictions until the pairing stopped changing. All three random restarts found the same pairing, and the predicted classes come out roughly balanced (1 to 5 per class).\n\n**Why 0.65:** with units in their correct order, this decoder scores about 0.78 in cross-validation. I tested the re-pairing step by shuffling the units of held-out labeled trials myself. It recovered 15 to 23 of the 29 units correctly, and accuracy stayed close to the unshuffled result. Some test units are probably still mismatched, so I took the estimate below 0.78. If the units were not actually reordered, this whole correction is wrong and the estimate doesn't hold.\n\nThe analysis scripts are in `/tmp` (`perm.py`, `val.py`), outside the repo.",
+ "ttft_ms": 5356,
+ "type": "result",
+ "duration_ms": 180053,
+ "uuid": "6480bc47-f2a3-47d7-bf28-b72447257dce",
+ "ttft_stream_ms": 3591,
+ "time_to_request_ms": 81,
+ "first_content_frame_ms": 3591,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 180.9
+}

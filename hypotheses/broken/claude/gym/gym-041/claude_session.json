@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 42499,
+ "stop_reason": "end_turn",
+ "session_id": "0728f494-dcd8-4747-a5bd-5176906f5fe2",
+ "total_cost_usd": 0.1409994,
+ "usage": {
+  "input_tokens": 12,
+  "cache_creation_input_tokens": 6758,
+  "cache_read_input_tokens": 58637,
+  "output_tokens": 3758,
+  "output_tokens_details": {
+   "thinking_tokens": 514
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 6758,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 567,
+    "cache_read_input_tokens": 12368,
+    "cache_creation_input_tokens": 984,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 984
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 12,
+   "outputTokens": 3758,
+   "cacheReadInputTokens": 58637,
+   "cacheCreationInputTokens": 6758,
+   "webSearchRequests": 0,
+   "costUSD": 0.1409994,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 514,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 6758,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 6,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I've written `output/predictions.json` with all 152 test predictions and a claimed accuracy of 0.34. That figure is the cross-validated accuracy (0.355) rounded down a little.\n\n**Problems with the data:**\n1. **The `stim_class` labels are wrong on many trials.** They disagree with the stimulus log's `orientation_deg` on about 28% of training trials and 21% of validation trials. The log's value is the true one: a decoder trained on `orientation_deg` scores about 0.35 in cross-validation, against about 0.21 when trained on `stim_class`, where chance is 0.125. I trained on labels taken from `orientation_deg`.\n2. **Five units are silent in the test set.** Units 5, 7, 9, 12 and 18 have zero counts on every test trial but fire normally in training and validation. They account for most of the drop in test firing rates (roughly half the training rate overall). The other 17 units have the same rates in test as in training, so the test data needs no rescaling. I dropped the five dead units from the decoder.\n\n**Decoder:** I added up each unit's spikes across the 8 time bins and took the square root. Two models were trained on all 352 labeled trials and their predicted probabilities averaged: LDA with automatic shrinkage, and a standardised logistic regression. Predictions are spread fairly evenly across all 8 classes.\n\n**Why accuracy is low:** losing the dead units costs a lot. With all 22 units the decoder reaches about 0.47 in cross-validation. With the 17 that still fire in test it reaches about 0.35. Most errors are between opposite directions: grouping each direction with its opposite (4 orientation classes instead of 8) gives about 0.60.",
+ "ttft_ms": 4538,
+ "type": "result",
+ "duration_ms": 83685,
+ "uuid": "b3e4fb56-6b61-4510-9e13-61ba5caa175b",
+ "ttft_stream_ms": 2764,
+ "time_to_request_ms": 68,
+ "first_content_frame_ms": 2765,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 84.6
+}

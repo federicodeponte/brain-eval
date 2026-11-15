@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 57161,
+ "stop_reason": "end_turn",
+ "session_id": "248b765f-6868-4299-8c02-d9d074489a1d",
+ "total_cost_usd": 0.17736979999999997,
+ "usage": {
+  "input_tokens": 14,
+  "cache_creation_input_tokens": 8264,
+  "cache_read_input_tokens": 71809,
+  "output_tokens": 4842,
+  "output_tokens_details": {
+   "thinking_tokens": 589
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 8264,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 611,
+    "cache_read_input_tokens": 13695,
+    "cache_creation_input_tokens": 1163,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 1163
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 14,
+   "outputTokens": 4842,
+   "cacheReadInputTokens": 71809,
+   "cacheCreationInputTokens": 8264,
+   "webSearchRequests": 0,
+   "costUSD": 0.17736979999999997,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 589,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 8264,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 7,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I've written predictions for all 70 test trials to `output/predictions.json`. I expect them to be about 49% accurate, against 20% for guessing.\n\n**Problem with the data:** the 28 units in the test file are in a different order from train and val. The average activity of each test unit doesn't line up with the unit in the same position in the training data. Re-pairing the units cuts the mismatch from 23.4 to 1.7, and train vs. val needs no re-pairing at all (the best pairing scores 1.7 and keeping their order scores 2.05). A decoder trained on train/val and used directly on test would effectively be reading the wrong neurons.\n\n**How I fixed it:** I paired each test unit with a training unit by matching activity patterns. I compared their average firing over the five time bins, how variable they are, and how often they fire at all. I then refined the pairing using each unit's average response to each image, based on first-pass predictions. The full mapping is written in the `data_issues` field. The busy, high-firing units match clearly. Some of the rarely-firing units are ambiguous, and a few of those may be paired wrongly.\n\nOtherwise the labels agree with `image_id` on every trial, the classes are balanced, and no trial appears twice.\n\n**Decoder and accuracy estimate:**\n- **Model:** logistic regression on all 140 time-binned counts per trial, square-root transformed and standardized, trained on train and val together (145 trials).\n- **Cross-validation:** about 0.55 accuracy, repeated over different splits.\n- **Validation split:** a model trained on train only scored lower, 0.375\u20130.425.\n- **Claimed accuracy:** I set it to 0.49. That's a bit below the cross-validation figure to allow for the possibly mispaired low-firing units and the small sample. Expect roughly \u00b10.06 around it from chance alone with 70 trials.",
+ "ttft_ms": 4176,
+ "type": "result",
+ "duration_ms": 119450,
+ "uuid": "04bbd111-4e2a-40c9-8644-68adf99a1fde",
+ "ttft_stream_ms": 2651,
+ "time_to_request_ms": 70,
+ "first_content_frame_ms": 2651,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 120.2
+}

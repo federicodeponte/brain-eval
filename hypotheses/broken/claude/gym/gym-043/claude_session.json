@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 73210,
+ "stop_reason": "end_turn",
+ "session_id": "7e24a915-e900-431a-aaf9-945d7bd0f742",
+ "total_cost_usd": 0.2462418,
+ "usage": {
+  "input_tokens": 16,
+  "cache_creation_input_tokens": 11493,
+  "cache_read_input_tokens": 97769,
+  "output_tokens": 6734,
+  "output_tokens_details": {
+   "thinking_tokens": 820
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 11493,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 632,
+    "cache_read_input_tokens": 17272,
+    "cache_creation_input_tokens": 815,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 815
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 16,
+   "outputTokens": 6734,
+   "cacheReadInputTokens": 97769,
+   "cacheCreationInputTokens": 11493,
+   "webSearchRequests": 0,
+   "costUSD": 0.2462418,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 820,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 11493,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 8,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I wrote predictions for all 54 test trials to `output/predictions.json`, with a claimed accuracy of 0.90. The main data problem is that **the units in the test file are in a different order than in train and val.**\n\n**How I found it:** Each unit's average firing rate in test doesn't match the same unit in train/val. For example, test units 1, 2, 6, 16 and 26 are almost silent, while the units in those positions in train fire more than 1 spike per bin. Train and val agree with each other, and `stim_class` matches `movie_time_s` exactly, so the labels themselves look fine.\n\n**Fixing the order:** I matched each training unit to a test unit using its firing statistics, then refined the matches by checking how well each pairing fits the per-class average responses. To test the method, I scrambled the val units at random five times using only training data. All 29 units were placed correctly every time, and val accuracy stayed the same as with the original order. The recovered order (training unit i \u2192 test unit) is saved in `data_issues`.\n\n**Second issue:** Even after reordering, test trials fire about 12% less overall than train/val. To keep that from skewing results, the decoder allows each trial's overall firing level to vary and matches on the shape of the response. It compares each trial with the average response for each class (a Poisson template decoder).\n\n**Decoder results:**\n- Trained on train only, it got 27/27 on val (1.0). A logistic regression baseline got 0.96 on both cross-validation and val.\n- The final decoder was trained on train plus val. Its predictions agree with the logistic regression's on 93% of test trials, and are spread evenly across the 9 classes (5\u20137 trials each).\n\n**Accuracy estimate:** About 9 of the 54 test trials are uncertain, and the decoder's average confidence is 0.96. I claimed 0.90 rather than that, because this kind of decoder tends to be overconfident and the test data differs from training in firing level.",
+ "ttft_ms": 3992,
+ "type": "result",
+ "duration_ms": 101170,
+ "uuid": "e813aebb-da9d-4651-99e1-c7847f3e671f",
+ "ttft_stream_ms": 2117,
+ "time_to_request_ms": 76,
+ "first_content_frame_ms": 2117,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 102.0
+}
