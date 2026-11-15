@@ -1,0 +1,30 @@
+Below are real spike counts from 40 single neurons recorded in the human medial temporal lobe (amygdala and hippocampus) of epilepsy patients with clinical depth electrodes, while they viewed photographs. Each number is how many spikes a neuron fired 200-1200 ms after a photo appeared. Neurons were pooled from several recording sessions, so each row is a pseudo-trial: every neuron's count comes from one presentation of a photo from that row's category. Columns are the same neurons in every row (LA/RA = left/right amygdala, LH/RH = left/right hippocampus).
+
+neuron:    1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36  37  38  39  40
+region:   RA  RA  LA  LA  RA  RA  RA  RA  RA  RA  RA  LA  LH  RA  LH  LA  LA  RA  RA  RA  LA  RA  LA  RH  RA  RH  LA  RA  RA  LA  RA  RA  LH  LA  RH  LA  LA  RA  LH  LA
+
+Class A = photo of food:
+  ex1:     0   4  24   1   7   2   5   0   3  16   0   2   0   8   9   8   1   9   2   3   8   1   6   2   9  10   0   0   1   2   1   0   3   2   1   1   3   3   6   5
+  ex2:     0   2  17   3   5   2   8   0   9  10   0   5   0  13   5   4   4   3   4   1   5   5   7   1   6  11   1   1   0   0   6   0   6   4   3   4   5   3  10   5
+  ex3:     0   2  18   1   5   5   5   0   5   7   2   4   1  10   9   8   5   5   5   0   5   1   2   1   9  10   2   0   2   2   1   0   6   4   4   1   1   4   4   6
+
+Class B = photo of cars:
+  ex1:     0   2  14   3   2   7   6   1   2  13   2   2   5   4  10   5   5   5   5   1   8   6   5   7  11  12   1   0   1   2   3   0   1   2   3   4   5   3   7   3
+  ex2:     0   3  13   0   3  10   9   0   3   3   0  10   1   1  10   0   3   7  14   1  11   5   5   0  15   7   2   2   2   5   8   3   0   7   4   1   4   3   6   1
+  ex3:     2   1  13   2   2   5  10   1   7  25   0   6   3   9   9   1   0  11   7   2   3   1   2   9  10   9   0   4   4   0   1   0   4   1   6   0   5   6   4   2
+
+Class C = photo of people:
+  ex1:     1   3   9   2  11   8  13   0   5  19   0   1   2  12  22   2   1   4   4  10   2   2   8   7   9  19   0   2   2   0   5   3   2  12   3   1   7   4   7   6
+  ex2:     1   7   9   1   1   5   8   6  23  16   3   8   0   6  15   7   3  16   7   0   7   4   3   6   6   8   3   1   0   3   4   2   2   3   2   1   4   1   5   8
+  ex3:     1   5  12   1   3   7   9   4  19  18   4   5   3  20  13   4   1   9   4   1   2   5   5   3   7  17   0   1   3   1   6   3   2   5   7   2   4   5   8   0
+
+Class D = photo of animals:
+  ex1:     9   0   9   0   7   9   8   1   5  13   0   5   0  10   5  12  13   2   9   0   7   1   8   0  12  21   0   1   3   5   4   1   2   3   8   4   4   2   9   0
+  ex2:     3   1  17   1   1   9   5   0   4  21   1   3   0  12   7  11  10   5   4   1   2   1   5   2  13  28   0   1   1   5   5   0   2   0   6   7   5   2   6   4
+  ex3:     3   3  11  10   3  14  13   1   5  13   1   6   0  11   4   7   1  10   6   4   7   5   9   1  15  16   0   1   3   5   5   1   5   3   6   7   8   2   5   2
+
+Query pseudo-trial (new photos, never shown in the example rows above):
+  query:    0   4  22   0   3   3   9   0   6  21   0   7   0   7  22  10   7   3   3   0   6   4   4   1   9  14   0   1   1   5   7   0   2   7   4   2   5   4   6   2
+
+Which category of photo was being viewed during the query pseudo-trial? A) food B) cars C) people D) animals
+Answer with a single letter.

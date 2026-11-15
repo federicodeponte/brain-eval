@@ -7,9 +7,9 @@ Frontier models get raw spike counts from real neurons plus a few labeled exampl
 ## Main tasks
 | Task | Data | Chance | Decoder | Haiku | Opus (pilot, n=10) |
 |---|---|---|---|---|---|
-| Human neurons: car / food / person / animal photo | DANDI 000004, 40 amygdala/hippocampus neurons, epilepsy patients | 25% | 65-78% | 5/10 | 5/10 |
-| Mouse: which of 4 movie clips | Allen Neuropixels 732592105, 40 VISp units x 10 bins | 25% | 82-97% | 6/10 | 8/10 |
-| Mouse: which of 8 movie clips | same | 12.5% | 83-87% | - | 7/10 |
+| Human neurons: car / food / person / animal photo | DANDI 000004, 40 amygdala/hippocampus neurons, epilepsy patients | 25% | 4/10 on the same items (65% over all 40) | 5/10 | 5/10 |
+| Mouse: which of 4 movie clips | Allen Neuropixels 732592105, 40 VISp units x 10 bins | 25% | 7-9/10 on the same items | 6/10 | 8/10 |
+| Mouse: which of 8 movie clips | same | 12.5% | 5-6/10 on the same items | 0/10 | 7/10 |
 
 ## Controls (does the model learn from the examples?)
 In `hypotheses/controls/` and `mouse/valkyrie/dataset-*`:
@@ -40,3 +40,5 @@ Raw recordings are not included (download scripts in each folder). Data licenses
 
 ## Prior work check (Nov 14 2026)
 No published work found that gives a frontier LLM raw single-neuron spike counts + labeled examples in-context (no tools, no training) and scores it against a decoder. Nearest: LLM agents that write analysis code or call trained decoders (NS-Copilot EMNLP 2026, SpikeAgent 2025, SpikeLab 2026, DANDI LLM-notebook tools 2025, Neurodata Without Boredom 2026); trained brain encoders feeding LLMs (BrainLLM, Neurrator, Thought2Text).
+
+**Correction (Nov 14):** earlier decoder numbers were full-set averages; on the exact pilot items Opus is level with the decoder. n=10 per cell is too small to rank; full run pending.

@@ -24,7 +24,7 @@ def parse(txt):
 
 p = argparse.ArgumentParser(); add_arguments(p)
 p.add_argument('--hyp', nargs='+', required=True); p.add_argument('--n', type=int, default=10)
-p.add_argument('--model', default='opus')
+p.add_argument('--model', default='opus'); p.add_argument('--tools', action='store_true')
 a = p.parse_args()
 g = SpendGuard(BASE, a)
 out = BASE / 'results.jsonl'
@@ -36,13 +36,23 @@ for h in a.hyp:
         items = [i for i in items if i.get('shots')==0][:a.n//2] + [i for i in items if i.get('shots')==1][:a.n//2]
     if h == 'mouse8': items = [i for i in items if i.get('k') == 8]
     for it in items[:a.n]:
-        key = f'judge:{h}:{it["id"]}:{a.model}'
+        key = f'judge:{h}:{it["id"]}:{a.model}' + (':tools' if a.tools else '')
         if g.attempted(key): continue
         try:
             with g.claim(key) as entry:
-                cmd = ['claude', '-p', '--model', a.model, '--no-session-persistence',
-                       '--disallowedTools', 'Bash,Edit,Write,Read,Glob,Grep,WebFetch,WebSearch,Task,NotebookEdit'] + g.claude_flags()
-                r = g.run_process(cmd, input=it['prompt'], cwd=empty)
+                if a.tools:
+                    import tempfile
+                    wd = Path(tempfile.mkdtemp(prefix='tool-', dir=BASE))
+                    (wd/'prompt.txt').write_text(it['prompt'])
+                    tprompt = it['prompt'] + "\n\nYou may write and run Python (python3 with numpy) to analyse the numbers. The full prompt text is also saved as ./prompt.txt. Finish with a final line 'Answer: X'."
+                    cmd = ['claude', '-p', '--model', a.model, '--no-session-persistence',
+                           '--allowedTools', 'Bash(python3:*),Write,Read',
+                           '--disallowedTools', 'Edit,Glob,Grep,WebFetch,WebSearch,Task,NotebookEdit'] + g.claude_flags()
+                    r = g.run_process(cmd, input=tprompt, cwd=wd)
+                else:
+                    cmd = ['claude', '-p', '--model', a.model, '--no-session-persistence',
+                           '--disallowedTools', 'Bash,Edit,Write,Read,Glob,Grep,WebFetch,WebSearch,Task,NotebookEdit'] + g.claude_flags()
+                    r = g.run_process(cmd, input=it['prompt'], cwd=empty)
                 try:
                     j = json.loads(r.stdout)
                 except Exception:
@@ -51,7 +61,7 @@ for h in a.hyp:
                 entry['reported_cost_usd'] = j.get('total_cost_usd')
                 txt = (j.get('result') or '').strip()
                 pred = parse(txt)
-                rec = {'hyp': h, 'id': it['id'], 'model': a.model, 'answer': it['answer'], 'pred': pred,
+                rec = {'hyp': h, 'id': it['id'], 'model': a.model + ('+python' if a.tools else ''), 'answer': it['answer'], 'pred': pred,
                        'correct': pred == it['answer'], 'cost': j.get('total_cost_usd'), 'text': txt[:3000]}
                 with open(out, 'a') as f: f.write(json.dumps(rec) + '\n')
                 print(h, it['id'], it['answer'], pred, rec['correct'], flush=True)
