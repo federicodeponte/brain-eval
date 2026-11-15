@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 31694,
+ "stop_reason": "end_turn",
+ "session_id": "b730debc-6f36-4774-bafa-69a8a4708bdf",
+ "total_cost_usd": 0.1078208,
+ "usage": {
+  "input_tokens": 10,
+  "cache_creation_input_tokens": 5505,
+  "cache_read_input_tokens": 47104,
+  "output_tokens": 2716,
+  "output_tokens_details": {
+   "thinking_tokens": 194
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 5505,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 605,
+    "cache_read_input_tokens": 11424,
+    "cache_creation_input_tokens": 675,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 675
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 10,
+   "outputTokens": 2716,
+   "cacheReadInputTokens": 47104,
+   "cacheCreationInputTokens": 5505,
+   "webSearchRequests": 0,
+   "costUSD": 0.1078208,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 194,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 5505,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 5,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I wrote predictions for all 152 test trials to `output/predictions.json`. I estimate they will be about **65% accurate** (chance is 12.5%). That assumes the hidden test labels match the true stimulus directions and not the corrupted labels described below.\n\n**Data problem: 25% of the labels are wrong.** On exactly 25% of trials, in both the fit and holdout files, the class label `y` doesn't match the direction recorded in the stimulus log (`orientation_deg`). The bad labels are spread across all eight classes, so they look like random corruption rather than a consistent shift. I used the stimulus-log direction (`orientation_deg / 45`) as the true label. That choice is backed by the data: a decoder trained on the corrected labels scored 55\u201357% on the holdout split, against 39\u201350% when trained on the original `y`.\n\n**Decoder:** I combined the fit and holdout trials (400 in total) and trained on the corrected labels. The model averages the predicted probabilities of three classifiers: logistic regression, LDA and a random forest. Each one uses each unit's square-root spike count over three windows: the whole 2 s, the first 500 ms and the remaining 1.5 s. This summary worked better than feeding in all 8 time bins (about 0.62 vs 0.57).\n\n**Accuracy estimate:** five-fold cross-validation on the 400 corrected trials, repeated with three different random splits, gave 0.64, 0.64 and 0.68. I claimed 0.653, the average of the three.\n\nThe predicted classes are fairly balanced: 14 to 22 trials per class. The `data_issues` field in the output file describes the label corruption.",
+ "ttft_ms": 3638,
+ "type": "result",
+ "duration_ms": 78852,
+ "uuid": "0af1119f-c32a-4c8a-93c9-0301a2fadfe6",
+ "ttft_stream_ms": 2161,
+ "time_to_request_ms": 67,
+ "first_content_frame_ms": 2161,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 79.7
+}

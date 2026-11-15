@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 39484,
+ "stop_reason": "end_turn",
+ "session_id": "06abb6bb-94dc-4fdf-b5e6-ca6280878102",
+ "total_cost_usd": 0.1321856,
+ "usage": {
+  "input_tokens": 12,
+  "cache_creation_input_tokens": 6953,
+  "cache_read_input_tokens": 62268,
+  "output_tokens": 3203,
+  "output_tokens_details": {
+   "thinking_tokens": 689
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 6953,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 582,
+    "cache_read_input_tokens": 13268,
+    "cache_creation_input_tokens": 279,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 279
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 12,
+   "outputTokens": 3203,
+   "cacheReadInputTokens": 62268,
+   "cacheCreationInputTokens": 6953,
+   "webSearchRequests": 0,
+   "costUSD": 0.1321856,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 689,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 6953,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 6,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I've written predictions for all 60 test trials to `output/predictions.json`. I expect them to be about 56% accurate (chance is 10%). Before training I had to fix the labels, because they're wrong in the labeled data.\n\n**The data problem:** in every fit and holdout trial, `stim_class` is shifted by two classes from what `movie_time_s` and `classes.json` say. Each trial is labeled `(movie_time_s \u2212 16 \u2212 2) mod 10`. For example, the segment starting at 18 s is labeled class 0 and the one starting at 16 s is labeled class 8.\n\n**Why I trust `movie_time_s` over `stim_class`:** the two orderings put the break in the 16\u201325 s sequence in different places, so I checked whether the population response at the end of each segment matches the start of the next one.\n- Going by `movie_time_s`, the boundary between the 17 s and 18 s segments (class 9 into class 0) matches strongly (correlation 0.97).\n- Going by `stim_class`, the 25 s segment should run straight into the 16 s segment (class 7 into class 8), but it matches poorly (0.57).\n\nSo I relabeled each trial as `movie_time_s \u2212 16` before training.\n\n**Decoder:** I used shrinkage linear discriminant analysis on the square-root spike counts (22 units \u00d7 10 bins), trained on all 140 labeled trials. Cross-validated accuracy, repeated 7-fold over three shuffles, averaged about 58%. Logistic regression scored 51\u201354%, and when trained only on the fit split it got 50\u201353% on the holdout. I set `claimed_accuracy` to 0.56, a little below the cross-validation figure. With 60 test trials, the real accuracy could easily land several points either side of that.",
+ "ttft_ms": 4006,
+ "type": "result",
+ "duration_ms": 87921,
+ "uuid": "e74ad0af-a7ea-4cbc-8aec-90293a489e30",
+ "ttft_stream_ms": 2425,
+ "time_to_request_ms": 70,
+ "first_content_frame_ms": 2425,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 88.9
+}

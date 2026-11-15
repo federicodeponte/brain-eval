@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 30046,
+ "stop_reason": "end_turn",
+ "session_id": "6050caed-d91f-4a8e-93ac-bc747f9ccae2",
+ "total_cost_usd": 0.1008212,
+ "usage": {
+  "input_tokens": 10,
+  "cache_creation_input_tokens": 5024,
+  "cache_read_input_tokens": 45646,
+  "output_tokens": 2573,
+  "output_tokens_details": {
+   "thinking_tokens": 240
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 5024,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 490,
+    "cache_read_input_tokens": 11058,
+    "cache_creation_input_tokens": 560,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 560
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 10,
+   "outputTokens": 2573,
+   "cacheReadInputTokens": 45646,
+   "cacheCreationInputTokens": 5024,
+   "webSearchRequests": 0,
+   "costUSD": 0.1008212,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 240,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 5024,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 5,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I've written the predictions for all 114 test trials to `output/predictions.json`. I expect about 62% accuracy on the test set, and I found no problems with the data.\n\n**Decoder:** I took the log of each unit's spike count in each time bin, summed those over the 8 bins, and ran a standardized logistic regression on the result. The final model is trained on the train and validation trials together (300 trials).\n\n**Accuracy estimate (0.62):**\n- 10-fold cross-validation on all 300 labeled trials gave 0.63.\n- Training on train alone and scoring on validation gave 0.61.\n- Chance is about 0.17.\n- I also tried shrinkage LDA and adding per-time-bin and early-response features. None did better; the per-bin features were worse, probably from overfitting.\n\n**Data checks:**\n- Every `label` matches its `orientation_deg`.\n- The classes are balanced (35 trials per class in train, 15 in validation).\n- No trial appears twice within or across the three splits.\n- Average firing rates per unit and per time bin look the same in train, validation and test, so the test set doesn't seem shifted.\n\n**Where the errors come from:** most mistakes are between gratings of the same orientation moving in opposite directions. 0\u00b0 and 180\u00b0 get confused, and 135\u00b0 and 315\u00b0 are mixed up about half the time. 90\u00b0 is decoded perfectly (50 of 50). This looks like how the neurons respond, mostly to orientation rather than direction, so I didn't count it as a data problem.",
+ "ttft_ms": 3391,
+ "type": "result",
+ "duration_ms": 63857,
+ "uuid": "3a948fae-8b26-4300-b063-ccc4afcb7c3d",
+ "ttft_stream_ms": 1869,
+ "time_to_request_ms": 64,
+ "first_content_frame_ms": 1869,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 64.8
+}

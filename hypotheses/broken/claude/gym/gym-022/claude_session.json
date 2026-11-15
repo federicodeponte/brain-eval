@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 26382,
+ "stop_reason": "end_turn",
+ "session_id": "cada5f99-ec62-4312-92a9-9cac50909a8f",
+ "total_cost_usd": 0.093475,
+ "usage": {
+  "input_tokens": 8,
+  "cache_creation_input_tokens": 4976,
+  "cache_read_input_tokens": 35375,
+  "output_tokens": 2328,
+  "output_tokens_details": {
+   "thinking_tokens": 244
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 4976,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 494,
+    "cache_read_input_tokens": 10559,
+    "cache_creation_input_tokens": 1011,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 1011
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 8,
+   "outputTokens": 2328,
+   "cacheReadInputTokens": 35375,
+   "cacheCreationInputTokens": 4976,
+   "webSearchRequests": 0,
+   "costUSD": 0.093475,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 244,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 4976,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 4,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I've written predictions for all 14 test trials to `output/predictions.json`, with an estimated test accuracy of about 68%.\n\n**Problem with the data:** the labels `y` don't match the stimulus log. In both the training and validation files, every label is shifted by one class: `y = k` goes with movie time 49+k s, and `y = 6` goes with 48 s, which should be class 0. So `y = (movie_time_s \u2212 48 \u2212 1) mod 7`, when by the class definitions it should be `movie_time_s \u2212 48`. Before training, I replaced the labels with `movie_time_s \u2212 48`. This assumes the hidden test labels follow the class definitions; if they use the shifted scheme instead, nearly every prediction will be scored wrong.\n\n**Decoder:** I used linear discriminant analysis on the square root of the spike counts (all 19 units \u00d7 10 bins), trained on the training and validation trials together (56 trials, 8 per class).\n- **Accuracy estimate:** cross-validation on those 56 trials gave about 68%, against 14% for chance with 7 classes.\n- **Other models:** logistic regression scored about 56% and Gaussian naive Bayes about 30%.\n\nWith only 14 test trials, each one is about 7 percentage points, so the real test score could easily land 10\u201315 points either side of the estimate.\n\n**Predictions (test-file order):** `[1, 2, 4, 3, 4, 3, 5, 4, 2, 0, 1, 6, 5, 0]`",
+ "ttft_ms": 3805,
+ "type": "result",
+ "duration_ms": 173613,
+ "uuid": "2cdd3ce0-7cbd-4528-bfe5-8565e6cb8124",
+ "ttft_stream_ms": 2004,
+ "time_to_request_ms": 68,
+ "first_content_frame_ms": 2004,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 174.7
+}

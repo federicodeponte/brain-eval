@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 38520,
+ "stop_reason": "end_turn",
+ "session_id": "3e968b5b-6935-4ad5-87d1-0aae3ee4410c",
+ "total_cost_usd": 0.1433964,
+ "usage": {
+  "input_tokens": 12,
+  "cache_creation_input_tokens": 8006,
+  "cache_read_input_tokens": 65402,
+  "output_tokens": 3311,
+  "output_tokens_details": {
+   "thinking_tokens": 446
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 8006,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 610,
+    "cache_read_input_tokens": 14000,
+    "cache_creation_input_tokens": 600,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 600
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 12,
+   "outputTokens": 3311,
+   "cacheReadInputTokens": 65402,
+   "cacheCreationInputTokens": 8006,
+   "webSearchRequests": 0,
+   "costUSD": 0.1433964,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 446,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 8006,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 6,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I've written predictions for all 27 test trials to `/tmp/claude-broken/gym-026-1tktq3c4/output/predictions.json`. I expect about 50% accuracy on them (chance with 9 classes is 11%), and I found no problems with the data.\n\n**Decoder:** I used logistic regression on the square root of the spike counts (all 85 bin \u00d7 unit features), trained on the train and validation trials together.\n\n**Accuracy estimate (0.5):**\n- **Cross-validation:** 7-fold cross-validation on all 63 labelled trials gave about 48%.\n- **Validation split:** trained on the train trials alone, the model scored 67% on the 18 validation trials. With only 18 trials that number is noisy, so I set the claim close to the cross-validation figure.\n- **Where it goes wrong:** most mistakes are between neighbouring segments in time. Classes 0\u20133 (movie time 42\u201344 s) are especially hard to tell apart. Classes 4, 5 and 7 are decoded well.\n- **Other decoder:** a Poisson naive Bayes model did slightly worse, at about 38\u201346%.\n\n**Data issues (\"none\"):**\n- **Labels:** every label matches its `movie_time_s` value.\n- **Duplicates:** no trial appears twice, within or across splits.\n- **Test vs. labelled firing rates:** units 2 and 6 fire a bit less in the test trials (unit 6 averages 0.44 spikes per trial against 1.57). Neither difference is statistically significant (p = 0.06 and 0.11), and no other unit differs noticeably.\n\nThe test predictions are spread unevenly: no trial was assigned to class 6, while class 1 got 6. If the test set holds 3 trials per class, at least 3 trials are wrong from that alone, which fits the roughly 50% estimate.",
+ "ttft_ms": 4052,
+ "type": "result",
+ "duration_ms": 66131,
+ "uuid": "4e1534d8-6648-4a2a-a3ed-379d9e03b7fe",
+ "ttft_stream_ms": 2199,
+ "time_to_request_ms": 68,
+ "first_content_frame_ms": 2199,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 67.1
+}

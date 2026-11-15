@@ -1,0 +1,51 @@
+{
+ "task_id": "gym-024",
+ "env_seed": 4041,
+ "faults": [
+  "leak",
+  "perm"
+ ],
+ "kind": "scenes",
+ "n_test": 50,
+ "K": 5,
+ "valid": true,
+ "n_predictions": 50,
+ "n_invalid": 0,
+ "acc": 0.56,
+ "chance": 0.2,
+ "skill": 0.45,
+ "claimed_accuracy": 0.45,
+ "gap": 0.11,
+ "calib": 0.78,
+ "diag": 1.0,
+ "faults_named": {
+  "leak": true,
+  "perm": true
+ },
+ "false_alarm": null,
+ "extra_groups": [],
+ "families_flagged": [
+  "leak",
+  "perm"
+ ],
+ "generic_flagged": [],
+ "matches": {
+  "perm": [
+   "channel order in test_unlabeled is scrambled",
+   "channel order",
+   "columns of the test x are permuted"
+  ],
+  "leak": [
+   "duplicated",
+   "duplicated",
+   "near-duplicated",
+   "duplicate",
+   "near-copy"
+  ]
+ },
+ "fix_applies": false,
+ "fix_target": 0.56,
+ "fix": null,
+ "reward": 0.7433,
+ "data_issues": "(1) Unit/channel order in test_unlabeled is scrambled relative to train/val: the 19 columns of the test X are permuted (e.g. test unit 14 = train unit 0, test 4 = train 16, test 16 = train 14, test 18 = train 2, test 0 = train 17). Recovered mapping test_col->train_unit = [17, 10, 4, 18, 16, 9, 12, 7, 8, 6, 5, 11, 3, 15, 0, 1, 14, 13, 2], found by maximizing test likelihood under a Poisson class-mixture fit on labeled data (log-lik -417 unpermuted vs +504 permuted); test columns were re-ordered before decoding. (2) The labeled data contain duplicated / near-duplicated trials: 13 exact duplicate rows in train, 3 val trials identical to train trials, and most train trials have a same-class near-copy at L1 distance <=4 (vs >=7 between genuinely independent trials, as in test). Only ~120 independent trials underlie the 282 labeled trials, and val leaks from train, so naive CV/val accuracy is inflated (RF 0.93 naive CV vs ~0.43 group CV). Honest group-CV accuracy is ~0.46."
+}

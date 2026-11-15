@@ -1,0 +1,48 @@
+{
+ "task_id": "gym-023",
+ "env_seed": 4021,
+ "faults": [
+  "noise"
+ ],
+ "kind": "gratings",
+ "n_test": 152,
+ "K": 8,
+ "valid": true,
+ "n_predictions": 152,
+ "n_invalid": 0,
+ "acc": 0.7303,
+ "chance": 0.125,
+ "skill": 0.6917,
+ "claimed_accuracy": 0.653,
+ "gap": 0.0773,
+ "calib": 0.8455,
+ "diag": 1.0,
+ "faults_named": {
+  "noise": true
+ },
+ "false_alarm": null,
+ "extra_groups": [],
+ "families_flagged": [
+  "noise"
+ ],
+ "generic_flagged": [
+  "label"
+ ],
+ "matches": {
+  "noise": [
+   "label noise",
+   "25% of trials have a class label y that disagrees",
+   "labels were corrupted"
+  ],
+  "generic:label": [
+   "class label y that disagrees",
+   "disagrees with the stimulus-log orientation_deg (y",
+   "labels were corrupted"
+  ]
+ },
+ "fix_applies": true,
+ "fix_target": 0.5526,
+ "fix": 1.0,
+ "reward": 0.8843,
+ "data_issues": "Label noise: in both fit and holdout, 25% of trials have a class label y that disagrees with the stimulus-log orientation_deg (y != orientation_deg/45), spread across all classes, i.e. labels were corrupted/shuffled for a quarter of trials. I treated orientation_deg as ground truth and retrained on labels derived from it (holdout accuracy improves vs. training on y)."
+}

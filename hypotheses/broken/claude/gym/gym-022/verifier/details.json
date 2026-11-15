@@ -1,0 +1,48 @@
+{
+ "task_id": "gym-022",
+ "env_seed": 4019,
+ "faults": [
+  "shift"
+ ],
+ "kind": "movie",
+ "n_test": 14,
+ "K": 7,
+ "valid": true,
+ "n_predictions": 14,
+ "n_invalid": 0,
+ "acc": 0.7857,
+ "chance": 0.1429,
+ "skill": 0.75,
+ "claimed_accuracy": 0.68,
+ "gap": 0.1057,
+ "calib": 0.7886,
+ "diag": 1.0,
+ "faults_named": {
+  "shift": true
+ },
+ "false_alarm": null,
+ "extra_groups": [],
+ "families_flagged": [
+  "shift"
+ ],
+ "generic_flagged": [
+  "label"
+ ],
+ "matches": {
+  "shift": [
+   "off by one",
+   "one class",
+   "cyclically",
+   "y = (movie_time_s-48-1"
+  ],
+  "generic:label": [
+   "labels y are inconsistent",
+   "inconsistent with the stimulus log (movie_time_s) and the class"
+  ]
+ },
+ "fix_applies": true,
+ "fix_target": 0.6429,
+ "fix": 1.0,
+ "reward": 0.8846,
+ "data_issues": "Labels y are inconsistent with the stimulus log (movie_time_s) and the class definitions: in both train and val, every label is off by one class cyclically (y=k for movie time 49+k s, and y=6 for 48 s; i.e., y = (movie_time_s-48-1) mod 7). I relabeled using movie_time_s - 48 before training."
+}

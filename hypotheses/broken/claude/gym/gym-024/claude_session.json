@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 93051,
+ "stop_reason": "end_turn",
+ "session_id": "a9054abc-9dcb-424d-a855-e6a1c1526341",
+ "total_cost_usd": 0.3139944,
+ "usage": {
+  "input_tokens": 20,
+  "cache_creation_input_tokens": 13595,
+  "cache_read_input_tokens": 129772,
+  "output_tokens": 8960,
+  "output_tokens_details": {
+   "thinking_tokens": 1755
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 13595,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 794,
+    "cache_read_input_tokens": 19112,
+    "cache_creation_input_tokens": 1077,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 1077
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 20,
+   "outputTokens": 8960,
+   "cacheReadInputTokens": 129772,
+   "cacheCreationInputTokens": 13595,
+   "webSearchRequests": 0,
+   "costUSD": 0.3139944,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 1755,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 13595,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 10,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I wrote predictions for all 50 test trials to `output/predictions.json`, with `claimed_accuracy` set to **0.45**. That estimate is low because the data had two problems, and the higher accuracy figures you'd get from the data as given aren't real.\n\n**Problems with the data**\n\n1. **The units in the test file are in a different order than in train/val.** The 19 columns of test `X` are shuffled. Average firing rates differed sharply between the files: unit 0 fires about 3.4 spikes per trial in train but is almost silent in test. Matching units by their firing patterns, and then by how well the reordered test data fit a model trained on the labeled data, recovered the original order. The fit improved from \u2212417 to +504 (log-likelihood). For example, test unit 14 is train unit 0, test 4 is train 16, and test 16 is train 14. The high-rate units match without doubt; a few near-silent units are less certain but barely affect decoding. Only 18% of predictions are the same with and without the reordering, so skipping this fix would have meant near-chance accuracy.\n\n2. **The labeled data contain many duplicate and near-duplicate trials.** Train has 13 exactly repeated rows, and 3 validation trials are exact copies of train trials. Most train trials also have a near-identical partner of the same class (total spike-count difference of 4 or less). Truly independent trials, like those in test, differ by 7 or more. That leaves only about 120 distinct trials behind the 282 labeled ones. The validation split also overlaps with train, so it can't serve as an independent check.\n\n**Decoder and accuracy estimate**\n\nBecause of the duplicates, ordinary cross-validation is misleading: a random forest scored 0.93 that way but only about 0.43 once duplicate groups were kept together on one side of each split. I used logistic regression on log-transformed spike counts, trained on train and val combined. With duplicate groups kept together, it averaged **0.46 \u00b1 0.08**, the best of the models I tried. Chance is 0.20.\n\nThe scripts are in `/tmp/gymwork/`.",
+ "ttft_ms": 4264,
+ "type": "result",
+ "duration_ms": 213796,
+ "uuid": "0db77590-1fca-44a5-aa95-c93e7c51ec28",
+ "ttft_stream_ms": 2488,
+ "time_to_request_ms": 79,
+ "first_content_frame_ms": 2488,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 214.6
+}

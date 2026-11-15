@@ -1,0 +1,53 @@
+{
+ "task_id": "gym-021",
+ "env_seed": 4018,
+ "faults": [
+  "shift"
+ ],
+ "kind": "movie",
+ "n_test": 60,
+ "K": 10,
+ "valid": true,
+ "n_predictions": 60,
+ "n_invalid": 0,
+ "acc": 0.4167,
+ "chance": 0.1,
+ "skill": 0.3519,
+ "claimed_accuracy": 0.56,
+ "gap": 0.1433,
+ "calib": 0.7133,
+ "diag": 1.0,
+ "faults_named": {
+  "shift": true
+ },
+ "false_alarm": null,
+ "extra_groups": [],
+ "families_flagged": [
+  "noise",
+  "shift"
+ ],
+ "generic_flagged": [
+  "label"
+ ],
+ "matches": {
+  "shift": [
+   "shifted by 2 ",
+   "labels are cyclically shifted",
+   "2 class",
+   "cyclically",
+   "one segment"
+  ],
+  "noise": [
+   "mislabeled"
+  ],
+  "generic:label": [
+   "class labels are inconsistent",
+   "inconsistent with movie_time_s and classes"
+  ]
+ },
+ "fix_applies": true,
+ "fix_target": 0.45,
+ "fix": 1.0,
+ "reward": 0.7663,
+ "data_issues": "stim_class labels are inconsistent with movie_time_s and classes.json: every labeled trial (fit and holdout) has stim_class = (movie_time_s - 16 - 2) mod 10, i.e. labels are cyclically shifted by 2 classes (e.g. movie time 18 s labeled class 0, 16 s labeled 8). Neural continuity across adjacent segments (end of one segment matching start of the next) confirms movie_time_s is correct and stim_class is mislabeled. I relabeled as movie_time_s - 16 before training."
+}
