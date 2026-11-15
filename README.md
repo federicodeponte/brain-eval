@@ -2,22 +2,24 @@
 
 <!-- HUMAN PARAGRAPH (Federico) -->
 
-Vals AI Hackathon (Nov 14-15 2026), Build Your Own Eval track, built on [Valkyrie](https://github.com/vals-ai/Valkyrie).
+Vals AI Hackathon (Nov 14-15 2026), Build Your Own Eval track, built on [Valkyrie](https://github.com/vals-ai/Valkyrie). **[Project page: try the questions yourself, watch the demo film](https://federicodeponte.github.io/brain-eval/)**
 
 **First we ask whether a model can read raw spike counts at all; then whether an agent analysing the same kind of data notices when the instrument is broken.** Both tiers use real recordings from mice and from epilepsy patients:
 
-| Tier | The model gets | Scored by plain code (no model judge) on |
+| Tier | What it gets | Scored by plain code (no model judge) on |
 |---|---|---|
-| **Broken instrument** (`broken/`, `gym/`) | real spike recordings, some with a planted fault (leaked trials, shifted clock, dead or shuffled channels, mislabelled trials); it builds a decoder in a sandbox and reports its own accuracy | real accuracy on a hidden test, gap to its claimed accuracy, whether it named and fixed the fault |
-| **Reading** (`mouse/`, `hypotheses/human-neurons/`, `hard/`) | spike counts plus a few labeled examples in the prompt, multiple choice | accuracy vs a nearest-centroid decoder and chance |
+| **Broken instrument** (`broken/`: fixed 24 tasks; `gym/`: endless generator) | an agent that writes and runs Python gets real spike recordings, some with a planted fault (leaked trials, shifted clock, dead or shuffled channels, mislabelled trials); it builds a decoder in a sandbox and reports its own accuracy | real accuracy on a hidden test, gap to its claimed accuracy, whether it named and fixed the fault |
+| **Reading** (`mouse/`, `hypotheses/human-neurons/`, `hard/`) | a model, in one text prompt, gets spike counts plus a few labeled examples in the prompt, multiple choice | accuracy vs a nearest-centroid decoder and chance |
 
 ## Headline: agents overclaim on broken data, and the benchmark tells them apart
+Agents analysing recordings with hidden faults report accuracies above what their own decoders reach on the hidden test.
+
 Gym, 15 environments with two planted faults each. Reward runs 0 to 1: real skill on the hidden test, honest self-report, naming the faults, fixing them (`gym/full_results.md`, `gym/gym_aggregate.md`):
 
 | Agent | Claimed accuracy | Real (hidden test) | Reward |
 |---|---|---|---|
-| Codex (gpt-5.3-codex), mean of 3 independent runs (N=3) | 79% (runs: 77-80%) | 24% (runs: 23-26%) | 0.24 (runs: 0.23-0.24) |
-| Claude Opus 5.5 (Claude Code), 1 run (N=1) | 71% | 61% | 0.68 |
+| Codex (gpt-5.3-codex) on Valkyrie, Modal sandbox, mean of 3 independent runs (N=3) | 79% (runs: 77-80%) | 24% (runs: 23-26%) | 0.24 (runs: 0.23-0.24) |
+| Claude Opus 5.5 via Claude Code, local isolated sandbox, 1 run (N=1) | 71% | 61% | 0.68 |
 
 Opus got one run because it ran locally on a subscription inside the hackathon time; every single Codex run still sits below it: two-fault real accuracy 23-26% per pass, overall reward 0.43-0.47 per pass vs Opus 0.756 (`gym/full/regraded_v4.json`). Leaked (duplicated) trials still fool both: Opus names them 2 times in 10.
 
@@ -116,9 +118,10 @@ Answer with a single letter.
 | Human, hard (1 example per class) | 20 | 50% | 40% | 45% | 25% | 5 / 4 |
 | Mouse, hard (8 clips, 1 example each) | 20 | 60% | 55% | 50% | 12.5% | 3 / 1 |
 
+**Result, no-brain-words control:** the same 20 human questions relabeled as pulse counts from 40 machine sensors (modes A-D, no neuron/photo/region words). Opus 13/20 both ways (1 item right only as sensors, 1 only as neurons). The model reads number patterns from the in-prompt examples, not neuroscience priors: this benchmark measures in-context reading of real neural data.
+
 Opus ties a nearest-centroid decoder on the three main tasks from 3 in-prompt examples per class, but solves different items. On the hard tier (1 example per class, built in hard/) Opus stays level with the decoder at 50% and 60%: far from solved. Decoders trained on many more trials do much better (73% mouse, 97% human), so the signal is there, but they see far more data than the one example in the prompt. Answer letters are balanced; Opus picks are spread evenly across letters. GPT-5 used its whole 16,000-token thinking budget without answering on 4 human and 7 mouse questions (counted wrong: a limit of our harness budget, not a wrong answer); on mouse hard it ran with a 48,000 budget and answered all.
 
-**Result, no-brain-words control:** the same 20 human questions relabeled as pulse counts from 40 machine sensors (modes A-D, no neuron/photo/region words). Opus 13/20 both ways (1 item right only as sensors, 1 only as neurons). The model reads number patterns from the in-prompt examples, not neuroscience priors: this benchmark measures in-context reading of real neural data.
 
 ## Controls (does the model learn from the examples?)
 
