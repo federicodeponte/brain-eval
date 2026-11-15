@@ -300,53 +300,53 @@
   }
  },
  {
-  "base": "h-cars-a",
+  "base": "h-houses-b",
   "fault": "leak",
   "twin": "clean",
   "K": 4,
-  "n_train": 88,
-  "n_val": 17,
+  "n_train": 86,
+  "n_val": 16,
   "n_test": 200,
   "naive": {
    "logreg": {
-    "val": 0.824,
-    "cv": 0.943,
-    "test": 0.855
+    "val": 0.688,
+    "cv": 0.803,
+    "test": 0.77
    },
    "centroid": {
-    "val": 0.882,
-    "cv": 0.943,
-    "test": 0.835
+    "val": 0.75,
+    "cv": 0.833,
+    "test": 0.815
    }
   },
   "aware": {
-   "cv": 0.943,
-   "test": 0.855
+   "cv": 0.803,
+   "test": 0.77
   }
  },
  {
-  "base": "h-cars-a",
+  "base": "h-houses-b",
   "fault": "leak",
   "twin": "defect",
   "K": 4,
-  "n_train": 176,
-  "n_val": 17,
+  "n_train": 172,
+  "n_val": 16,
   "n_test": 200,
   "naive": {
    "logreg": {
     "val": 1.0,
-    "cv": 0.995,
-    "test": 0.835
+    "cv": 0.968,
+    "test": 0.7
    },
    "centroid": {
-    "val": 1.0,
-    "cv": 0.969,
-    "test": 0.835
+    "val": 0.75,
+    "cv": 0.83,
+    "test": 0.81
    }
   },
   "aware": {
-   "cv": 0.959,
-   "test": 0.835
+   "cv": 0.773,
+   "test": 0.705
   }
  },
  {

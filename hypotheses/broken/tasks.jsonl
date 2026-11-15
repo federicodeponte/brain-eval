@@ -1,0 +1,24 @@
+{"task_id": "decode-01a", "base_id": "m-nm1-a", "species": "mouse", "stim": "natural_movie_one", "fault": "shift", "twin": "clean", "K": 10, "n_train": 120, "n_val": 30, "n_test": 50}
+{"task_id": "decode-01b", "base_id": "m-nm1-a", "species": "mouse", "stim": "natural_movie_one", "fault": "shift", "twin": "defect", "K": 10, "n_train": 120, "n_val": 30, "n_test": 50}
+{"task_id": "decode-02a", "base_id": "m-nm1-b", "species": "mouse", "stim": "natural_movie_one", "fault": "shift", "twin": "defect", "K": 10, "n_train": 120, "n_val": 30, "n_test": 50}
+{"task_id": "decode-02b", "base_id": "m-nm1-b", "species": "mouse", "stim": "natural_movie_one", "fault": "shift", "twin": "clean", "K": 10, "n_train": 120, "n_val": 30, "n_test": 50}
+{"task_id": "decode-03a", "base_id": "m-nm1-c", "species": "mouse", "stim": "natural_movie_one", "fault": "shift", "twin": "clean", "K": 10, "n_train": 120, "n_val": 30, "n_test": 50}
+{"task_id": "decode-03b", "base_id": "m-nm1-c", "species": "mouse", "stim": "natural_movie_one", "fault": "shift", "twin": "defect", "K": 10, "n_train": 120, "n_val": 30, "n_test": 50}
+{"task_id": "decode-04a", "base_id": "m-nm3-a", "species": "mouse", "stim": "natural_movie_three", "fault": "shift", "twin": "clean", "K": 10, "n_train": 60, "n_val": 10, "n_test": 30}
+{"task_id": "decode-04b", "base_id": "m-nm3-a", "species": "mouse", "stim": "natural_movie_three", "fault": "shift", "twin": "defect", "K": 10, "n_train": 60, "n_val": 10, "n_test": 30}
+{"task_id": "decode-05a", "base_id": "m-ns-a", "species": "mouse", "stim": "natural_scenes", "fault": "leak", "twin": "clean", "K": 8, "n_train": 200, "n_val": 80, "n_test": 120}
+{"task_id": "decode-05b", "base_id": "m-ns-a", "species": "mouse", "stim": "natural_scenes", "fault": "leak", "twin": "defect", "K": 8, "n_train": 400, "n_val": 80, "n_test": 120}
+{"task_id": "decode-06a", "base_id": "m-dg", "species": "mouse", "stim": "drifting_gratings", "fault": "leak", "twin": "defect", "K": 8, "n_train": 640, "n_val": 120, "n_test": 152}
+{"task_id": "decode-06b", "base_id": "m-dg", "species": "mouse", "stim": "drifting_gratings", "fault": "leak", "twin": "clean", "K": 8, "n_train": 320, "n_val": 120, "n_test": 152}
+{"task_id": "decode-07a", "base_id": "h-houses-b", "species": "human", "stim": "DANDI000004 houses/mobility/phones/smallAnimal", "fault": "leak", "twin": "defect", "K": 4, "n_train": 172, "n_val": 16, "n_test": 200}
+{"task_id": "decode-07b", "base_id": "h-houses-b", "species": "human", "stim": "DANDI000004 houses/mobility/phones/smallAnimal", "fault": "leak", "twin": "clean", "K": 4, "n_train": 86, "n_val": 16, "n_test": 200}
+{"task_id": "decode-08a", "base_id": "h-houses", "species": "human", "stim": "DANDI000004 houses/mobility/phones/smallAnimal", "fault": "leak", "twin": "clean", "K": 4, "n_train": 86, "n_val": 16, "n_test": 200}
+{"task_id": "decode-08b", "base_id": "h-houses", "species": "human", "stim": "DANDI000004 houses/mobility/phones/smallAnimal", "fault": "leak", "twin": "defect", "K": 4, "n_train": 172, "n_val": 16, "n_test": 200}
+{"task_id": "decode-09a", "base_id": "m-ns-b", "species": "mouse", "stim": "natural_scenes", "fault": "dead", "twin": "defect", "K": 8, "n_train": 200, "n_val": 80, "n_test": 120}
+{"task_id": "decode-09b", "base_id": "m-ns-b", "species": "mouse", "stim": "natural_scenes", "fault": "dead", "twin": "clean", "K": 8, "n_train": 200, "n_val": 80, "n_test": 120}
+{"task_id": "decode-10a", "base_id": "m-ns-c", "species": "mouse", "stim": "natural_scenes", "fault": "dead", "twin": "clean", "K": 8, "n_train": 200, "n_val": 80, "n_test": 120}
+{"task_id": "decode-10b", "base_id": "m-ns-c", "species": "mouse", "stim": "natural_scenes", "fault": "dead", "twin": "defect", "K": 8, "n_train": 200, "n_val": 80, "n_test": 120}
+{"task_id": "decode-11a", "base_id": "h-cars-b", "species": "human", "stim": "DANDI000004 1cars/2food/3people/5animals", "fault": "dead", "twin": "defect", "K": 4, "n_train": 87, "n_val": 16, "n_test": 200}
+{"task_id": "decode-11b", "base_id": "h-cars-b", "species": "human", "stim": "DANDI000004 1cars/2food/3people/5animals", "fault": "dead", "twin": "clean", "K": 4, "n_train": 87, "n_val": 16, "n_test": 200}
+{"task_id": "decode-12a", "base_id": "h-fruit", "species": "human", "stim": "DANDI000004 fruit/kids/military/zzanimal", "fault": "dead", "twin": "defect", "K": 4, "n_train": 70, "n_val": 17, "n_test": 200}
+{"task_id": "decode-12b", "base_id": "h-fruit", "species": "human", "stim": "DANDI000004 fruit/kids/military/zzanimal", "fault": "dead", "twin": "clean", "K": 4, "n_train": 70, "n_val": 17, "n_test": 200}

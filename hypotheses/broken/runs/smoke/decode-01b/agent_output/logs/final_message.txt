@@ -1,0 +1,8 @@
+Done — I trained a decoder, generated test predictions, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+Key findings:
+- Best validation model I found was `StandardScaler + PCA(20) + multinomial logistic regression` with val accuracy `0.8667` (26/30).
+- I set `claimed_accuracy` to `0.84` as a conservative estimate for hidden test performance.
+- Data issue detected: `movie_time_s` is inconsistent with `y` in both `train` and `val` (all trials mismatch), so timing metadata appears misaligned or differently defined from class labels.

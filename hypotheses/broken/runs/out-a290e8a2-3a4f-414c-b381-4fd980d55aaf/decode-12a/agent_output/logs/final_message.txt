@@ -1,0 +1,11 @@
+Done — I trained decoders, generated test predictions, estimated expected test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+It contains:
+- `predictions`: 200 class indices in test order
+- `claimed_accuracy`: `0.73`
+- `data_issues`: a description of a major distribution shift
+
+**Key data issue found**
+- The test split has much lower firing rates than train/val (mean count `1.85` vs `3.83`/`3.93`) and far more zero counts (`51.6%` vs about `25%`), suggesting a substantial cross-split distribution mismatch (likely pseudo-population/session alignment shift).

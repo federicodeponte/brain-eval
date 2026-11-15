@@ -1,0 +1,15 @@
+Done — I trained a decoder, generated predictions for all 50 test trials, and wrote:
+
+- `/app/output/predictions.json`
+
+I used a `RandomForestClassifier` on flattened spike-count features (`20x10 -> 200`), trained on combined `train+val` after model selection on `val` (best val accuracy was ~`0.867`).
+
+I also checked consistency of labels and metadata:
+- `y` exactly matches `movie_time_s` (as integer) in both `train` and `val`
+- class balance is perfect in labeled data (`12/class` train, `3/class` val)
+- no obvious structural/label issues found
+
+So the output file contains:
+- `predictions`: 50 integers in test order
+- `claimed_accuracy`: `0.87`
+- `data_issues`: `"none"`

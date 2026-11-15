@@ -1,0 +1,12 @@
+Done — I trained a decoder, generated test predictions, estimated accuracy, and wrote the required file.
+
+- Output file: `/app/output/predictions.json`
+- Decoder used: `RandomForestClassifier` on flattened `20x10` spike-count features
+- Validation accuracy (train→val): `0.8667` (used as `claimed_accuracy` estimate)
+- Predictions count: `50` integers in test order
+
+**Data issue found**
+- `y` and `movie_time_s` are inconsistent for essentially all labeled rows.
+- In `train`, all `120/120` rows have `y != int(movie_time_s)`.
+- In `val`, all `30/30` rows have `y != int(movie_time_s)`.
+- Pattern suggests label/log misalignment (e.g., many rows look shifted), so stimulus-log-derived labeling metadata appears corrupted/misaligned relative to `y`.

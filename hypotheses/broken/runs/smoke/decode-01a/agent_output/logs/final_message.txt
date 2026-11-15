@@ -1,0 +1,13 @@
+Done — I built a decoder, generated test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I found**
+- Best validation model was a `RandomForestClassifier` on flattened `20x10` spike-count features.
+- Validation accuracy was `0.8667`, so I set `claimed_accuracy` to `0.87`.
+
+**Data issue identified**
+- There is a clear leakage/tautology in provided metadata: in both train and val, `y` is exactly equal to `movie_time_s` (cast to int) for every trial (`100%` match).
+- This means the class label is deterministically encoded by a metadata field, not independently annotated.
+
+If you want, I can also provide a small reproducible training script file under `/app/output/` for auditability.

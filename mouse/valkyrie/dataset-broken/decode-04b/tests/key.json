@@ -1,0 +1,1 @@
+{"base_id": "m-nm3-a", "fault": "shift", "defect": true, "K": 10, "chance": 0.1, "test_labels": [7, 1, 4, 0, 0, 3, 1, 5, 8, 7, 5, 5, 3, 2, 6, 3, 1, 9, 6, 6, 9, 2, 8, 8, 4, 0, 9, 4, 7, 2], "label_lag": "label = true segment - 1 (cyclic) in train and val", "task_id": "decode-04b"}

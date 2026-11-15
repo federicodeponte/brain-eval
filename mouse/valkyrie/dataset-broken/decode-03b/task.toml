@@ -1,0 +1,19 @@
+schema_version = "1.4"
+
+[task]
+name = "vals-broken/decode-03b"
+
+[metadata]
+id = "decode-03b"
+
+[agent]
+timeout_sec = 1800
+
+[verifier]
+timeout_sec = 120.0
+
+[environment]
+workdir = "/app"
+cpus = 2
+memory_mb = 4096
+build_timeout_sec = 900
