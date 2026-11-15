@@ -28,3 +28,11 @@ In `hypotheses/controls/` and `mouse/valkyrie/dataset-*`:
 See `mouse/valkyrie/STATE.md`: `valkyrie dataset push ...`, `valkyrie agent push mouse/valkyrie/agents/oneshot-mcq`, `valkyrie run start ...`, `python3 leaderboard.py results-*.json --md`.
 
 Raw recordings are not included (download scripts in each folder). Data licenses: Allen Institute terms, DANDI CC-BY-4.0, PhysioNet ODC-By.
+
+## Control results (Opus, pilot)
+- **Label-swap (human, n=20):** followed the in-prompt example labels 12/20, the true category 3/20 (decoder 65% / 12.5%). The model reads the neurons, not brain trivia.
+- **Shot-curve (mouse K=4):** 0 examples: answered "A" every time (chance; 5/10 only because 5 of those 10 answers were A). 1 example: 7/10.
+
+## Data credits
+- Faraut M.C.M. et al. (2018) Dataset of human medial temporal lobe single neuron activity during declarative memory encoding and recognition. *Scientific Data* 5:180010. DANDI 000004, CC-BY-4.0.
+- Siegle J.H. et al. (2021) Survey of spiking in the mouse visual system reveals functional hierarchy. *Nature* 592:86-92. Allen Brain Observatory Neuropixels, Allen Institute terms of use.

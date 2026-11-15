@@ -7,6 +7,8 @@ from spend_guard import SpendGuard, GuardError, add_arguments
 
 BASE = Path.home() / 'work/vals-hyp/pilot'
 SRC = {'mouse': Path.home()/'work/vals-mouse/tasks.jsonl', 'mouse8': Path.home()/'work/vals-mouse/tasks.jsonl'}
+C=Path.home()/'work/vals-hyp/controls'
+SRC['label-swap']=C/'label-swap/tasks.jsonl'; SRC['shot01']=C/'shot-curve/tasks.jsonl'
 for d in (Path.home()/'work/vals-hyp').iterdir():
     if (d/'tasks.jsonl').exists() and d.name not in ('smell',):
         SRC[d.name] = d/'tasks.jsonl'
@@ -30,6 +32,8 @@ empty = BASE / 'empty'; empty.mkdir(parents=True, exist_ok=True)
 for h in a.hyp:
     items = [json.loads(l) for l in open(SRC[h])]
     if h == 'mouse': items = [i for i in items if i.get('k') == 4]
+    if h == 'shot01':
+        items = [i for i in items if i.get('shots')==0][:a.n//2] + [i for i in items if i.get('shots')==1][:a.n//2]
     if h == 'mouse8': items = [i for i in items if i.get('k') == 8]
     for it in items[:a.n]:
         key = f'judge:{h}:{it["id"]}:{a.model}'
