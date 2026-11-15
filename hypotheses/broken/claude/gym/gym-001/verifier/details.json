@@ -1,0 +1,33 @@
+{
+ "task_id": "gym-001",
+ "env_seed": 4015,
+ "faults": [
+  "leak"
+ ],
+ "kind": "gratings",
+ "n_test": 133,
+ "K": 7,
+ "valid": true,
+ "n_predictions": 133,
+ "n_invalid": 0,
+ "acc": 0.7068,
+ "chance": 0.1429,
+ "skill": 0.6579,
+ "claimed_accuracy": 0.89,
+ "gap": 0.1832,
+ "calib": 0.6335,
+ "diag": 0.0,
+ "faults_named": {
+  "leak": false
+ },
+ "false_alarm": null,
+ "extra_groups": [],
+ "families_flagged": [],
+ "generic_flagged": [],
+ "matches": {},
+ "fix_applies": false,
+ "fix_target": 0.7218,
+ "fix": null,
+ "reward": 0.4305,
+ "data_issues": "none"
+}

@@ -1,0 +1,33 @@
+{
+ "task_base": "h-houses-b",
+ "twin": "defect",
+ "fault": "leak",
+ "n_test": 200,
+ "K": 4,
+ "valid": true,
+ "n_predictions": 200,
+ "n_invalid": 0,
+ "acc": 0.69,
+ "chance": 0.25,
+ "skill": 0.5867,
+ "claimed_accuracy": 0.88,
+ "gap": 0.19,
+ "calib": 0.62,
+ "fault_named": true,
+ "false_alarm": null,
+ "families_flagged": [
+  "leak"
+ ],
+ "matches": {
+  "leak": [
+   "duplicated",
+   "identical",
+   "copy",
+   "overlap",
+   "duplicates"
+  ]
+ },
+ "diag": 1.0,
+ "reward": 0.7356,
+ "data_issues": "Duplicated trials: 5 trials in train.npz appear twice with identical 30-neuron count vectors (train indices 24/60, 95/113, 121/142 phones; 65/163 smallAnimal; 162/169 mobility), and val trial 15 is an exact copy of train trial 117 (mobility), so train and val overlap. The duplicates inflate phones (46 vs 42 per class) and make validation optimistic. I removed them before fitting and evaluating. The labels y match the stimulus-log category on every labeled trial. The val split is also tiny and unbalanced (1 smallAnimal trial)."
+}

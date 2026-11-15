@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 49738,
+ "stop_reason": "end_turn",
+ "session_id": "fc44ef2e-80bf-4f39-9273-49684886a4e3",
+ "total_cost_usd": 0.14886480000000002,
+ "usage": {
+  "input_tokens": 14,
+  "cache_creation_input_tokens": 6872,
+  "cache_read_input_tokens": 71464,
+  "output_tokens": 3977,
+  "output_tokens_details": {
+   "thinking_tokens": 567
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 6872,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 559,
+    "cache_read_input_tokens": 12689,
+    "cache_creation_input_tokens": 777,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 777
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 14,
+   "outputTokens": 3977,
+   "cacheReadInputTokens": 71464,
+   "cacheCreationInputTokens": 6872,
+   "webSearchRequests": 0,
+   "costUSD": 0.14886480000000002,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 567,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 6872,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 7,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I've written predictions for all 133 test trials to `output/predictions.json`, with an estimated test accuracy of **0.89**. I reported the data issues as **\"none\"**.\n\n**Decoder:** I took the square root of the counts, standardized them, and fed all 96 features (24 units \u00d7 4 time bins) into an RBF-kernel SVM with C=10. The final model was trained on the train and validation trials together (455 trials).\n\n**Accuracy estimate:** Repeated 5-fold cross-validation over all 455 labeled trials gave 0.90 for the SVM. Logistic regression got 0.86 and LDA 0.80. I claimed 0.89, a little below the cross-validation figure, because the test set is small.\n\n**Where it goes wrong:** Almost every error confuses a grating with the one moving the opposite way: 0\u00b0 with 180\u00b0, 45\u00b0 with 225\u00b0, and 90\u00b0 with 270\u00b0. The units clearly encode orientation well, and direction less well.\n\n**Checks behind \"none\":**\n- **Labels:** every `label` matches its `orientation_deg` exactly in both labeled splits.\n- **Duplicates:** no trial appears twice, within a split or across splits.\n- **Train vs. test:** firing rates per unit and per time bin look the same across train, validation and test.\n- **Confidence:** the model is about as confident on test trials as on held-out labeled trials, so there's no sign of trials from an unknown class.\n- **Predicted classes:** spread roughly evenly, 17 to 21 trials per class.\n\nThe 135\u00b0 direction isn't among the seven classes. Since `classes.json` lists the classes that way, I treated it as part of the dataset's design rather than a problem.",
+ "ttft_ms": 3500,
+ "type": "result",
+ "duration_ms": 85231,
+ "uuid": "bccc94f7-f41c-4db7-9155-a8b05ae4d91c",
+ "ttft_stream_ms": 3127,
+ "time_to_request_ms": 92,
+ "first_content_frame_ms": 3127,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 86.4
+}

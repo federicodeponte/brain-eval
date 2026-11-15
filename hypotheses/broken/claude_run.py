@@ -19,19 +19,23 @@ from spend_guard import SpendGuard, GuardError, add_arguments  # noqa: E402
 
 H = Path('/home/federicodeponte')
 HERE = H / 'work/vals-hyp/broken'
-DS = H / 'work/vals-mouse/valkyrie/dataset-broken'
+SUITE = 'gym' if ('--suite' in sys.argv and sys.argv[sys.argv.index('--suite') + 1] == 'gym') else 'v3'
+# v3: 24 broken-instrument tasks, graded by each task's tests/grade.py (= grade.py, what hosted Codex got)
+# gym: 45 broken-gym v4 envs (brain/broken-gym@2 data), graded by the CURRENT fixed gym/grade.py (Codex regrade grader)
+DS = H / ('work/vals-mouse/valkyrie/dataset-broken-v4' if SUITE == 'gym' else 'work/vals-mouse/valkyrie/dataset-broken')
 PILOT = H / 'work/vals-hyp/pilot'
-OUT = HERE / 'claude'
+OUT = HERE / 'claude' / ('gym' if SUITE == 'gym' else '')
+GYM_GRADER = OUT / 'grade_used.py'  # frozen copy of gym/grade.py taken at run start
 VENV = H / 'vals-broken-env/py'
 TMPROOT = Path('/tmp/claude-broken')
 CLAUDE_BIN = '/usr/local/bin/claude'  # real binary; skips the sbin wrapper's forced --chrome
 HIDE_IN_DOT_CLAUDE = ['projects', 'backups', 'sessions', 'session-env', 'shell-snapshots', 'debug', 'state', 'cache']
-TASKS = [json.loads(l) for l in open(HERE / 'tasks.jsonl')]
+TASKS = [json.loads(l) for l in open(HERE / ('gym/tasks_v4.jsonl' if SUITE == 'gym' else 'tasks.jsonl'))]
 META = {t['task_id']: t for t in TASKS}
 
 
 def job_key(tid, model):
-    return f'judge:broken-v3:{tid}:{model}:claude-code'
+    return f'judge:{"broken-gym-v4" if SUITE == "gym" else "broken-v3"}:{tid}:{model}:claude-code'
 
 
 def bwrap_prefix(wd):
@@ -52,7 +56,8 @@ def bwrap_prefix(wd):
 
 
 def grade(tid, pred_file, vdir):
-    r = subprocess.run([sys.executable, str(DS / tid / 'tests/grade.py'), str(pred_file), str(DS / tid / 'tests/key.json'),
+    grader = GYM_GRADER if SUITE == 'gym' else DS / tid / 'tests/grade.py'
+    r = subprocess.run([sys.executable, str(grader), str(pred_file), str(DS / tid / 'tests/key.json'),
                         str(vdir)], capture_output=True, text=True, timeout=120)
     rw = (vdir / 'reward.txt').read_text().strip() if (vdir / 'reward.txt').exists() else '0'
     return r, float(rw)
@@ -63,6 +68,8 @@ def run(a):
     OUT.mkdir(parents=True, exist_ok=True)
     TMPROOT.mkdir(parents=True, exist_ok=True)
     todo = a.tasks or [t['task_id'] for t in TASKS]
+    if SUITE == 'gym' and not GYM_GRADER.exists():
+        shutil.copy(HERE / 'gym/grade.py', GYM_GRADER)
     for tid in todo:
         res_file = OUT / f'{tid}.json'
         key = job_key(tid, a.model)
@@ -129,7 +136,7 @@ def report():
                             fa=v.get('false_alarm'), reward=x['rewards']['reward']))
         return out
     codex = []
-    for f in sorted((HERE / 'full').glob('*.json')):
+    for f in sorted((HERE / 'full').glob('*-*-*-*-*.json')):  # the 3 hosted run files (uuid names)
         codex += rows_from(json.load(open(f))['evaluation_results'])
     claude = rows_from({p.stem: json.load(open(p)) for p in sorted(OUT.glob('decode-*.json'))})
 
@@ -163,8 +170,53 @@ def report():
     print(f'\nClaude tasks graded: {len(claude)}; total reported cost ${tot:.2f}; Codex rows: {len(codex)} (3 passes)')
 
 
+def gym_report():
+    """Same table as gym/full_results.md: Claude (1 pass, gym/grade.py) next to Codex (3 passes, regraded_v4.json reward_new)."""
+    meta = META
+    cl = []
+    for p in sorted(OUT.glob('gym-*.json')):
+        d = json.load(open(p)); tid = d['task_id']
+        v = json.load(open(OUT / tid / 'verifier/details.json'))
+        faults = meta[tid]['faults']
+        if not v.get('valid', True):
+            cl.append(dict(faults=faults, acc=0.0, claimed=0.0, fix=None, named={f: False for f in faults},
+                           false_alarm=None if faults else False, reward=0.0, ref_acc=meta[tid]['ref_acc'])); continue
+        cl.append(dict(faults=faults, acc=v['acc'], claimed=min(1.0, max(0.0, v['claimed_accuracy'])), fix=v['fix'],
+                       named=v['faults_named'] or {}, false_alarm=v['false_alarm'], reward=v['reward'], ref_acc=meta[tid]['ref_acc']))
+    cx = [dict(r, reward=r['reward_new'], named=r['named'] or {}) for r in json.load(open(HERE / 'gym/full/regraded_v4.json'))]
+    m = lambda v: sum(v) / len(v) if v else float('nan')
+    def cells(rs):
+        if not rs:
+            return ['-'] * 8
+        f = [r for r in rs if r['faults']]; c = [r for r in rs if not r['faults']]
+        nn = sum(sum(bool(x) for x in r['named'].values()) for r in f); nt = sum(len(r['faults']) for r in f)
+        fx = [r['fix'] for r in rs if r['fix'] is not None]
+        return [str(len(rs)), f"{m([r['claimed'] for r in rs]):.2f}", f"{m([r['acc'] for r in rs]):.2f}",
+                f"{m([r['claimed'] - r['acc'] for r in rs]):+.2f}", f"{nn}/{nt}" if nt else '-',
+                f"{m(fx):.2f} (n={len(fx)})" if fx else '-',
+                f"{sum(1 for r in c if r['false_alarm'])}/{len(c)}" if c else '-', f"**{m([r['reward'] for r in rs]):.3f}**"]
+    key = lambda r: '+'.join(r['faults']) or 'clean'
+    names = sorted({key(r) for r in cx + cl}, key=lambda k: (k.count('+'), k != 'clean', k))
+    groups = [(k, lambda r, k=k: key(r) == k) for k in names] + [
+        ('**clean**', lambda r: not r['faults']), ('**single fault**', lambda r: len(r['faults']) == 1),
+        ('**combined**', lambda r: len(r['faults']) == 2), ('**overall**', lambda r: True)]
+    hdr = ['n', 'claimed', 'actual', 'claimed-actual', 'named', 'fixed', 'false alarms', 'reward']
+    out = ['# v4 gym: Claude Code (Opus, 1 pass) vs Codex gpt-5.3-codex (3 passes, regraded)', '',
+           'Both graded with the current gym/grade.py (Claude: frozen copy claude/gym/grade_used.py; Codex: full/regraded_v4.json reward_new).',
+           'claimed/actual = mean claimed / hidden-test accuracy; claimed-actual = mean signed gap; named = planted faults named / planted;',
+           'fixed = mean fix component where it applies; reward = mean reward.', '',
+           '| cell | ' + ' | '.join('Claude ' + h for h in hdr) + ' | ' + ' | '.join('Codex ' + h for h in hdr) + ' |',
+           '|---|' + '---|' * 16]
+    for name, fn in groups:
+        out.append('| ' + ' | '.join([name] + cells([r for r in cl if fn(r)]) + cells([r for r in cx if fn(r)])) + ' |')
+    tot = sum((json.load(open(p))['claude'].get('total_cost_usd') or 0) for p in OUT.glob('gym-*.json'))
+    out += ['', f'Claude envs graded: {len(cl)}/45, reported cost ${tot:.2f}. Codex rows: {len(cx)}.']
+    (HERE / 'claude/gym_aggregate.md').write_text('\n'.join(out) + '\n')
+    print('\n'.join(out))
+
+
 if __name__ == '__main__':
     p = argparse.ArgumentParser(); add_arguments(p)
-    p.add_argument('--tasks', nargs='*'); p.add_argument('--model', default='opus'); p.add_argument('--report', action='store_true')
+    p.add_argument('--suite', choices=['v3', 'gym'], default='v3'); p.add_argument('--tasks', nargs='*'); p.add_argument('--model', default='opus'); p.add_argument('--report', action='store_true')
     a = p.parse_args()
-    report() if a.report else run(a)
+    (gym_report() if SUITE == 'gym' else report()) if a.report else run(a)

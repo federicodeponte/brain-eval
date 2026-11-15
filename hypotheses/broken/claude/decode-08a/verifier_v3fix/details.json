@@ -1,0 +1,23 @@
+{
+ "task_base": "h-houses",
+ "twin": "clean",
+ "fault": "leak",
+ "n_test": 200,
+ "K": 4,
+ "valid": true,
+ "n_predictions": 200,
+ "n_invalid": 0,
+ "acc": 0.775,
+ "chance": 0.25,
+ "skill": 0.7,
+ "claimed_accuracy": 0.84,
+ "gap": 0.065,
+ "calib": 0.87,
+ "fault_named": null,
+ "false_alarm": false,
+ "families_flagged": [],
+ "matches": {},
+ "diag": 1.0,
+ "reward": 0.8567,
+ "data_issues": "none"
+}

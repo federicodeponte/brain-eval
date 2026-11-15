@@ -1,0 +1,32 @@
+{
+ "task_base": "h-fruit",
+ "twin": "defect",
+ "fault": "dead",
+ "n_test": 200,
+ "K": 4,
+ "valid": true,
+ "n_predictions": 200,
+ "n_invalid": 0,
+ "acc": 0.585,
+ "chance": 0.25,
+ "skill": 0.4467,
+ "claimed_accuracy": 0.62,
+ "gap": 0.035,
+ "calib": 0.93,
+ "fault_named": true,
+ "false_alarm": null,
+ "families_flagged": [
+  "dead"
+ ],
+ "matches": {
+  "dead": [
+   "zero on",
+   "channels lost",
+   "test data has shifted from the training",
+   "shifted from the training"
+  ]
+ },
+ "diag": 1.0,
+ "reward": 0.7922,
+ "data_issues": "14 of the 40 neurons (indices [0, 1, 2, 3, 4, 5, 6, 9, 10, 12, 18, 24, 27, 32]) are exactly zero on every one of the 200 test trials, but fire normally in train/val (some at 15-22 spikes/trial, e.g. neurons 2, 3, 27). Their recordings seem to be missing or dropped in the test set (probably whole sessions or channels lost and filled with zeros), so the test data has shifted from the training data. A decoder trained on all 40 neurons would read these zeros as real silence. I trained only on the 26 neurons that are still active, which lowers expected accuracy from about 0.85 to about 0.62. Train/val labels match the category field, and I found no duplicate or leaked trials."
+}

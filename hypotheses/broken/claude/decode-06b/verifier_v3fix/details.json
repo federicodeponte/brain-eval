@@ -1,0 +1,23 @@
+{
+ "task_base": "m-dg",
+ "twin": "clean",
+ "fault": "leak",
+ "n_test": 152,
+ "K": 8,
+ "valid": true,
+ "n_predictions": 152,
+ "n_invalid": 0,
+ "acc": 0.7171,
+ "chance": 0.125,
+ "skill": 0.6767,
+ "claimed_accuracy": 0.7,
+ "gap": 0.0171,
+ "calib": 0.9658,
+ "fault_named": null,
+ "false_alarm": false,
+ "families_flagged": [],
+ "matches": {},
+ "diag": 1.0,
+ "reward": 0.8808,
+ "data_issues": "none"
+}

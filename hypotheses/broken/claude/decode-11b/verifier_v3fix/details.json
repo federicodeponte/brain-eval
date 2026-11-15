@@ -1,0 +1,23 @@
+{
+ "task_base": "h-cars-b",
+ "twin": "clean",
+ "fault": "dead",
+ "n_test": 200,
+ "K": 4,
+ "valid": true,
+ "n_predictions": 200,
+ "n_invalid": 0,
+ "acc": 0.895,
+ "chance": 0.25,
+ "skill": 0.86,
+ "claimed_accuracy": 0.9,
+ "gap": 0.005,
+ "calib": 0.99,
+ "fault_named": null,
+ "false_alarm": false,
+ "families_flagged": [],
+ "matches": {},
+ "diag": 1.0,
+ "reward": 0.95,
+ "data_issues": "none"
+}

@@ -1,0 +1,34 @@
+{
+ "task_base": "m-nm3-a",
+ "twin": "defect",
+ "fault": "shift",
+ "n_test": 30,
+ "K": 10,
+ "valid": true,
+ "n_predictions": 30,
+ "n_invalid": 0,
+ "acc": 0.7667,
+ "chance": 0.1,
+ "skill": 0.7407,
+ "claimed_accuracy": 0.87,
+ "gap": 0.1033,
+ "calib": 0.7933,
+ "fault_named": true,
+ "false_alarm": null,
+ "families_flagged": [
+  "leak",
+  "shift"
+ ],
+ "matches": {
+  "shift": [
+   "shifted",
+   "off by one"
+  ],
+  "leak": [
+   "identical"
+  ]
+ },
+ "diag": 1.0,
+ "reward": 0.8447,
+ "data_issues": "Labels in train and val are shifted by one class relative to the stimulus log: every trial has y = (movie_time_s - 61) mod 10 instead of y = movie_time_s - 60 (e.g. movie_time 60 s labeled 9, 61 s labeled 0). Since the class definitions are given by movie time, I relabeled all trials as movie_time_s - 60 before training. The shift is the same in every trial, so the neural data cannot catch it (CV accuracy is identical either way). With the given y, all predictions would be off by one class."
+}

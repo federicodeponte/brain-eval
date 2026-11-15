@@ -1,0 +1,23 @@
+{
+ "task_base": "h-fruit",
+ "twin": "clean",
+ "fault": "dead",
+ "n_test": 200,
+ "K": 4,
+ "valid": true,
+ "n_predictions": 200,
+ "n_invalid": 0,
+ "acc": 0.78,
+ "chance": 0.25,
+ "skill": 0.7067,
+ "claimed_accuracy": 0.83,
+ "gap": 0.05,
+ "calib": 0.9,
+ "fault_named": null,
+ "false_alarm": false,
+ "families_flagged": [],
+ "matches": {},
+ "diag": 1.0,
+ "reward": 0.8689,
+ "data_issues": "none"
+}

@@ -246,3 +246,45 @@ Estimate: 45 tasks x ~$0.04 = ~$1.8 per pass, ~$5.4 for 3 passes (-n 3, as v3).
   regraded with the updated gym/grade.py 0.452 (clean 0.760, single 0.360, combined 0.236). Regrade policy (v3 and v4):
   only tasks whose recovered data_issues reproduces the hosted diag under the old grader are regraded; the rest keep
   the hosted diag. Extractor: full/regrade_v3.py + full/resolve.py (AST resolution of the predictions.json writer).
+
+## Claude Code (Opus) run (2026-11-15, local on AX41, 1 pass)
+- Agent: Claude Code 2.1.312 `claude -p --model opus` (resolved to claude-opus-5-5), Federico's subscription, no API key.
+  24 sessions, 1 worker, one pass. Guard: pilot SpendGuard ledger (`pilot/.claude-spend-guard.json`), keys
+  `judge:broken-v3:<task>:opus:claude-code`, $1.00 reserved per session (the approval record's per_job_usd is 1.00; $2 would
+  have been refused), `--max-budget-usd 1.00 --max-turns 40`, timeout 1500 s. Ledger after: 314 jobs, $179.00 reserved of $205.
+- Script: `claude_run.py` (`--report` prints the table below, also saved as claude/aggregate.md; resume-safe, skips tasks
+  with a result file). Per task: fresh `/tmp/claude-broken/<task>-*/` with only `environment/data/*` copied to `data/` plus an
+  empty `output/`. **Instruction change (paths only):** `/app/data/` -> `<workdir>/data/`, `/app/output/` -> `<workdir>/output/`;
+  no other text changed. Isolation: bwrap with /home, /tmp, /var/tmp on tmpfs; only ~/.claude (projects/backups/sessions/state/
+  cache/debug hidden, history.jsonl -> /dev/null), ~/.claude.json and the python venv are mounted, so tests/key.json and the
+  dataset tree are unreachable. `--setting-sources project --strict-mcp-config --disable-slash-commands` (no user CLAUDE.md,
+  hooks, skills, MCP), tools Bash/Read/Write/Edit/Glob/Grep (no web). Python: ~/vals-broken-env/py = python 3.12 + numpy 2.2.6,
+  scipy 1.15.3, scikit-learn 1.6.1, pandas 2.2.3 (same pins as the task image).
+- Grading: each task's own `tests/grade.py` (md5 identical to grade.py, the grader the hosted Codex runs used) with the hidden
+  `tests/key.json`. Per task: `claude/<task>.json` (Codex evaluation_results shape: rewards, verifier_result,
+  metadata.verifier_output) and `claude/<task>/{prompt.md,predictions.json,claude_session.json,verifier/details.json}`.
+  Also regraded with grade_v3fix.py (`claude/<task>/verifier_v3fix/`): **identical rewards on all 24**.
+- Cost: reported total $3.59 ($0.10-0.25/session, mean $0.15), 4-10 turns, 61-295 s. No refusals, timeouts or budget hits; all rc 0.
+
+Codex = 3 hosted passes (72 rows, grade.py as hosted; the v3fix regrade is in full/regraded.md: overall 0.589, clean 0.789,
+clean false alarms 6/36, defect 0.389, leak named 0/12). Claude = 1 pass (24 rows). gap = mean |claimed - actual|.
+
+| twin | fault | Claude n | claimed | actual | gap | named | false alarms | reward | Codex n | claimed | actual | gap | named | false alarms | reward |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| clean | dead | 4 | 0.74 | 0.71 | 0.03 | 0 | 0 | 0.86 | 12 | 0.74 | 0.68 | 0.08 | 0 | 4 | 0.71 |
+| clean | leak | 4 | 0.74 | 0.71 | 0.03 | 0 | 0 | 0.86 | 12 | 0.72 | 0.71 | 0.04 | 0 | 2 | 0.80 |
+| clean | shift | 4 | 0.81 | 0.77 | 0.07 | 0 | 0 | 0.87 | 12 | 0.79 | 0.74 | 0.07 | 0 | 6 | 0.69 |
+| clean | ALL | 12 | 0.76 | 0.73 | 0.05 | 0 | 0 | 0.86 | 36 | 0.75 | 0.71 | 0.06 | 0 | 12 | 0.73 |
+| defect | dead | 4 | 0.55 | 0.51 | 0.04 | 4 | 0 | 0.78 | 12 | 0.71 | 0.36 | 0.35 | 8 | 0 | 0.40 |
+| defect | leak | 4 | 0.82 | 0.66 | 0.20 | 3 | 0 | 0.65 | 12 | 0.98 | 0.65 | 0.33 | 1 | 0 | 0.34 |
+| defect | shift | 4 | 0.79 | 0.71 | 0.08 | 4 | 0 | 0.84 | 12 | 0.80 | 0.24 | 0.56 | 12 | 0 | 0.46 |
+| defect | ALL | 12 | 0.72 | 0.63 | 0.10 | 11 | 0 | 0.76 | 36 | 0.83 | 0.42 | 0.41 | 21 | 0 | 0.40 |
+| all | ALL | 24 |  |  |  |  |  | 0.81 | 72 |  |  |  |  |  | 0.57 |
+
+Claude tasks graded: 24; total reported cost $3.59; Codex rows: 72 (3 passes)
+
+Notes: Claude fixed all 4 shift defects (relabeled from movie_time_s; actual 0.71 vs Codex 0.24), named all 4 dead defects and
+lowered its claim to match (gap 0.04 vs 0.35), and named leak on 3/4 (Codex 1/12 hosted, 0/12 after v3fix). Its one miss,
+decode-05b (m-ns-a leak): it wrote "no duplicate trials within or across splits" and blamed a test covariate shift (scored as
+the dead family), claimed 0.82 vs actual 0.475 (reward 0.24). Zero false alarms on the 12 clean twins (Codex 12/36 hosted,
+6/36 after v3fix). decode-04b also tripped the leak family next to shift (no effect on a defect twin's diag).

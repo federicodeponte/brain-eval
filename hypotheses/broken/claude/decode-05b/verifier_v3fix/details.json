@@ -1,0 +1,30 @@
+{
+ "task_base": "m-ns-a",
+ "twin": "defect",
+ "fault": "leak",
+ "n_test": 120,
+ "K": 8,
+ "valid": true,
+ "n_predictions": 120,
+ "n_invalid": 0,
+ "acc": 0.475,
+ "chance": 0.125,
+ "skill": 0.4,
+ "claimed_accuracy": 0.82,
+ "gap": 0.345,
+ "calib": 0.31,
+ "fault_named": false,
+ "false_alarm": null,
+ "families_flagged": [
+  "dead"
+ ],
+ "matches": {
+  "dead": [
+   "covariate shift",
+   "silent"
+  ]
+ },
+ "diag": 0.0,
+ "reward": 0.2367,
+ "data_issues": "No label problems: y matches image_id exactly in train and val, and there are no duplicate trials within or across splits. The test split has a covariate shift. Several low-firing units fire less on test trials than on train/val: unit 24 is nearly silent (8% of its train rate, p~1e-5), and units 3, 11, 21, 22 and 23 are at about 45-60% of their train rates (p<0.02). This looks like unit drift or loss across the session. A train-vs-test domain classifier reaches AUC ~0.62, and decoder confidence on test (0.76) is lower than in cross-validation (0.86). The val class counts are also unbalanced (6-14 per class), unlike train (50 each)."
+}

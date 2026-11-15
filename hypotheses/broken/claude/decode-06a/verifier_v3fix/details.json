@@ -1,0 +1,33 @@
+{
+ "task_base": "m-dg",
+ "twin": "defect",
+ "fault": "leak",
+ "n_test": 152,
+ "K": 8,
+ "valid": true,
+ "n_predictions": 152,
+ "n_invalid": 0,
+ "acc": 0.7434,
+ "chance": 0.125,
+ "skill": 0.7068,
+ "claimed_accuracy": 0.68,
+ "gap": 0.0634,
+ "calib": 0.8732,
+ "fault_named": true,
+ "false_alarm": null,
+ "families_flagged": [
+  "leak"
+ ],
+ "matches": {
+  "leak": [
+   "duplicate",
+   "duplicated",
+   "duplicates",
+   "near-duplicate",
+   "copies"
+  ]
+ },
+ "diag": 1.0,
+ "reward": 0.86,
+ "data_issues": "Train and val are not independent trials: the 760 labeled trials are near-duplicate copies (small spike-count jitter, Euclidean NN distance ~3-4 vs ~12-18 between genuinely distinct trials such as test) of only 320 unique source trials (200 duplicated twice, 120 three times), and the duplicates are shared across the train/val split. Thus val is leaked from train: naive val accuracy is ~100% and naive CV ~90%, both badly inflated; grouped CV over unique source trials gives ~0.68. Test trials are not duplicates of anything. Labels themselves are consistent with orientation_deg; val class counts are also unbalanced (8-20 per class)."
+}
