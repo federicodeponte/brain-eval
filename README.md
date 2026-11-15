@@ -4,16 +4,33 @@ Vals AI Hackathon (Nov 14-15 2026), Build Your Own Eval track, built on [Valkyri
 
 Frontier models get raw spike counts from real neurons plus a few labeled examples in the prompt, and must decode what the animal or person was seeing. A 10-line decoder (nearest centroid on the same in-prompt examples) is the baseline.
 
-## Full results (Opus, every question, same items for every solver)
-| Task | n | Opus | Decoder | Chance | only Opus right / only decoder right |
-|---|---|---|---|---|---|
-| Human neurons | 40 | 68% | 65% | 25% | 5 / 4 |
-| Mouse, 4 clips | 60 | 87% | 87% | 25% | 5 / 5 |
-| Mouse, 8 clips | 30 | 67% | 67% | 12.5% | 3 / 3 |
-| Human, hard (1 example per class) | 20 | 50% | 45% | 25% | 5 / 4 |
-| Mouse, hard (8 clips, 1 example each) | 20 | 60% | 50% | 12.5% | 3 / 1 |
+## Headline: agents claim 83%, get 42%
+**Broken-instrument tier** (`broken/`, Valkyrie dataset `brain/broken@v3`): an agent gets real spike recordings, builds a decoder, predicts held-out trials and reports its own accuracy. Each of 12 recordings (8 mouse, 4 human) comes as a clean copy and a copy with one planted fault. Scored by plain code, no model judge: real accuracy on a hidden test, gap between claimed and real accuracy, and whether the fault was named.
 
-Opus ties a nearest-centroid decoder on the three main tasks from 3 in-prompt examples per class, but solves different items. On the hard tier (1 example per class, built in hard/) Opus stays level with the decoder at 50% and 60%: far from solved. Decoders trained on many more trials do much better (73% mouse, 97% human), so the signal is there, but they see far more data than the one example in the prompt. Answer letters are balanced; Opus picks are spread evenly across letters.
+Codex (gpt-5.3-codex), 3 passes x 24 tasks:
+
+| Data | Claimed | Real (hidden test) | Fault named |
+|---|---|---|---|
+| Clean | 75% | 71% | false alarm 12/36 |
+| Leaked trials | 98% | 65% | 1/12 |
+| Shifted clock | 80% | 24% | 12/12, never fixed |
+| Dead channels | 71% | 36% | 8/12 |
+| **All faulty** | **83%** | **42%** | |
+
+Mean reward 0.73 on clean data, 0.40 on faulty data. A naive pipeline shows the same gaps (validation in `broken/STATE.md`): each fault inflates the in-sample estimate by 30-73 points while the hidden test stays honest.
+
+## Reading tier: multiple choice, every question, same items for every solver
+Opus via claude -p; GPT-5 on Valkyrie (oneshot-mcq agent, Modal sandboxes).
+
+| Task | n | Opus | GPT-5 | Decoder | Chance | only Opus right / only decoder right |
+|---|---|---|---|---|---|---|
+| Human neurons | 40 | 68% | 55% | 65% | 25% | 5 / 4 |
+| Mouse, 4 clips | 60 | 87% | 75% | 87% | 25% | 5 / 5 |
+| Mouse, 8 clips | 30 | 67% | 47% | 67% | 12.5% | 3 / 3 |
+| Human, hard (1 example per class) | 20 | 50% | 40% | 45% | 25% | 5 / 4 |
+| Mouse, hard (8 clips, 1 example each) | 20 | 60% | 55% | 50% | 12.5% | 3 / 1 |
+
+Opus ties a nearest-centroid decoder on the three main tasks from 3 in-prompt examples per class, but solves different items. On the hard tier (1 example per class, built in hard/) Opus stays level with the decoder at 50% and 60%: far from solved. Decoders trained on many more trials do much better (73% mouse, 97% human), so the signal is there, but they see far more data than the one example in the prompt. Answer letters are balanced; Opus picks are spread evenly across letters. GPT-5 used its whole 16,000-token thinking budget without answering on 4 human and 7 mouse questions (counted wrong); on mouse hard it ran with a 48,000 budget and answered all.
 
 ## Controls (does the model learn from the examples?)
 **Result, no-brain-words control:** the same 20 human questions relabeled as pulse counts from 40 machine sensors (modes A-D, no neuron/photo/region words). Opus 13/20 both ways (1 item right only as sensors, 1 only as neurons). The model reads number patterns from the in-prompt examples, not neuroscience priors: this benchmark measures in-context reading of real neural data.
