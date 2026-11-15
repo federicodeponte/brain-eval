@@ -1,6 +1,12 @@
 # Can a model read a brain?
 
-<!-- HUMAN PARAGRAPH (Federico) -->
+Can a model read a brain? We built a benchmark testing whether models and coding agents can decode real neural recordings or recognize when their analysis is unreliable.
+
+Across two tiers. Tier 1 gives models raw spike counts with few labelled examples to answer questions about what a mouse or person was seeing. Tier 2 gives coding agents neural data with planted faults to build a decoder, predict unseen trials, estimate its own accuracy and report data problems. Its predictions are graded against hidden labels.
+
+On 15 environments with 2 faults, codex reports 79% accuracy but achieved 24% average over 3 passes. Opus achieved 61%, reporting 71%, in one pass. Tested agent setups used different execution harnesses.
+
+We also built a procedurally generated gym for training and evaluation. 45 environments, 15 clean, 15 with one, and 15 with two faults, covering five fault types.
 
 Vals AI Hackathon (Nov 14-15 2026), Build Your Own Eval track, built on [Valkyrie](https://github.com/vals-ai/Valkyrie). **[Project page: try the questions yourself, watch the demo film](https://federicodeponte.github.io/brain-eval/)**
 
