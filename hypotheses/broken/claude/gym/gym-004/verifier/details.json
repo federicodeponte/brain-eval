@@ -1,0 +1,53 @@
+{
+ "task_id": "gym-004",
+ "env_seed": 4026,
+ "faults": [
+  "dead"
+ ],
+ "kind": "scenes",
+ "n_test": 66,
+ "K": 6,
+ "valid": true,
+ "n_predictions": 66,
+ "n_invalid": 0,
+ "acc": 0.2879,
+ "chance": 0.1667,
+ "skill": 0.1455,
+ "claimed_accuracy": 0.34,
+ "gap": 0.0521,
+ "calib": 0.8958,
+ "diag": 0.75,
+ "faults_named": {
+  "dead": true
+ },
+ "false_alarm": null,
+ "extra_groups": [
+  "leak"
+ ],
+ "families_flagged": [
+  "dead",
+  "leak",
+  "perm"
+ ],
+ "generic_flagged": [],
+ "matches": {
+  "dead": [
+   "zero spikes",
+   "zero spikes",
+   "dead",
+   "dropped channels",
+   "all-zero"
+  ],
+  "perm": [
+   "unit mapping"
+  ],
+  "leak": [
+   "duplicate"
+  ]
+ },
+ "fix_applies": false,
+ "fix_target": 0.2576,
+ "fix": null,
+ "reward": 0.5971,
+ "data_issues": "In eval.npz, 4 of the 17 units (indices 0, 12, 13, 16) record zero spikes on every test trial. In fit and holdout they are among the most active units (333, 70, 162 and 299 spikes in fit), so on the test trials they look like dead or dropped channels, or a broken unit mapping. These units carry much of the stimulus information: 5-fold cross-validated accuracy is about 0.60 with all 17 units and about 0.35 without them. The decoder was trained only on the 13 units that work in eval. image_id matches y exactly, and the only duplicate trials are all-zero trials. Classes are balanced."
+}

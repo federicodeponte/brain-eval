@@ -1,0 +1,44 @@
+{
+ "task_id": "gym-002",
+ "env_seed": 4023,
+ "faults": [
+  "noise"
+ ],
+ "kind": "movie",
+ "n_test": 50,
+ "K": 10,
+ "valid": true,
+ "n_predictions": 50,
+ "n_invalid": 0,
+ "acc": 0.78,
+ "chance": 0.1,
+ "skill": 0.7556,
+ "claimed_accuracy": 0.66,
+ "gap": 0.12,
+ "calib": 0.76,
+ "diag": 1.0,
+ "faults_named": {
+  "noise": true
+ },
+ "false_alarm": null,
+ "extra_groups": [],
+ "families_flagged": [
+  "noise"
+ ],
+ "generic_flagged": [
+  "label"
+ ],
+ "matches": {
+  "noise": [
+   "labels are corrupted"
+  ],
+  "generic:label": [
+   "movie_time_s, not the given label, so the labels are corrupted"
+  ]
+ },
+ "fix_applies": true,
+ "fix_target": 0.7,
+ "fix": 1.0,
+ "reward": 0.8789,
+ "data_issues": "About 29% of labeled trials (36/120 train, 8/30 val) have a label that contradicts their movie_time_s (label should equal (movie_time_s-10)/0.5). The neural responses match movie_time_s, not the given label, so the labels are corrupted/noisy. I rebuilt the labels from movie_time_s before training."
+}

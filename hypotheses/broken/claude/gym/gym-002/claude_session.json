@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 35020,
+ "stop_reason": "end_turn",
+ "session_id": "7f6e956d-b9ff-4312-b31e-587a5e360381",
+ "total_cost_usd": 0.10932,
+ "usage": {
+  "input_tokens": 10,
+  "cache_creation_input_tokens": 5976,
+  "cache_read_input_tokens": 48360,
+  "output_tokens": 2590,
+  "output_tokens_details": {
+   "thinking_tokens": 141
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 5976,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 561,
+    "cache_read_input_tokens": 12269,
+    "cache_creation_input_tokens": 301,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 301
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 10,
+   "outputTokens": 2590,
+   "cacheReadInputTokens": 48360,
+   "cacheCreationInputTokens": 5976,
+   "webSearchRequests": 0,
+   "costUSD": 0.10932,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 141,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 5976,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 5,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I've written predictions for all 50 test trials to `output/predictions.json`. I expect them to be about 66% accurate, against 10% for guessing.\n\n**Data problem: a lot of the labels are wrong.** Each label should match the trial's start time, as label = (`movie_time_s` \u2212 10) / 0.5. That isn't true for 44 of the 150 labeled trials (36 of 120 in train, 8 of 30 in val), about 29%. Two checks show the start times are right and the labels are the corrupted part:\n- When I trained on the given labels, the decoder agreed with the given label on only 0\u20137% of the mismatched trials. It agreed with the time-derived class on about 45\u201348% of them.\n- When I trained on the time-derived labels, the decoder got about 68% right on both the consistent and the mismatched trials. Accuracy on the consistent trials also went up, from about 45% to about 68%.\n\nSo I rebuilt every label from `movie_time_s` before training. The test file has no start times, so its trials were predicted from the spikes alone.\n\n**Decoder:** I took the square root of each spike count, flattened each trial's 10 time bins \u00d7 27 units into one row, and used shrinkage LDA, trained on train and val together. I chose it over several logistic-regression variants by repeated 5-fold cross-validation, where it scored 0.68 (logistic regression scored 0.62\u20130.66).\n\n**Accuracy estimate:** the 0.68 is a little optimistic because I used the same cross-validation to pick the model, so I claimed **0.66**. With only 50 test trials, the real score could easily land anywhere from about 0.55 to 0.80. The file's `data_issues` field describes the label corruption.",
+ "ttft_ms": 5292,
+ "type": "result",
+ "duration_ms": 214057,
+ "uuid": "564a51b8-0e26-4817-8071-b2df17fe8217",
+ "ttft_stream_ms": 3343,
+ "time_to_request_ms": 189,
+ "first_content_frame_ms": 3343,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 215.9
+}

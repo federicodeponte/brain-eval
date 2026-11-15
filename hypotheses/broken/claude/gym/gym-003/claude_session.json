@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 29695,
+ "stop_reason": "end_turn",
+ "session_id": "b6aca38d-9611-4a56-bc89-a8492793178e",
+ "total_cost_usd": 0.10000419999999999,
+ "usage": {
+  "input_tokens": 8,
+  "cache_creation_input_tokens": 5552,
+  "cache_read_input_tokens": 36081,
+  "output_tokens": 2417,
+  "output_tokens_details": {
+   "thinking_tokens": 306
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 5552,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 493,
+    "cache_read_input_tokens": 11034,
+    "cache_creation_input_tokens": 1113,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 1113
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 8,
+   "outputTokens": 2417,
+   "cacheReadInputTokens": 36081,
+   "cacheCreationInputTokens": 5552,
+   "webSearchRequests": 0,
+   "costUSD": 0.10000419999999999,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 306,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 5552,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 4,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I've written predictions for all 176 test trials to `output/predictions.json`, with an estimated test accuracy of 0.79.\n\n**Problem with the data:** the `stim_class` labels are wrong on some trials. They disagree with the photo `category` from the stimulus log on 11 of the 90 labeled trials (about 12%): 5 of 73 in train and 6 of 17 in val. For example, some `smallAnimal` trials are labeled as landscapes or mobility. The errors look like random flips. Since the task says `stim_class` was derived from `category`, I treated `category` as the true label and rebuilt the labels from it. I put this in `data_issues`.\n\n**Decoder:** logistic regression, trained on train and val combined (90 trials). I took the square root of the spike counts and standardized each neuron first, and kept the model simple (strong regularization) because there are few trials.\n\n**Accuracy estimate:** repeated 5-fold cross-validation on the 90 corrected trials gives about 0.82, against 0.25 for guessing. I claimed slightly less, 0.79, because the model was tuned on those same folds and the test set may differ from training. Three neurons (14, 15, 28) fire somewhat more in test than in the labeled trials. That could just be a different mix of classes in test, so I didn't list it as a data problem.\n\nThe predictions are roughly balanced across the four classes (44 / 44 / 42 / 46), and the test set has no duplicate trials and no overlap with the labeled data.",
+ "ttft_ms": 4312,
+ "type": "result",
+ "duration_ms": 70448,
+ "uuid": "086cbe8f-1bd9-46cc-8bba-69a00e0d55fe",
+ "ttft_stream_ms": 2059,
+ "time_to_request_ms": 175,
+ "first_content_frame_ms": 2059,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 72.6
+}

@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 39622,
+ "stop_reason": "end_turn",
+ "session_id": "5a305113-263b-43a6-baa8-aa1d28d82b06",
+ "total_cost_usd": 0.122702,
+ "usage": {
+  "input_tokens": 10,
+  "cache_creation_input_tokens": 6524,
+  "cache_read_input_tokens": 47250,
+  "output_tokens": 3051,
+  "output_tokens_details": {
+   "thinking_tokens": 329
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 6524,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 466,
+    "cache_read_input_tokens": 11970,
+    "cache_creation_input_tokens": 1148,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 1148
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 10,
+   "outputTokens": 3051,
+   "cacheReadInputTokens": 47250,
+   "cacheCreationInputTokens": 6524,
+   "webSearchRequests": 0,
+   "costUSD": 0.122702,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 329,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 6524,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 5,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I've written predictions for all 200 test trials to `output/predictions.json`, with an estimated test accuracy of **0.87**.\n\n**Data problem:** 10 of the 35 neurons (indices 13, 14, 16, 18, 22, 23, 27, 29, 30, 31) record zero spikes on every test trial. In the fit and holdout splits they fire normally; neuron 22, for example, averages about 7 spikes per trial. Most likely those channels dropped out or were zeroed in the test data. I put this in `data_issues`. Otherwise the labels match the photo categories in both labeled splits, and there are no duplicate trials within or across splits.\n\n**Decoder:** Logistic regression on square-root spike counts, with each neuron's counts rescaled to a common scale (C=1). I trained it only on the 25 neurons that still fire in the test data, using the fit and holdout trials together (138 trials).\n\n**Accuracy estimate:** 10-fold cross-validation repeated 5 times gave 0.89 on the 25 neurons. With all 35 neurons it would be about 0.92\u20130.93, but that can't be reached on the test set because the silent neurons carry no information there. I claimed 0.87, slightly below the cross-validation figure, because the labeled data is small. The test predictions are spread across all four classes (42, 66, 38 and 54 trials).",
+ "ttft_ms": 5203,
+ "type": "result",
+ "duration_ms": 95411,
+ "uuid": "8fd4fc57-1b72-49be-85ad-4228f47b5864",
+ "ttft_stream_ms": 3465,
+ "time_to_request_ms": 168,
+ "first_content_frame_ms": 3465,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 96.9
+}

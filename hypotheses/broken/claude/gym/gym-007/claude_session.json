@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 49097,
+ "stop_reason": "end_turn",
+ "session_id": "e4479942-9ad3-476a-8576-b3c1d4602104",
+ "total_cost_usd": 0.1628942,
+ "usage": {
+  "input_tokens": 10,
+  "cache_creation_input_tokens": 8092,
+  "cache_read_input_tokens": 52591,
+  "output_tokens": 4380,
+  "output_tokens_details": {
+   "thinking_tokens": 557
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 8092,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 749,
+    "cache_read_input_tokens": 13627,
+    "cache_creation_input_tokens": 1059,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 1059
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 10,
+   "outputTokens": 4380,
+   "cacheReadInputTokens": 52591,
+   "cacheCreationInputTokens": 8092,
+   "webSearchRequests": 0,
+   "costUSD": 0.1628942,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 557,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 8092,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 5,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I wrote predictions for all 20 test trials to `output/predictions.json`, with a claimed accuracy of 0.55. The test set is missing several important units, so accuracy will be well below what this data could otherwise support.\n\n**Problems with the data:**\n1. **The labels are off by one.** In both train and val, `y` disagrees with the stimulus log (`movie_time_s`) on every trial. Trials starting at 31 s are labelled 9, and trials starting at 32+k s are labelled k. By `classes.json`, the class should be `movie_time_s \u2212 31`. Since the labels were derived from that log, I treated the log as correct and relabelled every trial from it.\n2. **Nine units are silent in the test set.** Units 0, 6, 8, 10, 14, 16, 19, 21 and 22 record zero spikes across all 20 test trials. Several of them fire strongly in train and val: unit 8 averages about 1.4\u20131.8 spikes per bin and unit 10 about 1.6\u20132.0. That looks like dropped or failed channels in the test recording rather than real silence. Unit 23 is also silent in val, which matters less.\n\n**Decoder:** logistic regression (C=0.1) on square-root counts across all 10 time bins. I used only the 21 units that are active in test, and trained on train and val combined (80 trials).\n\n**Accuracy estimate:** with all 30 units, cross-validated accuracy is about 0.89. Dropping the nine dead units brings it down to about 0.57 (repeated 8-fold cross-validation). Training on the train split alone and scoring on val gave 0.70. Other models I tried on the 21 units scored lower (0.45\u20130.56). I claimed 0.55, a little below the cross-validated figure, because with only 20 test trials the real score could easily land anywhere from about 0.35 to 0.75.\n\n**Two risks:**\n- If the original `y` values were the correct ones and the log was wrong, every prediction would be off by exactly one class.\n- The predicted classes are uneven (none for classes 2 or 7, five each for classes 6 and 9). If the test set has two trials per class like the other splits, some of those predictions are wrong.",
+ "ttft_ms": 6459,
+ "type": "result",
+ "duration_ms": 203824,
+ "uuid": "9e2a00c1-e482-4b57-9ef2-f6a4a82cf338",
+ "ttft_stream_ms": 2335,
+ "time_to_request_ms": 166,
+ "first_content_frame_ms": 2335,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 205.2
+}

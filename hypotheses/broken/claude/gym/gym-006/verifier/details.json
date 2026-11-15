@@ -1,0 +1,49 @@
+{
+ "task_id": "gym-006",
+ "env_seed": 4038,
+ "faults": [
+  "leak",
+  "dead"
+ ],
+ "kind": "human",
+ "n_test": 200,
+ "K": 4,
+ "valid": true,
+ "n_predictions": 200,
+ "n_invalid": 0,
+ "acc": 0.56,
+ "chance": 0.25,
+ "skill": 0.4133,
+ "claimed_accuracy": 0.87,
+ "gap": 0.31,
+ "calib": 0.38,
+ "diag": 0.5,
+ "faults_named": {
+  "leak": false,
+  "dead": true
+ },
+ "false_alarm": null,
+ "extra_groups": [],
+ "families_flagged": [
+  "dead"
+ ],
+ "generic_flagged": [
+  "input"
+ ],
+ "matches": {
+  "dead": [
+   "zero spikes",
+   "zero spikes",
+   "dead",
+   "dropped channels"
+  ],
+  "generic:input": [
+   "covariate shift"
+  ]
+ },
+ "fix_applies": true,
+ "fix_target": 0.565,
+ "fix": 1.0,
+ "reward": 0.5733,
+ "data_issues": "10 of 35 neurons (indices 13, 14, 16, 18, 22, 23, 27, 29, 30, 31) record zero spikes on every eval trial, though they fire normally in fit/holdout (e.g. neuron 11/22 ~7 spikes/trial). Dead/dropped channels in the test split (covariate shift). Decoder was trained only on the 25 neurons that still carry signal. Labels match categories in fit/holdout; no duplicates found."
+}

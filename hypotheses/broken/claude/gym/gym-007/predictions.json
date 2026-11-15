@@ -1,0 +1,26 @@
+{
+ "predictions": [
+  6,
+  6,
+  0,
+  1,
+  9,
+  9,
+  6,
+  6,
+  5,
+  6,
+  3,
+  4,
+  5,
+  3,
+  9,
+  4,
+  9,
+  3,
+  8,
+  9
+ ],
+ "claimed_accuracy": 0.55,
+ "data_issues": "1) Label off-by-one: in both train and val, y disagrees with the stimulus-log movie_time_s for every trial. Trials with movie_time_s=31 are labeled 9, and those with movie_time_s=32+k are labeled k (shifted by one class, wrapping around). Per classes.json, class = movie_time_s - 31, so I relabeled from movie_time_s. 2) Dead units in test: units 0, 6, 8, 10, 14, 16, 19, 21 and 22 record zero spikes on all 20 test trials. Several of these fire strongly in train/val (e.g. unit 8 averages ~1.4-1.8 spikes/bin and unit 10 ~1.6-2.0), so they look like dropped or failed channels in the test recording. I trained the decoder only on the 21 units that are active in test, and accuracy falls from ~0.89 with all units to ~0.57 in CV. (Minor: unit 23 is silent in val.)"
+}

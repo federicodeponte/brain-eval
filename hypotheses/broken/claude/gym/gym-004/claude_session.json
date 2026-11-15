@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 47537,
+ "stop_reason": "end_turn",
+ "session_id": "4f977a2a-bd3d-4f8f-a09d-4cd75ba0db84",
+ "total_cost_usd": 0.1443524,
+ "usage": {
+  "input_tokens": 12,
+  "cache_creation_input_tokens": 7186,
+  "cache_read_input_tokens": 61782,
+  "output_tokens": 3723,
+  "output_tokens_details": {
+   "thinking_tokens": 406
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 7186,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 580,
+    "cache_read_input_tokens": 13288,
+    "cache_creation_input_tokens": 492,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 492
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 12,
+   "outputTokens": 3723,
+   "cacheReadInputTokens": 61782,
+   "cacheCreationInputTokens": 7186,
+   "webSearchRequests": 0,
+   "costUSD": 0.1443524,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 406,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 7186,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 6,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I wrote all 66 predictions to `output/predictions.json`, and I expect them to be about 34% accurate, against a chance level of about 17%. That's low because 4 of the 17 units are silent in the test file.\n\n**The data problem:** units 0, 12, 13 and 16 have zero spikes on every test trial. In the labelled trials they are some of the busiest units (333, 70, 162 and 299 spikes in `fit`), so most likely those channels dropped out or the unit columns were mixed up in the test file. These units also carry much of the stimulus information:\n\n| Units used | Cross-validated accuracy (labelled trials) |\n|---|---|\n| All 17 | about 0.60 |\n| The 13 that work on the test trials | about 0.35 |\n\n**The decoder:** logistic regression on the square root of each unit's spike count per 25 ms bin, using only the 13 units that work on the test trials. I trained it on `fit` and `holdout` combined. A model that looked at all 17 units would read the missing units as \"no response\" and be wrong in a systematic way, so I left them out.\n\n**How I got the 0.34:**\n- Repeated 5-fold cross-validation on those 13 units gave about 0.35.\n- Training on `fit` alone and testing on `holdout` gave 0.38.\n- A Poisson naive Bayes model also came out at about 0.35.\n\nIts predictions come out spread over all six classes (between 8 and 15 trials each).\n\n**Checks that came back clean:**\n- `image_id` matches `y` on every labelled trial.\n- The classes are balanced.\n- The only repeated trials are ones with no spikes at all, which is expected with sparse data.\n\n`claimed_accuracy` is 0.34 and `data_issues` describes the silent units.",
+ "ttft_ms": 5326,
+ "type": "result",
+ "duration_ms": 285112,
+ "uuid": "9dccf37e-b9ec-4f4b-96ef-23b01e0fbed9",
+ "ttft_stream_ms": 3603,
+ "time_to_request_ms": 312,
+ "first_content_frame_ms": 3603,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 286.6
+}

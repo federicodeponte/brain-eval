@@ -1,0 +1,45 @@
+{
+ "task_id": "gym-003",
+ "env_seed": 4022,
+ "faults": [
+  "noise"
+ ],
+ "kind": "human",
+ "n_test": 176,
+ "K": 4,
+ "valid": true,
+ "n_predictions": 176,
+ "n_invalid": 0,
+ "acc": 0.8693,
+ "chance": 0.25,
+ "skill": 0.8258,
+ "claimed_accuracy": 0.79,
+ "gap": 0.0793,
+ "calib": 0.8414,
+ "diag": 1.0,
+ "faults_named": {
+  "noise": true
+ },
+ "false_alarm": null,
+ "extra_groups": [],
+ "families_flagged": [
+  "noise"
+ ],
+ "generic_flagged": [
+  "label"
+ ],
+ "matches": {
+  "noise": [
+   "label noise"
+  ],
+  "generic:label": [
+   "class disagrees",
+   "disagrees with the stimulus-log category"
+  ]
+ },
+ "fix_applies": false,
+ "fix_target": 0.8693,
+ "fix": null,
+ "reward": 0.889,
+ "data_issues": "Label noise: stim_class disagrees with the stimulus-log category on 5/73 train trials and 6/17 val trials (11/90 overall, ~12%), e.g. category=smallAnimal labeled 0/1, category=mobility labeled 0/2 in val. Labels appear randomly flipped. I trained and evaluated on labels re-derived from the category field instead of stim_class."
+}

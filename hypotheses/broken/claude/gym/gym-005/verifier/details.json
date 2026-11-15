@@ -1,0 +1,49 @@
+{
+ "task_id": "gym-005",
+ "env_seed": 4036,
+ "faults": [
+  "leak",
+  "shift"
+ ],
+ "kind": "movie",
+ "n_test": 60,
+ "K": 10,
+ "valid": true,
+ "n_predictions": 60,
+ "n_invalid": 0,
+ "acc": 0.6,
+ "chance": 0.1,
+ "skill": 0.5556,
+ "claimed_accuracy": 0.9,
+ "gap": 0.3,
+ "calib": 0.4,
+ "diag": 0.5,
+ "faults_named": {
+  "leak": false,
+  "shift": true
+ },
+ "false_alarm": null,
+ "extra_groups": [],
+ "families_flagged": [
+  "shift"
+ ],
+ "generic_flagged": [
+  "label"
+ ],
+ "matches": {
+  "shift": [
+   "offset",
+   "cyclic",
+   "next segment"
+  ],
+  "generic:label": [
+   "class labels in train and val are wrong",
+   "disagree with movie_time_s from the stimulus log"
+  ]
+ },
+ "fix_applies": true,
+ "fix_target": 0.6167,
+ "fix": 1.0,
+ "reward": 0.6139,
+ "data_issues": "stim_class labels in train and val are wrong: they disagree with movie_time_s from the stimulus log for every trial, offset by a cyclic shift of 2 (stim_class = (movie_time_s - 16) mod 10, e.g. movie_time 14 s is labelled 8, 16 s is labelled 0). Neural temporal continuity (the end of each segment best matches the start of the next segment in movie-time order) supports movie_time_s being correct, so I relabelled as class = movie_time_s - 14 per classes.json before training."
+}
