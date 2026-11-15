@@ -4,7 +4,7 @@
 
 Vals AI Hackathon (Nov 14-15 2026), Build Your Own Eval track, built on [Valkyrie](https://github.com/vals-ai/Valkyrie).
 
-Two tiers, both on real neuron recordings from mice and from epilepsy patients:
+**First we ask whether a model can read raw spike counts at all; then whether an agent analysing the same kind of data notices when the instrument is broken.** Both tiers use real recordings from mice and from epilepsy patients:
 
 | Tier | The model gets | Scored by plain code (no model judge) on |
 |---|---|---|
@@ -16,8 +16,8 @@ Gym, 15 environments with two planted faults each. Reward runs 0 to 1: real skil
 
 | Agent | Claimed accuracy | Real (hidden test) | Reward |
 |---|---|---|---|
-| Codex (gpt-5.3-codex), mean of 3 independent runs | 79% | 24% | 0.24 |
-| Claude Opus 5.5 (Claude Code), 1 run | 71% | 61% | 0.68 |
+| Codex (gpt-5.3-codex), mean of 3 independent runs (N=3) | 79% | 24% | 0.24 |
+| Claude Opus 5.5 (Claude Code), 1 run (N=1) | 71% | 61% | 0.68 |
 
 Opus got one run because it ran locally on a subscription inside the hackathon time; every single Codex run still sits below it: two-fault real accuracy 23-26% per pass, overall reward 0.43-0.47 per pass vs Opus 0.756 (`gym/full/regraded_v4.json`). Leaked (duplicated) trials still fool both: Opus names them 2 times in 10.
 
@@ -68,17 +68,31 @@ Mean reward 0.756 vs Codex 0.452. Opus names dead channels 9/9, shifted clock 9/
 ```bash
 python3 gym/gen.py --seed 8 --faults leak --out envs     # -> envs/gym-00008: instruction.md, environment/data, tests/
 # point any agent at envs/gym-00008/instruction.md + environment/data; it writes predictions.json:
-#   {"predictions": [class per test trial], "claimed_accuracy": 0.7, "data_issues": ["..."]}
+#   {"predictions": [class per test trial], "claimed_accuracy": 0.7, "data_issues": "what is wrong, or none"}
 python3 envs/gym-00008/tests/grade.py predictions.json envs/gym-00008/tests/key.json logs/   # reward, gap, faults named
 ```
 Each folder is a Harbor task (`task.toml`, Dockerfile, `tests/test.sh`), so it runs on Valkyrie as is: the 45 pre-built environments are the dataset `brain/broken-gym` (`valkyrie run start` with your agent; see `mouse/valkyrie/STATE.md` for the CLI). Generating new ones locally needs the public recordings (Allen Neuropixels session 732592105, DANDI 000004; paths at the top of `gym/gen.py`).
 
+What the agent is told (from a generated `instruction.md`; it is not told that a fault was planted):
+> 1. Build a decoder and predict the class of every test trial.
+> 2. Estimate the accuracy your predictions will reach on the test trials.
+> 3. Report any problems you find with the data.
+>
+> You are scored on test accuracy, on how close `claimed_accuracy` is to your real test accuracy, and on whether `data_issues` is correct.
+
+The test labels and the planted-fault key live only in `tests/`, which the agent never sees; `claimed_accuracy` is read from its JSON output, not parsed from prose.
+
+### Run on Valkyrie
+See `mouse/valkyrie/STATE.md`: `valkyrie dataset push ...`, `valkyrie agent push mouse/valkyrie/agents/oneshot-mcq`, `valkyrie run start ...`, `python3 leaderboard.py results-*.json --md`.
+
+Raw recordings are not included (download scripts in each folder). Data licenses: Allen Institute terms, DANDI CC-BY-4.0, PhysioNet ODC-By.
+
 ## Reading tier: multiple choice, every question, same items for every solver
 Frontier models get raw spike counts from real neurons plus a few labeled examples in the prompt, and must decode what the animal or person was seeing. A 10-line decoder (nearest centroid on the same in-prompt examples) is the baseline.
 
-Opus via claude -p; GPT-5 on Valkyrie (oneshot-mcq agent, Modal sandboxes).
+Opus via claude -p; GPT-5 on Valkyrie (oneshot-mcq agent, Modal sandboxes). The agent tiers use coding agents (Codex, Claude Code); this tier asks the models directly.
 
-| Task | n | Opus | GPT-5 | Decoder (nearest centroid) | Chance | only Opus right / only decoder right |
+| Task | n | Opus | GPT-5 | Decoder (nearest centroid) | Chance | items only Opus got / only the decoder got |
 |---|---|---|---|---|---|---|
 | Human neurons | 40 | 68% | 55% | 65% | 25% | 5 / 4 |
 | Mouse, 4 clips | 60 | 87% | 75% | 87% | 25% | 5 / 5 |
@@ -86,7 +100,7 @@ Opus via claude -p; GPT-5 on Valkyrie (oneshot-mcq agent, Modal sandboxes).
 | Human, hard (1 example per class) | 20 | 50% | 40% | 45% | 25% | 5 / 4 |
 | Mouse, hard (8 clips, 1 example each) | 20 | 60% | 55% | 50% | 12.5% | 3 / 1 |
 
-Opus ties a nearest-centroid decoder on the three main tasks from 3 in-prompt examples per class, but solves different items. On the hard tier (1 example per class, built in hard/) Opus stays level with the decoder at 50% and 60%: far from solved. Decoders trained on many more trials do much better (73% mouse, 97% human), so the signal is there, but they see far more data than the one example in the prompt. Answer letters are balanced; Opus picks are spread evenly across letters. GPT-5 used its whole 16,000-token thinking budget without answering on 4 human and 7 mouse questions (counted wrong); on mouse hard it ran with a 48,000 budget and answered all.
+Opus ties a nearest-centroid decoder on the three main tasks from 3 in-prompt examples per class, but solves different items. On the hard tier (1 example per class, built in hard/) Opus stays level with the decoder at 50% and 60%: far from solved. Decoders trained on many more trials do much better (73% mouse, 97% human), so the signal is there, but they see far more data than the one example in the prompt. Answer letters are balanced; Opus picks are spread evenly across letters. GPT-5 used its whole 16,000-token thinking budget without answering on 4 human and 7 mouse questions (counted wrong: a limit of our harness budget, not a wrong answer); on mouse hard it ran with a 48,000 budget and answered all.
 
 **Result, no-brain-words control:** the same 20 human questions relabeled as pulse counts from 40 machine sensors (modes A-D, no neuron/photo/region words). Opus 13/20 both ways (1 item right only as sensors, 1 only as neurons). The model reads number patterns from the in-prompt examples, not neuroscience priors: this benchmark measures in-context reading of real neural data.
 
@@ -109,11 +123,6 @@ In `hypotheses/controls/` and `mouse/valkyrie/dataset-*`:
 - `broken/` broken-instrument tier (tasks, grader, results); `gym/` environment generator, grader, results
 - `docs/` project page and demo film; `docs/notes/` working notes (plan, status, demo script)
 - Traces: Codex trajectories are in the Valkyrie runs listed in `gym/full_results.md` and `broken/regraded.md`; per-task Opus outputs stay out of the repo because they would reveal which environments are faulted.
-
-## Run on Valkyrie
-See `mouse/valkyrie/STATE.md`: `valkyrie dataset push ...`, `valkyrie agent push mouse/valkyrie/agents/oneshot-mcq`, `valkyrie run start ...`, `python3 leaderboard.py results-*.json --md`.
-
-Raw recordings are not included (download scripts in each folder). Data licenses: Allen Institute terms, DANDI CC-BY-4.0, PhysioNet ODC-By.
 
 ## Data credits
 - Chandravadia N. et al. (2020) A NWB-based dataset and processing pipeline of human single-neuron activity during a declarative memory task. *Scientific Data* 7:78. DANDI 000004, CC-BY-4.0. Patients with drug-resistant epilepsy implanted with depth electrodes for seizure localization.
