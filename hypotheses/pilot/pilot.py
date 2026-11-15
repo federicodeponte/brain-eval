@@ -8,7 +8,7 @@ from spend_guard import SpendGuard, GuardError, add_arguments
 BASE = Path.home() / 'work/vals-hyp/pilot'
 SRC = {'mouse': Path.home()/'work/vals-mouse/tasks.jsonl', 'mouse8': Path.home()/'work/vals-mouse/tasks.jsonl'}
 C=Path.home()/'work/vals-hyp/controls'
-SRC['label-swap']=C/'label-swap/tasks.jsonl'; SRC['shot01']=C/'shot-curve/tasks.jsonl'
+SRC['label-swap']=C/'label-swap/tasks.jsonl'; SRC['shot01']=C/'shot-curve/tasks.jsonl'; SRC["sensor"]=C/"sensor/tasks.jsonl"
 for d in (Path.home()/'work/vals-hyp').iterdir():
     if (d/'tasks.jsonl').exists() and d.name not in ('smell',):
         SRC[d.name] = d/'tasks.jsonl'
