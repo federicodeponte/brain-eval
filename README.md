@@ -16,12 +16,14 @@ Gym, 15 environments with two planted faults each. Reward runs 0 to 1: real skil
 
 | Agent | Claimed accuracy | Real (hidden test) | Reward |
 |---|---|---|---|
-| Codex (gpt-5.3-codex), mean of 3 independent runs (N=3) | 79% | 24% | 0.24 |
+| Codex (gpt-5.3-codex), mean of 3 independent runs (N=3) | 79% (runs: 77-80%) | 24% (runs: 23-26%) | 0.24 (runs: 0.23-0.24) |
 | Claude Opus 5.5 (Claude Code), 1 run (N=1) | 71% | 61% | 0.68 |
 
 Opus got one run because it ran locally on a subscription inside the hackathon time; every single Codex run still sits below it: two-fault real accuracy 23-26% per pass, overall reward 0.43-0.47 per pass vs Opus 0.756 (`gym/full/regraded_v4.json`). Leaked (duplicated) trials still fool both: Opus names them 2 times in 10.
 
 ### Broken-instrument tier: 12 real recordings, one fault each
+The fixed 24-task set the gym grew out of; same idea, three fault types.
+
 **Broken-instrument tier** (`broken/`, Valkyrie dataset `brain/broken@v3`): an agent gets real spike recordings, builds a decoder, predicts held-out trials and reports its own accuracy. Each of 12 recordings (8 mouse, 4 human) comes as a clean copy and a copy with one planted fault. Scored by plain code, no model judge: real accuracy on a hidden test, gap between claimed and real accuracy, and whether the fault was named.
 
 Codex (gpt-5.3-codex), 3 passes x 24 tasks:
@@ -42,8 +44,8 @@ Codex mean reward 0.79 on clean data, 0.39 on faulty data (scored with the fixed
 `gym/gen.py --seed N` builds a fresh environment from real recordings (random recording, units, split, faults and fault strength; same seed = same files). 5 validated fault types: leaked trials, shifted clock, dead channels, mislabelled trials, channels shuffled between train and test files; single or combined.
 
 Reward = mean of the parts that apply (`gym/GYM.md`):
-- skill: (acc - chance) / (1 - chance) on the hidden test
-- calibration: 1 - 2 x |claimed - real|
+- skill: (acc - chance) / (1 - chance) on the hidden test, clipped to [0, 1]
+- calibration: 1 - 2 x |claimed - real|, clipped to [0, 1] (a 50-point overclaim scores 0)
 - diagnosis: share of planted faults named, minus a penalty per false flag (clean data: 1 if nothing is flagged)
 - fix: test accuracy back near the clean twin, when the fault can be undone
 
@@ -83,14 +85,28 @@ What the agent is told (from a generated `instruction.md`; it is not told that a
 The test labels and the planted-fault key live only in `tests/`, which the agent never sees; `claimed_accuracy` is read from its JSON output, not parsed from prose.
 
 ### Run on Valkyrie
-See `mouse/valkyrie/STATE.md`: `valkyrie dataset push ...`, `valkyrie agent push mouse/valkyrie/agents/oneshot-mcq`, `valkyrie run start ...`, `python3 leaderboard.py results-*.json --md`.
-
-Raw recordings are not included (download scripts in each folder). Data licenses: Allen Institute terms, DANDI CC-BY-4.0, PhysioNet ODC-By.
+```bash
+python3 gym/build_gym.py ./gym-envs                                 # the 45 environments (15 clean, 15 one fault, 15 two faults)
+valkyrie dataset push brain/broken-gym ./gym-envs --tag v4
+valkyrie run start --agent codex-v1.0.0 --dataset brain/broken-gym@v4 --project brain --model gpt-5.3-codex \
+  --provider modal -s OPENAI_API_KEY openai-api-key --concurrency 8
+valkyrie run results <RUN_ID> --path results.json                   # per-task reward + verifier details
+```
+The reading tier runs the same way with `--agent oneshot-mcq` on `mouse/valkyrie/dataset*` (full walkthrough: `mouse/valkyrie/STATE.md`).
 
 ## Reading tier: multiple choice, every question, same items for every solver
 Frontier models get raw spike counts from real neurons plus a few labeled examples in the prompt, and must decode what the animal or person was seeing. A 10-line decoder (nearest centroid on the same in-prompt examples) is the baseline.
 
 Opus via claude -p; GPT-5 on Valkyrie (oneshot-mcq agent, Modal sandboxes). The agent tiers use coding agents (Codex, Claude Code); this tier asks the models directly.
+
+What the model sees (human tier, abridged; 40 neurons per row, 3 examples per class, then the query):
+```
+Class A = photo of food:
+  ex1:     0   4  24   1   7   2   5   0   3  16 ...
+...
+Which category of photo was being viewed during the query pseudo-trial? A) food B) cars C) people D) animals
+Answer with a single letter.
+```
 
 | Task | n | Opus | GPT-5 | Decoder (nearest centroid) | Chance | items only Opus got / only the decoder got |
 |---|---|---|---|---|---|---|
@@ -115,6 +131,13 @@ In `hypotheses/controls/` and `mouse/valkyrie/dataset-*`:
 - **shot-curve**: 0/1/3/5 examples per option; learning curve
 - **null**: shuffled / Poisson data, expect chance
 - **planted**: obvious planted pattern, expect ~100% (harness check)
+
+## Limitations
+- Opus ran once (N=1), Codex three times; every single Codex run still scores below the Opus run on real accuracy and reward in every gym row (clean, one fault, two faults; `gym/full/regraded_v4.json`).
+- Fault naming is a keyword match on the agent's `data_issues` text, with negation handling; an earlier version over-credited one case, fixed and documented in `broken/regraded.md`.
+- Human rows are pseudo-trials (neurons pooled across sessions by photo category); the mouse tier uses neurons recorded together in one session.
+- Hard-tier sets have n=20, so one question is 5 points; differences there are within noise.
+- Opus answered the reading tier via `claude -p`, GPT-5 via the Valkyrie one-shot agent: same prompts and grader, different clients.
 
 ## Layout
 - `mouse/` build scripts, tasks (`tasks_v2.jsonl` = units chosen from training repeats only), `valkyrie/` datasets, one-shot MCQ agent, grader, leaderboard
