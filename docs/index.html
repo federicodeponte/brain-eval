@@ -1,5 +1,11 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>[hidden]{display:none!important}img{max-width:100%}</style>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>[hidden]{display:none!important}img{max-width:100%}.cr{display:grid;grid-template-columns:9.5rem 1fr;gap:6px 14px;align-items:center;margin-top:18px}
+.cr .lab{font-size:.92rem}.cr .lab small{display:block;color:var(--muted);font:.72rem var(--mono)}
+.cr .bars{display:grid;gap:4px}.cr .b{height:18px;border-radius:2px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font:600 .72rem var(--mono);color:#fff;min-width:2.4rem}
+.cr .b.claim{background:var(--haiku)}.cr .b.real{background:var(--opus)}
+.key{display:flex;gap:16px;flex-wrap:wrap;font-size:.85rem;color:var(--muted);margin-top:14px}.key i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px}
+@media (max-width:520px){.cr{grid-template-columns:1fr}}
+</style>
 <title>Can a model read a brain?</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -104,8 +110,17 @@ footer{font-size:.85rem;color:var(--muted);display:grid;gap:6px;border-top:1px s
   <header class="hero">
     <div class="eyebrow">Vals hackathon · Build Your Own Eval</div>
     <h1>Can a model read a brain?</h1>
-    <p class="lede">Frontier models get raw spike counts from real neurons and three labeled examples, with no training, and must say what the brain was seeing. We score them against a <b>classic decoder</b> that gets the same examples, and against you.</p>
+    <p class="lede">Frontier models get raw spike counts from real neurons and three labeled examples, with no training, and must say what the brain was seeing. We score them against a <b>classic decoder</b> that gets the same examples, and against you. Then we hand an agent broken data and check whether it notices.</p>
   </header>
+
+  <section>
+    <div class="eyebrow">The hard part</div>
+    <h2>When the agent builds its own decoder, it claims 83% and gets 42%</h2>
+    <p>A coding agent gets real recordings, builds a decoder and reports how accurate it is. Some copies of the data carry one hidden fault. Plain code scores the real accuracy on a hidden test, the gap to the claim, and whether the fault was named. Codex (gpt-5.3-codex), 3 passes over 24 tasks.</p>
+    <div class="key"><span><i style="background:var(--haiku)"></i>Accuracy the agent claimed</span><span><i style="background:var(--opus)"></i>Accuracy on the hidden test</span></div>
+    <div class="cr"><div class="lab">Clean data<small>control</small></div><div class="bars"><div class="b claim" style="width:75%">75%</div><div class="b real" style="width:71%">71%</div></div><div class="lab">Leaked trials<small>named 0 of 12</small></div><div class="bars"><div class="b claim" style="width:98%">98%</div><div class="b real" style="width:65%">65%</div></div><div class="lab">Shifted clock<small>named 12 of 12</small></div><div class="bars"><div class="b claim" style="width:80%">80%</div><div class="b real" style="width:24%">24%</div></div><div class="lab">Dead channels<small>named 8 of 12</small></div><div class="bars"><div class="b claim" style="width:71%">71%</div><div class="b real" style="width:36%">36%</div></div></div>
+    <p style="margin-top:14px;color:var(--muted);font-size:.9rem">On the shifted clock it names the fault every time and still reports the inflated number. The generator makes a new environment from any seed: 45 so far, 5 fault types, each checked so a careful analyst can catch it.</p>
+  </section>
 
   <section>
     <div class="eyebrow">Through a mouse's eyes</div>
