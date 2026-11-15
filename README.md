@@ -4,7 +4,7 @@ Vals AI Hackathon (Nov 14-15 2026), Build Your Own Eval track, built on [Valkyri
 
 Frontier models get raw spike counts from real neurons plus a few labeled examples in the prompt, and must decode what the animal or person was seeing. A 10-line decoder (nearest centroid on the same in-prompt examples) is the baseline.
 
-## Headline: the benchmark separates agents. Codex claims 83% on broken data and gets 42%; Claude Opus catches most faults
+## Headline: the benchmark separates agents. On data with two planted faults, Codex claims 79% and gets 24%; Claude Opus gets 61%. Leaked trials still fool both
 **Broken-instrument tier** (`broken/`, Valkyrie dataset `brain/broken@v3`): an agent gets real spike recordings, builds a decoder, predicts held-out trials and reports its own accuracy. Each of 12 recordings (8 mouse, 4 human) comes as a clean copy and a copy with one planted fault. Scored by plain code, no model judge: real accuracy on a hidden test, gap between claimed and real accuracy, and whether the fault was named.
 
 Codex (gpt-5.3-codex), 3 passes x 24 tasks:
@@ -33,6 +33,16 @@ Codex (gpt-5.3-codex), 3 passes x 45 (`gym/full_results.md`):
 | Two faults | 79% | 24% | 0.24 |
 
 It names the shifted clock 9/9 and still trains on the bad labels (fixed 0.11); leaked trials, dead channels and shuffled channels go unnamed in 26 of 27 runs.
+
+Claude Opus 5.5 via Claude Code, 1 pass x 45, same grader (`gym/gym_aggregate.md`):
+
+| Data | Claimed | Real | Reward | Faults named |
+|---|---|---|---|---|
+| Clean | 68% | 72% | 0.85 | 0/15 false alarms |
+| One fault | 63% | 59% | 0.73 | 13/15 |
+| Two faults | 71% | 61% | 0.68 | 21/30 |
+
+Mean reward 0.756 vs Codex 0.452. Opus names dead channels 9/9, shifted clock 9/9, mislabelled trials 8/8 and shuffled channels 6/9, but leaked (duplicated) trials only 2/10: the open problem the gym is built to train on.
 
 ## Reading tier: multiple choice, every question, same items for every solver
 Opus via claude -p; GPT-5 on Valkyrie (oneshot-mcq agent, Modal sandboxes).
