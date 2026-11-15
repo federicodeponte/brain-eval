@@ -14,7 +14,7 @@
 /* Layout: one reading column; real recordings are the hero objects (movie stills + spike grids), results as a scaled bar chart. */
 :root{
   --bg:#f6f8f9; --surface:#ffffff; --ink:#14212b; --muted:#5a6b78; --line:#d9e1e6;
-  --accent:#0f7a8a; --opus:#d0542f; --haiku:#8a95a0; --decoder:#0f7a8a; --chance:#b9c4cc; --you:#6b4fd8;
+  --accent:#0f7a8a; --opus:#d0542f; --haiku:#8a95a0; --decoder:#0f7a8a; --chance:#b9c4cc; --you:#6b4fd8; --gpt:#a07a1f;
   --heat-lo:#eef4f6; --heat-hi:#0f5f6b; --good:#1f8a4c; --bad:#c0392b;
   --display:"Sora",ui-sans-serif,system-ui,sans-serif;
   --body:"IBM Plex Sans",ui-sans-serif,system-ui,sans-serif;
@@ -22,11 +22,11 @@
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#0f171d; --surface:#16212a; --ink:#e4ecf0; --muted:#93a4b0; --line:#28363f;
-  --accent:#4cc3d2; --opus:#f07a52; --haiku:#7d8a95; --decoder:#4cc3d2; --chance:#3a4852; --you:#a08cf5;
+  --accent:#4cc3d2; --opus:#f07a52; --haiku:#7d8a95; --decoder:#4cc3d2; --chance:#3a4852; --you:#a08cf5; --gpt:#d9b45a;
   --heat-lo:#1a2a33; --heat-hi:#5fd4e2; --good:#4ccb83; --bad:#ef6f61; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#0f171d; --surface:#16212a; --ink:#e4ecf0; --muted:#93a4b0; --line:#28363f;
-  --accent:#4cc3d2; --opus:#f07a52; --haiku:#7d8a95; --decoder:#4cc3d2; --chance:#3a4852; --you:#a08cf5;
+  --accent:#4cc3d2; --opus:#f07a52; --haiku:#7d8a95; --decoder:#4cc3d2; --chance:#3a4852; --you:#a08cf5; --gpt:#d9b45a;
   --heat-lo:#1a2a33; --heat-hi:#5fd4e2; --good:#4ccb83; --bad:#ef6f61; color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font:16px/1.6 var(--body);margin:0}
@@ -115,11 +115,15 @@ footer{font-size:.85rem;color:var(--muted);display:grid;gap:6px;border-top:1px s
 
   <section>
     <div class="eyebrow">The hard part</div>
-    <h2>Give an agent broken data: Codex claims 83% and gets 42%</h2>
+    <h2>Give an agent broken data: with two faults, Codex claims 79% and gets 24%. Claude Opus gets 61%</h2>
     <p>A coding agent gets real recordings, builds a decoder and reports how accurate it is. Some copies of the data carry one hidden fault. Plain code scores the real accuracy on a hidden test, the gap to the claim, and whether the fault was named. Bars: Codex (gpt-5.3-codex), 3 passes over 24 tasks. Claude Opus on the same tasks: claimed 72%, got 63% on broken data, named 11 of 12 faults. The benchmark tells agents apart.</p>
     <div class="key"><span><i style="background:var(--haiku)"></i>Accuracy the agent claimed</span><span><i style="background:var(--opus)"></i>Accuracy on the hidden test</span></div>
     <div class="cr"><div class="lab">Clean data<small>control</small></div><div class="bars"><div class="b claim" style="width:75%">75%</div><div class="b real" style="width:71%">71%</div></div><div class="lab">Leaked trials<small>named 0 of 12</small></div><div class="bars"><div class="b claim" style="width:98%">98%</div><div class="b real" style="width:65%">65%</div></div><div class="lab">Shifted clock<small>named 12 of 12</small></div><div class="bars"><div class="b claim" style="width:80%">80%</div><div class="b real" style="width:24%">24%</div></div><div class="lab">Dead channels<small>named 8 of 12</small></div><div class="bars"><div class="b claim" style="width:71%">71%</div><div class="b real" style="width:36%">36%</div></div></div>
-    <p style="margin-top:14px;color:var(--muted);font-size:.9rem">On the shifted clock it names the fault every time and still reports the inflated number. The generator makes a new environment from any seed: 45 so far, 5 fault types, each checked so a careful analyst can catch it. With two faults at once, the agent claims 79% and gets 24%.</p>
+    <p style="margin-top:14px;color:var(--muted);font-size:.9rem">On the shifted clock Codex names the fault every time and still reports the inflated number.</p>
+    <h3 style="margin-top:28px">The gym: endless broken environments</h3>
+    <p>The generator makes a new environment from any seed: 45 so far, 5 fault types (leaked trials, shifted clock, dead channels, mislabelled trials, shuffled channels), single or combined, each checked so a careful analyst can catch it. Two faults at once:</p>
+    <div class="cr"><div class="lab">Codex<small>3 passes · reward 0.45</small></div><div class="bars"><div class="b claim" style="width:79%">79%</div><div class="b real" style="width:24%">24%</div></div><div class="lab">Claude Opus<small>1 pass · reward 0.76</small></div><div class="bars"><div class="b claim" style="width:71%">71%</div><div class="b real" style="width:61%">61%</div></div></div>
+    <p style="margin-top:14px;color:var(--muted);font-size:.9rem">Opus names dead channels, shifted clocks and mislabelled trials every time. Leaked trials fool it 8 times out of 10: the open problem the gym is built to train on.</p>
   </section>
 
   <section>
@@ -163,11 +167,11 @@ footer{font-size:.85rem;color:var(--muted);display:grid;gap:6px;border-top:1px s
   <section>
     <div class="eyebrow">Results</div>
     <h2>Opus reads neurons as well as a classic decoder</h2>
-    <p>Every question, same examples for every solver, one shot, no tools. Human 40 questions, mouse 60 and 30, hard tier 20 each. The decoder is nearest-centroid on the labeled rows in the prompt. Opus ties it on all three tasks, yet gets different questions right: on human neurons, 5 that only Opus solved and 4 that only the decoder solved. On the hard tier, with one example per class, Opus gets 50% (human) and 60% (mouse, 8 clips): still level with the decoder and far from solved. Haiku bars are from 10 questions.</p>
+    <p>Every question, same examples for every solver, one shot, no tools. Human 40 questions, mouse 60 and 30, hard tier 20 each. The decoder is nearest-centroid on the labeled rows in the prompt. Opus ties it on all three tasks, yet gets different questions right: on human neurons, 5 that only Opus solved and 4 that only the decoder solved. On the hard tier, with one example per class, Opus gets 50% (human) and 60% (mouse, 8 clips): still level with the decoder and far from solved. GPT-5 (Valkyrie, same items) trails Opus on every task.</p>
     <div class="panel chart">
       <div class="legend">
         <span><i style="background:var(--chance)"></i>Chance</span>
-        <span><i style="background:var(--haiku)"></i>Haiku</span>
+        <span><i style="background:var(--gpt)"></i>GPT-5</span>
         <span><i style="background:var(--opus)"></i>Opus</span>
         <span><i style="background:var(--decoder)"></i>Decoder</span>
       </div>
@@ -315,18 +319,18 @@ document.getElementById("hsave").onclick=async()=>{
 
 /* ---------- chart ---------- */
 const tasks=[
-  {name:"Human neurons",sub:"4 photos · n=40",chance:25,haiku:50,opus:68,decoder:65},
-  {name:"Mouse, 4 clips",sub:"n=60",chance:25,haiku:60,opus:87,decoder:87},
-  {name:"Mouse, 8 clips",sub:"n=30",chance:12.5,haiku:null,opus:67,decoder:67},
-  {name:"Human, hard",sub:"1 example · n=20",chance:25,haiku:null,opus:50,decoder:45},
-  {name:"Mouse, hard",sub:"1 example · n=20",chance:12.5,haiku:null,opus:60,decoder:50},
+  {name:"Human neurons",sub:"4 photos · n=40",chance:25,gpt:55,opus:68,decoder:65},
+  {name:"Mouse, 4 clips",sub:"n=60",chance:25,gpt:75,opus:87,decoder:87},
+  {name:"Mouse, 8 clips",sub:"n=30",chance:12.5,gpt:47,opus:67,decoder:67},
+  {name:"Human, hard",sub:"1 example · n=20",chance:25,gpt:40,opus:50,decoder:45},
+  {name:"Mouse, hard",sub:"1 example · n=20",chance:12.5,gpt:55,opus:60,decoder:50},
 ];
 const svg=document.getElementById("bars"),W=820,T0=20,bottom=250,left=40;
 const y=v=>bottom-(v/100)*(bottom-T0);
 let s="";
 [0,25,50,75,100].forEach(t=>{s+=`<line x1="${left}" x2="${W-8}" y1="${y(t)}" y2="${y(t)}" stroke="var(--line)" stroke-width="1"/><text x="${left-6}" y="${y(t)+4}" text-anchor="end">${t}%</text>`});
 const groupW=(W-left-8)/tasks.length,gapb=6,bw=Math.min(34,(groupW-12-3*gapb)/4);
-const series=[["chance","var(--chance)"],["haiku","var(--haiku)"],["opus","var(--opus)"],["decoder","var(--decoder)"]];
+const series=[["chance","var(--chance)"],["gpt","var(--gpt)"],["opus","var(--opus)"],["decoder","var(--decoder)"]];
 tasks.forEach((t,i)=>{
   const gx=left+i*groupW+(groupW-(series.length*bw+(series.length-1)*gapb))/2;
   series.forEach(([key,col],si)=>{
