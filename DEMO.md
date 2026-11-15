@@ -35,4 +35,5 @@ Click a frame to reveal.
 - Data: DANDI 000004 (Chandravadia 2020, CC-BY), Allen Brain Observatory (Siegle 2021).
 - Guessing: answer letters are balanced, Opus spreads its picks evenly, 70% right on non-A answers.
 - With Python, Opus writes its own nearest-centroid decoder and makes the same picks as the decoder; no gain.
+- Brain-specific? Same 20 questions relabeled as machine-sensor counts: Opus 13/20 both ways. It reads number patterns in the examples, not neuroscience knowledge; the benchmark measures in-context reading of real neural data.
 - Pooled pseudo-trials: human rows combine neurons from several sessions; the label-swap test shows the model reads the numbers, not the category names.

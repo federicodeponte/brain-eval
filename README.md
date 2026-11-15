@@ -23,6 +23,8 @@ Frontier models get raw spike counts from real neurons plus a few labeled exampl
 Opus ties a nearest-centroid decoder on all three tasks from 3 in-prompt examples per class, but solves different items. On the hard tier (1 example per class, built in hard/) Opus stays level with the decoder at 50% and 60%: far from solved. A logistic decoder trained on many more trials reaches 73% (mouse) and 97% (human), so the signal is there; with one example in the prompt, neither Opus nor the simple decoder gets it. Answer letters are balanced; Opus picks are spread evenly across letters.
 
 ## Controls (does the model learn from the examples?)
+**Result, no-brain-words control:** the same 20 human questions relabeled as pulse counts from 40 machine sensors (modes A-D, no neuron/photo/region words). Opus 13/20 both ways (1 item right only as sensors, 1 only as neurons). The model reads number patterns from the in-prompt examples, not neuroscience priors: this benchmark measures in-context reading of real neural data.
+
 In `hypotheses/controls/` and `mouse/valkyrie/dataset-*`:
 - **swap-out**: true clip examples replaced by a clip from another stimulus; correct = E) none of these
 - **label-swap**: human category names permuted; does the model follow the examples or its priors?

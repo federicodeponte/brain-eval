@@ -163,10 +163,11 @@ footer{font-size:.85rem;color:var(--muted);display:grid;gap:6px;border-top:1px s
 
   <section>
     <div class="eyebrow">Is it really learning?</div>
-    <h2>Five checks</h2>
+    <h2>Six checks</h2>
     <div class="tests">
       <div class="test"><h3>Swapped labels</h3><p>Car photos are labeled "food" in the examples. A model that reads the neurons follows the labels; one that relies on brain trivia picks the real category. <b>Opus followed the examples 12 of 20 times and the real category 3 of 20.</b></p><span class="pill pass">Passed</span></div>
       <div class="test"><h3>Learning curve</h3><p>With 0 examples the model must sit at chance; accuracy should climb with examples. <b>With 0 examples Opus answered "A" every time. With 1 example it got 7 of 10.</b></p><span class="pill pass">Passed</span></div>
+      <div class="test"><h3>No brain words</h3><p>The same 20 questions, relabeled as pulse counts from 40 machine sensors in modes A-D. No neurons, photos or brain regions. <b>Opus got 13 of 20 both ways.</b> It reads the number patterns in the examples, not neuroscience knowledge.</p><span class="pill pass">Same score</span></div>
       <div class="test"><h3>Swapped clip</h3><p>The right answer's examples are replaced with a clip from another movie. The correct reply is "none of these".</p><span class="pill">Built</span></div>
       <div class="test"><h3>Shuffled spikes</h3><p>Real firing rates with the structure destroyed. Anything above chance means a leak or a letter bias.</p><span class="pill">Built</span></div>
       <div class="test"><h3>Planted pattern</h3><p>An obvious pattern planted in synthetic data. Should be near 100%, which checks the harness and the answer parser.</p><span class="pill">Built</span></div>
