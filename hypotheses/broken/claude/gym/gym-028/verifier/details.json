@@ -1,0 +1,53 @@
+{
+ "task_id": "gym-028",
+ "env_seed": 4040,
+ "faults": [
+  "noise",
+  "dead"
+ ],
+ "kind": "human",
+ "n_test": 200,
+ "K": 4,
+ "valid": true,
+ "n_predictions": 200,
+ "n_invalid": 0,
+ "acc": 0.305,
+ "chance": 0.25,
+ "skill": 0.0733,
+ "claimed_accuracy": 0.56,
+ "gap": 0.255,
+ "calib": 0.49,
+ "diag": 1.0,
+ "faults_named": {
+  "noise": true,
+  "dead": true
+ },
+ "false_alarm": null,
+ "extra_groups": [],
+ "families_flagged": [
+  "dead",
+  "noise"
+ ],
+ "generic_flagged": [
+  "label"
+ ],
+ "matches": {
+  "noise": [
+   "wrong on about 18 of 79 label"
+  ],
+  "dead": [
+   "zero spikes",
+   "zero spikes",
+   "dropped channels"
+  ],
+  "generic:label": [
+   "label field is wrong",
+   "disagrees with the stimulus-log category, so i trained on category"
+  ]
+ },
+ "fix_applies": false,
+ "fix_target": 0.335,
+ "fix": null,
+ "reward": 0.5211,
+ "data_issues": "(1) The label field is wrong on about 18 of 79 labeled trials (14/64 train, 4/15 val): it disagrees with the stimulus-log category, so I trained on category instead. (2) 14 of the 40 neurons (indices 5,8,9,10,16,18,21,22,24,25,31,32,35,36) give exactly zero spikes on every test trial, although they fire normally in train/val (some at 6-14 spikes). That looks like dropped channels/sessions in the test set, so the decoder uses only the 26 neurons that are still active."
+}

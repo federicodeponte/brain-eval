@@ -1,0 +1,40 @@
+{
+ "task_id": "gym-030",
+ "env_seed": 4029,
+ "faults": [
+  "perm"
+ ],
+ "kind": "scenes",
+ "n_test": 70,
+ "K": 7,
+ "valid": true,
+ "n_predictions": 70,
+ "n_invalid": 0,
+ "acc": 0.4,
+ "chance": 0.1429,
+ "skill": 0.3,
+ "claimed_accuracy": 0.53,
+ "gap": 0.13,
+ "calib": 0.74,
+ "diag": 1.0,
+ "faults_named": {
+  "perm": true
+ },
+ "false_alarm": null,
+ "extra_groups": [],
+ "families_flagged": [
+  "perm"
+ ],
+ "generic_flagged": [],
+ "matches": {
+  "perm": [
+   "permutation by hungarian matching on per-unit",
+   "column order"
+  ]
+ },
+ "fix_applies": false,
+ "fix_target": 0.5429,
+ "fix": null,
+ "reward": 0.68,
+ "data_issues": "The unit (neuron) columns of test_unlabeled.npz are permuted relative to train/val: per-unit mean firing rates in test do not line up with train/val, but they match one-to-one after reordering. I recovered the permutation by Hungarian matching on per-unit firing statistics (test column order mapping: [17, 23, 11, 24, 13, 0, 6, 9, 25, 12, 3, 7, 1, 15, 16, 19, 18, 22, 2, 20, 10, 14, 21, 4, 5, 8, 26]) and applied it before decoding. Train/val labels agree exactly with image_id, classes are balanced (24/7 per class), and there are no other anomalies."
+}

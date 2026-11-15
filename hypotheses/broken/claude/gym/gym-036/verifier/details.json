@@ -1,0 +1,45 @@
+{
+ "task_id": "gym-036",
+ "env_seed": 4028,
+ "faults": [
+  "perm"
+ ],
+ "kind": "scenes",
+ "n_test": 65,
+ "K": 5,
+ "valid": true,
+ "n_predictions": 65,
+ "n_invalid": 0,
+ "acc": 0.6462,
+ "chance": 0.2,
+ "skill": 0.5577,
+ "claimed_accuracy": 0.7,
+ "gap": 0.0538,
+ "calib": 0.8923,
+ "diag": 1.0,
+ "faults_named": {
+  "perm": true
+ },
+ "false_alarm": null,
+ "extra_groups": [],
+ "families_flagged": [
+  "dead",
+  "perm"
+ ],
+ "generic_flagged": [],
+ "matches": {
+  "perm": [
+   "neuron) columns of the test set are permuted",
+   "unit firing statistics and reordering",
+   "reordering the test columns"
+  ],
+  "dead": [
+   "silent"
+  ]
+ },
+ "fix_applies": false,
+ "fix_target": 0.7385,
+ "fix": null,
+ "reward": 0.8167,
+ "data_issues": "The unit (neuron) columns of the test set are permuted relative to train/val: about 12 of the 29 units are in different positions in test.npz (e.g. test unit 0 has the firing profile of train unit 21 (~4.8/3.4 spikes per bin vs ~0.1), test unit 3 is silent like train unit 15, and test units 20, 21, 27 match train units 13, 11, 3). So a decoder trained on train/val does not transfer to test as-is. I fixed it by matching per-unit firing statistics and reordering the test columns (train unit<-test col: 0<-26, 3<-27, 11<-21, 13<-20, 15<-3, 17<-24, 19<-15, 20<-11, 21<-0, 24<-19, 26<-17, 27<-13). Labels in train/val agree with image_id, and I found no duplicate trials."
+}

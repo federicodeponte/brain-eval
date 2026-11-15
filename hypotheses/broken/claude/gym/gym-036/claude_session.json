@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 56493,
+ "stop_reason": "end_turn",
+ "session_id": "3267c465-eb9d-40dd-b121-14bedcf46063",
+ "total_cost_usd": 0.17055759999999998,
+ "usage": {
+  "input_tokens": 14,
+  "cache_creation_input_tokens": 8758,
+  "cache_read_input_tokens": 74988,
+  "output_tokens": 4272,
+  "output_tokens_details": {
+   "thinking_tokens": 951
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 8758,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 520,
+    "cache_read_input_tokens": 14617,
+    "cache_creation_input_tokens": 735,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 735
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 14,
+   "outputTokens": 4272,
+   "cacheReadInputTokens": 74988,
+   "cacheCreationInputTokens": 8758,
+   "webSearchRequests": 0,
+   "costUSD": 0.17055759999999998,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 951,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 8758,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 7,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I've written the predictions to `output/predictions.json`. My estimated test accuracy is **0.70**, against 20% for guessing.\n\n**What's wrong with the data:** the neuron columns in `test.npz` are in a different order from train and val. About 12 of the 29 units have moved. For example, test unit 0 fires about 4.8 and 3.4 spikes per bin, which matches train unit 21; train unit 0 fires about 0.1. Test unit 3 is silent, like train unit 15. A decoder trained on train and val would read the wrong neurons on the test trials without anyone noticing.\n\n**How I fixed it:** I matched each test column to a train unit by comparing their firing statistics (mean and spread in each time bin), then put the test columns back in train order. The fix looks right: on the reordered test set, predicted classes come out close to even (12/11/10/18/14). With the original order they were heavily lopsided (3/30/6/18/8). The few units that fire very little are hard to match with certainty, so one or two of those pairings may be wrong. They carry little signal, so that should cost very little accuracy.\n\nI checked two other things and both were fine: every `stim_class` label agrees with its `image_id`, and there are no duplicate trials across the splits.\n\n**Decoder:** I used a regularised logistic regression on square-root spike counts, trained on train and val together. It scored 0.735 in repeated 5-fold cross-validation and 0.74 on val when trained on train alone. I set the estimate slightly lower, at 0.70, to allow for possible errors in matching the low-firing units.",
+ "ttft_ms": 6037,
+ "type": "result",
+ "duration_ms": 82917,
+ "uuid": "39be9627-e656-4db1-b4f6-519dc56e917e",
+ "ttft_stream_ms": 3472,
+ "time_to_request_ms": 80,
+ "first_content_frame_ms": 3472,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 83.9
+}

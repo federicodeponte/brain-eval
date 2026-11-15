@@ -1,0 +1,44 @@
+{
+ "task_id": "gym-034",
+ "env_seed": 4030,
+ "faults": [
+  "leak",
+  "dead"
+ ],
+ "kind": "human",
+ "n_test": 120,
+ "K": 4,
+ "valid": true,
+ "n_predictions": 120,
+ "n_invalid": 0,
+ "acc": 0.6833,
+ "chance": 0.25,
+ "skill": 0.5778,
+ "claimed_accuracy": 0.88,
+ "gap": 0.1967,
+ "calib": 0.6067,
+ "diag": 0.5,
+ "faults_named": {
+  "leak": false,
+  "dead": true
+ },
+ "false_alarm": null,
+ "extra_groups": [],
+ "families_flagged": [
+  "dead"
+ ],
+ "generic_flagged": [],
+ "matches": {
+  "dead": [
+   "all zero",
+   "zero on",
+   "dead",
+   "dropped channels"
+  ]
+ },
+ "fix_applies": true,
+ "fix_target": 0.7167,
+ "fix": 1.0,
+ "reward": 0.6711,
+ "data_issues": "9 of 33 neurons (indices [2, 3, 5, 7, 9, 14, 18, 23, 27]) are all zero on every test trial, but fire normally in train/val (e.g. unit 27 averages ~15 spikes, unit 18 ~15, unit 5 ~15, unit 14 ~11). These look like dead or dropped channels in the test split, and they include the most category-selective units. Decoder was trained on the 24 remaining neurons only. A model using them would see impossible zeros at test time. Labels match the category field in train/val; no duplicates or train/test overlap."
+}

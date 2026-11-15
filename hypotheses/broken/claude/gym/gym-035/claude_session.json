@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 65380,
+ "stop_reason": "end_turn",
+ "session_id": "3baa4cfc-9a8f-4637-b652-7c8f5db6bcd0",
+ "total_cost_usd": 0.211374,
+ "usage": {
+  "input_tokens": 18,
+  "cache_creation_input_tokens": 10671,
+  "cache_read_input_tokens": 106270,
+  "output_tokens": 5234,
+  "output_tokens_details": {
+   "thinking_tokens": 1199
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 10671,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 840,
+    "cache_read_input_tokens": 16428,
+    "cache_creation_input_tokens": 837,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 837
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 18,
+   "outputTokens": 5234,
+   "cacheReadInputTokens": 106270,
+   "cacheCreationInputTokens": 10671,
+   "webSearchRequests": 0,
+   "costUSD": 0.211374,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 1199,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 10671,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 9,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I wrote all 168 predictions to `output/predictions.json` and set `claimed_accuracy` to **0.70**. On the labeled data the decoder scores about 82\u201384%, but the test set looks different from the training data, so I expect it to do worse there.\n\n**Decoder:** logistic regression (C=0.1) on log-transformed spike counts from all 29 neurons, trained on fit + holdout together (98 trials).\n- **Cross-validation:** 5-fold on fit + holdout gave 81\u201384% accuracy, depending on the seed. Chance is 25%.\n- **Holdout:** a model trained on fit alone scored 83% (15 of 18 trials).\n- **Test predictions:** 34 houses, 42 mobility, 53 phones, 39 smallAnimal.\n\n**Why 0.70 and not ~0.83:** the model is less sure on the test trials than in cross-validation (average top-class probability 0.55 vs 0.61). Scaling the cross-validated accuracy by that drop gives about 0.75. I lowered it to 0.70 because the test data has shifted (below). That number is a judgement call, not a measurement.\n\n**Data issues:**\n- **Labels are fine.** `y` matches the stimulus-log `category` on every labeled trial, and no row is duplicated within or across splits.\n- **Test trials aren't independent.** Each neuron has only about 4\u201315 distinct spike counts across the 168 test rows, so a few real presentations per session seem to be reused many times. The test set carries much less information than 168 trials suggests, and its accuracy will be lumpy.\n- **Test data has shifted.** Two strong responses seen in training are mostly missing from the test rows: neuron 8 to smallAnimal (up to 44 spikes in fit, at most 16 in test) and neuron 21 to mobility (up to 39 in fit, at most 7 in test). Some neurons also show oddly repeated high values, such as 9 spikes on 14 rows for neuron 0, which never goes above 6 in fit. I think this follows from the reuse, but I haven't confirmed it.\n\nThe `data_issues` field reports these test-set problems and states that the labels are clean.",
+ "ttft_ms": 5444,
+ "type": "result",
+ "duration_ms": 95210,
+ "uuid": "59b0a09d-1b0b-42c4-b036-b55b6e93ab34",
+ "ttft_stream_ms": 3807,
+ "time_to_request_ms": 72,
+ "first_content_frame_ms": 3808,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 96.2
+}

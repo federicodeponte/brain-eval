@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 69251,
+ "stop_reason": "end_turn",
+ "session_id": "3b843b84-3c72-4759-a108-c5f2d28c8400",
+ "total_cost_usd": 0.23097520000000002,
+ "usage": {
+  "input_tokens": 16,
+  "cache_creation_input_tokens": 11151,
+  "cache_read_input_tokens": 97216,
+  "output_tokens": 6113,
+  "output_tokens_details": {
+   "thinking_tokens": 1549
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 11151,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 724,
+    "cache_read_input_tokens": 16859,
+    "cache_creation_input_tokens": 886,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 886
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 16,
+   "outputTokens": 6113,
+   "cacheReadInputTokens": 97216,
+   "cacheCreationInputTokens": 11151,
+   "webSearchRequests": 0,
+   "costUSD": 0.23097520000000002,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 1549,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 11151,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 8,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I've written predictions for all 164 test trials to `output/predictions.json`. I estimate test accuracy at about 0.84, and I didn't find any real problems in the labelled data.\n\n**Decoder:** I used linear discriminant analysis with automatic shrinkage, on square-root-transformed spike counts, trained on fit and holdout combined (102 trials). It beat logistic regression and naive Bayes:\n\n| Check | Accuracy |\n|---|---|\n| Repeated 5-fold cross-validation on the combined data | \u22480.90 |\n| Trained on fit only, scored on holdout | 0.90 (raw counts: 0.95) |\n\n**Estimated test accuracy (0.84):** I put this below the cross-validation figure for two reasons:\n- **Overconfident model:** its average confidence (0.93) is higher than its cross-validated accuracy (0.89).\n- **Shifted test data:** the test trials look somewhat different from the labelled ones (see below), so they will likely score lower than the cross-validation trials did.\n\n**Data issues:** I reported \"none\" for the labelled data, with a note about the test set:\n- **Labelled data is clean:** in both fit and holdout, `y` matches the stimulus-log `category` exactly. Classes are balanced (20\u201321 per class in fit, 5 per class in holdout). There are no duplicate trials within or across splits, and no missing or invalid counts.\n- **Test set looks different:** the decoder predicts 30 cars, 26 food, 68 spatial layouts and 40 animals. Estimating the class mix from the test data also gives about 43% spatial layouts. A few neurons (notably 19 and 22) also fire at somewhat different rates in the test trials than in the labelled ones.\n\nThe main uncertainty is whether the test set really has that many spatial-layout trials. If it is actually balanced (41 per class, which 164 trials would allow), the model is over-predicting spatial layouts. That puts at least 27 trials wrong, capping accuracy at about 0.84 and probably lower. I didn't re-weight the predictions toward a skewed class mix, because that would cost accuracy if the test set is in fact balanced.",
+ "ttft_ms": 4284,
+ "type": "result",
+ "duration_ms": 100042,
+ "uuid": "66e6450e-8f2f-4006-9e95-9f4455d8c965",
+ "ttft_stream_ms": 2390,
+ "time_to_request_ms": 81,
+ "first_content_frame_ms": 2390,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 101.0
+}

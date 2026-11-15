@@ -1,0 +1,45 @@
+{
+ "task_id": "gym-029",
+ "env_seed": 4044,
+ "faults": [
+  "leak",
+  "shift"
+ ],
+ "kind": "movie",
+ "n_test": 20,
+ "K": 10,
+ "valid": true,
+ "n_predictions": 20,
+ "n_invalid": 0,
+ "acc": 0.75,
+ "chance": 0.1,
+ "skill": 0.7222,
+ "claimed_accuracy": 0.92,
+ "gap": 0.17,
+ "calib": 0.66,
+ "diag": 0.5,
+ "faults_named": {
+  "leak": false,
+  "shift": true
+ },
+ "false_alarm": null,
+ "extra_groups": [],
+ "families_flagged": [
+  "shift"
+ ],
+ "generic_flagged": [],
+ "matches": {
+  "shift": [
+   "misaligned",
+   "shifted by one ",
+   "labels are cyclically shifted",
+   "shifted by one segment (movie 38 s label",
+   "one segment"
+  ]
+ },
+ "fix_applies": true,
+ "fix_target": 0.8,
+ "fix": 1.0,
+ "reward": 0.7206,
+ "data_issues": "stim_class labels are misaligned with the stimulus log: in both train and val, stim_class = (movie_time_s - 38 + 1) mod 10, i.e. labels are cyclically shifted by one segment (movie 38 s labeled 1, ..., 47 s labeled 0) contrary to classes.json. Decoder trained on labels recomputed from movie_time_s (class = movie_time_s - 38)."
+}

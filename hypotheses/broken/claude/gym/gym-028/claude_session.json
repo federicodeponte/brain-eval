@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 34552,
+ "stop_reason": "end_turn",
+ "session_id": "61fa1e84-5cbf-4554-a03f-14c9ad5046cd",
+ "total_cost_usd": 0.1213154,
+ "usage": {
+  "input_tokens": 10,
+  "cache_creation_input_tokens": 5973,
+  "cache_read_input_tokens": 46757,
+  "output_tokens": 3207,
+  "output_tokens_details": {
+   "thinking_tokens": 278
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 5973,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 679,
+    "cache_read_input_tokens": 11467,
+    "cache_creation_input_tokens": 1101,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 1101
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 10,
+   "outputTokens": 3207,
+   "cacheReadInputTokens": 46757,
+   "cacheCreationInputTokens": 5973,
+   "webSearchRequests": 0,
+   "costUSD": 0.1213154,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 278,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 5973,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 5,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I've written all 200 test predictions to `output/predictions.json`. I set the accuracy estimate at **0.56**. The test labels are hidden, so that number is a cross-validated estimate, not a measured score.\n\n**Problems in the data**\n1. **Some labels are wrong.** On 18 of the 79 labeled trials (14 of 64 in train, 4 of 15 in val), `label` doesn't match the `category` from the stimulus log. Since the labels were supposed to come from that log, the log is the more reliable of the two, so I trained on `category`.\n2. **14 neurons are silent in the test set.** Neurons 5, 8, 9, 10, 16, 18, 21, 22, 24, 25, 31, 32, 35 and 36 have zero spikes on every one of the 200 test trials. They fire normally in train and val, some at 6\u201314 spikes per trial. Those channels or sessions appear to have dropped out of the test data. Because of this, the average total spike count per trial falls from about 143 in train/val to about 94 in test. The 26 neurons that are still active have similar average rates in both sets.\n\n**Decoder**\n- I used logistic regression on log-transformed counts, scaled per neuron and strongly regularized (C=0.03). It was trained on train and val combined, using only the 26 neurons that are still active in test.\n- Training only on those 26 matters. A model that uses all 40 neurons scores about 0.76 in cross-validation but would see zeros for 14 of its inputs on every test trial. With only the active neurons, cross-validated accuracy is about 0.585 (repeated 5-fold; a shrinkage LDA gave about 0.58). Chance is 0.25.\n- I set the estimate a little below 0.585 because the labeled set is small (79 trials) and the test data may differ in other ways I can't see.\n- The predicted classes are fairly evenly spread across the 200 trials: 47 fruit, 47 kids, 56 military, 50 space.",
+ "ttft_ms": 3626,
+ "type": "result",
+ "duration_ms": 67618,
+ "uuid": "3deb1cfa-3fea-4b8a-b5a5-7ebdb28383b4",
+ "ttft_stream_ms": 1359,
+ "time_to_request_ms": 73,
+ "first_content_frame_ms": 1359,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 68.8
+}
