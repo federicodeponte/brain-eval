@@ -1,0 +1,2 @@
+{"seed": 200, "faults": ["shift", "perm"], "kind": "movie", "stim": "natural_movie_one", "U": 29, "K": 9, "n": [108, 27, 45], "ref_cv": 0.496, "ref_test": 0.556, "naive_val": 0.519, "naive_cv": 0.519, "naive_test": 0.111, "aware_cv": 0.519, "aware_test": 0.511, "fix_applies": true}
+{"seed": 201, "faults": ["shift", "perm"], "kind": "movie", "stim": "natural_movie_three", "U": 29, "K": 7, "n": [49, 7, 14], "ref_cv": 0.821, "ref_test": 0.857, "naive_val": 1.0, "naive_cv": 0.806, "naive_test": 0.071, "aware_cv": 0.806, "aware_test": 0.714, "fix_applies": false}

@@ -1,0 +1,2 @@
+{"seed": 200, "faults": ["leak", "shift"], "kind": "movie", "stim": "natural_movie_one", "U": 29, "K": 9, "n": [172, 27, 45], "ref_cv": 0.496, "ref_test": 0.556, "naive_val": 0.963, "naive_cv": 0.844, "naive_test": 0.067, "aware_cv": 0.449, "aware_test": 0.533, "fix_applies": true}
+{"seed": 201, "faults": ["leak", "shift"], "kind": "movie", "stim": "natural_movie_three", "U": 29, "K": 7, "n": [76, 7, 14], "ref_cv": 0.821, "ref_test": 0.857, "naive_val": 1.0, "naive_cv": 0.906, "naive_test": 0.0, "aware_cv": 0.751, "aware_test": 0.857, "fix_applies": true}

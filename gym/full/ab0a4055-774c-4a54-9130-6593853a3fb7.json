@@ -1,0 +1,1586 @@
+{
+    "benchmark_id": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+    "benchmark_name": "brain",
+    "started_at": "2026-11-15T06:16:24.887900",
+    "finished_at": "2026-11-15T06:25:05.253697",
+    "status": "FINISHED",
+    "benchmark_arguments": {
+        "contract": {
+            "name": "codex-v1.0.0",
+            "model": "gpt-5.3-codex",
+            "install_cmd": "bash setup.sh",
+            "run_cmd": "bash -lc 'set -o pipefail && mkdir -p /logs && AGENT_OUTPUT_ROOT=/logs /bundle/codex-v1.0.0/.venv/bin/python3 /bundle/codex-v1.0.0/collect_outputs.py {problem_statement_path} --task-id {task_id} --model {model}'",
+            "final_output": "/logs",
+            "output_artifacts": [],
+            "egress_allowlist": [],
+            "allow_provider_tools": false,
+            "isolate_agent_uid": false,
+            "inference_settings_attested": true
+        },
+        "agent_attempts": [],
+        "concurrency": 8,
+        "dataset": "broken-gym",
+        "dataset_version": {
+            "id": "brain/broken-gym@2"
+        },
+        "sandbox_provider": "modal",
+        "sandbox_provider_secret_name": "valkyrie/tenants/3c0f03bb-4d7f-4592-8131-25d0b575a404/modal-credentials",
+        "environment": "aws",
+        "properties": {
+            "region": "us-east-1",
+            "s3_bucket": "valkyrie-629807611108-prod-f12840637e1d0318",
+            "log_group": "/valkyrie/benchmarks-prod/tenants/3c0f03bb-4d7f-4592-8131-25d0b575a404",
+            "log_retention_days": 365
+        }
+    },
+    "final_evaluation": {
+        "id": "0a6b791c-1267-4b3c-a2dc-cee47f10fad0",
+        "org_id": "3c0f03bb-4d7f-4592-8131-25d0b575a404",
+        "benchmark": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+        "final_score": 45.55800000000001,
+        "properties": {
+            "total": 45,
+            "n_trials": 45,
+            "n_errors": 0,
+            "metrics": [
+                {
+                    "mean": 0.45558000000000004
+                }
+            ],
+            "reward_stats": {
+                "reward": {
+                    "0.8386": [
+                        "gym-010"
+                    ],
+                    "0.7778": [
+                        "gym-027"
+                    ],
+                    "0.8593": [
+                        "gym-003"
+                    ],
+                    "0.6667": [
+                        "gym-038"
+                    ],
+                    "0.3608": [
+                        "gym-009"
+                    ],
+                    "0.098": [
+                        "gym-004"
+                    ],
+                    "0.8011": [
+                        "gym-039"
+                    ],
+                    "0.4656": [
+                        "gym-035"
+                    ],
+                    "0.8844": [
+                        "gym-018"
+                    ],
+                    "0.2492": [
+                        "gym-006"
+                    ],
+                    "0.4506": [
+                        "gym-026"
+                    ],
+                    "0.1667": [
+                        "gym-019",
+                        "gym-042"
+                    ],
+                    "0.0052": [
+                        "gym-043"
+                    ],
+                    "0.191": [
+                        "gym-017"
+                    ],
+                    "0.3367": [
+                        "gym-036"
+                    ],
+                    "0.125": [
+                        "gym-013",
+                        "gym-029",
+                        "gym-005",
+                        "gym-007"
+                    ],
+                    "0.1669": [
+                        "gym-012"
+                    ],
+                    "0.3908": [
+                        "gym-034"
+                    ],
+                    "0.404": [
+                        "gym-008"
+                    ],
+                    "0.96": [
+                        "gym-011"
+                    ],
+                    "0.4578": [
+                        "gym-028"
+                    ],
+                    "0.6515": [
+                        "gym-041"
+                    ],
+                    "0.4354": [
+                        "gym-025"
+                    ],
+                    "0.832": [
+                        "gym-020"
+                    ],
+                    "0.25": [
+                        "gym-021",
+                        "gym-016"
+                    ],
+                    "0.1976": [
+                        "gym-030"
+                    ],
+                    "0.8344": [
+                        "gym-040"
+                    ],
+                    "0.7292": [
+                        "gym-037"
+                    ],
+                    "0.3522": [
+                        "gym-001"
+                    ],
+                    "0.7604": [
+                        "gym-033"
+                    ],
+                    "0.7621": [
+                        "gym-023"
+                    ],
+                    "0.904": [
+                        "gym-032"
+                    ],
+                    "0.0088": [
+                        "gym-015"
+                    ],
+                    "0.308": [
+                        "gym-022"
+                    ],
+                    "0.8059": [
+                        "gym-014"
+                    ],
+                    "0.2083": [
+                        "gym-024"
+                    ],
+                    "0.2058": [
+                        "gym-045"
+                    ],
+                    "0.4762": [
+                        "gym-031"
+                    ],
+                    "0.7306": [
+                        "gym-002"
+                    ],
+                    "0.6008": [
+                        "gym-044"
+                    ]
+                }
+            },
+            "score_key": "mean",
+            "mean_reward": 0.45558000000000004
+        }
+    },
+    "average_task_breakdown": {
+        "sandbox_build_duration": 33.379283968688895,
+        "agent_run_duration": 24.171336356822202,
+        "evaluation_run_duration": 1.0701907151111199,
+        "sandbox_run_duration": 45.60431937306665
+    },
+    "evaluation_results": {
+        "gym-036": {
+            "task_id": "gym-036",
+            "rewards": {
+                "reward": 0.3367
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.3367
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-036\", \"faults\": [\"perm\"], \"acc\": 0.5538, \"claimed_accuracy\": 0.77, \"diag\": 0.0, \"faults_named\": {\"perm\": false}, \"false_alarm\": null, \"extra_groups\": [], \"fix\": null, \"reward\": 0.3367}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 24.78774661500006,
+                "sandbox_run_duration": 47.16158263600005,
+                "sandbox_build_duration": 124.08620920800001,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.3280201190000298,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 24.78774893000002
+            },
+            "attempts": 1
+        },
+        "gym-045": {
+            "task_id": "gym-045",
+            "rewards": {
+                "reward": 0.2058
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.2058
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-045\", \"faults\": [\"dead\"], \"acc\": 0.2292, \"claimed_accuracy\": 0.48, \"diag\": 0.0, \"faults_named\": {\"dead\": false}, \"false_alarm\": null, \"extra_groups\": [], \"fix\": null, \"reward\": 0.2058}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 30.04942266599994,
+                "sandbox_run_duration": 51.679647864,
+                "sandbox_build_duration": 35.83208411600003,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.5539671880000014,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 30.049424549000037
+            },
+            "attempts": 1
+        },
+        "gym-044": {
+            "task_id": "gym-044",
+            "rewards": {
+                "reward": 0.6008
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.6008
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-044\", \"faults\": [], \"acc\": 0.9062, \"claimed_accuracy\": 0.87, \"diag\": 0.0, \"faults_named\": null, \"false_alarm\": true, \"extra_groups\": [\"input\"], \"fix\": null, \"reward\": 0.6008}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 22.115251475000036,
+                "sandbox_run_duration": 39.407540823999966,
+                "sandbox_build_duration": 35.09539590400004,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.32731697000008353,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 22.115253501999973
+            },
+            "attempts": 1
+        },
+        "gym-043": {
+            "task_id": "gym-043",
+            "rewards": {
+                "reward": 0.0052
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0052
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-043\", \"faults\": [\"leak\", \"perm\"], \"acc\": 0.1296, \"claimed_accuracy\": 0.963, \"diag\": 0.0, \"faults_named\": {\"leak\": false, \"perm\": false}, \"false_alarm\": null, \"extra_groups\": [\"label\"], \"fix\": 0.0, \"reward\": 0.0052}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 24.36407868999993,
+                "sandbox_run_duration": 43.604332204,
+                "sandbox_build_duration": 24.801943551000022,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.5397200279999197,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 24.364080274000003
+            },
+            "attempts": 1
+        },
+        "gym-041": {
+            "task_id": "gym-041",
+            "rewards": {
+                "reward": 0.6515
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.6515
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-041\", \"faults\": [\"noise\", \"dead\"], \"acc\": 0.1645, \"claimed_accuracy\": 0.288, \"diag\": 1.0, \"faults_named\": {\"noise\": true, \"dead\": true}, \"false_alarm\": null, \"extra_groups\": [], \"fix\": 0.8079, \"reward\": 0.6515}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 32.02112985300005,
+                "sandbox_run_duration": 55.31354460399996,
+                "sandbox_build_duration": 36.58481117600002,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 3.2710145479999255,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 32.02113143500003
+            },
+            "attempts": 1
+        },
+        "gym-042": {
+            "task_id": "gym-042",
+            "rewards": {
+                "reward": 0.1667
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.1667
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-042\", \"faults\": [\"noise\", \"perm\"], \"acc\": 0.1111, \"claimed_accuracy\": 0.7778, \"diag\": 0.5, \"faults_named\": {\"noise\": true, \"perm\": false}, \"false_alarm\": null, \"extra_groups\": [], \"fix\": null, \"reward\": 0.1667}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 19.254747204999944,
+                "sandbox_run_duration": 44.33129424900005,
+                "sandbox_build_duration": 21.983971103000044,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 3.086289910000005,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 19.254748461999952
+            },
+            "attempts": 1
+        },
+        "gym-040": {
+            "task_id": "gym-040",
+            "rewards": {
+                "reward": 0.8344
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.8344
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-040\", \"faults\": [], \"acc\": 0.725, \"claimed_accuracy\": 0.79, \"diag\": 1.0, \"faults_named\": null, \"false_alarm\": false, \"extra_groups\": [], \"fix\": null, \"reward\": 0.8344}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 24.58772732099999,
+                "sandbox_run_duration": 46.26875562399994,
+                "sandbox_build_duration": 30.517144979000022,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.5713271739999755,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 24.58772906799993
+            },
+            "attempts": 1
+        },
+        "gym-037": {
+            "task_id": "gym-037",
+            "rewards": {
+                "reward": 0.7292
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.7292
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-037\", \"faults\": [], \"acc\": 0.5741, \"claimed_accuracy\": 0.4074, \"diag\": 1.0, \"faults_named\": null, \"false_alarm\": false, \"extra_groups\": [], \"fix\": null, \"reward\": 0.7292}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 25.017595941999957,
+                "sandbox_run_duration": 55.39690061399995,
+                "sandbox_build_duration": 21.69860095899992,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 4.212069918999987,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 25.017598376000024
+            },
+            "attempts": 1
+        },
+        "gym-038": {
+            "task_id": "gym-038",
+            "rewards": {
+                "reward": 0.6667
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.6667
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-038\", \"faults\": [\"perm\"], \"acc\": 0.2, \"claimed_accuracy\": 0.2, \"diag\": 1.0, \"faults_named\": {\"perm\": true}, \"false_alarm\": null, \"extra_groups\": [], \"fix\": null, \"reward\": 0.6667}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 19.063041321000014,
+                "sandbox_run_duration": 43.80469929499998,
+                "sandbox_build_duration": 25.23687079900003,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 3.1302036470000303,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 19.063043590999996
+            },
+            "attempts": 1
+        },
+        "gym-039": {
+            "task_id": "gym-039",
+            "rewards": {
+                "reward": 0.8011
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.8011
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-039\", \"faults\": [], \"acc\": 0.614, \"claimed_accuracy\": 0.6808, \"diag\": 1.0, \"faults_named\": null, \"false_alarm\": false, \"extra_groups\": [], \"fix\": null, \"reward\": 0.8011}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 18.23326354599999,
+                "sandbox_run_duration": 35.80619368800001,
+                "sandbox_build_duration": 24.91220673800001,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.5800417819999666,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 18.233279749000076
+            },
+            "attempts": 1
+        },
+        "gym-035": {
+            "task_id": "gym-035",
+            "rewards": {
+                "reward": 0.4656
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.4656
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-035\", \"faults\": [], \"acc\": 0.6964, \"claimed_accuracy\": 0.7957, \"diag\": 0.0, \"faults_named\": null, \"false_alarm\": true, \"extra_groups\": [\"input\", \"leak\"], \"fix\": null, \"reward\": 0.4656}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 28.430080555000018,
+                "sandbox_run_duration": 50.454622518000065,
+                "sandbox_build_duration": 34.30081226499999,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.543167932000074,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 28.430082509000044
+            },
+            "attempts": 1
+        },
+        "gym-034": {
+            "task_id": "gym-034",
+            "rewards": {
+                "reward": 0.3908
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.3908
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-034\", \"faults\": [\"leak\", \"dead\"], \"acc\": 0.6, \"claimed_accuracy\": 0.96, \"diag\": 0.0, \"faults_named\": {\"leak\": false, \"dead\": false}, \"false_alarm\": null, \"extra_groups\": [\"label\"], \"fix\": 0.8165, \"reward\": 0.3908}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 32.29755517400008,
+                "sandbox_run_duration": 56.24453547999997,
+                "sandbox_build_duration": 26.128774673999942,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.3440822610000396,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 32.29755672400006
+            },
+            "attempts": 1
+        },
+        "gym-027": {
+            "task_id": "gym-027",
+            "rewards": {
+                "reward": 0.7778
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.7778
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-027\", \"faults\": [], \"acc\": 0.575, \"claimed_accuracy\": 0.6654, \"diag\": 1.0, \"faults_named\": null, \"false_alarm\": false, \"extra_groups\": [], \"fix\": null, \"reward\": 0.7778}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 31.65762026899995,
+                "sandbox_run_duration": 64.524108437,
+                "sandbox_build_duration": 57.94444846500005,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 4.265989492000017,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 31.65762241999994
+            },
+            "attempts": 1
+        },
+        "gym-033": {
+            "task_id": "gym-033",
+            "rewards": {
+                "reward": 0.7604
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.7604
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-033\", \"faults\": [], \"acc\": 0.5185, \"claimed_accuracy\": 0.43, \"diag\": 1.0, \"faults_named\": null, \"false_alarm\": false, \"extra_groups\": [], \"fix\": null, \"reward\": 0.7604}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 19.76400249400001,
+                "sandbox_run_duration": 37.77572639899995,
+                "sandbox_build_duration": 37.16923947700002,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.5674972700001035,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 19.764004797999974
+            },
+            "attempts": 1
+        },
+        "gym-031": {
+            "task_id": "gym-031",
+            "rewards": {
+                "reward": 0.4762
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.4762
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-031\", \"faults\": [], \"acc\": 0.7206, \"claimed_accuracy\": 0.82, \"diag\": 0.0, \"faults_named\": null, \"false_alarm\": true, \"extra_groups\": [\"input\", \"leak\"], \"fix\": null, \"reward\": 0.4762}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 26.745452305999947,
+                "sandbox_run_duration": 47.83883971700004,
+                "sandbox_build_duration": 33.49454807699999,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.5544307050000725,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 26.745453913000006
+            },
+            "attempts": 1
+        },
+        "gym-029": {
+            "task_id": "gym-029",
+            "rewards": {
+                "reward": 0.125
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.125
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-029\", \"faults\": [\"leak\", \"shift\"], \"acc\": 0.0, \"claimed_accuracy\": 0.9, \"diag\": 0.5, \"faults_named\": {\"leak\": false, \"shift\": true}, \"false_alarm\": null, \"extra_groups\": [], \"fix\": 0.0, \"reward\": 0.125}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 25.692657673999975,
+                "sandbox_run_duration": 46.89952617300003,
+                "sandbox_build_duration": 38.08391980400006,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.5786267879999514,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 25.692659584000012
+            },
+            "attempts": 1
+        },
+        "gym-032": {
+            "task_id": "gym-032",
+            "rewards": {
+                "reward": 0.904
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.904
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-032\", \"faults\": [], \"acc\": 0.8476, \"claimed_accuracy\": 0.89, \"diag\": 1.0, \"faults_named\": null, \"false_alarm\": false, \"extra_groups\": [], \"fix\": null, \"reward\": 0.904}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 21.21363166900005,
+                "sandbox_run_duration": 39.47767570199994,
+                "sandbox_build_duration": 29.561461396000027,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.3184256900000264,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 21.213633748999996
+            },
+            "attempts": 1
+        },
+        "gym-030": {
+            "task_id": "gym-030",
+            "rewards": {
+                "reward": 0.1976
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.1976
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-030\", \"faults\": [\"perm\"], \"acc\": 0.2714, \"claimed_accuracy\": 0.55, \"diag\": 0.0, \"faults_named\": {\"perm\": false}, \"false_alarm\": null, \"extra_groups\": [], \"fix\": null, \"reward\": 0.1976}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 23.54259016100002,
+                "sandbox_run_duration": 45.152262963,
+                "sandbox_build_duration": 29.436942250000016,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.7124073640000006,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 23.542592385000034
+            },
+            "attempts": 1
+        },
+        "gym-028": {
+            "task_id": "gym-028",
+            "rewards": {
+                "reward": 0.4578
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.4578
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-028\", \"faults\": [\"noise\", \"dead\"], \"acc\": 0.38, \"claimed_accuracy\": 0.53, \"diag\": 0.5, \"faults_named\": {\"noise\": true, \"dead\": false}, \"false_alarm\": null, \"extra_groups\": [], \"fix\": null, \"reward\": 0.4578}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 21.66692117900004,
+                "sandbox_run_duration": 38.466391538999915,
+                "sandbox_build_duration": 33.41110456600006,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.30348416699996505,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 21.66692363800007
+            },
+            "attempts": 1
+        },
+        "gym-026": {
+            "task_id": "gym-026",
+            "rewards": {
+                "reward": 0.4506
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.4506
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-026\", \"faults\": [], \"acc\": 0.2593, \"claimed_accuracy\": 0.6667, \"diag\": 1.0, \"faults_named\": null, \"false_alarm\": false, \"extra_groups\": [], \"fix\": null, \"reward\": 0.4506}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 20.21833196299997,
+                "sandbox_run_duration": 39.04055327599997,
+                "sandbox_build_duration": 39.73684621600006,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.306096948000004,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 20.218333702999985
+            },
+            "attempts": 1
+        },
+        "gym-025": {
+            "task_id": "gym-025",
+            "rewards": {
+                "reward": 0.4354
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.4354
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-025\", \"faults\": [\"leak\", \"noise\"], \"acc\": 0.6667, \"claimed_accuracy\": 0.7958, \"diag\": 0.0, \"faults_named\": {\"leak\": false, \"noise\": false}, \"false_alarm\": null, \"extra_groups\": [], \"fix\": 0.3998, \"reward\": 0.4354}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 24.15741543899992,
+                "sandbox_run_duration": 47.207881062999945,
+                "sandbox_build_duration": 25.076114931000063,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.5350674979999894,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 24.157417382999938
+            },
+            "attempts": 1
+        },
+        "gym-021": {
+            "task_id": "gym-021",
+            "rewards": {
+                "reward": 0.25
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.25
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-021\", \"faults\": [\"shift\"], \"acc\": 0.05, \"claimed_accuracy\": 0.56, \"diag\": 1.0, \"faults_named\": {\"shift\": true}, \"false_alarm\": null, \"extra_groups\": [], \"fix\": 0.0, \"reward\": 0.25}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 25.551230423999982,
+                "sandbox_run_duration": 50.043700085999944,
+                "sandbox_build_duration": 60.161338917999956,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 1.032004954999934,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 25.551233305999972
+            },
+            "attempts": 1
+        },
+        "gym-024": {
+            "task_id": "gym-024",
+            "rewards": {
+                "reward": 0.2083
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.2083
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-024\", \"faults\": [\"leak\", \"perm\"], \"acc\": 0.3, \"claimed_accuracy\": 0.9003, \"diag\": 0.5, \"faults_named\": {\"leak\": true, \"perm\": false}, \"false_alarm\": null, \"extra_groups\": [], \"fix\": null, \"reward\": 0.2083}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 22.364489680999895,
+                "sandbox_run_duration": 43.64696239199998,
+                "sandbox_build_duration": 23.499554409999973,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.5049549620000562,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 22.36449181599994
+            },
+            "attempts": 1
+        },
+        "gym-023": {
+            "task_id": "gym-023",
+            "rewards": {
+                "reward": 0.7621
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.7621
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-023\", \"faults\": [\"noise\"], \"acc\": 0.5987, \"claimed_accuracy\": 0.3523, \"diag\": 1.0, \"faults_named\": {\"noise\": true}, \"false_alarm\": null, \"extra_groups\": [], \"fix\": 1.0, \"reward\": 0.7621}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 24.627141074000065,
+                "sandbox_run_duration": 41.68105135499991,
+                "sandbox_build_duration": 21.56938069900002,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.3276608370000531,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 24.62714307400006
+            },
+            "attempts": 1
+        },
+        "gym-022": {
+            "task_id": "gym-022",
+            "rewards": {
+                "reward": 0.308
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.308
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-022\", \"faults\": [\"shift\"], \"acc\": 0.2143, \"claimed_accuracy\": 0.64, \"diag\": 1.0, \"faults_named\": {\"shift\": true}, \"false_alarm\": null, \"extra_groups\": [], \"fix\": 0.0, \"reward\": 0.308}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 23.097195903999932,
+                "sandbox_run_duration": 40.25564228500002,
+                "sandbox_build_duration": 29.31703204400003,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.3140061000000287,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 23.097197273000006
+            },
+            "attempts": 1
+        },
+        "gym-019": {
+            "task_id": "gym-019",
+            "rewards": {
+                "reward": 0.1667
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.1667
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-019\", \"faults\": [\"shift\", \"perm\"], \"acc\": 0.0556, \"claimed_accuracy\": 0.8333, \"diag\": 0.5, \"faults_named\": {\"shift\": true, \"perm\": false}, \"false_alarm\": null, \"extra_groups\": [], \"fix\": null, \"reward\": 0.1667}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 27.486401241999943,
+                "sandbox_run_duration": 53.018638403999944,
+                "sandbox_build_duration": 34.02513373299996,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 3.3049895330000254,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 27.48640330799992
+            },
+            "attempts": 1
+        },
+        "gym-020": {
+            "task_id": "gym-020",
+            "rewards": {
+                "reward": 0.832
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.832
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-020\", \"faults\": [], \"acc\": 0.6053, \"claimed_accuracy\": 0.5901, \"diag\": 1.0, \"faults_named\": null, \"false_alarm\": false, \"extra_groups\": [], \"fix\": null, \"reward\": 0.832}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 26.03400143099998,
+                "sandbox_run_duration": 43.832430826999996,
+                "sandbox_build_duration": 25.43840714999999,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.3204949639999768,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 26.034003249999955
+            },
+            "attempts": 1
+        },
+        "gym-011": {
+            "task_id": "gym-011",
+            "rewards": {
+                "reward": 0.96
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.96
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-011\", \"faults\": [], \"acc\": 0.9, \"claimed_accuracy\": 0.9, \"diag\": 1.0, \"faults_named\": null, \"false_alarm\": false, \"extra_groups\": [], \"fix\": null, \"reward\": 0.96}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 18.572704021999982,
+                "sandbox_run_duration": 35.874570001999984,
+                "sandbox_build_duration": 86.654776594,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.5767362079999998,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 18.572705671999984
+            },
+            "attempts": 1
+        },
+        "gym-018": {
+            "task_id": "gym-018",
+            "rewards": {
+                "reward": 0.8844
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.8844
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-018\", \"faults\": [], \"acc\": 0.7667, \"claimed_accuracy\": 0.8, \"diag\": 1.0, \"faults_named\": null, \"false_alarm\": false, \"extra_groups\": [], \"fix\": null, \"reward\": 0.8844}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 24.221115900999962,
+                "sandbox_run_duration": 50.37673434300001,
+                "sandbox_build_duration": 25.212117676000048,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.585172673000045,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 24.221117961999994
+            },
+            "attempts": 1
+        },
+        "gym-017": {
+            "task_id": "gym-017",
+            "rewards": {
+                "reward": 0.191
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.191
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-017\", \"faults\": [\"noise\", \"perm\"], \"acc\": 0.2266, \"claimed_accuracy\": 0.69, \"diag\": 0.5, \"faults_named\": {\"noise\": true, \"perm\": false}, \"false_alarm\": null, \"extra_groups\": [], \"fix\": null, \"reward\": 0.191}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 26.811031736000018,
+                "sandbox_run_duration": 48.548983494000026,
+                "sandbox_build_duration": 28.943931909000014,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.5489614859999961,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 26.811034221
+            },
+            "attempts": 1
+        },
+        "gym-015": {
+            "task_id": "gym-015",
+            "rewards": {
+                "reward": 0.0088
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0088
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-015\", \"faults\": [\"dead\"], \"acc\": 0.1654, \"claimed_accuracy\": 0.82, \"diag\": 0.0, \"faults_named\": {\"dead\": false}, \"false_alarm\": null, \"extra_groups\": [], \"fix\": null, \"reward\": 0.0088}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 47.49061523300003,
+                "sandbox_run_duration": 68.37696886399999,
+                "sandbox_build_duration": 26.36441760500003,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.514592639,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 47.490618152000025
+            },
+            "attempts": 1
+        },
+        "gym-016": {
+            "task_id": "gym-016",
+            "rewards": {
+                "reward": 0.25
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.25
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-016\", \"faults\": [\"shift\"], \"acc\": 0.1, \"claimed_accuracy\": 0.74, \"diag\": 1.0, \"faults_named\": {\"shift\": true}, \"false_alarm\": null, \"extra_groups\": [], \"fix\": 0.0, \"reward\": 0.25}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 30.210317333999967,
+                "sandbox_run_duration": 47.606151979,
+                "sandbox_build_duration": 30.19673525899998,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.3070461689999888,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 30.210319682999966
+            },
+            "attempts": 1
+        },
+        "gym-014": {
+            "task_id": "gym-014",
+            "rewards": {
+                "reward": 0.8059
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.8059
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-014\", \"faults\": [], \"acc\": 0.58, \"claimed_accuracy\": 0.5222, \"diag\": 1.0, \"faults_named\": null, \"false_alarm\": false, \"extra_groups\": [], \"fix\": null, \"reward\": 0.8059}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 23.462184021999974,
+                "sandbox_run_duration": 40.47881712099996,
+                "sandbox_build_duration": 27.254604028000017,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.29962581799998134,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 23.462185523000016
+            },
+            "attempts": 1
+        },
+        "gym-013": {
+            "task_id": "gym-013",
+            "rewards": {
+                "reward": 0.125
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.125
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-013\", \"faults\": [\"shift\", \"perm\"], \"acc\": 0.125, \"claimed_accuracy\": 0.6875, \"diag\": 0.5, \"faults_named\": {\"shift\": true, \"perm\": false}, \"false_alarm\": null, \"extra_groups\": [], \"fix\": 0.0, \"reward\": 0.125}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 19.813137343999983,
+                "sandbox_run_duration": 37.253781882,
+                "sandbox_build_duration": 29.76856810800001,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.566122689999986,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 19.81313905799999
+            },
+            "attempts": 1
+        },
+        "gym-012": {
+            "task_id": "gym-012",
+            "rewards": {
+                "reward": 0.1669
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.1669
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-012\", \"faults\": [\"shift\", \"dead\"], \"acc\": 0.1333, \"claimed_accuracy\": 0.562, \"diag\": 0.5, \"faults_named\": {\"shift\": true, \"dead\": false}, \"false_alarm\": null, \"extra_groups\": [], \"fix\": 0.0, \"reward\": 0.1669}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 22.62532610200003,
+                "sandbox_run_duration": 45.99084795800002,
+                "sandbox_build_duration": 21.688735132999966,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 3.616440993000026,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 22.62532877700005
+            },
+            "attempts": 1
+        },
+        "gym-009": {
+            "task_id": "gym-009",
+            "rewards": {
+                "reward": 0.3608
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.3608
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-009\", \"faults\": [\"leak\"], \"acc\": 0.6491, \"claimed_accuracy\": 0.8974, \"diag\": 0.0, \"faults_named\": {\"leak\": false}, \"false_alarm\": null, \"extra_groups\": [\"label\"], \"fix\": null, \"reward\": 0.3608}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 21.858901421999974,
+                "sandbox_run_duration": 45.081352630000026,
+                "sandbox_build_duration": 30.310381344999996,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.5662732220000066,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 21.858903021000003
+            },
+            "attempts": 1
+        },
+        "gym-010": {
+            "task_id": "gym-010",
+            "rewards": {
+                "reward": 0.8386
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.8386
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-010\", \"faults\": [], \"acc\": 0.6316, \"claimed_accuracy\": 0.6, \"diag\": 1.0, \"faults_named\": null, \"false_alarm\": false, \"extra_groups\": [], \"fix\": null, \"reward\": 0.8386}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 20.722743525999988,
+                "sandbox_run_duration": 40.15390795100001,
+                "sandbox_build_duration": 29.920573810999997,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.5629357110000228,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 20.722745464000013
+            },
+            "attempts": 1
+        },
+        "gym-003": {
+            "task_id": "gym-003",
+            "rewards": {
+                "reward": 0.8593
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.8593
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-003\", \"faults\": [\"noise\"], \"acc\": 0.733, \"claimed_accuracy\": 0.7, \"diag\": 1.0, \"faults_named\": {\"noise\": true}, \"false_alarm\": null, \"extra_groups\": [], \"fix\": null, \"reward\": 0.8593}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 27.62435628999998,
+                "sandbox_run_duration": 58.62430678499999,
+                "sandbox_build_duration": 39.158760357999995,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 4.294545798999991,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 27.624358705999953
+            },
+            "attempts": 1
+        },
+        "gym-006": {
+            "task_id": "gym-006",
+            "rewards": {
+                "reward": 0.2492
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.2492
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-006\", \"faults\": [\"leak\", \"dead\"], \"acc\": 0.435, \"claimed_accuracy\": 0.9519, \"diag\": 0.0, \"faults_named\": {\"leak\": false, \"dead\": false}, \"false_alarm\": null, \"extra_groups\": [], \"fix\": 0.75, \"reward\": 0.2492}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 23.03522712299997,
+                "sandbox_run_duration": 44.41070353700002,
+                "sandbox_build_duration": 43.799920224000005,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.5487954910000212,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 23.035229113000014
+            },
+            "attempts": 1
+        },
+        "gym-008": {
+            "task_id": "gym-008",
+            "rewards": {
+                "reward": 0.404
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.404
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-008\", \"faults\": [\"leak\"], \"acc\": 0.7216, \"claimed_accuracy\": 0.93, \"diag\": 0.0, \"faults_named\": {\"leak\": false}, \"false_alarm\": null, \"extra_groups\": [], \"fix\": null, \"reward\": 0.404}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 22.372074208999948,
+                "sandbox_run_duration": 45.506927765,
+                "sandbox_build_duration": 35.185165497000014,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 1.1406892289999746,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 22.372075861999974
+            },
+            "attempts": 1
+        },
+        "gym-005": {
+            "task_id": "gym-005",
+            "rewards": {
+                "reward": 0.125
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.125
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-005\", \"faults\": [\"leak\", \"shift\"], \"acc\": 0.05, \"claimed_accuracy\": 0.95, \"diag\": 0.5, \"faults_named\": {\"leak\": false, \"shift\": true}, \"false_alarm\": null, \"extra_groups\": [], \"fix\": 0.0, \"reward\": 0.125}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 22.213921451999965,
+                "sandbox_run_duration": 45.75999347700002,
+                "sandbox_build_duration": 29.873669704999998,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.5932830210000475,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 22.213923454999986
+            },
+            "attempts": 1
+        },
+        "gym-004": {
+            "task_id": "gym-004",
+            "rewards": {
+                "reward": 0.098
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.098
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-004\", \"faults\": [\"dead\"], \"acc\": 0.2273, \"claimed_accuracy\": 0.6167, \"diag\": 0.0, \"faults_named\": {\"dead\": false}, \"false_alarm\": null, \"extra_groups\": [], \"fix\": null, \"reward\": 0.098}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 21.11446942499998,
+                "sandbox_run_duration": 45.26286822099996,
+                "sandbox_build_duration": 29.190972191000014,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.5143162300000199,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 21.114471316999982
+            },
+            "attempts": 1
+        },
+        "gym-007": {
+            "task_id": "gym-007",
+            "rewards": {
+                "reward": 0.125
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.125
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-007\", \"faults\": [\"shift\", \"dead\"], \"acc\": 0.0, \"claimed_accuracy\": 0.8, \"diag\": 0.5, \"faults_named\": {\"shift\": true, \"dead\": false}, \"false_alarm\": null, \"extra_groups\": [], \"fix\": 0.0, \"reward\": 0.125}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 18.138350194999987,
+                "sandbox_run_duration": 35.376448407,
+                "sandbox_build_duration": 28.533304163000025,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.30766623100004153,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 18.138352728999962
+            },
+            "attempts": 1
+        },
+        "gym-002": {
+            "task_id": "gym-002",
+            "rewards": {
+                "reward": 0.7306
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.7306
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-002\", \"faults\": [\"noise\"], \"acc\": 0.66, \"claimed_accuracy\": 0.31, \"diag\": 1.0, \"faults_named\": {\"noise\": true}, \"false_alarm\": null, \"extra_groups\": [], \"fix\": 1.0, \"reward\": 0.7306}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 18.37503284600001,
+                "sandbox_run_duration": 36.23382098899998,
+                "sandbox_build_duration": 0.4999090229999865,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.5904435410000133,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 18.37503420400003
+            },
+            "attempts": 1
+        },
+        "gym-001": {
+            "task_id": "gym-001",
+            "rewards": {
+                "reward": 0.3522
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.3522
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-001\", \"faults\": [\"leak\"], \"acc\": 0.6541, \"claimed_accuracy\": 0.9241, \"diag\": 0.0, \"faults_named\": {\"leak\": false}, \"false_alarm\": null, \"extra_groups\": [], \"fix\": null, \"reward\": 0.3522}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 15.007904601999996,
+                "sandbox_run_duration": 32.942146165,
+                "sandbox_build_duration": 0.4069383540000331,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.5915762779999909,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 15.007905948999962
+            },
+            "attempts": 1
+        }
+    }
+}

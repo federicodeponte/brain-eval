@@ -19,6 +19,19 @@ Codex (gpt-5.3-codex), 3 passes x 24 tasks:
 
 Mean reward 0.79 on clean data, 0.39 on faulty data (scored with the fixed grader, `broken/regraded.md`: an earlier grader version counted the agent calling a documented label column "leakage" as naming the leak fault). A naive pipeline shows the same gaps (validation in `broken/STATE.md`): each fault inflates the in-sample estimate by 30-73 points while the hidden test stays honest.
 
+### Gym: endless environments, harder faults (`gym/`, Valkyrie `brain/broken-gym`)
+`gym/gen.py --seed N` builds a fresh environment from real recordings (random recording, units, split, faults and fault strength; same seed = same files). 5 validated fault types: leaked trials, shifted clock, dead channels, mislabelled trials, channels shuffled between train and test files; single or combined. Reward adds credit for actually fixing a fault (test accuracy back to the clean level). 45 environments so far: 15 clean, 15 single-fault, 15 combined.
+
+Codex (gpt-5.3-codex), 3 passes x 45 (`gym/full_results.md`):
+
+| Data | Claimed | Real | Reward |
+|---|---|---|---|
+| Clean | 67% | 65% | 0.76 |
+| One fault | 68% | 40% | 0.36 |
+| Two faults | 79% | 24% | 0.24 |
+
+It names the shifted clock 9/9 and still trains on the bad labels (fixed 0.11); leaked trials, dead channels and shuffled channels go unnamed in 26 of 27 runs.
+
 ## Reading tier: multiple choice, every question, same items for every solver
 Opus via claude -p; GPT-5 on Valkyrie (oneshot-mcq agent, Modal sandboxes).
 

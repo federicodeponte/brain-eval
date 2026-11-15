@@ -1,0 +1,2882 @@
+[
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-001",
+  "faults": [
+   "leak"
+  ],
+  "acc": 0.6316,
+  "claimed": 0.9011,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {
+   "leak": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.3437,
+  "reward_new": 0.3437,
+  "ref_acc": 0.7218,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "none"
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-002",
+  "faults": [
+   "noise"
+  ],
+  "acc": 0.44,
+  "claimed": 0.3333,
+  "fix": 0.1,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": {
+   "noise": true
+  },
+  "false_alarm": null,
+  "reward_old": 0.5661,
+  "reward_new": 0.5661,
+  "ref_acc": 0.7,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "label/movie_time_s mismatch: {}/{} train and {}/{} val trials disagree with class implied by movie_time_s"
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-003",
+  "faults": [
+   "noise"
+  ],
+  "acc": 0.7727,
+  "claimed": 1.0,
+  "fix": null,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": {
+   "noise": true
+  },
+  "false_alarm": null,
+  "reward_old": 0.7475,
+  "reward_new": 0.7475,
+  "ref_acc": 0.8693,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "stim_class is noisy/mislabeled versus category in labeled splits; category and stim_class disagree on multiple trials, so labels are inconsistent."
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-004",
+  "faults": [
+   "dead"
+  ],
+  "acc": 0.3333,
+  "claimed": 0.5892,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {
+   "dead": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.2294,
+  "reward_new": 0.2294,
+  "ref_acc": 0.5152,
+  "extract_ok": true,
+  "src": "out",
+  "data_issues": "none"
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-005",
+  "faults": [
+   "leak",
+   "shift"
+  ],
+  "acc": 0.0667,
+  "claimed": 0.9013,
+  "fix": 0.0,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {
+   "leak": false,
+   "shift": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.0,
+  "reward_new": 0.0,
+  "ref_acc": 0.6167,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "none"
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-006",
+  "faults": [
+   "leak",
+   "dead"
+  ],
+  "acc": 0.435,
+  "claimed": 0.9819,
+  "fix": 0.75,
+  "diag_old": 0.5,
+  "diag_new": 0.5,
+  "named": {
+   "leak": true,
+   "dead": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.3742,
+  "reward_new": 0.3742,
+  "ref_acc": 0.68,
+  "extract_ok": false,
+  "src": null,
+  "data_issues": ""
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-007",
+  "faults": [
+   "shift",
+   "dead"
+  ],
+  "acc": 0.05,
+  "claimed": 0.8,
+  "fix": 0.0,
+  "diag_old": 0.5,
+  "diag_new": 0.5,
+  "named": {
+   "shift": true,
+   "dead": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.125,
+  "reward_new": 0.125,
+  "ref_acc": 0.55,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "Label/stimulus-log inconsistency: y does not match movie_time_s-derived class (class should be int(movie_time_s-31)). Mismatches in train: {}/{}, val: {}/{}."
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-008",
+  "faults": [
+   "leak"
+  ],
+  "acc": 0.7216,
+  "claimed": 0.9731,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {
+   "leak": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.3753,
+  "reward_new": 0.3753,
+  "ref_acc": 0.6193,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "pseudo-population combines non-simultaneous neurons across sessions, so trial-by-trial correlations are not real and may bias apparent decoding performance; {} has {} label/category mismatches"
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-009",
+  "faults": [
+   "leak"
+  ],
+  "acc": 0.6579,
+  "claimed": 0.9186,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {
+   "leak": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.356,
+  "reward_new": 0.356,
+  "ref_acc": 0.6754,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "{}: {} label/orientation mismatches"
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-010",
+  "faults": [],
+  "acc": 0.625,
+  "claimed": 0.64,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 1.0,
+  "named": null,
+  "false_alarm": false,
+  "reward_old": 0.5138,
+  "reward_new": 0.8471,
+  "ref_acc": 0.6118,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "The labeled splits include both label and orientation_deg where label is exactly orientation_deg/45; this duplicates target information from the stimulus log and indicates potential label leakage metadata (though test lacks orientation_deg). Also, class semantics say direction while using orientation_deg naming, which is potentially confusing."
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-011",
+  "faults": [],
+  "acc": 0.9333,
+  "claimed": 0.9369,
+  "fix": null,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": null,
+  "false_alarm": false,
+  "reward_old": 0.971,
+  "reward_new": 0.971,
+  "ref_acc": 0.9,
+  "extract_ok": true,
+  "src": "out",
+  "data_issues": "none"
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-012",
+  "faults": [
+   "shift",
+   "dead"
+  ],
+  "acc": 0.1333,
+  "claimed": 0.5556,
+  "fix": 0.0,
+  "diag_old": 0.5,
+  "diag_new": 0.5,
+  "named": {
+   "shift": true,
+   "dead": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.1701,
+  "reward_new": 0.1701,
+  "ref_acc": 0.5778,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "label mapping is inconsistent with class definitions: labels are shifted by -2 modulo 9 relative to movie_time_s (e.g., 19s->7, 20s->8, 21s->0, ..., 27s->6) in both fit and holdout."
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-013",
+  "faults": [
+   "shift",
+   "perm"
+  ],
+  "acc": 0.125,
+  "claimed": 0.9,
+  "fix": 0.0,
+  "diag_old": 0.5,
+  "diag_new": 0.5,
+  "named": {
+   "shift": true,
+   "perm": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.125,
+  "reward_new": 0.125,
+  "ref_acc": 0.9167,
+  "extract_ok": true,
+  "src": "out",
+  "data_issues": "Label/log mismatch: in both labeled splits, movie_time_s maps to a different class index than y for every trial (e.g., expected class would be movie_time_s-100 if using class definitions). This indicates a systematic offset/permutation between y and movie_time_s/classes metadata."
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-014",
+  "faults": [],
+  "acc": 0.57,
+  "claimed": 0.4,
+  "fix": null,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": null,
+  "false_alarm": false,
+  "reward_old": 0.7274,
+  "reward_new": 0.7274,
+  "ref_acc": 0.53,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "image_id is stored as float64 rather than integer IDs; {}: non-integer image_id values present; {}: negative image_id present; {}: class {} maps to image_id {} expected {}"
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-015",
+  "faults": [
+   "dead"
+  ],
+  "acc": 0.1654,
+  "claimed": 0.83,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {
+   "dead": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.0088,
+  "reward_new": 0.0088,
+  "ref_acc": 0.8346,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "stimulus set omits 0/360 deg direction (only 45..315 by 45), so labels cover 7 classes rather than the full 8-direction set"
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-016",
+  "faults": [
+   "shift"
+  ],
+  "acc": 0.1,
+  "claimed": 0.7,
+  "fix": 0.0,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": {
+   "shift": true
+  },
+  "false_alarm": null,
+  "reward_old": 0.25,
+  "reward_new": 0.25,
+  "ref_acc": 0.7333,
+  "extract_ok": true,
+  "src": "out",
+  "data_issues": "movie_time_s is inconsistent with class labels in all labeled trials: expected y = movie_time_s - 3, but 90/90 labeled samples disagree. Specifically y appears remapped as y = 5 - (movie_time_s - 3)."
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-017",
+  "faults": [
+   "noise",
+   "perm"
+  ],
+  "acc": 0.2188,
+  "claimed": 0.73,
+  "fix": null,
+  "diag_old": 0.5,
+  "diag_new": 0.5,
+  "named": {
+   "noise": true,
+   "perm": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.1667,
+  "reward_new": 0.1667,
+  "ref_acc": 0.8281,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "stim_class and category are inconsistent/noisy in labeled data: category names do not map one-to-one to class indices (e.g., train has animals labeled as class 0 and cars/food/people appearing in multiple classes), indicating label noise or misalignment from pseudo-population construction."
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-018",
+  "faults": [],
+  "acc": 0.8,
+  "claimed": 0.8,
+  "fix": null,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": null,
+  "false_alarm": false,
+  "reward_old": 0.92,
+  "reward_new": 0.92,
+  "ref_acc": 0.7,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "none"
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-019",
+  "faults": [
+   "shift",
+   "perm"
+  ],
+  "acc": 0.1667,
+  "claimed": 0.89,
+  "fix": null,
+  "diag_old": 0.5,
+  "diag_new": 0.5,
+  "named": {
+   "shift": true,
+   "perm": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.1667,
+  "reward_new": 0.1667,
+  "ref_acc": 0.9444,
+  "extract_ok": true,
+  "src": "out",
+  "data_issues": "stim_class labels are systematically mismatched to movie_time_s in both fit and holdout: class appears to be remapped as {0->82s,1->83s,2->84s,3->85s,4->80s,5->81s} rather than the classes.json definition (0->80s,...,5->85s)."
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-020",
+  "faults": [],
+  "acc": 0.5877,
+  "claimed": 0.6,
+  "fix": null,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": null,
+  "false_alarm": false,
+  "reward_old": 0.8269,
+  "reward_new": 0.8269,
+  "ref_acc": 0.6228,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "none"
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-021",
+  "faults": [
+   "shift"
+  ],
+  "acc": 0.4833,
+  "claimed": 0.5667,
+  "fix": 1.0,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": {
+   "shift": true
+  },
+  "false_alarm": null,
+  "reward_old": 0.8148,
+  "reward_new": 0.8148,
+  "ref_acc": 0.45,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "stim_class labels are systematically incorrect: they do not match movie_time_s/class definition (appears circularly shifted by 8 bins). movie_time_s-derived labels are consistent."
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-022",
+  "faults": [
+   "shift"
+  ],
+  "acc": 0.2857,
+  "claimed": 0.71,
+  "fix": 0.0,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": {
+   "shift": true
+  },
+  "false_alarm": null,
+  "reward_old": 0.3295,
+  "reward_new": 0.3295,
+  "ref_acc": 0.6429,
+  "extract_ok": true,
+  "src": "out",
+  "data_issues": "movie_time_s does not match the class mapping in the prompt: y equals movie_time_s-49 (48s->class 6) instead of movie_time_s-48 for all labeled trials; i.e., labels are shifted by -1 modulo 7 relative to the stated class definitions."
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-023",
+  "faults": [
+   "noise"
+  ],
+  "acc": 0.6447,
+  "claimed": 0.5341,
+  "fix": 1.0,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": {
+   "noise": true
+  },
+  "false_alarm": null,
+  "reward_old": 0.8432,
+  "reward_new": 0.8432,
+  "ref_acc": 0.5526,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "y labels are inconsistent with orientation_deg in both labeled splits: exactly 25% of trials are mislabeled (fit: 78/312, holdout: 22/88), while orientation_deg maps cleanly to the 8 classes via class = orientation_deg/45."
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-024",
+  "faults": [
+   "leak",
+   "perm"
+  ],
+  "acc": 0.26,
+  "claimed": 0.8795,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {
+   "leak": false,
+   "perm": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.025,
+  "reward_new": 0.025,
+  "ref_acc": 0.56,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "none"
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-025",
+  "faults": [
+   "leak",
+   "noise"
+  ],
+  "acc": 0.7,
+  "claimed": 0.7778,
+  "fix": 0.5665,
+  "diag_old": 0.5,
+  "diag_new": 0.5,
+  "named": {
+   "leak": false,
+   "noise": true
+  },
+  "false_alarm": null,
+  "reward_old": 0.6377,
+  "reward_new": 0.6377,
+  "ref_acc": 0.8667,
+  "extract_ok": true,
+  "src": "out",
+  "data_issues": "label mismatch: y disagrees with movie_time_s in 27/119 train and 5/18 val trials"
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-026",
+  "faults": [],
+  "acc": 0.4815,
+  "claimed": 0.46,
+  "fix": null,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": null,
+  "false_alarm": false,
+  "reward_old": 0.7912,
+  "reward_new": 0.7912,
+  "ref_acc": 0.5185,
+  "extract_ok": true,
+  "src": "out",
+  "data_issues": "none"
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-027",
+  "faults": [],
+  "acc": 0.575,
+  "claimed": 0.63,
+  "fix": null,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": null,
+  "false_alarm": false,
+  "reward_old": 0.8014,
+  "reward_new": 0.8014,
+  "ref_acc": 0.6,
+  "extract_ok": true,
+  "src": "out",
+  "data_issues": "image_id stored as float64 despite representing discrete IDs; otherwise none"
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-028",
+  "faults": [
+   "noise",
+   "dead"
+  ],
+  "acc": 0.315,
+  "claimed": 0.544,
+  "fix": null,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": {
+   "noise": true,
+   "dead": true
+  },
+  "false_alarm": null,
+  "reward_old": 0.5429,
+  "reward_new": 0.5429,
+  "ref_acc": 0.525,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "pseudo-population combines sessions; neurons not recorded simultaneously and trial rows are synthetic across sessions; inconsistent label/category mapping; test firing-rate distribution shift (mean spikes/bin train+val={}, test={})"
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-029",
+  "faults": [
+   "leak",
+   "shift"
+  ],
+  "acc": 0.0,
+  "claimed": 0.941,
+  "fix": 0.0,
+  "diag_old": 0.5,
+  "diag_new": 0.5,
+  "named": {
+   "leak": false,
+   "shift": true
+  },
+  "false_alarm": null,
+  "reward_old": 0.125,
+  "reward_new": 0.125,
+  "ref_acc": 0.8,
+  "extract_ok": true,
+  "src": "out",
+  "data_issues": "stim_class is inconsistent with movie_time_s in labeled splits: class definitions map 0->38s..9->47s, but observed examples show 47s labeled class 0 and 38s labeled class 1; all 118 train and all 10 val trials mismatch the documented mapping (likely wrong label mapping or misaligned stimulus log)."
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-030",
+  "faults": [
+   "perm"
+  ],
+  "acc": 0.2714,
+  "claimed": 0.6,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {
+   "perm": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.1643,
+  "reward_new": 0.1643,
+  "ref_acc": 0.5429,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "none"
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-031",
+  "faults": [],
+  "acc": 0.7206,
+  "claimed": 0.9048,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 1.0,
+  "named": null,
+  "false_alarm": false,
+  "reward_old": 0.4197,
+  "reward_new": 0.753,
+  "ref_acc": 0.7647,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "Pseudo-population construction mixes trials across 14 sessions (not simultaneous recordings), so neuron-neuron correlations are artificial/absent; train/val include 'category' (string label) that is directly derived from y and must not be used as a feature; very small sample size (81 train, 21 val) makes accuracy estimates high-variance."
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-032",
+  "faults": [],
+  "acc": 0.7683,
+  "claimed": 0.9,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 1.0,
+  "named": null,
+  "false_alarm": false,
+  "reward_old": 0.4759,
+  "reward_new": 0.8092,
+  "ref_acc": 0.75,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "Pseudo-population construction mixes neurons across different sessions/patients so each trial is synthetic (not simultaneously recorded); this can inflate apparent decodability and violates single-trial population assumptions."
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-033",
+  "faults": [],
+  "acc": 0.4444,
+  "claimed": 0.3796,
+  "fix": null,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": null,
+  "false_alarm": false,
+  "reward_old": 0.7485,
+  "reward_new": 0.7485,
+  "ref_acc": 0.4815,
+  "extract_ok": true,
+  "src": "out",
+  "data_issues": "very small labeled dataset (63 trials total; only 1 validation trial per class), so accuracy estimates are high-variance"
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-034",
+  "faults": [
+   "leak",
+   "dead"
+  ],
+  "acc": 0.6,
+  "claimed": 0.9828,
+  "fix": 0.8165,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {
+   "leak": false,
+   "dead": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.3794,
+  "reward_new": 0.3794,
+  "ref_acc": 0.925,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "none"
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-035",
+  "faults": [],
+  "acc": 0.8214,
+  "claimed": 0.84,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": null,
+  "false_alarm": true,
+  "reward_old": 0.5749,
+  "reward_new": 0.5749,
+  "ref_acc": 0.7143,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "pseudo-population assembled across 16 sessions (neurons not simultaneously recorded), very small labeled set (80 fit + 18 holdout), and eval spike-count range differs from fit/holdout (eval max 23 vs fit max 44), indicating distribution shift"
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-036",
+  "faults": [
+   "perm"
+  ],
+  "acc": 0.3692,
+  "claimed": 0.7784,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {
+   "perm": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.1311,
+  "reward_new": 0.1311,
+  "ref_acc": 0.7385,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "none"
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-037",
+  "faults": [],
+  "acc": 0.5185,
+  "claimed": 0.4308,
+  "fix": null,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": null,
+  "false_alarm": false,
+  "reward_old": 0.761,
+  "reward_new": 0.761,
+  "ref_acc": 0.5185,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "none"
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-038",
+  "faults": [
+   "perm"
+  ],
+  "acc": 0.1571,
+  "claimed": 0.52,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {
+   "perm": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.0914,
+  "reward_new": 0.0914,
+  "ref_acc": 0.5,
+  "extract_ok": true,
+  "src": "out",
+  "data_issues": "none"
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-039",
+  "faults": [],
+  "acc": 0.6228,
+  "claimed": 0.7095,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": null,
+  "false_alarm": true,
+  "reward_old": 0.458,
+  "reward_new": 0.458,
+  "ref_acc": 0.6228,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "orientation_deg in labeled splits is deterministically mapped from class labels (label leakage metadata), and is absent in test; stimulus field is named orientation_deg though classes are direction labels; naming/metadata inconsistency can cause confusion"
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-040",
+  "faults": [],
+  "acc": 0.8063,
+  "claimed": 0.77,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 1.0,
+  "named": null,
+  "false_alarm": false,
+  "reward_old": 0.5564,
+  "reward_new": 0.8897,
+  "ref_acc": 0.75,
+  "extract_ok": true,
+  "src": "cmd",
+  "data_issues": "Pseudo-population design mixes neurons across 20 sessions (not simultaneously recorded), so trial-wise correlations are artificial; also dataset is very small (84 labeled trials total), making accuracy estimates high-variance."
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-041",
+  "faults": [
+   "noise",
+   "dead"
+  ],
+  "acc": 0.2237,
+  "claimed": 0.4867,
+  "fix": 1.0,
+  "diag_old": 0.5,
+  "diag_new": 0.5,
+  "named": {
+   "noise": true,
+   "dead": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.5217,
+  "reward_new": 0.5217,
+  "ref_acc": 0.4934,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "stim_class labels are inconsistent/corrupted: within each stim_class, orientation_deg spans multiple directions, and the expected one-to-one mapping between class and direction is broken in both train and val. orientation_deg appears to be the reliable label source."
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-042",
+  "faults": [
+   "noise",
+   "perm"
+  ],
+  "acc": 0.1481,
+  "claimed": 0.4822,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {
+   "noise": false,
+   "perm": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.1245,
+  "reward_new": 0.1245,
+  "ref_acc": 0.8519,
+  "extract_ok": true,
+  "src": "out",
+  "data_issues": "none"
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-043",
+  "faults": [
+   "leak",
+   "perm"
+  ],
+  "acc": 0.1296,
+  "claimed": 0.96,
+  "fix": 0.0,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {
+   "leak": false,
+   "perm": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.0052,
+  "reward_new": 0.0052,
+  "ref_acc": 0.9444,
+  "extract_ok": true,
+  "src": "out",
+  "data_issues": "none"
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-044",
+  "faults": [],
+  "acc": 0.8313,
+  "claimed": 0.82,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 1.0,
+  "named": null,
+  "false_alarm": false,
+  "reward_old": 0.5842,
+  "reward_new": 0.9175,
+  "ref_acc": 0.775,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "Pseudo-population construction mixes neurons across different sessions/patients, so each trial is synthetic rather than simultaneously recorded; this can introduce distribution mismatch and inflated/unstable decoding estimates. Also, sample size is small (82 train + 20 val) for 31 features, so accuracy variance is high."
+ },
+ {
+  "run": "62113495-e574-46ce-b40f-8b04fcf9f51a",
+  "task": "gym-045",
+  "faults": [
+   "dead"
+  ],
+  "acc": 0.25,
+  "claimed": 0.65,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {
+   "dead": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.1143,
+  "reward_new": 0.1143,
+  "ref_acc": 0.6667,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "none"
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-001",
+  "faults": [
+   "leak"
+  ],
+  "acc": 0.6541,
+  "claimed": 0.9241,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {
+   "leak": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.3522,
+  "reward_new": 0.3522,
+  "ref_acc": 0.7218,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "class {} maps to orientation_deg {} in labeled data but classes.json says {} deg"
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-002",
+  "faults": [
+   "noise"
+  ],
+  "acc": 0.66,
+  "claimed": 0.31,
+  "fix": 1.0,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": {
+   "noise": true
+  },
+  "false_alarm": null,
+  "reward_old": 0.7306,
+  "reward_new": 0.7306,
+  "ref_acc": 0.7,
+  "extract_ok": true,
+  "src": "out",
+  "data_issues": "label/movie_time_s inconsistency: many labeled trials have label != round((movie_time_s-10.0)/0.5) (36/120 train, 8/30 val). Also val spikes max is 8 while train/test max is 9."
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-003",
+  "faults": [
+   "noise"
+  ],
+  "acc": 0.733,
+  "claimed": 0.7,
+  "fix": null,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": {
+   "noise": true
+  },
+  "false_alarm": null,
+  "reward_old": 0.8593,
+  "reward_new": 0.8593,
+  "ref_acc": 0.8693,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "stim_class/category mismatch in labeled splits: several trials have category inconsistent with class mapping (train 5/73 mismatches; val 6/17 mismatches), suggesting label noise or log misalignment"
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-004",
+  "faults": [
+   "dead"
+  ],
+  "acc": 0.2273,
+  "claimed": 0.6167,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {
+   "dead": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.098,
+  "reward_new": 0.098,
+  "ref_acc": 0.5152,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "none"
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-005",
+  "faults": [
+   "leak",
+   "shift"
+  ],
+  "acc": 0.05,
+  "claimed": 0.95,
+  "fix": 0.0,
+  "diag_old": 0.5,
+  "diag_new": 0.5,
+  "named": {
+   "leak": false,
+   "shift": true
+  },
+  "false_alarm": null,
+  "reward_old": 0.125,
+  "reward_new": 0.125,
+  "ref_acc": 0.6167,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "stim_class is inconsistent with movie_time_s in all labeled trials (228/228 mismatched). The class mapping appears permuted relative to movie time (likely relabeling/permutation bug from stimulus-log derivation)."
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-006",
+  "faults": [
+   "leak",
+   "dead"
+  ],
+  "acc": 0.435,
+  "claimed": 0.9519,
+  "fix": 0.75,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {
+   "leak": false,
+   "dead": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.2492,
+  "reward_new": 0.2492,
+  "ref_acc": 0.68,
+  "extract_ok": false,
+  "src": null,
+  "data_issues": ""
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-007",
+  "faults": [
+   "shift",
+   "dead"
+  ],
+  "acc": 0.0,
+  "claimed": 0.8,
+  "fix": 0.0,
+  "diag_old": 0.5,
+  "diag_new": 0.5,
+  "named": {
+   "shift": true,
+   "dead": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.125,
+  "reward_new": 0.125,
+  "ref_acc": 0.55,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "Label/stimulus-log mismatch: in both train and val, y is consistently shifted by -1 class relative to movie_time_s (equivalently y = (movie_time_s - 31 - 1) mod 10, so class 0 corresponds to 32 s and class 9 to 31 s)."
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-008",
+  "faults": [
+   "leak"
+  ],
+  "acc": 0.7216,
+  "claimed": 0.93,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {
+   "leak": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.404,
+  "reward_new": 0.404,
+  "ref_acc": 0.6193,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "Pseudo-population across 19 sessions (neurons not simultaneously recorded), very small validation split (14 trials), and test split has no category/stimulus log field; these increase uncertainty and can cause distribution mismatch."
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-009",
+  "faults": [
+   "leak"
+  ],
+  "acc": 0.6491,
+  "claimed": 0.8974,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {
+   "leak": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.3608,
+  "reward_new": 0.3608,
+  "ref_acc": 0.6754,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "orientation_deg is mislabeled as orientation: values are directions (0,45,90,135,225,315) with no 180/270 and not true orientation modulo 180; also class set is asymmetric/missing directions (e.g., 180,270)."
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-010",
+  "faults": [],
+  "acc": 0.6316,
+  "claimed": 0.6,
+  "fix": null,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": null,
+  "false_alarm": false,
+  "reward_old": 0.8386,
+  "reward_new": 0.8386,
+  "ref_acc": 0.6118,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "none"
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-011",
+  "faults": [],
+  "acc": 0.9,
+  "claimed": 0.9,
+  "fix": null,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": null,
+  "false_alarm": false,
+  "reward_old": 0.96,
+  "reward_new": 0.96,
+  "ref_acc": 0.9,
+  "extract_ok": true,
+  "src": "out",
+  "data_issues": "none"
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-012",
+  "faults": [
+   "shift",
+   "dead"
+  ],
+  "acc": 0.1333,
+  "claimed": 0.562,
+  "fix": 0.0,
+  "diag_old": 0.5,
+  "diag_new": 0.5,
+  "named": {
+   "shift": true,
+   "dead": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.1669,
+  "reward_new": 0.1669,
+  "ref_acc": 0.5778,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "label field is systematically misindexed: class labels do not match movie_time_s; correct mapping is class = movie_time_s - 19, but provided labels are shifted by -2 (mod 9)."
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-013",
+  "faults": [
+   "shift",
+   "perm"
+  ],
+  "acc": 0.125,
+  "claimed": 0.6875,
+  "fix": 0.0,
+  "diag_old": 0.5,
+  "diag_new": 0.5,
+  "named": {
+   "shift": true,
+   "perm": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.125,
+  "reward_new": 0.125,
+  "ref_acc": 0.9167,
+  "extract_ok": true,
+  "src": "out",
+  "data_issues": "y labels are systematically inconsistent with movie_time_s in all labeled trials (train 40/40 and val 16/16 mismatched to expected y=movie_time_s-100); indicates a global label permutation / mis-encoding."
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-014",
+  "faults": [],
+  "acc": 0.58,
+  "claimed": 0.5222,
+  "fix": null,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": null,
+  "false_alarm": false,
+  "reward_old": 0.8059,
+  "reward_new": 0.8059,
+  "ref_acc": 0.53,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "none"
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-015",
+  "faults": [
+   "dead"
+  ],
+  "acc": 0.1654,
+  "claimed": 0.82,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {
+   "dead": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.0088,
+  "reward_new": 0.0088,
+  "ref_acc": 0.8346,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "none"
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-016",
+  "faults": [
+   "shift"
+  ],
+  "acc": 0.1,
+  "claimed": 0.74,
+  "fix": 0.0,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": {
+   "shift": true
+  },
+  "false_alarm": null,
+  "reward_old": 0.25,
+  "reward_new": 0.25,
+  "ref_acc": 0.7333,
+  "extract_ok": true,
+  "src": "out",
+  "data_issues": "y labels are inconsistent with movie_time_s in all labeled trials (expected y = movie_time_s - 3, but every trial mismatches); likely one of these fields is wrong or shuffled."
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-017",
+  "faults": [
+   "noise",
+   "perm"
+  ],
+  "acc": 0.2266,
+  "claimed": 0.69,
+  "fix": null,
+  "diag_old": 0.5,
+  "diag_new": 0.5,
+  "named": {
+   "noise": true,
+   "perm": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.191,
+  "reward_new": 0.191,
+  "ref_acc": 0.8281,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "stim_class and category are inconsistent in labeled data (19 mismatches total: 17 in train, 2 in val), indicating label/log mapping errors."
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-018",
+  "faults": [],
+  "acc": 0.7667,
+  "claimed": 0.8,
+  "fix": null,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": null,
+  "false_alarm": false,
+  "reward_old": 0.8844,
+  "reward_new": 0.8844,
+  "ref_acc": 0.7,
+  "extract_ok": true,
+  "src": "out",
+  "data_issues": "none"
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-019",
+  "faults": [
+   "shift",
+   "perm"
+  ],
+  "acc": 0.0556,
+  "claimed": 0.8333,
+  "fix": null,
+  "diag_old": 0.5,
+  "diag_new": 0.5,
+  "named": {
+   "shift": true,
+   "perm": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.1667,
+  "reward_new": 0.1667,
+  "ref_acc": 0.9444,
+  "extract_ok": true,
+  "src": "out",
+  "data_issues": "very small labeled dataset (30 fit + 12 holdout) for 6-way decoding, so accuracy estimate has high variance; stim_class and movie_time_s mapping inconsistency in labeled data"
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-020",
+  "faults": [],
+  "acc": 0.6053,
+  "claimed": 0.5901,
+  "fix": null,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": null,
+  "false_alarm": false,
+  "reward_old": 0.832,
+  "reward_new": 0.832,
+  "ref_acc": 0.6228,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "none"
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-021",
+  "faults": [
+   "shift"
+  ],
+  "acc": 0.05,
+  "claimed": 0.56,
+  "fix": 0.0,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": {
+   "shift": true
+  },
+  "false_alarm": null,
+  "reward_old": 0.25,
+  "reward_new": 0.25,
+  "ref_acc": 0.45,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "stim_class and movie_time_s are inconsistent/misaligned in labeled splits (movie_time_s is not equal to 16 + stim_class; classes appear shifted/permuted relative to logged movie times)."
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-022",
+  "faults": [
+   "shift"
+  ],
+  "acc": 0.2143,
+  "claimed": 0.64,
+  "fix": 0.0,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": {
+   "shift": true
+  },
+  "false_alarm": null,
+  "reward_old": 0.308,
+  "reward_new": 0.308,
+  "ref_acc": 0.6429,
+  "extract_ok": true,
+  "src": "out",
+  "data_issues": "movie_time_s is inconsistent with y in labeled splits (labels are not equal to movie_time_s-48, indicating stimulus-log/label mismatch or shuffled metadata)."
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-023",
+  "faults": [
+   "noise"
+  ],
+  "acc": 0.5987,
+  "claimed": 0.3523,
+  "fix": 1.0,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": {
+   "noise": true
+  },
+  "false_alarm": null,
+  "reward_old": 0.7621,
+  "reward_new": 0.7621,
+  "ref_acc": 0.5526,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "Label corruption/misalignment: y is often inconsistent with orientation_deg. In both labeled splits only 75% of trials satisfy y == orientation_deg/45, and each orientation maps to multiple class labels."
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-024",
+  "faults": [
+   "leak",
+   "perm"
+  ],
+  "acc": 0.3,
+  "claimed": 0.9003,
+  "fix": null,
+  "diag_old": 0.5,
+  "diag_new": 0.5,
+  "named": {
+   "leak": true,
+   "perm": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.2083,
+  "reward_new": 0.2083,
+  "ref_acc": 0.56,
+  "extract_ok": false,
+  "src": null,
+  "data_issues": ""
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-025",
+  "faults": [
+   "leak",
+   "noise"
+  ],
+  "acc": 0.6667,
+  "claimed": 0.7958,
+  "fix": 0.3998,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {
+   "leak": false,
+   "noise": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.4354,
+  "reward_new": 0.4354,
+  "ref_acc": 0.8667,
+  "extract_ok": true,
+  "src": "out",
+  "data_issues": "train movie_time_s does not match y mapping; val movie_time_s does not match y mapping"
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-026",
+  "faults": [],
+  "acc": 0.2593,
+  "claimed": 0.6667,
+  "fix": null,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": null,
+  "false_alarm": false,
+  "reward_old": 0.4506,
+  "reward_new": 0.4506,
+  "ref_acc": 0.5185,
+  "extract_ok": true,
+  "src": "out",
+  "data_issues": "none"
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-027",
+  "faults": [],
+  "acc": 0.575,
+  "claimed": 0.6654,
+  "fix": null,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": null,
+  "false_alarm": false,
+  "reward_old": 0.7778,
+  "reward_new": 0.7778,
+  "ref_acc": 0.6,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "image_id is float64 instead of integer-coded image IDs; also image_id perfectly maps to stim_class in labeled splits, which is a potential label-leak field if used as a feature."
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-028",
+  "faults": [
+   "noise",
+   "dead"
+  ],
+  "acc": 0.38,
+  "claimed": 0.53,
+  "fix": null,
+  "diag_old": 0.5,
+  "diag_new": 0.5,
+  "named": {
+   "noise": true,
+   "dead": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.4578,
+  "reward_new": 0.4578,
+  "ref_acc": 0.525,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "label/category mismatch in labeled data: 14/64 train and 4/15 val trials have label inconsistent with category/class mapping (fruit=0,kids=1,military=2,space=3)"
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-029",
+  "faults": [
+   "leak",
+   "shift"
+  ],
+  "acc": 0.0,
+  "claimed": 0.9,
+  "fix": 0.0,
+  "diag_old": 0.5,
+  "diag_new": 0.5,
+  "named": {
+   "leak": false,
+   "shift": true
+  },
+  "false_alarm": null,
+  "reward_old": 0.125,
+  "reward_new": 0.125,
+  "ref_acc": 0.8,
+  "extract_ok": true,
+  "src": "out",
+  "data_issues": "stim_class is inconsistent with movie_time_s in all labeled trials: expected stim_class = movie_time_s - 38, but none match (likely an indexing/offset or shuffled-label issue)."
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-030",
+  "faults": [
+   "perm"
+  ],
+  "acc": 0.2714,
+  "claimed": 0.55,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {
+   "perm": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.1976,
+  "reward_new": 0.1976,
+  "ref_acc": 0.5429,
+  "extract_ok": true,
+  "src": "out",
+  "data_issues": "none"
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-031",
+  "faults": [],
+  "acc": 0.7206,
+  "claimed": 0.82,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 1.0,
+  "named": null,
+  "false_alarm": false,
+  "reward_old": 0.4762,
+  "reward_new": 0.8095,
+  "ref_acc": 0.7647,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "Label leakage risk: in labeled splits, category is in one-to-one correspondence with y (y derived from category). category should not be used as a model feature. Also, pseudo-population trials combine responses across different sessions, so per-trial samples are synthetic rather than simultaneously recorded."
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-032",
+  "faults": [],
+  "acc": 0.8476,
+  "claimed": 0.89,
+  "fix": null,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": null,
+  "false_alarm": false,
+  "reward_old": 0.904,
+  "reward_new": 0.904,
+  "ref_acc": 0.75,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "Pseudo-population construction breaks trialwise neural correlations across simultaneously recorded neurons and may inflate/alter decodability; dataset is also very small (82 train + 20 holdout) for 26 features."
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-033",
+  "faults": [],
+  "acc": 0.5185,
+  "claimed": 0.43,
+  "fix": null,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": null,
+  "false_alarm": false,
+  "reward_old": 0.7604,
+  "reward_new": 0.7604,
+  "ref_acc": 0.4815,
+  "extract_ok": true,
+  "src": "out",
+  "data_issues": "none"
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-034",
+  "faults": [
+   "leak",
+   "dead"
+  ],
+  "acc": 0.6,
+  "claimed": 0.96,
+  "fix": 0.8165,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {
+   "leak": false,
+   "dead": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.3908,
+  "reward_new": 0.3908,
+  "ref_acc": 0.925,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "The `category` field is inconsistent with `label`: it stores class names (food/people/spatial layouts/animals) rather than numeric class indices; in both train and val, `category` never equals `label` elementwise."
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-035",
+  "faults": [],
+  "acc": 0.6964,
+  "claimed": 0.7957,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": null,
+  "false_alarm": true,
+  "reward_old": 0.4656,
+  "reward_new": 0.4656,
+  "ref_acc": 0.7143,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "Pseudo-population construction mixes neurons recorded in different sessions/patients into synthetic trials, so trial-wise correlations are not physiological and session confounds can leak into decoding. Also, labeled data are very small (98 trials total), making accuracy estimates high-variance."
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-036",
+  "faults": [
+   "perm"
+  ],
+  "acc": 0.5538,
+  "claimed": 0.77,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {
+   "perm": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.3367,
+  "reward_new": 0.3367,
+  "ref_acc": 0.7385,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "Potential data issue: image_id is float64 instead of integer-coded IDs; otherwise no labeling inconsistencies detected (stim_class <-> image_id mapping is bijective, and classes are perfectly balanced in train/val)."
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-037",
+  "faults": [],
+  "acc": 0.5741,
+  "claimed": 0.4074,
+  "fix": null,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": null,
+  "false_alarm": false,
+  "reward_old": 0.7292,
+  "reward_new": 0.7292,
+  "ref_acc": 0.5185,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "none"
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-038",
+  "faults": [
+   "perm"
+  ],
+  "acc": 0.2,
+  "claimed": 0.2,
+  "fix": null,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": {
+   "perm": true
+  },
+  "false_alarm": null,
+  "reward_old": 0.6667,
+  "reward_new": 0.6667,
+  "ref_acc": 0.5,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "test split appears distribution-shifted/corrupted relative to train/val (feature statistics and class-like structure differ strongly), making labels effectively non-decodable from provided training distribution"
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-039",
+  "faults": [],
+  "acc": 0.614,
+  "claimed": 0.6808,
+  "fix": null,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": null,
+  "false_alarm": false,
+  "reward_old": 0.8011,
+  "reward_new": 0.8011,
+  "ref_acc": 0.6228,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "orientation_deg field name is misleading: labels correspond to grating direction classes (includes opposite directions separately), not orientation-invariant categories."
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-040",
+  "faults": [],
+  "acc": 0.725,
+  "claimed": 0.79,
+  "fix": null,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": null,
+  "false_alarm": false,
+  "reward_old": 0.8344,
+  "reward_new": 0.8344,
+  "ref_acc": 0.75,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "none"
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-041",
+  "faults": [
+   "noise",
+   "dead"
+  ],
+  "acc": 0.1645,
+  "claimed": 0.288,
+  "fix": 0.8079,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": {
+   "noise": true,
+   "dead": true
+  },
+  "false_alarm": null,
+  "reward_old": 0.6515,
+  "reward_new": 0.6515,
+  "ref_acc": 0.4934,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "train/val/test count ranges differ (max spikes: train 34, val 22, test 18), indicating distribution shift; label/orientation mismatch: train={}, val={}; class imbalance across labeled splits; train/val/test count ranges differ (max spikes: train 34, val 22, test 18), indicating distribution shift; label/orientation mismatch: train={}, val={}; class imbalance across labeled splits; train/val/test count ranges differ (max spikes: train 34, val 22, test 18), indicating distribution shift; label/orientation mismatch: train={}, val={}; class imbalance across labeled splits; train/val/test count ran"
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-042",
+  "faults": [
+   "noise",
+   "perm"
+  ],
+  "acc": 0.1111,
+  "claimed": 0.7778,
+  "fix": null,
+  "diag_old": 0.5,
+  "diag_new": 0.5,
+  "named": {
+   "noise": true,
+   "perm": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.1667,
+  "reward_new": 0.1667,
+  "ref_acc": 0.8519,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "Label inconsistency: in train/val, y does not always match movie_time_s-derived class (expected class = int(movie_time_s - 104)); 13/45 train and 1/18 val trials mismatch. Likely stimulus-log alignment or label export issue."
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-043",
+  "faults": [
+   "leak",
+   "perm"
+  ],
+  "acc": 0.1296,
+  "claimed": 0.963,
+  "fix": 0.0,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {
+   "leak": false,
+   "perm": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.0052,
+  "reward_new": 0.0052,
+  "ref_acc": 0.9444,
+  "extract_ok": true,
+  "src": "out",
+  "data_issues": "validation split is very small and imbalanced (27 trials; one class has only 1 sample), so accuracy estimates are high-variance; stim_class is deterministically derived from movie_time_s in labeled splits (label leakage risk if movie_time_s were used as a feature)"
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-044",
+  "faults": [],
+  "acc": 0.9062,
+  "claimed": 0.87,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 1.0,
+  "named": null,
+  "false_alarm": false,
+  "reward_old": 0.6008,
+  "reward_new": 0.9341,
+  "ref_acc": 0.775,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "Pseudo-population construction mixes neurons across 14 sessions (non-simultaneous units), so trial-wise noise correlations are artificial/absent. Labeled splits are very small (82 train, 20 val), making accuracy estimates high-variance."
+ },
+ {
+  "run": "ab0a4055-774c-4a54-9130-6593853a3fb7",
+  "task": "gym-045",
+  "faults": [
+   "dead"
+  ],
+  "acc": 0.2292,
+  "claimed": 0.48,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {
+   "dead": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.2058,
+  "reward_new": 0.2058,
+  "ref_acc": 0.6667,
+  "extract_ok": true,
+  "src": "out",
+  "data_issues": "none"
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-001",
+  "faults": [
+   "leak"
+  ],
+  "acc": 0.6541,
+  "claimed": 0.88,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {
+   "leak": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.3816,
+  "reward_new": 0.3816,
+  "ref_acc": 0.7218,
+  "extract_ok": true,
+  "src": "cmd",
+  "data_issues": "Stimulus set is inconsistent with a full 8-direction protocol: 135 deg is missing while 180 deg is present; classes map consistently to orientation_deg otherwise."
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-002",
+  "faults": [
+   "noise"
+  ],
+  "acc": 0.68,
+  "claimed": 0.4333,
+  "fix": 1.0,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": {
+   "noise": true
+  },
+  "false_alarm": null,
+  "reward_old": 0.7878,
+  "reward_new": 0.7878,
+  "ref_acc": 0.7,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "label field is inconsistent with movie_time_s in train and val (36/120 and 8/30 mismatches); labels appear partially incorrect"
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-003",
+  "faults": [
+   "noise"
+  ],
+  "acc": 0.9091,
+  "claimed": 0.8222,
+  "fix": null,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": {
+   "noise": true
+  },
+  "false_alarm": null,
+  "reward_old": 0.9017,
+  "reward_new": 0.9017,
+  "ref_acc": 0.8693,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "stim_class labels are inconsistent/corrupted: they do not match category or classes.json in many labeled trials (~52% train, ~71% val). Using category as ground truth mapping."
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-004",
+  "faults": [
+   "dead"
+  ],
+  "acc": 0.2424,
+  "claimed": 0.6,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {
+   "dead": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.1253,
+  "reward_new": 0.1253,
+  "ref_acc": 0.5152,
+  "extract_ok": false,
+  "src": null,
+  "data_issues": ""
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-005",
+  "faults": [
+   "leak",
+   "shift"
+  ],
+  "acc": 0.05,
+  "claimed": 0.9,
+  "fix": 0.0,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {
+   "leak": false,
+   "shift": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.0,
+  "reward_new": 0.0,
+  "ref_acc": 0.6167,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "Validation split is strongly class-imbalanced (e.g., class 4 has 6 trials while classes 2, 3, and 5 have only 1 each), making holdout accuracy high-variance; train/val are also slightly unbalanced rather than exactly 20 repeats per class."
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-006",
+  "faults": [
+   "leak",
+   "dead"
+  ],
+  "acc": 0.435,
+  "claimed": 0.96,
+  "fix": 0.75,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {
+   "leak": false,
+   "dead": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.2492,
+  "reward_new": 0.2492,
+  "ref_acc": 0.68,
+  "extract_ok": false,
+  "src": null,
+  "data_issues": ""
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-007",
+  "faults": [
+   "shift",
+   "dead"
+  ],
+  "acc": 0.0,
+  "claimed": 0.75,
+  "fix": 0.0,
+  "diag_old": 0.5,
+  "diag_new": 0.5,
+  "named": {
+   "shift": true,
+   "dead": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.125,
+  "reward_new": 0.125,
+  "ref_acc": 0.55,
+  "extract_ok": true,
+  "src": "out",
+  "data_issues": "movie_time_s is inconsistent with y in all labeled trials: if class 0 corresponds to 31-32 s, expected mapping is y = movie_time_s - 31, but provided labels follow y = movie_time_s - 32 (e.g., movie_time_s=31.0 has y=9). This indicates an off-by-one-second/circular shift label mapping issue."
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-008",
+  "faults": [
+   "leak"
+  ],
+  "acc": 0.6591,
+  "claimed": 0.9772,
+  "fix": null,
+  "diag_old": 1.0,
+  "diag_new": 0.0,
+  "named": {
+   "leak": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.6364,
+  "reward_new": 0.3031,
+  "ref_acc": 0.6193,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "Only one 1000 ms time bin per trial, losing temporal structure; label duplicates category field on labeled splits (target leakage risk if category used as feature); Very small validation set (14 trials), high variance accuracy estimate"
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-009",
+  "faults": [
+   "leak"
+  ],
+  "acc": 0.5789,
+  "claimed": 0.8974,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {
+   "leak": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.2859,
+  "reward_new": 0.2859,
+  "ref_acc": 0.6754,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "Stimulus class set is inconsistent/incomplete: directions include 0,45,90,135,225,315 deg but omit 180 and 270 deg (and 225 is present instead of expected 180 in a contiguous 45-deg sweep). This class-definition mismatch is present in both labeled splits."
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-010",
+  "faults": [],
+  "acc": 0.625,
+  "claimed": 0.61,
+  "fix": null,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": null,
+  "false_alarm": false,
+  "reward_old": 0.8471,
+  "reward_new": 0.8471,
+  "ref_acc": 0.6118,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "none"
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-011",
+  "faults": [],
+  "acc": 0.9,
+  "claimed": 0.93,
+  "fix": null,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": null,
+  "false_alarm": false,
+  "reward_old": 0.94,
+  "reward_new": 0.94,
+  "ref_acc": 0.9,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "none"
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-012",
+  "faults": [
+   "shift",
+   "dead"
+  ],
+  "acc": 0.1333,
+  "claimed": 0.5648,
+  "fix": 0.0,
+  "diag_old": 0.5,
+  "diag_new": 0.5,
+  "named": {
+   "shift": true,
+   "dead": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.1655,
+  "reward_new": 0.1655,
+  "ref_acc": 0.5778,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "label/movie_time_s mismatch: by class definitions label should equal movie_time_s-19, but mismatches are fit {}/{} and holdout {}/{}. Instead labels exactly match movie_time_s-20 (fit {}/{}, holdout {}/{}), indicating a 1-second (off-by-one-class) shift in provided labels/metadata."
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-013",
+  "faults": [
+   "shift",
+   "perm"
+  ],
+  "acc": 0.2083,
+  "claimed": 0.84,
+  "fix": 0.0,
+  "diag_old": 0.5,
+  "diag_new": 0.5,
+  "named": {
+   "shift": true,
+   "perm": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.1488,
+  "reward_new": 0.1488,
+  "ref_acc": 0.9167,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "Label mismatch: in both train_labeled.npz and val_labeled.npz, y does not match movie_time_s-derived class (expected class = movie_time_s - 100). This indicates a systematic remapping/permutation or misalignment between y and the provided class descriptions."
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-014",
+  "faults": [],
+  "acc": 0.57,
+  "claimed": 0.5444,
+  "fix": null,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": null,
+  "false_alarm": false,
+  "reward_old": 0.8237,
+  "reward_new": 0.8237,
+  "ref_acc": 0.53,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "test split is missing the image_id stimulus-log field present in train/val, so label-to-image consistency cannot be directly verified on test; also image_id is stored as float64 instead of integer in labeled splits."
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-015",
+  "faults": [
+   "dead"
+  ],
+  "acc": 0.1654,
+  "claimed": 0.86,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {
+   "dead": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.0088,
+  "reward_new": 0.0088,
+  "ref_acc": 0.8346,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "none"
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-016",
+  "faults": [
+   "shift"
+  ],
+  "acc": 0.1,
+  "claimed": 0.8389,
+  "fix": 0.0,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": {
+   "shift": true
+  },
+  "false_alarm": null,
+  "reward_old": 0.25,
+  "reward_new": 0.25,
+  "ref_acc": 0.7333,
+  "extract_ok": false,
+  "src": null,
+  "data_issues": ""
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-017",
+  "faults": [
+   "noise",
+   "perm"
+  ],
+  "acc": 0.2578,
+  "claimed": 0.7619,
+  "fix": null,
+  "diag_old": 0.5,
+  "diag_new": 0.5,
+  "named": {
+   "noise": true,
+   "perm": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.1701,
+  "reward_new": 0.1701,
+  "ref_acc": 0.8281,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "stim_class labels are inconsistent with category/classes mapping in both train and val (many trials have category not matching the stated class); category appears to be the reliable label source."
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-018",
+  "faults": [],
+  "acc": 0.8,
+  "claimed": 0.83,
+  "fix": null,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": null,
+  "false_alarm": false,
+  "reward_old": 0.9,
+  "reward_new": 0.9,
+  "ref_acc": 0.7,
+  "extract_ok": true,
+  "src": "out",
+  "data_issues": "none"
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-019",
+  "faults": [
+   "shift",
+   "perm"
+  ],
+  "acc": 0.1667,
+  "claimed": 0.8667,
+  "fix": null,
+  "diag_old": 0.5,
+  "diag_new": 0.5,
+  "named": {
+   "shift": true,
+   "perm": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.1667,
+  "reward_new": 0.1667,
+  "ref_acc": 0.9444,
+  "extract_ok": true,
+  "src": "out",
+  "data_issues": "fit: 30 mismatched class-vs-time labels; holdout: 12 mismatched class-vs-time labels"
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-020",
+  "faults": [],
+  "acc": 0.6754,
+  "claimed": 0.5333,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 1.0,
+  "named": null,
+  "false_alarm": false,
+  "reward_old": 0.4421,
+  "reward_new": 0.7754,
+  "ref_acc": 0.6228,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "orientation_deg duplicates label information in labeled splits (perfect one-to-one mapping), which is target leakage if used as a feature; it is also absent in test, creating a train/test feature mismatch."
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-021",
+  "faults": [
+   "shift"
+  ],
+  "acc": 0.05,
+  "claimed": 0.5667,
+  "fix": 0.0,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": {
+   "shift": true
+  },
+  "false_alarm": null,
+  "reward_old": 0.25,
+  "reward_new": 0.25,
+  "ref_acc": 0.45,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "{}: {} stim_class/movie_time_s mismatches"
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-022",
+  "faults": [
+   "shift"
+  ],
+  "acc": 0.0714,
+  "claimed": 0.64,
+  "fix": 0.0,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": {
+   "shift": true
+  },
+  "false_alarm": null,
+  "reward_old": 0.25,
+  "reward_new": 0.25,
+  "ref_acc": 0.6429,
+  "extract_ok": true,
+  "src": "out",
+  "data_issues": "Class labels are offset from movie_time_s by 48 s but wrap modulo 7 (e.g., 48->0, 49->1, ..., 54->6, and 55->0), so y is not simply movie_time_s-48. Also, dataset is very small (56 labeled trials total), making accuracy estimates noisy."
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-023",
+  "faults": [
+   "noise"
+  ],
+  "acc": 0.6316,
+  "claimed": 0.5857,
+  "fix": 1.0,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": {
+   "noise": true
+  },
+  "false_alarm": null,
+  "reward_old": 0.8718,
+  "reward_new": 0.8718,
+  "ref_acc": 0.5526,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "Label corruption: y disagrees with orientation_deg-derived class (orientation_deg/45) in {}/{} fit trials and {}/{} holdout trials. orientation_deg appears to be the correct target mapping."
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-024",
+  "faults": [
+   "leak",
+   "perm"
+  ],
+  "acc": 0.26,
+  "claimed": 0.883,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {
+   "leak": false,
+   "perm": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.025,
+  "reward_new": 0.025,
+  "ref_acc": 0.56,
+  "extract_ok": true,
+  "src": "out",
+  "data_issues": "image_id is stored as float64 instead of integer IDs; otherwise none"
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-025",
+  "faults": [
+   "leak",
+   "noise"
+  ],
+  "acc": 0.8667,
+  "claimed": 0.82,
+  "fix": 1.0,
+  "diag_old": 0.5,
+  "diag_new": 0.5,
+  "named": {
+   "leak": false,
+   "noise": true
+  },
+  "false_alarm": null,
+  "reward_old": 0.8117,
+  "reward_new": 0.8117,
+  "ref_acc": 0.8667,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "Label errors: many y values do not match movie_time_s-derived class (train 27/119, val 5/18 mismatched)."
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-026",
+  "faults": [],
+  "acc": 0.3333,
+  "claimed": 0.6667,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": null,
+  "false_alarm": true,
+  "reward_old": 0.1944,
+  "reward_new": 0.1944,
+  "ref_acc": 0.5185,
+  "extract_ok": true,
+  "src": "out",
+  "data_issues": "test split has higher spike-count max than labeled splits (possible distribution shift)"
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-027",
+  "faults": [],
+  "acc": 0.6,
+  "claimed": 0.6,
+  "fix": null,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": null,
+  "false_alarm": false,
+  "reward_old": 0.8476,
+  "reward_new": 0.8476,
+  "ref_acc": 0.6,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "image_id is stored as float64 instead of integer in labeled splits; otherwise none"
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-028",
+  "faults": [
+   "noise",
+   "dead"
+  ],
+  "acc": 0.35,
+  "claimed": 0.73,
+  "fix": null,
+  "diag_old": 0.5,
+  "diag_new": 0.5,
+  "named": {
+   "noise": true,
+   "dead": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.2911,
+  "reward_new": 0.2911,
+  "ref_acc": 0.525,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "label and category are inconsistent in labeled splits (not all trials match the stated category-to-class mapping), indicating labeling noise/mismatch from pseudo-population construction."
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-029",
+  "faults": [
+   "leak",
+   "shift"
+  ],
+  "acc": 0.0,
+  "claimed": 0.95,
+  "fix": 0.0,
+  "diag_old": 0.5,
+  "diag_new": 0.5,
+  "named": {
+   "leak": false,
+   "shift": true
+  },
+  "false_alarm": null,
+  "reward_old": 0.125,
+  "reward_new": 0.125,
+  "ref_acc": 0.8,
+  "extract_ok": true,
+  "src": "out",
+  "data_issues": "movie_time_s is inconsistent with stim_class: for all labeled trials, stim_class does not equal movie_time_s-38 (labels appear to be a permutation of classes)."
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-030",
+  "faults": [
+   "perm"
+  ],
+  "acc": 0.1857,
+  "claimed": 0.64,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {
+   "perm": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.0471,
+  "reward_new": 0.0471,
+  "ref_acc": 0.5429,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "none"
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-031",
+  "faults": [],
+  "acc": 0.7279,
+  "claimed": 0.8646,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": null,
+  "false_alarm": true,
+  "reward_old": 0.4546,
+  "reward_new": 0.4546,
+  "ref_acc": 0.7647,
+  "extract_ok": false,
+  "src": null,
+  "data_issues": ""
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-032",
+  "faults": [],
+  "acc": 0.8841,
+  "claimed": 0.89,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 1.0,
+  "named": null,
+  "false_alarm": false,
+  "reward_old": 0.6113,
+  "reward_new": 0.9446,
+  "ref_acc": 0.75,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "Pseudo-population construction breaks true trial simultaneity across neurons by combining different sessions; this can inflate/alter apparent decodability relative to real population recordings. Also, category duplicates y in labeled splits (redundant label-derived field) and is absent in eval."
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-033",
+  "faults": [],
+  "acc": 0.5926,
+  "claimed": 0.3651,
+  "fix": null,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": null,
+  "false_alarm": false,
+  "reward_old": 0.6955,
+  "reward_new": 0.6955,
+  "ref_acc": 0.4815,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "Validation set is extremely small (9 trials, one per class), so holdout accuracy is high-variance; labels themselves are consistent with movie_time_s in train/val."
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-034",
+  "faults": [
+   "leak",
+   "dead"
+  ],
+  "acc": 0.6667,
+  "claimed": 0.97,
+  "fix": 1.0,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {
+   "leak": false,
+   "dead": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.4872,
+  "reward_new": 0.4872,
+  "ref_acc": 0.925,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "Trials are pseudo-population samples assembled across 17 sessions/patients, so neurons are not simultaneously recorded and i.i.d. assumptions are violated; test split has no category field (missing stimulus-log metadata) so label consistency cannot be checked there."
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-035",
+  "faults": [],
+  "acc": 0.6964,
+  "claimed": 0.82,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 1.0,
+  "named": null,
+  "false_alarm": false,
+  "reward_old": 0.4494,
+  "reward_new": 0.7827,
+  "ref_acc": 0.7143,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "Pseudo-population construction mixes neurons across different sessions/patients, so rows are synthetic and ignore true trial-by-trial correlations; additionally the dataset is very small (80 train + 18 holdout) and slightly class-imbalanced."
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-036",
+  "faults": [
+   "perm"
+  ],
+  "acc": 0.5385,
+  "claimed": 0.76,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {
+   "perm": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.3267,
+  "reward_new": 0.3267,
+  "ref_acc": 0.7385,
+  "extract_ok": true,
+  "src": "out",
+  "data_issues": "none"
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-037",
+  "faults": [],
+  "acc": 0.5741,
+  "claimed": 0.44,
+  "fix": null,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": null,
+  "false_alarm": false,
+  "reward_old": 0.7509,
+  "reward_new": 0.7509,
+  "ref_acc": 0.5185,
+  "extract_ok": true,
+  "src": "out",
+  "data_issues": "none"
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-038",
+  "faults": [
+   "perm"
+  ],
+  "acc": 0.1571,
+  "claimed": 0.5,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {
+   "perm": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.1048,
+  "reward_new": 0.1048,
+  "ref_acc": 0.5,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "image_id is stored as float64 instead of integer identifiers; otherwise none"
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-039",
+  "faults": [],
+  "acc": 0.614,
+  "claimed": 0.7,
+  "fix": null,
+  "diag_old": 1.0,
+  "diag_new": 1.0,
+  "named": null,
+  "false_alarm": false,
+  "reward_old": 0.7883,
+  "reward_new": 0.7883,
+  "ref_acc": 0.6228,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "none"
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-040",
+  "faults": [],
+  "acc": 0.7688,
+  "claimed": 0.81,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 1.0,
+  "named": null,
+  "false_alarm": false,
+  "reward_old": 0.5364,
+  "reward_new": 0.8697,
+  "ref_acc": 0.75,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "Pseudo-population trials combine different sessions (not simultaneously recorded neurons), so cross-neuron noise correlations are lost and sample independence can be violated; dataset is also very small (84 labeled trials), making accuracy estimates high-variance."
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-041",
+  "faults": [
+   "noise",
+   "dead"
+  ],
+  "acc": 0.2303,
+  "claimed": 0.483,
+  "fix": 1.0,
+  "diag_old": 0.5,
+  "diag_new": 0.5,
+  "named": {
+   "noise": true,
+   "dead": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.5287,
+  "reward_new": 0.5287,
+  "ref_acc": 0.4934,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "stim_class labels are inconsistent with orientation_deg in labeled splits (train mismatches: 76/272, val mismatches: 17/80). orientation_deg appears to be the reliable class source."
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-042",
+  "faults": [
+   "noise",
+   "perm"
+  ],
+  "acc": 0.1481,
+  "claimed": 0.5556,
+  "fix": null,
+  "diag_old": 0.5,
+  "diag_new": 0.5,
+  "named": {
+   "noise": true,
+   "perm": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.2423,
+  "reward_new": 0.2423,
+  "ref_acc": 0.8519,
+  "extract_ok": true,
+  "src": "out",
+  "data_issues": "train y/movie_time mismatch n=13; val y/movie_time mismatch n=1"
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-043",
+  "faults": [
+   "leak",
+   "perm"
+  ],
+  "acc": 0.1296,
+  "claimed": 0.98,
+  "fix": 0.0,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {
+   "leak": false,
+   "perm": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.0052,
+  "reward_new": 0.0052,
+  "ref_acc": 0.9444,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "none"
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-044",
+  "faults": [],
+  "acc": 0.0,
+  "claimed": 0.0,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {},
+  "false_alarm": false,
+  "reward_old": 0.0,
+  "reward_new": 0.0,
+  "ref_acc": 0.775,
+  "extract_ok": null,
+  "src": "invalid",
+  "data_issues": "FileNotFoundError: [Errno 2] No such file or directory: '/app/output/predictions.json'"
+ },
+ {
+  "run": "280607cb-37f1-4231-b2fa-94aba06238c7",
+  "task": "gym-045",
+  "faults": [
+   "dead"
+  ],
+  "acc": 0.25,
+  "claimed": 0.5911,
+  "fix": null,
+  "diag_old": 0.0,
+  "diag_new": 0.0,
+  "named": {
+   "dead": false
+  },
+  "false_alarm": null,
+  "reward_old": 0.1536,
+  "reward_new": 0.1536,
+  "ref_acc": 0.6667,
+  "extract_ok": true,
+  "src": "ast",
+  "data_issues": "none"
+ }
+]
