@@ -9,7 +9,7 @@ Frontier models get raw spike counts from real neurons plus a few labeled exampl
 |---|---|---|---|---|---|
 | Human neurons: car / food / person / animal photo | DANDI 000004, 40 amygdala/hippocampus neurons, epilepsy patients | 25% | 4/10 on the same items (65% over all 40) | 5/10 | 5/10 |
 | Mouse: which of 4 movie clips | Allen Neuropixels 732592105, 40 VISp units x 10 bins | 25% | 7-9/10 on the same items | 6/10 | 8/10 |
-| Mouse: which of 8 movie clips | same | 12.5% | 5-6/10 on the same items | 0/10 | 7/10 |
+| Mouse: which of 8 movie clips | same | 12.5% | 5-6/10 on the same items | not run | 7/10 |
 
 ## Controls (does the model learn from the examples?)
 In `hypotheses/controls/` and `mouse/valkyrie/dataset-*`:
