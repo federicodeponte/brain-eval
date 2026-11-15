@@ -1,0 +1,2956 @@
+{
+    "benchmark_id": "d08c341d-ca8b-45ed-913c-ef1d6dc72e16",
+    "benchmark_name": "brain",
+    "started_at": "2026-11-15T04:50:27.602531",
+    "finished_at": "2026-11-15T05:05:35.126595",
+    "status": "FINISHED",
+    "benchmark_arguments": {
+        "contract": {
+            "name": "oneshot-mcq",
+            "model": "openai/gpt-5",
+            "install_cmd": "",
+            "run_cmd": "python3 /bundle/oneshot-mcq/run.py \"{problem_statement_path}\" --model \"{model}\" --max-tokens \"{max_tokens}\" --temperature \"{temperature}\" --out /app/answer.txt",
+            "final_output": "/logs/agent",
+            "output_artifacts": [
+                {
+                    "path": "oneshot-mcq/response.json",
+                    "source": "/logs/agent/response.json",
+                    "required": false
+                }
+            ],
+            "egress_allowlist": [],
+            "allow_provider_tools": false,
+            "isolate_agent_uid": false,
+            "inference_settings_attested": true
+        },
+        "agent_attempts": [],
+        "concurrency": 10,
+        "dataset": "mouse",
+        "dataset_version": {
+            "id": "brain/mouse@1"
+        },
+        "sandbox_provider": "modal",
+        "sandbox_provider_secret_name": "valkyrie/tenants/3c0f03bb-4d7f-4592-8131-25d0b575a404/modal-credentials",
+        "environment": "aws",
+        "properties": {
+            "region": "us-east-1",
+            "s3_bucket": "valkyrie-629807611108-prod-f12840637e1d0318",
+            "log_group": "/valkyrie/benchmarks-prod/tenants/3c0f03bb-4d7f-4592-8131-25d0b575a404",
+            "log_retention_days": 365
+        }
+    },
+    "final_evaluation": {
+        "id": "27882bea-bf70-48cd-a891-cdbd477cefc8",
+        "org_id": "3c0f03bb-4d7f-4592-8131-25d0b575a404",
+        "benchmark": "d08c341d-ca8b-45ed-913c-ef1d6dc72e16",
+        "final_score": 65.55555555555556,
+        "properties": {
+            "total": 90,
+            "n_trials": 90,
+            "n_errors": 0,
+            "metrics": [
+                {
+                    "mean": 0.6555555555555556
+                }
+            ],
+            "reward_stats": {
+                "reward": {
+                    "1.0": [
+                        "k4-043",
+                        "k8-002",
+                        "k8-009",
+                        "k4-001",
+                        "k4-033",
+                        "k8-001",
+                        "k8-029",
+                        "k4-031",
+                        "k4-024",
+                        "k4-018",
+                        "k8-028",
+                        "k4-003",
+                        "k8-023",
+                        "k4-057",
+                        "k4-020",
+                        "k4-010",
+                        "k4-032",
+                        "k4-055",
+                        "k4-015",
+                        "k4-046",
+                        "k4-029",
+                        "k4-023",
+                        "k4-044",
+                        "k4-052",
+                        "k4-042",
+                        "k4-045",
+                        "k4-049",
+                        "k8-017",
+                        "k4-025",
+                        "k4-035",
+                        "k4-002",
+                        "k4-047",
+                        "k4-019",
+                        "k4-004",
+                        "k4-030",
+                        "k4-041",
+                        "k4-012",
+                        "k8-010",
+                        "k4-050",
+                        "k8-014",
+                        "k8-022",
+                        "k8-020",
+                        "k4-039",
+                        "k8-004",
+                        "k8-008",
+                        "k4-021",
+                        "k4-000",
+                        "k8-012",
+                        "k4-048",
+                        "k4-034",
+                        "k4-027",
+                        "k4-005",
+                        "k4-028",
+                        "k4-014",
+                        "k4-059",
+                        "k4-022",
+                        "k4-036",
+                        "k4-011",
+                        "k4-017"
+                    ],
+                    "0.0": [
+                        "k4-051",
+                        "k4-007",
+                        "k8-000",
+                        "k8-003",
+                        "k4-038",
+                        "k4-058",
+                        "k8-025",
+                        "k8-016",
+                        "k8-027",
+                        "k4-006",
+                        "k8-018",
+                        "k8-024",
+                        "k4-026",
+                        "k4-013",
+                        "k4-037",
+                        "k4-056",
+                        "k8-015",
+                        "k4-009",
+                        "k8-007",
+                        "k8-021",
+                        "k4-053",
+                        "k8-026",
+                        "k4-008",
+                        "k4-016",
+                        "k4-040",
+                        "k8-019",
+                        "k8-011",
+                        "k8-013",
+                        "k8-005",
+                        "k4-054",
+                        "k8-006"
+                    ]
+                }
+            },
+            "score_key": "mean",
+            "mean_reward": 0.6555555555555556
+        }
+    },
+    "average_task_breakdown": {
+        "sandbox_build_duration": 0.1790754438777766,
+        "agent_run_duration": 83.90081964113332,
+        "evaluation_run_duration": 0.8602414844000054,
+        "sandbox_run_duration": 92.5598975650111
+    },
+    "evaluation_results": {
+        "k8-026": {
+            "task_id": "k8-026",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=None expected=H correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.5653439610000532,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 102.67952690100014,
+                "sandbox_run_duration": 110.51181279100012,
+                "sandbox_build_duration": 0.1307226729999229,
+                "agent_run_duration": 102.67952472700006,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k8-024": {
+            "task_id": "k8-024",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=None expected=A correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.5669156300000395,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 111.11593543499998,
+                "sandbox_run_duration": 118.82585717000006,
+                "sandbox_build_duration": 0.23762475299997732,
+                "agent_run_duration": 111.115932456,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k8-027": {
+            "task_id": "k8-027",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=H expected=G correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.3660042199999225,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 83.18422809600008,
+                "sandbox_run_duration": 89.87559705800004,
+                "sandbox_build_duration": 0.12494709700001749,
+                "agent_run_duration": 83.18422572500003,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k8-023": {
+            "task_id": "k8-023",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=E expected=E correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.39383330800001204,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 87.73474892700006,
+                "sandbox_run_duration": 94.47058069799994,
+                "sandbox_build_duration": 0.20844048599997222,
+                "agent_run_duration": 87.73474634200011,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k8-028": {
+            "task_id": "k8-028",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=B expected=B correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.5564791250001235,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 40.48611319600002,
+                "sandbox_run_duration": 48.14847149900015,
+                "sandbox_build_duration": 0.13044680999996672,
+                "agent_run_duration": 40.48611020999999,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k8-029": {
+            "task_id": "k8-029",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=H expected=H correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 2.8822260450001522,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 20.14344397900004,
+                "sandbox_run_duration": 42.673242478000134,
+                "sandbox_build_duration": 0.19948071999999684,
+                "agent_run_duration": 20.143441016999986,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k8-021": {
+            "task_id": "k8-021",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=B expected=F correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.5575449689999914,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 84.15114308700004,
+                "sandbox_run_duration": 92.2235478020001,
+                "sandbox_build_duration": 0.13710758399997758,
+                "agent_run_duration": 84.15114041200002,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k8-022": {
+            "task_id": "k8-022",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=C expected=C correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.5887465870000597,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 63.74667115099999,
+                "sandbox_run_duration": 71.14655955300009,
+                "sandbox_build_duration": 0.19932647900009215,
+                "agent_run_duration": 63.746668968999984,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k8-016": {
+            "task_id": "k8-016",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=E expected=B correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.3241791220000323,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 96.73447789499994,
+                "sandbox_run_duration": 103.18766074100006,
+                "sandbox_build_duration": 0.16019119999998566,
+                "agent_run_duration": 96.73447603299996,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k8-025": {
+            "task_id": "k8-025",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=D expected=F correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.5757196089998615,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 35.520230601000094,
+                "sandbox_run_duration": 43.29505932400002,
+                "sandbox_build_duration": 0.14117346600005476,
+                "agent_run_duration": 35.52022767100004,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k8-020": {
+            "task_id": "k8-020",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=H expected=H correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.3297058299999662,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 58.062206997999965,
+                "sandbox_run_duration": 64.50712322799995,
+                "sandbox_build_duration": 0.11670447800008787,
+                "agent_run_duration": 58.06220456099993,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k8-011": {
+            "task_id": "k8-011",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=None expected=C correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.5915425150000146,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 126.39281985900004,
+                "sandbox_run_duration": 133.6675209849999,
+                "sandbox_build_duration": 0.13862450999999965,
+                "agent_run_duration": 126.39281690500002,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k8-019": {
+            "task_id": "k8-019",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=H expected=A correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.3910506129999476,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 50.544371686999966,
+                "sandbox_run_duration": 56.92350511099994,
+                "sandbox_build_duration": 0.3196879729999864,
+                "agent_run_duration": 50.54436888099997,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k8-018": {
+            "task_id": "k8-018",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=B expected=G correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 4.205390662000013,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 26.48694075700007,
+                "sandbox_run_duration": 43.340507103999926,
+                "sandbox_build_duration": 0.23688313899992863,
+                "agent_run_duration": 26.48693813200009,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k8-010": {
+            "task_id": "k8-010",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=D expected=D correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.6176015289998986,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 102.15387745099997,
+                "sandbox_run_duration": 109.63337414099999,
+                "sandbox_build_duration": 0.12449137500004781,
+                "agent_run_duration": 102.15387486599991,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k8-014": {
+            "task_id": "k8-014",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=A expected=A correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.5480479180000657,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 45.64650077800002,
+                "sandbox_run_duration": 53.489598624999985,
+                "sandbox_build_duration": 0.14521319899995433,
+                "agent_run_duration": 45.64649848900001,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k8-017": {
+            "task_id": "k8-017",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=E expected=E correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.5961808160000146,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 35.60463225800004,
+                "sandbox_run_duration": 42.67615915299996,
+                "sandbox_build_duration": 0.1415851220000377,
+                "agent_run_duration": 35.60463038699993,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k8-015": {
+            "task_id": "k8-015",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=C expected=A correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 1.1318386059999739,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 34.62222214699989,
+                "sandbox_run_duration": 44.39168541699996,
+                "sandbox_build_duration": 0.15991598499999782,
+                "agent_run_duration": 34.622219799999925,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k8-009": {
+            "task_id": "k8-009",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=C expected=C correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 3.02650450200008,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 96.549981602,
+                "sandbox_run_duration": 109.55739735299994,
+                "sandbox_build_duration": 0.18395935600005942,
+                "agent_run_duration": 96.54997874599997,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k8-007": {
+            "task_id": "k8-007",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=G expected=D correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.5887052179999728,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 104.50589861399999,
+                "sandbox_run_duration": 112.38816001600003,
+                "sandbox_build_duration": 0.1124284310000121,
+                "agent_run_duration": 104.50589579999996,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k8-004": {
+            "task_id": "k8-004",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=E expected=E correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.5828566169999476,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 112.20916383600002,
+                "sandbox_run_duration": 119.96672074399999,
+                "sandbox_build_duration": 0.15683725400003823,
+                "agent_run_duration": 112.20916085800002,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k8-013": {
+            "task_id": "k8-013",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=B expected=D correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.3883142649999627,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 45.55076226599999,
+                "sandbox_run_duration": 52.48240186999999,
+                "sandbox_build_duration": 0.14159889100005785,
+                "agent_run_duration": 45.55075971400004,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k8-012": {
+            "task_id": "k8-012",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=B expected=B correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 1.0595395440000175,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 32.06437827100001,
+                "sandbox_run_duration": 41.13834783499999,
+                "sandbox_build_duration": 0.22808646800001497,
+                "agent_run_duration": 32.06437512900004,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k8-005": {
+            "task_id": "k8-005",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=C expected=D correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 1.1778726430000006,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 87.684924518,
+                "sandbox_run_duration": 97.406046038,
+                "sandbox_build_duration": 0.14022927799999252,
+                "agent_run_duration": 87.68492214700007,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k8-006": {
+            "task_id": "k8-006",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=D expected=G correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.6500827410000056,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 81.34353021100003,
+                "sandbox_run_duration": 89.57789444499997,
+                "sandbox_build_duration": 0.1435364799999661,
+                "agent_run_duration": 81.3435275600001,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k8-002": {
+            "task_id": "k8-002",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=F expected=F correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 2.970801344999927,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 118.04433886799995,
+                "sandbox_run_duration": 130.7365861090001,
+                "sandbox_build_duration": 0.1843885699998964,
+                "agent_run_duration": 118.0443359389999,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-056": {
+            "task_id": "k4-056",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=None expected=C correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.5999468449999767,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 153.350066202,
+                "sandbox_run_duration": 160.35080571599997,
+                "sandbox_build_duration": 0.1262845159999415,
+                "agent_run_duration": 153.350063396,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k8-008": {
+            "task_id": "k8-008",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=B expected=B correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.604672126999958,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 40.87608548800006,
+                "sandbox_run_duration": 48.6172910009999,
+                "sandbox_build_duration": 0.1324617779999926,
+                "agent_run_duration": 40.87608327299995,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-054": {
+            "task_id": "k4-054",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=A expected=D correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 1.0614359659999764,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 154.23779710899998,
+                "sandbox_run_duration": 162.95593029100007,
+                "sandbox_build_duration": 0.16892405299995517,
+                "agent_run_duration": 154.237794516,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k8-003": {
+            "task_id": "k8-003",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=E expected=F correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.3590556890000016,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 73.32717097499994,
+                "sandbox_run_duration": 79.81271348799999,
+                "sandbox_build_duration": 0.1494731220000176,
+                "agent_run_duration": 73.32716853,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k8-001": {
+            "task_id": "k8-001",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=E expected=E correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.5594179779999422,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 53.09706427200001,
+                "sandbox_run_duration": 60.92220326000006,
+                "sandbox_build_duration": 0.14187939100008862,
+                "agent_run_duration": 53.097061392,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-059": {
+            "task_id": "k4-059",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=C expected=C correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.699897682000028,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 86.10233601100003,
+                "sandbox_run_duration": 94.81724226900008,
+                "sandbox_build_duration": 0.12639482499992027,
+                "agent_run_duration": 86.10233282699994,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k8-000": {
+            "task_id": "k8-000",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=F expected=C correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.7331834670000035,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 70.29929201799996,
+                "sandbox_run_duration": 77.53927787199996,
+                "sandbox_build_duration": 0.14108419800004413,
+                "agent_run_duration": 70.29928971300001,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-058": {
+            "task_id": "k4-058",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=B expected=A correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.6728459390000125,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 88.19826020000005,
+                "sandbox_run_duration": 95.99047365000001,
+                "sandbox_build_duration": 0.13381987199988998,
+                "agent_run_duration": 88.19825779600001,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-051": {
+            "task_id": "k4-051",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=B expected=A correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.3746646929999997,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 123.48601921600005,
+                "sandbox_run_duration": 129.99124916000005,
+                "sandbox_build_duration": 0.12316819800003032,
+                "agent_run_duration": 123.48601666400009,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-057": {
+            "task_id": "k4-057",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=D expected=D correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.5717832940000562,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 80.57797013899994,
+                "sandbox_run_duration": 89.28869088199997,
+                "sandbox_build_duration": 0.14945504900003925,
+                "agent_run_duration": 80.57796671799997,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-053": {
+            "task_id": "k4-053",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=A expected=B correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 2.69868374400005,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 74.17281313900003,
+                "sandbox_run_duration": 87.87874046499996,
+                "sandbox_build_duration": 0.17963213100006215,
+                "agent_run_duration": 74.17281092300004,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-052": {
+            "task_id": "k4-052",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=A expected=A correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.5861216130000457,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 82.569842559,
+                "sandbox_run_duration": 90.22825564999994,
+                "sandbox_build_duration": 0.14289535199998227,
+                "agent_run_duration": 82.56984000799991,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-055": {
+            "task_id": "k4-055",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=B expected=B correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.33254732200009585,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 55.71203045799996,
+                "sandbox_run_duration": 62.07192855999995,
+                "sandbox_build_duration": 0.1208236790000683,
+                "agent_run_duration": 55.712027725999974,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-050": {
+            "task_id": "k4-050",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=A expected=A correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 1.198864088999926,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 86.6080153910001,
+                "sandbox_run_duration": 95.69278646499993,
+                "sandbox_build_duration": 0.15069254900004125,
+                "agent_run_duration": 86.60801288800008,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-048": {
+            "task_id": "k4-048",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=D expected=D correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.58454942700007,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 90.680258858,
+                "sandbox_run_duration": 98.48350359999995,
+                "sandbox_build_duration": 0.1289013130000285,
+                "agent_run_duration": 90.68025709400001,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-046": {
+            "task_id": "k4-046",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=A expected=A correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.6053981190000286,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 89.83093008500009,
+                "sandbox_run_duration": 97.71843391099992,
+                "sandbox_build_duration": 0.16804158499996902,
+                "agent_run_duration": 89.83092776300009,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-040": {
+            "task_id": "k4-040",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=C expected=A correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.5387475160000577,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 124.91270055300004,
+                "sandbox_run_duration": 132.592182289,
+                "sandbox_build_duration": 0.13659582499997214,
+                "agent_run_duration": 124.91269823100004,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-047": {
+            "task_id": "k4-047",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=B expected=B correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.6010750820000794,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 80.12810386299998,
+                "sandbox_run_duration": 87.44913173399993,
+                "sandbox_build_duration": 0.1358202919999485,
+                "agent_run_duration": 80.12810176300002,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-049": {
+            "task_id": "k4-049",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=C expected=C correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.5772794079999812,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 56.833905923999964,
+                "sandbox_run_duration": 64.65235335400007,
+                "sandbox_build_duration": 0.11719711599994298,
+                "agent_run_duration": 56.833902903999956,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-045": {
+            "task_id": "k4-045",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=D expected=D correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.5486191249999592,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 78.47782178099999,
+                "sandbox_run_duration": 86.07427377499994,
+                "sandbox_build_duration": 0.15254733799997666,
+                "agent_run_duration": 78.47781872099995,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-038": {
+            "task_id": "k4-038",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=C expected=B correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 1.1461648920000016,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 130.770763741,
+                "sandbox_run_duration": 140.07897634999995,
+                "sandbox_build_duration": 0.14650237800003652,
+                "agent_run_duration": 130.77076099199996,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-043": {
+            "task_id": "k4-043",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=C expected=C correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.5735517710000977,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 79.705976341,
+                "sandbox_run_duration": 87.764706918,
+                "sandbox_build_duration": 0.1422764390000566,
+                "agent_run_duration": 79.70597400200006,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-042": {
+            "task_id": "k4-042",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=B expected=B correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.3222542959999828,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 80.38420055100005,
+                "sandbox_run_duration": 86.783534841,
+                "sandbox_build_duration": 0.14621460399996522,
+                "agent_run_duration": 80.38419783500001,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-041": {
+            "task_id": "k4-041",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=A expected=A correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.32445834300006027,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 49.46851492399992,
+                "sandbox_run_duration": 55.81431754099992,
+                "sandbox_build_duration": 0.1328372529999342,
+                "agent_run_duration": 49.46851260199992,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-033": {
+            "task_id": "k4-033",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=D expected=D correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.5491671770000721,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 126.38563799799999,
+                "sandbox_run_duration": 133.9235220390001,
+                "sandbox_build_duration": 0.12259125399998538,
+                "agent_run_duration": 126.38563543800001,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-035": {
+            "task_id": "k4-035",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=A expected=A correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.340825437000035,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 90.151389644,
+                "sandbox_run_duration": 96.52892574499992,
+                "sandbox_build_duration": 0.15613964600004238,
+                "agent_run_duration": 90.15138728099998,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-044": {
+            "task_id": "k4-044",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=C expected=C correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.6315220400000499,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 17.390728786999944,
+                "sandbox_run_duration": 25.55511071500007,
+                "sandbox_build_duration": 0.15452732500000366,
+                "agent_run_duration": 17.390726309,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-034": {
+            "task_id": "k4-034",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=D expected=D correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.605303532999983,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 111.57233680900003,
+                "sandbox_run_duration": 119.15956519399992,
+                "sandbox_build_duration": 0.13413843699993322,
+                "agent_run_duration": 111.57233386400003,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-037": {
+            "task_id": "k4-037",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=B expected=D correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.5923946750000368,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 70.1690611869999,
+                "sandbox_run_duration": 77.372618063,
+                "sandbox_build_duration": 0.1448753829999987,
+                "agent_run_duration": 70.16905857799998,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-039": {
+            "task_id": "k4-039",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=C expected=C correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 1.2218973679999863,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 38.334862034000025,
+                "sandbox_run_duration": 48.05598841599999,
+                "sandbox_build_duration": 0.143669994999982,
+                "agent_run_duration": 38.33485912100002,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-026": {
+            "task_id": "k4-026",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=None expected=C correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.5593184960000599,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 163.03250271799993,
+                "sandbox_run_duration": 171.08595415500002,
+                "sandbox_build_duration": 0.128091821000055,
+                "agent_run_duration": 163.03249996899996,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-036": {
+            "task_id": "k4-036",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=D expected=D correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 1.1294236549999823,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 55.212762268000006,
+                "sandbox_run_duration": 64.050708569,
+                "sandbox_build_duration": 0.15268376099993475,
+                "agent_run_duration": 55.21275928099999,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-032": {
+            "task_id": "k4-032",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=A expected=A correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.5441681899999367,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 104.61304153799995,
+                "sandbox_run_duration": 112.21562192900001,
+                "sandbox_build_duration": 0.13565368100000796,
+                "agent_run_duration": 104.61303858399992,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-029": {
+            "task_id": "k4-029",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=D expected=D correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.33502964100000554,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 85.13664386099998,
+                "sandbox_run_duration": 115.54902121399999,
+                "sandbox_build_duration": 0.13468845400001328,
+                "agent_run_duration": 85.13664134199996,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-031": {
+            "task_id": "k4-031",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=C expected=C correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 1.1143561359999694,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 68.14113333599994,
+                "sandbox_run_duration": 77.08840486500003,
+                "sandbox_build_duration": 0.1513285369999835,
+                "agent_run_duration": 68.14113033299998,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-028": {
+            "task_id": "k4-028",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=B expected=B correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.5863464469999826,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 70.76514784599999,
+                "sandbox_run_duration": 77.845206061,
+                "sandbox_build_duration": 0.1486248080000223,
+                "agent_run_duration": 70.76514492500002,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-030": {
+            "task_id": "k4-030",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=C expected=C correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.5464236710000705,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 55.28430158300006,
+                "sandbox_run_duration": 63.28307419899994,
+                "sandbox_build_duration": 0.12962851400004638,
+                "agent_run_duration": 55.284298498000055,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-027": {
+            "task_id": "k4-027",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=D expected=D correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 4.235951104000037,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 51.321441483,
+                "sandbox_run_duration": 68.439958268,
+                "sandbox_build_duration": 0.22504048700000112,
+                "agent_run_duration": 51.321438505,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-025": {
+            "task_id": "k4-025",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=A expected=A correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.34136683099995935,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 98.99235448299999,
+                "sandbox_run_duration": 105.493205789,
+                "sandbox_build_duration": 0.11984168299994735,
+                "agent_run_duration": 98.99235241599996,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-024": {
+            "task_id": "k4-024",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=C expected=C correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.5880498070000613,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 75.5411929,
+                "sandbox_run_duration": 83.28627523199998,
+                "sandbox_build_duration": 0.1434072050000168,
+                "agent_run_duration": 75.54119055299998,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-019": {
+            "task_id": "k4-019",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=B expected=B correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.6192773719999423,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 101.19978208999999,
+                "sandbox_run_duration": 108.250623706,
+                "sandbox_build_duration": 0.1278813359999731,
+                "agent_run_duration": 101.19977931699998,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-023": {
+            "task_id": "k4-023",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=C expected=C correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.5708934470000031,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 46.261507584000015,
+                "sandbox_run_duration": 54.79428707300002,
+                "sandbox_build_duration": 0.13628655799999478,
+                "agent_run_duration": 46.261505081999985,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-013": {
+            "task_id": "k4-013",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=None expected=B correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.5582896020000021,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 183.257633489,
+                "sandbox_run_duration": 190.79231751700001,
+                "sandbox_build_duration": 0.12746032799998375,
+                "agent_run_duration": 183.25763056,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-021": {
+            "task_id": "k4-021",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=C expected=C correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.6261854919999905,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 63.91760233000002,
+                "sandbox_run_duration": 71.89144045799998,
+                "sandbox_build_duration": 0.15964060400000335,
+                "agent_run_duration": 63.91759972099999,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-020": {
+            "task_id": "k4-020",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=C expected=C correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 2.994373414999984,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 61.025866433999965,
+                "sandbox_run_duration": 73.67922539599999,
+                "sandbox_build_duration": 0.19055334899996978,
+                "agent_run_duration": 61.025863464,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-016": {
+            "task_id": "k4-016",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=D expected=B correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.5940084719999845,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 143.37064024400001,
+                "sandbox_run_duration": 151.055395347,
+                "sandbox_build_duration": 0.13327934100004768,
+                "agent_run_duration": 143.370637306,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-022": {
+            "task_id": "k4-022",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=B expected=B correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.5853936689999841,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 54.300448969,
+                "sandbox_run_duration": 61.92376510399998,
+                "sandbox_build_duration": 0.126668957999982,
+                "agent_run_duration": 54.300447048999956,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-015": {
+            "task_id": "k4-015",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=B expected=B correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.5596219050000286,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 106.512221743,
+                "sandbox_run_duration": 114.19464827000002,
+                "sandbox_build_duration": 0.13327806099999862,
+                "agent_run_duration": 106.51221897800002,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-017": {
+            "task_id": "k4-017",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=B expected=B correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.5672376289999761,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 87.10216355699998,
+                "sandbox_run_duration": 94.80497025899996,
+                "sandbox_build_duration": 0.13223455600001444,
+                "agent_run_duration": 87.102160406,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-008": {
+            "task_id": "k4-008",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=C expected=D correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.6437700239999913,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 205.575949618,
+                "sandbox_run_duration": 213.277665031,
+                "sandbox_build_duration": 0.40436637700000233,
+                "agent_run_duration": 205.575947788,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-010": {
+            "task_id": "k4-010",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=B expected=B correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.6773570969999696,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 157.060283701,
+                "sandbox_run_duration": 164.879327617,
+                "sandbox_build_duration": 0.1289256580000142,
+                "agent_run_duration": 157.06028114100002,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-011": {
+            "task_id": "k4-011",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=D expected=D correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 1.0617317349999666,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 120.083309756,
+                "sandbox_run_duration": 129.19202657799997,
+                "sandbox_build_duration": 0.17775254100001803,
+                "agent_run_duration": 120.08330652299998,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-012": {
+            "task_id": "k4-012",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=B expected=B correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.6152873039999918,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 112.14722212999999,
+                "sandbox_run_duration": 119.76576902099998,
+                "sandbox_build_duration": 0.13386822600000414,
+                "agent_run_duration": 112.14721947099997,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-018": {
+            "task_id": "k4-018",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=A expected=A correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.8481674760000146,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 55.897502649000046,
+                "sandbox_run_duration": 63.99975508699998,
+                "sandbox_build_duration": 0.2517332689999989,
+                "agent_run_duration": 55.89749973600004,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-009": {
+            "task_id": "k4-009",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=None expected=D correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.3422665520000123,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 177.03471876300003,
+                "sandbox_run_duration": 184.02902157999998,
+                "sandbox_build_duration": 0.4307796939999946,
+                "agent_run_duration": 177.03471663000002,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-000": {
+            "task_id": "k4-000",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=A expected=A correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.570957648999979,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 114.65948344699999,
+                "sandbox_run_duration": 122.62224660999999,
+                "sandbox_build_duration": 0.3430622050000238,
+                "agent_run_duration": 114.65948102699997,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-014": {
+            "task_id": "k4-014",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=C expected=C correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.5636455140000294,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 24.28889475799997,
+                "sandbox_run_duration": 32.81329132899998,
+                "sandbox_build_duration": 0.1362731090000011,
+                "agent_run_duration": 24.288892189999956,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-006": {
+            "task_id": "k4-006",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=B expected=A correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 1.114999422999972,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 100.15498346799998,
+                "sandbox_run_duration": 109.21981690800001,
+                "sandbox_build_duration": 0.4613405069999885,
+                "agent_run_duration": 100.15498157299999,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-007": {
+            "task_id": "k4-007",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=B expected=D correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.5878611530000057,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 95.02895906799998,
+                "sandbox_run_duration": 102.84426588000002,
+                "sandbox_build_duration": 0.3965526759999989,
+                "agent_run_duration": 95.028956919,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-002": {
+            "task_id": "k4-002",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=B expected=B correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 1.1117622109999843,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 77.12909521200001,
+                "sandbox_run_duration": 86.263733747,
+                "sandbox_build_duration": 0.3900384499999916,
+                "agent_run_duration": 77.12909321800001,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-004": {
+            "task_id": "k4-004",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=A expected=A correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 2.850281972999994,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 61.298452836000024,
+                "sandbox_run_duration": 73.83382948999997,
+                "sandbox_build_duration": 0.4021384109999815,
+                "agent_run_duration": 61.298450629,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-003": {
+            "task_id": "k4-003",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=A expected=A correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.6037860139999793,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 61.91586647600002,
+                "sandbox_run_duration": 69.07172255500001,
+                "sandbox_build_duration": 0.38645305599999347,
+                "agent_run_duration": 61.91586386700004,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-001": {
+            "task_id": "k4-001",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=D expected=D correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.5767375830000105,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 53.179307952000016,
+                "sandbox_run_duration": 60.85734504499999,
+                "sandbox_build_duration": 0.3665360539999938,
+                "agent_run_duration": 53.17930622899999,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        },
+        "k4-005": {
+            "task_id": "k4-005",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=C expected=C correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "evaluation_run_duration": 0.5480503100000078,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 39.85655638399999,
+                "sandbox_run_duration": 47.59071046,
+                "sandbox_build_duration": 0.3772010010000031,
+                "agent_run_duration": 39.856554128,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null
+            },
+            "attempts": 1
+        }
+    }
+}

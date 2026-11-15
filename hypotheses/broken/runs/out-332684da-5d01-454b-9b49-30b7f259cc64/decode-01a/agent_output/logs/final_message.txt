@@ -1,0 +1,12 @@
+Done — I trained a decoder, generated test predictions, estimated accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+What I found:
+
+- Best validation model was `ExtraTreesClassifier` on flattened `20x10` spike counts.
+- Validation accuracy peaked at `0.9333` on the 30-trial val split (likely optimistic due to small size), with other strong models around `0.87–0.90`.
+- I set `claimed_accuracy` to `0.82` as a conservative estimate for hidden test performance.
+- Data issue detected: in both labeled splits, `y == int(movie_time_s)` for every sample (labels are deterministically derived from stimulus-log time), which is a potential leakage-prone field present only in train/val and missing in test.
+
+If you want, I can also provide a small reproducible training script in `/app/output/` for auditability.
