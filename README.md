@@ -34,5 +34,9 @@ Raw recordings are not included (download scripts in each folder). Data licenses
 - **Shot-curve (mouse K=4):** 0 examples: answered "A" every time (chance; 5/10 only because 5 of those 10 answers were A). 1 example: 7/10.
 
 ## Data credits
+- Chandravadia N. et al. (2020) A NWB-based dataset and processing pipeline of human single-neuron activity during a declarative memory task. *Scientific Data* 7:78. DANDI 000004, CC-BY-4.0. Patients with drug-resistant epilepsy implanted with depth electrodes for seizure localization.
 - Faraut M.C.M. et al. (2018) Dataset of human medial temporal lobe single neuron activity during declarative memory encoding and recognition. *Scientific Data* 5:180010. DANDI 000004, CC-BY-4.0.
 - Siegle J.H. et al. (2021) Survey of spiking in the mouse visual system reveals functional hierarchy. *Nature* 592:86-92. Allen Brain Observatory Neuropixels, Allen Institute terms of use.
+
+## Prior work check (Nov 14 2026)
+No published work found that gives a frontier LLM raw single-neuron spike counts + labeled examples in-context (no tools, no training) and scores it against a decoder. Nearest: LLM agents that write analysis code or call trained decoders (NS-Copilot EMNLP 2026, SpikeAgent 2025, SpikeLab 2026, DANDI LLM-notebook tools 2025, Neurodata Without Boredom 2026); trained brain encoders feeding LLMs (BrainLLM, Neurrator, Thought2Text).
