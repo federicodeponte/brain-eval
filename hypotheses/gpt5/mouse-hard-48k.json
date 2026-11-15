@@ -1,0 +1,1036 @@
+{
+    "benchmark_id": "40099ebb-63a4-4cf6-b1bc-6c4912993175",
+    "benchmark_name": "brain",
+    "started_at": "2026-11-15T05:18:44.718640",
+    "finished_at": "2026-11-15T05:31:25.401786",
+    "status": "FINISHED",
+    "benchmark_arguments": {
+        "contract": {
+            "name": "oneshot-mcq",
+            "model": "openai/gpt-5",
+            "install_cmd": "",
+            "run_cmd": "python3 /bundle/oneshot-mcq/run.py \"{problem_statement_path}\" --model \"{model}\" --max-tokens \"{max_tokens}\" --temperature \"{temperature}\" --out /app/answer.txt",
+            "final_output": "/logs/agent",
+            "output_artifacts": [
+                {
+                    "path": "oneshot-mcq/response.json",
+                    "source": "/logs/agent/response.json",
+                    "required": false
+                }
+            ],
+            "egress_allowlist": [],
+            "allow_provider_tools": false,
+            "isolate_agent_uid": false,
+            "inference_settings_attested": true
+        },
+        "agent_attempts": [],
+        "concurrency": 10,
+        "dataset": "mouse-hard",
+        "dataset_version": {
+            "id": "brain/mouse-hard@1"
+        },
+        "sandbox_provider": "modal",
+        "sandbox_provider_secret_name": "valkyrie/tenants/3c0f03bb-4d7f-4592-8131-25d0b575a404/modal-credentials",
+        "environment": "aws",
+        "properties": {
+            "region": "us-east-1",
+            "s3_bucket": "valkyrie-629807611108-prod-f12840637e1d0318",
+            "log_group": "/valkyrie/benchmarks-prod/tenants/3c0f03bb-4d7f-4592-8131-25d0b575a404",
+            "log_retention_days": 365
+        }
+    },
+    "final_evaluation": {
+        "id": "1b18069c-b4f2-4e87-b5f7-603de1eede10",
+        "org_id": "3c0f03bb-4d7f-4592-8131-25d0b575a404",
+        "benchmark": "40099ebb-63a4-4cf6-b1bc-6c4912993175",
+        "final_score": 56.666666666666664,
+        "properties": {
+            "total": 30,
+            "n_trials": 30,
+            "n_errors": 0,
+            "metrics": [
+                {
+                    "mean": 0.5666666666666667
+                }
+            ],
+            "reward_stats": {
+                "reward": {
+                    "1.0": [
+                        "mouse-hard-k8-015",
+                        "mouse-hard-k8-005",
+                        "mouse-hard-k8-007",
+                        "mouse-hard-k8-012",
+                        "mouse-hard-k8-004",
+                        "mouse-hard-k8-028",
+                        "mouse-hard-k8-008",
+                        "mouse-hard-k8-027",
+                        "mouse-hard-k8-019",
+                        "mouse-hard-k8-014",
+                        "mouse-hard-k8-003",
+                        "mouse-hard-k8-024",
+                        "mouse-hard-k8-020",
+                        "mouse-hard-k8-021",
+                        "mouse-hard-k8-018",
+                        "mouse-hard-k8-026",
+                        "mouse-hard-k8-006"
+                    ],
+                    "0.0": [
+                        "mouse-hard-k8-001",
+                        "mouse-hard-k8-002",
+                        "mouse-hard-k8-022",
+                        "mouse-hard-k8-017",
+                        "mouse-hard-k8-025",
+                        "mouse-hard-k8-029",
+                        "mouse-hard-k8-013",
+                        "mouse-hard-k8-009",
+                        "mouse-hard-k8-023",
+                        "mouse-hard-k8-011",
+                        "mouse-hard-k8-000",
+                        "mouse-hard-k8-010",
+                        "mouse-hard-k8-016"
+                    ]
+                }
+            },
+            "score_key": "mean",
+            "mean_reward": 0.5666666666666667
+        }
+    },
+    "average_task_breakdown": {
+        "sandbox_build_duration": 0.22368301676666721,
+        "agent_run_duration": 200.41842450953334,
+        "evaluation_run_duration": 0.9159416135666689,
+        "sandbox_run_duration": 209.09000293006667
+    },
+    "evaluation_results": {
+        "mouse-hard-k8-029": {
+            "task_id": "mouse-hard-k8-029",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=C expected=E correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 184.56782703299996,
+                "sandbox_run_duration": 191.744572038,
+                "sandbox_build_duration": 0.15413633400009985,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.650197755000022,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 184.567829447
+            },
+            "attempts": 1
+        },
+        "mouse-hard-k8-017": {
+            "task_id": "mouse-hard-k8-017",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=A expected=D correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 404.44874384999997,
+                "sandbox_run_duration": 412.233258094,
+                "sandbox_build_duration": 0.1399022089999562,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.3934736599999269,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 404.44874571899993
+            },
+            "attempts": 1
+        },
+        "mouse-hard-k8-023": {
+            "task_id": "mouse-hard-k8-023",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=C expected=F correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 230.10330143600004,
+                "sandbox_run_duration": 236.98242907199995,
+                "sandbox_build_duration": 0.12982956999996986,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.3727563249999548,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 230.10330353200004
+            },
+            "attempts": 1
+        },
+        "mouse-hard-k8-024": {
+            "task_id": "mouse-hard-k8-024",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=A expected=A correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 184.705359879,
+                "sandbox_run_duration": 191.21751485100003,
+                "sandbox_build_duration": 0.13978083199998537,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.3648381309999422,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 184.70536165800002
+            },
+            "attempts": 1
+        },
+        "mouse-hard-k8-026": {
+            "task_id": "mouse-hard-k8-026",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=G expected=G correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 156.23646072199995,
+                "sandbox_run_duration": 164.04051190199993,
+                "sandbox_build_duration": 0.16554948000003833,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.5697864900000695,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 156.23646343999997
+            },
+            "attempts": 1
+        },
+        "mouse-hard-k8-028": {
+            "task_id": "mouse-hard-k8-028",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=H expected=H correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 89.899069467,
+                "sandbox_run_duration": 98.11998411100001,
+                "sandbox_build_duration": 0.1555107469999939,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.6348301919999813,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 89.89907154799994
+            },
+            "attempts": 1
+        },
+        "mouse-hard-k8-022": {
+            "task_id": "mouse-hard-k8-022",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=H expected=G correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 155.07240109100002,
+                "sandbox_run_duration": 167.47865064000007,
+                "sandbox_build_duration": 0.2765596859999846,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 2.881399334999969,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 155.07240361200002
+            },
+            "attempts": 1
+        },
+        "mouse-hard-k8-020": {
+            "task_id": "mouse-hard-k8-020",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=D expected=D correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 189.19691193300002,
+                "sandbox_run_duration": 195.79689006599995,
+                "sandbox_build_duration": 0.1503019450000238,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.380321237999965,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 189.19691367800004
+            },
+            "attempts": 1
+        },
+        "mouse-hard-k8-019": {
+            "task_id": "mouse-hard-k8-019",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=A expected=A correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 182.96973608000002,
+                "sandbox_run_duration": 189.51292369600003,
+                "sandbox_build_duration": 0.17081001399998286,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.3841907660000743,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 182.969738306
+            },
+            "attempts": 1
+        },
+        "mouse-hard-k8-027": {
+            "task_id": "mouse-hard-k8-027",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=B expected=B correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 63.79349742399995,
+                "sandbox_run_duration": 71.80875334699999,
+                "sandbox_build_duration": 0.14746290300001874,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.5923711140000023,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 63.793499226999984
+            },
+            "attempts": 1
+        },
+        "mouse-hard-k8-025": {
+            "task_id": "mouse-hard-k8-025",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=F expected=B correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 91.44271149000002,
+                "sandbox_run_duration": 99.32553563000005,
+                "sandbox_build_duration": 0.15044945200003212,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.6366967640000212,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 91.44271320400003
+            },
+            "attempts": 1
+        },
+        "mouse-hard-k8-016": {
+            "task_id": "mouse-hard-k8-016",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=B expected=D correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 251.57272742999993,
+                "sandbox_run_duration": 259.77721276499994,
+                "sandbox_build_duration": 0.1666624009999964,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.6205220750000535,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 251.57272938399996
+            },
+            "attempts": 1
+        },
+        "mouse-hard-k8-001": {
+            "task_id": "mouse-hard-k8-001",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=H expected=C correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 481.92476510200004,
+                "sandbox_run_duration": 489.74426454299993,
+                "sandbox_build_duration": 0.23388296400000286,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.5976987349999945,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 481.92476716100003
+            },
+            "attempts": 1
+        },
+        "mouse-hard-k8-009": {
+            "task_id": "mouse-hard-k8-009",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=C expected=A correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 448.95894742,
+                "sandbox_run_duration": 456.628510669,
+                "sandbox_build_duration": 0.5264125519999965,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.594404026999996,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 448.95894933299996
+            },
+            "attempts": 1
+        },
+        "mouse-hard-k8-021": {
+            "task_id": "mouse-hard-k8-021",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=F expected=F correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 53.74902044600003,
+                "sandbox_run_duration": 60.922314443000005,
+                "sandbox_build_duration": 0.14263988499999414,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.3498472740000125,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 53.74902250400004
+            },
+            "attempts": 1
+        },
+        "mouse-hard-k8-018": {
+            "task_id": "mouse-hard-k8-018",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=E expected=E correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 111.033900615,
+                "sandbox_run_duration": 128.17030254000002,
+                "sandbox_build_duration": 0.23441495200000873,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 4.2751686159999736,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 111.03390332599997
+            },
+            "attempts": 1
+        },
+        "mouse-hard-k8-014": {
+            "task_id": "mouse-hard-k8-014",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=E expected=E correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 184.57986760800003,
+                "sandbox_run_duration": 191.18971337600004,
+                "sandbox_build_duration": 0.16287453199998936,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.3867158489999838,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 184.57986974200003
+            },
+            "attempts": 1
+        },
+        "mouse-hard-k8-015": {
+            "task_id": "mouse-hard-k8-015",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=H expected=H correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 168.84851446099998,
+                "sandbox_run_duration": 175.929123743,
+                "sandbox_build_duration": 0.15700659399999495,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.6502636850000272,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 168.848516249
+            },
+            "attempts": 1
+        },
+        "mouse-hard-k8-012": {
+            "task_id": "mouse-hard-k8-012",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=G expected=G correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 180.88773837600002,
+                "sandbox_run_duration": 190.07081786700002,
+                "sandbox_build_duration": 0.16080411100000447,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 1.1994875120000188,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 180.887740468
+            },
+            "attempts": 1
+        },
+        "mouse-hard-k8-013": {
+            "task_id": "mouse-hard-k8-013",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=G expected=E correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 139.822636659,
+                "sandbox_run_duration": 147.91346085000004,
+                "sandbox_build_duration": 0.21326409199997443,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.7070018770000388,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 139.82263922100003
+            },
+            "attempts": 1
+        },
+        "mouse-hard-k8-007": {
+            "task_id": "mouse-hard-k8-007",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=B expected=B correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 369.70293322599997,
+                "sandbox_run_duration": 377.135920621,
+                "sandbox_build_duration": 0.305898262999996,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.6789802249999752,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 369.702935399
+            },
+            "attempts": 1
+        },
+        "mouse-hard-k8-010": {
+            "task_id": "mouse-hard-k8-010",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=E expected=A correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 266.162180203,
+                "sandbox_run_duration": 273.852857686,
+                "sandbox_build_duration": 0.13574503599998877,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.609124611000027,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 266.16218215
+            },
+            "attempts": 1
+        },
+        "mouse-hard-k8-006": {
+            "task_id": "mouse-hard-k8-006",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=H expected=H correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 291.004827512,
+                "sandbox_run_duration": 298.31857339100003,
+                "sandbox_build_duration": 0.29334937200000155,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.5991410120000182,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 291.004829814
+            },
+            "attempts": 1
+        },
+        "mouse-hard-k8-000": {
+            "task_id": "mouse-hard-k8-000",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=A expected=B correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 234.826394105,
+                "sandbox_run_duration": 259.896853392,
+                "sandbox_build_duration": 0.4128646489999994,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 3.1421862640000313,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 234.82639628299998
+            },
+            "attempts": 1
+        },
+        "mouse-hard-k8-011": {
+            "task_id": "mouse-hard-k8-011",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=E expected=C correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 126.882060191,
+                "sandbox_run_duration": 134.59450310999998,
+                "sandbox_build_duration": 0.1512239439999803,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.5812872550000066,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 126.88206282899998
+            },
+            "attempts": 1
+        },
+        "mouse-hard-k8-002": {
+            "task_id": "mouse-hard-k8-002",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=D expected=C correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 233.25848205600002,
+                "sandbox_run_duration": 240.97276091000003,
+                "sandbox_build_duration": 0.23788196400000317,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.594200031000014,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 233.25848345000003
+            },
+            "attempts": 1
+        },
+        "mouse-hard-k8-004": {
+            "task_id": "mouse-hard-k8-004",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=C expected=C correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 222.803865213,
+                "sandbox_run_duration": 229.59642582,
+                "sandbox_build_duration": 0.4093348839999962,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.39973123099997565,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 222.803867061
+            },
+            "attempts": 1
+        },
+        "mouse-hard-k8-008": {
+            "task_id": "mouse-hard-k8-008",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=F expected=F correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 175.943715391,
+                "sandbox_run_duration": 188.438634694,
+                "sandbox_build_duration": 0.5593974030000055,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 2.9046647920000055,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 175.943717267
+            },
+            "attempts": 1
+        },
+        "mouse-hard-k8-005": {
+            "task_id": "mouse-hard-k8-005",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=F expected=F correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 110.533721729,
+                "sandbox_run_duration": 117.131307702,
+                "sandbox_build_duration": 0.2245258980000031,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.3773455699999886,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 110.533724242
+            },
+            "attempts": 1
+        },
+        "mouse-hard-k8-003": {
+            "task_id": "mouse-hard-k8-003",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=D expected=D correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 27.620417137999993,
+                "sandbox_run_duration": 34.155506333,
+                "sandbox_build_duration": 0.20201383499999537,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.34961599599999715,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 27.620419522999995
+            },
+            "attempts": 1
+        }
+    }
+}

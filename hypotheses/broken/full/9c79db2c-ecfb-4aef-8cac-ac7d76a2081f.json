@@ -1,0 +1,878 @@
+{
+    "benchmark_id": "9c79db2c-ecfb-4aef-8cac-ac7d76a2081f",
+    "benchmark_name": "brain",
+    "started_at": "2026-11-15T05:17:42.871777",
+    "finished_at": "2026-11-15T05:22:18.844785",
+    "status": "FINISHED",
+    "benchmark_arguments": {
+        "contract": {
+            "name": "codex-v1.0.0",
+            "model": "gpt-5.3-codex",
+            "install_cmd": "bash setup.sh",
+            "run_cmd": "bash -lc 'set -o pipefail && mkdir -p /logs && AGENT_OUTPUT_ROOT=/logs /bundle/codex-v1.0.0/.venv/bin/python3 /bundle/codex-v1.0.0/collect_outputs.py {problem_statement_path} --task-id {task_id} --model {model}'",
+            "final_output": "/logs",
+            "output_artifacts": [],
+            "egress_allowlist": [],
+            "allow_provider_tools": false,
+            "isolate_agent_uid": false,
+            "inference_settings_attested": true
+        },
+        "agent_attempts": [],
+        "concurrency": 8,
+        "dataset": "broken",
+        "dataset_version": {
+            "id": "brain/broken@3"
+        },
+        "sandbox_provider": "modal",
+        "sandbox_provider_secret_name": "valkyrie/tenants/3c0f03bb-4d7f-4592-8131-25d0b575a404/modal-credentials",
+        "environment": "aws",
+        "properties": {
+            "region": "us-east-1",
+            "s3_bucket": "valkyrie-629807611108-prod-f12840637e1d0318",
+            "log_group": "/valkyrie/benchmarks-prod/tenants/3c0f03bb-4d7f-4592-8131-25d0b575a404",
+            "log_retention_days": 365
+        }
+    },
+    "final_evaluation": {
+        "id": "b310551b-737d-4911-b318-d573672b24cd",
+        "org_id": "3c0f03bb-4d7f-4592-8131-25d0b575a404",
+        "benchmark": "9c79db2c-ecfb-4aef-8cac-ac7d76a2081f",
+        "final_score": 55.5325,
+        "properties": {
+            "total": 24,
+            "n_trials": 24,
+            "n_errors": 0,
+            "metrics": [
+                {
+                    "mean": 0.555325
+                }
+            ],
+            "reward_stats": {
+                "reward": {
+                    "0.8881": [
+                        "decode-06b"
+                    ],
+                    "0.8298": [
+                        "decode-10a"
+                    ],
+                    "0.5719": [
+                        "decode-01a"
+                    ],
+                    "0.5247": [
+                        "decode-04a"
+                    ],
+                    "0.4564": [
+                        "decode-07a"
+                    ],
+                    "0.51": [
+                        "decode-07b"
+                    ],
+                    "0.6456": [
+                        "decode-11a"
+                    ],
+                    "0.8389": [
+                        "decode-05a"
+                    ],
+                    "0.476": [
+                        "decode-06a"
+                    ],
+                    "0.3702": [
+                        "decode-09a"
+                    ],
+                    "0.8707": [
+                        "decode-08a"
+                    ],
+                    "0.3956": [
+                        "decode-08b"
+                    ],
+                    "0.5551": [
+                        "decode-11b"
+                    ],
+                    "0.7511": [
+                        "decode-09b"
+                    ],
+                    "0.3333": [
+                        "decode-03b",
+                        "decode-02a",
+                        "decode-01b"
+                    ],
+                    "0.9107": [
+                        "decode-04b"
+                    ],
+                    "0.1044": [
+                        "decode-10b"
+                    ],
+                    "0.5319": [
+                        "decode-02b"
+                    ],
+                    "0.6089": [
+                        "decode-12a"
+                    ],
+                    "0.4809": [
+                        "decode-03a"
+                    ],
+                    "0.22": [
+                        "decode-05b"
+                    ],
+                    "0.787": [
+                        "decode-12b"
+                    ]
+                }
+            },
+            "score_key": "mean",
+            "mean_reward": 0.555325
+        }
+    },
+    "average_task_breakdown": {
+        "sandbox_build_duration": 23.674015248625,
+        "agent_run_duration": 28.482848658916655,
+        "evaluation_run_duration": 1.2310808019583313,
+        "sandbox_run_duration": 50.908344347333326
+    },
+    "evaluation_results": {
+        "decode-12b": {
+            "task_id": "decode-12b",
+            "rewards": {
+                "reward": 0.787
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.787
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_base\": \"h-fruit\", \"twin\": \"clean\", \"fault\": \"dead\", \"acc\": 0.705, \"claimed_accuracy\": 0.8278, \"gap\": 0.1228, \"fault_named\": null, \"false_alarm\": false, \"families_flagged\": [], \"reward\": 0.787}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "sandbox_build_duration": 0.7414997829999947,
+                "agent_run_duration": 22.351562806999993,
+                "sandbox_run_duration": 43.48751989099998,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.5465791690000401,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 22.351565177999987
+            },
+            "attempts": 1
+        },
+        "decode-11a": {
+            "task_id": "decode-11a",
+            "rewards": {
+                "reward": 0.6456
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.6456
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_base\": \"h-cars-b\", \"twin\": \"defect\", \"fault\": \"dead\", \"acc\": 0.645, \"claimed_accuracy\": 0.94, \"gap\": 0.295, \"fault_named\": true, \"false_alarm\": null, \"families_flagged\": [\"dead\"], \"reward\": 0.6456}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "sandbox_build_duration": 33.00444103199999,
+                "agent_run_duration": 32.33673411799998,
+                "sandbox_run_duration": 55.866512133000015,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.5790895869999986,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 32.336736449
+            },
+            "attempts": 1
+        },
+        "decode-12a": {
+            "task_id": "decode-12a",
+            "rewards": {
+                "reward": 0.6089
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.6089
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_base\": \"h-fruit\", \"twin\": \"defect\", \"fault\": \"dead\", \"acc\": 0.48, \"claimed_accuracy\": 0.72, \"gap\": 0.24, \"fault_named\": true, \"false_alarm\": null, \"families_flagged\": [\"dead\"], \"reward\": 0.6089}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "sandbox_build_duration": 0.3019015240000158,
+                "agent_run_duration": 22.142003789,
+                "sandbox_run_duration": 45.675063780000016,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.8955679459999715,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 22.142006323999965
+            },
+            "attempts": 1
+        },
+        "decode-10a": {
+            "task_id": "decode-10a",
+            "rewards": {
+                "reward": 0.8298
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.8298
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_base\": \"m-ns-c\", \"twin\": \"clean\", \"fault\": \"dead\", \"acc\": 0.575, \"claimed_accuracy\": 0.5625, \"gap\": 0.0125, \"fault_named\": null, \"false_alarm\": false, \"families_flagged\": [], \"reward\": 0.8298}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "sandbox_build_duration": 40.945651817,
+                "agent_run_duration": 24.154168098000014,
+                "sandbox_run_duration": 46.739495258000034,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 1.0773360910000065,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 24.154170600000043
+            },
+            "attempts": 1
+        },
+        "decode-09a": {
+            "task_id": "decode-09a",
+            "rewards": {
+                "reward": 0.3702
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.3702
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_base\": \"m-ns-b\", \"twin\": \"defect\", \"fault\": \"dead\", \"acc\": 0.2, \"claimed_accuracy\": 0.6875, \"gap\": 0.4875, \"fault_named\": true, \"false_alarm\": null, \"families_flagged\": [\"dead\"], \"reward\": 0.3702}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "sandbox_build_duration": 30.625449833000005,
+                "agent_run_duration": 81.49702094399998,
+                "sandbox_run_duration": 103.273144035,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.5630663470000172,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 81.49702358599998
+            },
+            "attempts": 1
+        },
+        "decode-11b": {
+            "task_id": "decode-11b",
+            "rewards": {
+                "reward": 0.5551
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.5551
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_base\": \"h-cars-b\", \"twin\": \"clean\", \"fault\": \"dead\", \"acc\": 0.865, \"claimed_accuracy\": 0.9424, \"gap\": 0.0774, \"fault_named\": null, \"false_alarm\": true, \"families_flagged\": [\"dead\"], \"reward\": 0.5551}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "sandbox_build_duration": 0.26890422600001784,
+                "agent_run_duration": 21.264259717000016,
+                "sandbox_run_duration": 38.30728232000001,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.3329725649999773,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 21.26426276899997
+            },
+            "attempts": 1
+        },
+        "decode-10b": {
+            "task_id": "decode-10b",
+            "rewards": {
+                "reward": 0.1044
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.1044
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_base\": \"m-ns-c\", \"twin\": \"defect\", \"fault\": \"dead\", \"acc\": 0.2167, \"claimed_accuracy\": 0.6125, \"gap\": 0.3958, \"fault_named\": false, \"false_alarm\": null, \"families_flagged\": [], \"reward\": 0.1044}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "sandbox_build_duration": 26.93102265899998,
+                "agent_run_duration": 20.735226365000017,
+                "sandbox_run_duration": 39.137190094999994,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.3495345339999858,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 20.73522872000001
+            },
+            "attempts": 1
+        },
+        "decode-08a": {
+            "task_id": "decode-08a",
+            "rewards": {
+                "reward": 0.8707
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.8707
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_base\": \"h-houses\", \"twin\": \"clean\", \"fault\": \"leak\", \"acc\": 0.76, \"claimed_accuracy\": 0.7939, \"gap\": 0.0339, \"fault_named\": null, \"false_alarm\": false, \"families_flagged\": [], \"reward\": 0.8707}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "sandbox_build_duration": 49.09933330000001,
+                "agent_run_duration": 34.45639748100001,
+                "sandbox_run_duration": 67.60607001900001,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 4.2005723639999815,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 34.45639960599999
+            },
+            "attempts": 1
+        },
+        "decode-09b": {
+            "task_id": "decode-09b",
+            "rewards": {
+                "reward": 0.7511
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.7511
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_base\": \"m-ns-b\", \"twin\": \"clean\", \"fault\": \"dead\", \"acc\": 0.5333, \"claimed_accuracy\": 0.64, \"gap\": 0.1067, \"fault_named\": null, \"false_alarm\": false, \"families_flagged\": [], \"reward\": 0.7511}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "sandbox_build_duration": 29.241457739999987,
+                "agent_run_duration": 33.90921735799998,
+                "sandbox_run_duration": 66.07596159000002,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 4.189456060999987,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 33.909220213
+            },
+            "attempts": 1
+        },
+        "decode-08b": {
+            "task_id": "decode-08b",
+            "rewards": {
+                "reward": 0.3956
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.3956
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_base\": \"h-houses\", \"twin\": \"defect\", \"fault\": \"leak\", \"acc\": 0.75, \"claimed_accuracy\": 0.99, \"gap\": 0.24, \"fault_named\": false, \"false_alarm\": null, \"families_flagged\": [], \"reward\": 0.3956}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "sandbox_build_duration": 36.44079953900001,
+                "agent_run_duration": 31.213236280000018,
+                "sandbox_run_duration": 60.654624205999994,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 3.24766976799998,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 31.213239143000038
+            },
+            "attempts": 1
+        },
+        "decode-06b": {
+            "task_id": "decode-06b",
+            "rewards": {
+                "reward": 0.8881
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.8881
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_base\": \"m-dg\", \"twin\": \"clean\", \"fault\": \"leak\", \"acc\": 0.75, \"claimed_accuracy\": 0.725, \"gap\": 0.025, \"fault_named\": null, \"false_alarm\": false, \"families_flagged\": [], \"reward\": 0.8881}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "sandbox_build_duration": 33.721393756,
+                "agent_run_duration": 60.032804059,
+                "sandbox_run_duration": 82.63352332399998,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.5825700890000007,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 60.03280623399999
+            },
+            "attempts": 1
+        },
+        "decode-07b": {
+            "task_id": "decode-07b",
+            "rewards": {
+                "reward": 0.51
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.51
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_base\": \"h-houses-b\", \"twin\": \"clean\", \"fault\": \"leak\", \"acc\": 0.775, \"claimed_accuracy\": 0.86, \"gap\": 0.085, \"fault_named\": null, \"false_alarm\": true, \"families_flagged\": [\"leak\"], \"reward\": 0.51}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "sandbox_build_duration": 29.99385583,
+                "agent_run_duration": 24.70465261199999,
+                "sandbox_run_duration": 47.43663817299998,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.5775713550000035,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 24.70465509799999
+            },
+            "attempts": 1
+        },
+        "decode-07a": {
+            "task_id": "decode-07a",
+            "rewards": {
+                "reward": 0.4564
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.4564
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_base\": \"h-houses-b\", \"twin\": \"defect\", \"fault\": \"leak\", \"acc\": 0.795, \"claimed_accuracy\": 0.9737, \"gap\": 0.1787, \"fault_named\": false, \"false_alarm\": null, \"families_flagged\": [], \"reward\": 0.4564}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "sandbox_build_duration": 33.101697333999994,
+                "agent_run_duration": 22.982901876,
+                "sandbox_run_duration": 41.327553093000006,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.34900735300001884,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 22.982905207000016
+            },
+            "attempts": 1
+        },
+        "decode-06a": {
+            "task_id": "decode-06a",
+            "rewards": {
+                "reward": 0.476
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.476
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_base\": \"m-dg\", \"twin\": \"defect\", \"fault\": \"leak\", \"acc\": 0.4934, \"claimed_accuracy\": 0.99, \"gap\": 0.4966, \"fault_named\": true, \"false_alarm\": null, \"families_flagged\": [\"leak\"], \"reward\": 0.476}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "sandbox_build_duration": 27.65561699600002,
+                "agent_run_duration": 29.863773574999982,
+                "sandbox_run_duration": 47.688833359,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.34064899599999876,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 29.863776002999998
+            },
+            "attempts": 1
+        },
+        "decode-05a": {
+            "task_id": "decode-05a",
+            "rewards": {
+                "reward": 0.8389
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.8389
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_base\": \"m-ns-a\", \"twin\": \"clean\", \"fault\": \"leak\", \"acc\": 0.5917, \"claimed_accuracy\": 0.6, \"gap\": 0.0083, \"fault_named\": null, \"false_alarm\": false, \"families_flagged\": [], \"reward\": 0.8389}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "sandbox_build_duration": 20.44014135500001,
+                "agent_run_duration": 20.807593464999997,
+                "sandbox_run_duration": 42.107702297,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.5888874210000097,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 20.807595730000003
+            },
+            "attempts": 1
+        },
+        "decode-04a": {
+            "task_id": "decode-04a",
+            "rewards": {
+                "reward": 0.5247
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.5247
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_base\": \"m-nm3-a\", \"twin\": \"clean\", \"fault\": \"shift\", \"acc\": 0.7667, \"claimed_accuracy\": 0.85, \"gap\": 0.0833, \"fault_named\": null, \"false_alarm\": true, \"families_flagged\": [\"leak\"], \"reward\": 0.5247}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "sandbox_build_duration": 24.55397424200001,
+                "agent_run_duration": 33.047242321,
+                "sandbox_run_duration": 66.306600897,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 4.228278856999992,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 33.047245135
+            },
+            "attempts": 1
+        },
+        "decode-05b": {
+            "task_id": "decode-05b",
+            "rewards": {
+                "reward": 0.22
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.22
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_base\": \"m-ns-a\", \"twin\": \"defect\", \"fault\": \"leak\", \"acc\": 0.5583, \"claimed_accuracy\": 0.976, \"gap\": 0.4177, \"fault_named\": false, \"false_alarm\": null, \"families_flagged\": [], \"reward\": 0.22}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "sandbox_build_duration": 0.36295818799999324,
+                "agent_run_duration": 20.14331753900001,
+                "sandbox_run_duration": 38.15859116199999,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.3825692899999922,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 20.14331985300001
+            },
+            "attempts": 1
+        },
+        "decode-04b": {
+            "task_id": "decode-04b",
+            "rewards": {
+                "reward": 0.9107
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.9107
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_base\": \"m-nm3-a\", \"twin\": \"defect\", \"fault\": \"shift\", \"acc\": 0.7667, \"claimed_accuracy\": 0.771, \"gap\": 0.0043, \"fault_named\": true, \"false_alarm\": null, \"families_flagged\": [\"shift\"], \"reward\": 0.9107}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "sandbox_build_duration": 42.79324278,
+                "agent_run_duration": 20.463713614,
+                "sandbox_run_duration": 43.11972451400001,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 1.1666688200000124,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 20.46371564100002
+            },
+            "attempts": 1
+        },
+        "decode-03b": {
+            "task_id": "decode-03b",
+            "rewards": {
+                "reward": 0.3333
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.3333
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_base\": \"m-nm1-c\", \"twin\": \"defect\", \"fault\": \"shift\", \"acc\": 0.1, \"claimed_accuracy\": 0.6533, \"gap\": 0.5533, \"fault_named\": true, \"false_alarm\": null, \"families_flagged\": [\"shift\"], \"reward\": 0.3333}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "sandbox_build_duration": 31.074376552000004,
+                "agent_run_duration": 18.787985255999985,
+                "sandbox_run_duration": 36.834184753,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.3652373289999957,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 18.78798788200001
+            },
+            "attempts": 1
+        },
+        "decode-02b": {
+            "task_id": "decode-02b",
+            "rewards": {
+                "reward": 0.5319
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.5319
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_base\": \"m-nm1-b\", \"twin\": \"clean\", \"fault\": \"shift\", \"acc\": 0.78, \"claimed_accuracy\": 0.86, \"gap\": 0.08, \"fault_named\": null, \"false_alarm\": true, \"families_flagged\": [\"leak\"], \"reward\": 0.5319}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "sandbox_build_duration": 25.06872197700001,
+                "agent_run_duration": 20.12695388200001,
+                "sandbox_run_duration": 41.68729805699999,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.5774046660000067,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 20.126957057000027
+            },
+            "attempts": 1
+        },
+        "decode-02a": {
+            "task_id": "decode-02a",
+            "rewards": {
+                "reward": 0.3333
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.3333
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_base\": \"m-nm1-b\", \"twin\": \"defect\", \"fault\": \"shift\", \"acc\": 0.06, \"claimed_accuracy\": 0.8667, \"gap\": 0.8067, \"fault_named\": true, \"false_alarm\": null, \"families_flagged\": [\"shift\"], \"reward\": 0.3333}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "sandbox_build_duration": 24.44143996199999,
+                "agent_run_duration": 22.89654319600001,
+                "sandbox_run_duration": 41.92584474399999,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.6219131150000123,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 22.896545403000005
+            },
+            "attempts": 1
+        },
+        "decode-03a": {
+            "task_id": "decode-03a",
+            "rewards": {
+                "reward": 0.4809
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.4809
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_base\": \"m-nm1-c\", \"twin\": \"clean\", \"fault\": \"shift\", \"acc\": 0.62, \"claimed_accuracy\": 0.6875, \"gap\": 0.0675, \"fault_named\": null, \"false_alarm\": true, \"families_flagged\": [\"leak\", \"shift\"], \"reward\": 0.4809}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "sandbox_build_duration": 26.263051062000002,
+                "agent_run_duration": 20.252474473000007,
+                "sandbox_run_duration": 37.734254776000014,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.35377620999997816,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 20.252476599000005
+            },
+            "attempts": 1
+        },
+        "decode-01a": {
+            "task_id": "decode-01a",
+            "rewards": {
+                "reward": 0.5719
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.5719
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_base\": \"m-nm1-a\", \"twin\": \"clean\", \"fault\": \"shift\", \"acc\": 0.78, \"claimed_accuracy\": 0.8, \"gap\": 0.02, \"fault_named\": null, \"false_alarm\": true, \"families_flagged\": [\"leak\"], \"reward\": 0.5719}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "sandbox_build_duration": 0.5886638679999976,
+                "agent_run_duration": 22.709066660999994,
+                "sandbox_run_duration": 47.11535845799999,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 2.8717279159999975,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 22.70907004099999
+            },
+            "attempts": 1
+        },
+        "decode-01b": {
+            "task_id": "decode-01b",
+            "rewards": {
+                "reward": 0.3333
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.3333
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_base\": \"m-nm1-a\", \"twin\": \"defect\", \"fault\": \"shift\", \"acc\": 0.08, \"claimed_accuracy\": 0.81, \"gap\": 0.73, \"fault_named\": true, \"false_alarm\": null, \"families_flagged\": [\"shift\"], \"reward\": 0.3333}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "sandbox_build_duration": 0.516770612000002,
+                "agent_run_duration": 22.709518327999987,
+                "sandbox_run_duration": 40.90129340200001,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.5578333979999854,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 22.709520223999988
+            },
+            "attempts": 1
+        }
+    }
+}
