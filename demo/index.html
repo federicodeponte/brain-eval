@@ -1,0 +1,197 @@
+<title>Can a model read a brain?</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;650&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column; the prompt itself (spike-count grid) is the hero object, results as a scaled bar chart. */
+:root{
+  --bg:#f6f8f9; --surface:#ffffff; --ink:#14212b; --muted:#5a6b78; --line:#d9e1e6;
+  --accent:#0f7a8a; --opus:#d0542f; --haiku:#8a95a0; --decoder:#0f7a8a; --chance:#b9c4cc;
+  --heat-lo:#eef4f6; --heat-hi:#0f5f6b;
+  --good:#1f8a4c;
+  --display:"Sora",ui-sans-serif,system-ui,sans-serif;
+  --body:"IBM Plex Sans",ui-sans-serif,system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f171d; --surface:#16212a; --ink:#e4ecf0; --muted:#93a4b0; --line:#28363f;
+  --accent:#4cc3d2; --opus:#f07a52; --haiku:#7d8a95; --decoder:#4cc3d2; --chance:#3a4852;
+  --heat-lo:#1a2a33; --heat-hi:#5fd4e2; --good:#4ccb83; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f171d; --surface:#16212a; --ink:#e4ecf0; --muted:#93a4b0; --line:#28363f;
+  --accent:#4cc3d2; --opus:#f07a52; --haiku:#7d8a95; --decoder:#4cc3d2; --chance:#3a4852;
+  --heat-lo:#1a2a33; --heat-hi:#5fd4e2; --good:#4ccb83; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 var(--body);margin:0}
+.wrap{max-width:880px;margin:0 auto;padding-block:48px 72px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:56px}
+h1,h2{font-family:var(--display);font-weight:650;text-wrap:balance;margin:0;letter-spacing:-.01em}
+h1{font-size:clamp(2.2rem,6vw,3.6rem);line-height:1.05}
+h2{font-size:1.5rem}
+p{margin:0;max-width:65ch}
+.eyebrow{font:500 .75rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.hero{display:grid;gap:18px}
+.lede{font-size:1.15rem;color:var(--muted)}
+.lede b{color:var(--ink);font-weight:600}
+section{display:grid;gap:18px}
+.note{font-size:.85rem;color:var(--muted)}
+/* prompt grid */
+.prompt{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;display:grid;gap:14px}
+.gridscroll{overflow-x:auto}
+table.heat{border-collapse:separate;border-spacing:2px;font:400 .62rem/1 var(--mono)}
+table.heat th{font-weight:500;color:var(--muted);text-align:right;padding-right:8px;white-space:nowrap}
+table.heat td{width:17px;height:17px;text-align:center;border-radius:2px;color:transparent}
+table.heat tr.gap td,table.heat tr.gap th{height:8px;background:none}
+table.heat tr.query th{color:var(--opus)}
+.showcounts table.heat td{color:var(--ink)}
+.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:500 .9rem var(--body);border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:6px;padding:8px 14px;cursor:pointer}
+button:hover{border-color:var(--accent)}
+button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+button.pick{min-width:110px}
+button.right{border-color:var(--good);color:var(--good)}
+button.wrong{opacity:.55}
+#verdict{font-size:.95rem;min-height:1.6em}
+/* chart */
+.chart{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;overflow-x:auto}
+.legend{display:flex;flex-wrap:wrap;gap:16px;font-size:.85rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:12px;height:12px;border-radius:2px;display:inline-block}
+svg text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+svg text.v{fill:var(--ink);font-weight:500}
+svg text.task{font-family:var(--body);font-size:13px;fill:var(--ink);font-weight:500}
+/* controls list */
+.tests{display:grid;gap:10px}
+.test{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:14px 16px;background:var(--surface);border:1px solid var(--line);border-radius:8px}
+.test h3{margin:0;font:600 1rem var(--body)}
+.test p{grid-column:1;font-size:.9rem;color:var(--muted)}
+.pill{grid-row:1/3;grid-column:2;align-self:center;font:500 .72rem var(--mono);letter-spacing:.05em;text-transform:uppercase;padding:4px 8px;border-radius:99px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+.pill.run{border-color:var(--accent);color:var(--accent)}
+.pill.pass{border-color:var(--good);color:var(--good)}
+.test p b{color:var(--ink);font-weight:600}
+footer{font-size:.85rem;color:var(--muted);display:grid;gap:6px;border-top:1px solid var(--line);padding-top:20px}
+footer a{color:var(--accent)}
+@media (max-width:520px){.test{grid-template-columns:1fr}.pill{grid-row:auto;grid-column:1;justify-self:start}}
+@media (prefers-reduced-motion:no-preference){button{transition:border-color .15s}}
+</style>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow">Vals hackathon · Build Your Own Eval</div>
+    <h1>Can a model read a brain?</h1>
+    <p class="lede">We give frontier models raw spike counts from real neurons, plus a few labeled examples, and ask what the brain was seeing. A <b>ten-line decoder</b> with the same examples is the bar to beat.</p>
+  </header>
+
+  <section>
+    <div class="eyebrow">The task</div>
+    <h2>Try one yourself</h2>
+    <p>Forty neurons in the amygdala and hippocampus of epilepsy patients, recorded through clinical depth electrodes while they looked at photos. Each row is how many spikes every neuron fired between 200 and 1200 ms after a photo appeared. Three labeled rows per category, then one new row. Which category is it?</p>
+    <div class="prompt" id="prompt">
+      <div class="gridscroll"><table class="heat" id="heat" aria-label="Spike counts, 40 neurons per row"></table></div>
+      <div class="controls" id="picks"></div>
+      <div id="verdict" aria-live="polite">The model sees this exact table, as numbers. Darker cells mean more spikes.</div>
+      <div class="controls"><button id="toggle" type="button">Show the numbers</button></div>
+    </div>
+    <p class="note">Data: DANDI 000004 (Rutishauser lab), CC-BY-4.0. Neurons are pooled across 12 recording sessions, so each row is a pseudo-trial. The new row's photo never appears in the examples.</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">First results</div>
+    <h2>A ten-line decoder beats Opus on human neurons</h2>
+    <p>Pilot run, 10 questions per task, one shot per question, no tools. The decoder is nearest-centroid on the labeled rows in the prompt, so it gets exactly the information the model gets.</p>
+    <div class="chart">
+      <div class="legend">
+        <span><i style="background:var(--chance)"></i>Chance</span>
+        <span><i style="background:var(--haiku)"></i>Haiku</span>
+        <span><i style="background:var(--opus)"></i>Opus</span>
+        <span><i style="background:var(--decoder)"></i>Decoder</span>
+      </div>
+      <svg id="bars" viewBox="0 0 820 300" width="100%" role="img" aria-label="Accuracy by task and solver"></svg>
+    </div>
+    <p class="note">With 10 questions each bar is about ±15 points. The full run on Valkyrie uses 40 to 90 questions per task and three models.</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">Is it really learning?</div>
+    <h2>Five checks</h2>
+    <p>A high score could come from guessing, from what the model already knows about the brain, or from a leak. Each check below rules one of those out.</p>
+    <div class="tests">
+      <div class="test"><h3>Swapped labels</h3><p>Car photos are labeled "food" in the examples. A model that reads the neurons follows the labels; one that relies on brain trivia picks the real category. <b>Opus followed the examples 12 of 20 times and the real category 3 of 20.</b> The decoder: 65% and 12.5%.</p><span class="pill pass">Passed</span></div>
+      <div class="test"><h3>Learning curve</h3><p>Same questions with 0, 1, 3 or 5 examples per option. Zero examples must sit at chance; accuracy should climb with each example. <b>With 0 examples Opus answered "A" every time, which is chance. With 1 example it got 7 of 10.</b></p><span class="pill pass">Passed</span></div>
+      <div class="test"><h3>Swapped clip</h3><p>The right answer's examples are replaced with a clip from another movie. The correct reply is "none of these".</p><span class="pill">Built</span></div>
+      <div class="test"><h3>Shuffled spikes</h3><p>Real firing rates with the structure destroyed. Anything above chance means a leak or a letter bias.</p><span class="pill">Built</span></div>
+      <div class="test"><h3>Planted pattern</h3><p>An obvious pattern planted in synthetic data. Should be near 100%, which checks the harness and the answer parser.</p><span class="pill">Built</span></div>
+    </div>
+  </section>
+
+  <footer>
+    <div>Mouse task: Allen Brain Observatory Neuropixels session 732592105, 40 visual-cortex units in ten 100 ms bins, which of 4 or 8 one-second movie clips.</div>
+    <div>Harness: Valkyrie, one-call multiple-choice agent, exact-match grader that only accepts a valid letter.</div>
+    <div>Data credits: Faraut et al. 2018, <i>Scientific Data</i>, "Dataset of human medial temporal lobe single neuron activity during declarative memory encoding and recognition" (DANDI 000004, CC-BY-4.0). Siegle et al. 2021, <i>Nature</i>, "Survey of spiking in the mouse visual system reveals functional hierarchy" (Allen Brain Observatory).</div>
+  </footer>
+</div>
+
+<script>
+const D={"A:food":[[0,4,24,1,7,2,5,0,3,16,0,2,0,8,9,8,1,9,2,3,8,1,6,2,9,10,0,0,1,2,1,0,3,2,1,1,3,3,6,5],[0,2,17,3,5,2,8,0,9,10,0,5,0,13,5,4,4,3,4,1,5,5,7,1,6,11,1,1,0,0,6,0,6,4,3,4,5,3,10,5],[0,2,18,1,5,5,5,0,5,7,2,4,1,10,9,8,5,5,5,0,5,1,2,1,9,10,2,0,2,2,1,0,6,4,4,1,1,4,4,6]],"B:cars":[[0,2,14,3,2,7,6,1,2,13,2,2,5,4,10,5,5,5,5,1,8,6,5,7,11,12,1,0,1,2,3,0,1,2,3,4,5,3,7,3],[0,3,13,0,3,10,9,0,3,3,0,10,1,1,10,0,3,7,14,1,11,5,5,0,15,7,2,2,2,5,8,3,0,7,4,1,4,3,6,1],[2,1,13,2,2,5,10,1,7,25,0,6,3,9,9,1,0,11,7,2,3,1,2,9,10,9,0,4,4,0,1,0,4,1,6,0,5,6,4,2]],"C:people":[[1,3,9,2,11,8,13,0,5,19,0,1,2,12,22,2,1,4,4,10,2,2,8,7,9,19,0,2,2,0,5,3,2,12,3,1,7,4,7,6],[1,7,9,1,1,5,8,6,23,16,3,8,0,6,15,7,3,16,7,0,7,4,3,6,6,8,3,1,0,3,4,2,2,3,2,1,4,1,5,8],[1,5,12,1,3,7,9,4,19,18,4,5,3,20,13,4,1,9,4,1,2,5,5,3,7,17,0,1,3,1,6,3,2,5,7,2,4,5,8,0]],"D:animals":[[9,0,9,0,7,9,8,1,5,13,0,5,0,10,5,12,13,2,9,0,7,1,8,0,12,21,0,1,3,5,4,1,2,3,8,4,4,2,9,0],[3,1,17,1,1,9,5,0,4,21,1,3,0,12,7,11,10,5,4,1,2,1,5,2,13,28,0,1,1,5,5,0,2,0,6,7,5,2,6,4],[3,3,11,10,3,14,13,1,5,13,1,6,0,11,4,7,1,10,6,4,7,5,9,1,15,16,0,1,3,5,5,1,5,3,6,7,8,2,5,2]],"query":[[0,4,22,0,3,3,9,0,6,21,0,7,0,7,22,10,7,3,3,0,6,4,4,1,9,14,0,1,1,5,7,0,2,7,4,2,5,4,6,2]]};
+const ANSWER="B";
+const heat=document.getElementById("heat");
+const css=getComputedStyle(document.documentElement);
+function mix(t){ // interpolate heat-lo -> heat-hi using color-mix
+  return `color-mix(in oklab, var(--heat-hi) ${Math.round(t*100)}%, var(--heat-lo))`;
+}
+// per-neuron max for column-normalised shading
+const all=Object.values(D).flat();
+const colMax=all[0].map((_,j)=>Math.max(1,...all.map(r=>r[j])));
+let html="";
+const keys=["A:food","B:cars","C:people","D:animals"];
+keys.forEach((k,ki)=>{
+  const [L,name]=k.split(":");
+  D[k].forEach((row,ri)=>{
+    html+=`<tr><th>${ri==0?L+" "+name:""} ex${ri+1}</th>`+row.map((v,j)=>`<td style="background:${mix(v/colMax[j])}">${v}</td>`).join("")+"</tr>";
+  });
+  html+=`<tr class="gap"><th></th><td colspan="40"></td></tr>`;
+});
+html+=`<tr class="query"><th>new row ?</th>`+D.query[0].map((v,j)=>`<td style="background:${mix(v/colMax[j])}">${v}</td>`).join("")+"</tr>";
+heat.innerHTML=html;
+
+// decoder: nearest centroid, correlation distance
+function centroid(rows){return rows[0].map((_,j)=>rows.reduce((s,r)=>s+r[j],0)/rows.length)}
+function corr(a,b){const n=a.length,ma=a.reduce((s,x)=>s+x,0)/n,mb=b.reduce((s,x)=>s+x,0)/n;let sab=0,sa=0,sb=0;for(let i=0;i<n;i++){const x=a[i]-ma,y=b[i]-mb;sab+=x*y;sa+=x*x;sb+=y*y}return sab/Math.sqrt(sa*sb)}
+const scores=keys.map(k=>({k,r:corr(centroid(D[k]),D.query[0])}));
+const best=scores.reduce((a,b)=>a.r>b.r?a:b);
+
+const picks=document.getElementById("picks"),verdict=document.getElementById("verdict");
+keys.forEach(k=>{
+  const [L,name]=k.split(":");
+  const b=document.createElement("button");b.type="button";b.className="pick";b.id="pick-"+L;b.textContent=`${L}) ${name}`;
+  b.onclick=()=>{
+    picks.querySelectorAll("button").forEach(x=>{x.classList.remove("right","wrong");x.classList.add(x.id==="pick-"+ANSWER?"right":"wrong")});
+    const ok=L===ANSWER;
+    verdict.innerHTML=`${ok?"Right.":"Not quite."} The patient was looking at <b>cars</b>. The decoder picked <b>${best.k.split(":")[1]}</b> (closest average pattern, r = ${best.r.toFixed(2)}).`;
+  };
+  picks.appendChild(b);
+});
+document.getElementById("toggle").onclick=e=>{const p=document.getElementById("prompt");p.classList.toggle("showcounts");e.target.textContent=p.classList.contains("showcounts")?"Hide the numbers":"Show the numbers"};
+
+// bar chart
+const tasks=[
+  {name:"Human neurons",sub:"4 photo categories",chance:25,haiku:50,opus:50,decoder:65},
+  {name:"Mouse, 4 clips",sub:"visual cortex, movie",chance:25,haiku:60,opus:80,decoder:87},
+  {name:"Mouse, 8 clips",sub:"visual cortex, movie",chance:12.5,haiku:null,opus:70,decoder:67},
+];
+const svg=document.getElementById("bars"),W=820,H=300,top=20,bottom=250,left=40;
+const y=v=>bottom-(v/100)*(bottom-top);
+let s="";
+[0,25,50,75,100].forEach(t=>{s+=`<line x1="${left}" x2="${W-8}" y1="${y(t)}" y2="${y(t)}" stroke="var(--line)" stroke-width="1"/><text x="${left-6}" y="${y(t)+4}" text-anchor="end">${t}%</text>`});
+const groupW=(W-left-8)/tasks.length,bw=34,gapb=8;
+const series=[["chance","var(--chance)"],["haiku","var(--haiku)"],["opus","var(--opus)"],["decoder","var(--decoder)"]];
+tasks.forEach((t,i)=>{
+  const gx=left+i*groupW+(groupW-(series.length*bw+(series.length-1)*gapb))/2;
+  series.forEach(([key,col],si)=>{
+    const x=gx+si*(bw+gapb),v=t[key];
+    if(v==null){s+=`<text x="${x+bw/2}" y="${bottom-6}" text-anchor="middle">n/a</text>`;return}
+    s+=`<rect x="${x}" y="${y(v)}" width="${bw}" height="${bottom-y(v)}" rx="2" fill="${col}"/><text class="v" x="${x+bw/2}" y="${y(v)-5}" text-anchor="middle">${Math.round(v)}</text>`;
+  });
+  s+=`<text class="task" x="${left+i*groupW+groupW/2}" y="${bottom+20}" text-anchor="middle">${t.name}</text><text x="${left+i*groupW+groupW/2}" y="${bottom+36}" text-anchor="middle">${t.sub}</text>`;
+});
+svg.innerHTML=s;
+</script>
