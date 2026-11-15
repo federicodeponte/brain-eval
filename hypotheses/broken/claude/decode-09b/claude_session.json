@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 43130,
+ "stop_reason": "end_turn",
+ "session_id": "02a2dd73-380f-469e-8267-eea340995297",
+ "total_cost_usd": 0.1577822,
+ "usage": {
+  "input_tokens": 16,
+  "cache_creation_input_tokens": 8623,
+  "cache_read_input_tokens": 87571,
+  "output_tokens": 3561,
+  "output_tokens_details": {
+   "thinking_tokens": 516
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 8623,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 585,
+    "cache_read_input_tokens": 14689,
+    "cache_creation_input_tokens": 528,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 528
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 16,
+   "outputTokens": 3561,
+   "cacheReadInputTokens": 87571,
+   "cacheCreationInputTokens": 8623,
+   "webSearchRequests": 0,
+   "costUSD": 0.1577822,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 516,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 8623,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 8,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I wrote the predictions to `output/predictions.json`. I expect about **62%** test accuracy, against 12.5% for random guessing, and I found no problems with the data.\n\n**Decoder:** I used logistic regression (C=0.05) trained on all 280 labelled trials (train + val). The inputs are square-root spike counts from time bins 1\u20134 (50\u2013250 ms after onset), plus each unit's total count over those bins. I left out bin 0 (0\u201350 ms) because it decodes at chance. That fits V1 response latency: the neurons haven't responded to the image yet in the first 50 ms.\n\n**Accuracy estimate:** Repeated 5-fold cross-validation over train + val gave 0.62\u20130.63 for the best setups. Training on train alone and testing on val gave about 0.61. I'm claiming 0.62, and with only 120 test trials the real number could easily land a few points either way. The predicted classes are spread fairly evenly (10\u201320 trials per class).\n\n**Data checks:** I didn't find any issues, so `data_issues` is \"none\".\n- **Labels:** every label matches its `image_id` exactly in both labelled splits.\n- **Class balance:** 25 trials per class in train and 10 in val.\n- **Duplicates:** no trial appears twice, within or across splits, including test.\n- **Value ranges:** counts are whole numbers from 0 to 12 and look similar across splits.\n- **Test vs. train:** each unit's average firing rate in test matches train and val, so the test trials don't look shifted or rearranged.\n\nOne thing looked odd but I didn't count it as a problem. Many units fire less in the 50\u2013100 ms bin than in the bins on either side, which is unusual but could be a real brief drop in firing.",
+ "ttft_ms": 3672,
+ "type": "result",
+ "duration_ms": 213986,
+ "uuid": "f2f3147f-ac0f-4b86-afc3-51234fedc69f",
+ "ttft_stream_ms": 2293,
+ "time_to_request_ms": 107,
+ "first_content_frame_ms": 2294,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 215.2
+}

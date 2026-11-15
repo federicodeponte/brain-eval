@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 34217,
+ "stop_reason": "end_turn",
+ "session_id": "70af5693-0dfe-4f11-a5c9-db17dc6b102b",
+ "total_cost_usd": 0.1139164,
+ "usage": {
+  "input_tokens": 12,
+  "cache_creation_input_tokens": 5508,
+  "cache_read_input_tokens": 57222,
+  "output_tokens": 2918,
+  "output_tokens_details": {
+   "thinking_tokens": 411
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 5508,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 535,
+    "cache_read_input_tokens": 11655,
+    "cache_creation_input_tokens": 447,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 447
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 12,
+   "outputTokens": 2918,
+   "cacheReadInputTokens": 57222,
+   "cacheCreationInputTokens": 5508,
+   "webSearchRequests": 0,
+   "costUSD": 0.1139164,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 411,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 5508,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 6,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I've written all 200 test predictions to `output/predictions.json`, and I estimate they'll be about 92% accurate.\n\n**Decoder:** I combined the train and validation sets and dropped duplicate rows. The model is a logistic regression on square-root-transformed, standardized spike counts (C=0.3). In cross-validation (5-fold, repeated with 5 different splits, on 185 labeled trials) it scored about 97%.\n\n**Accuracy estimate (0.92):** I set it below the cross-validation score on purpose, for two reasons:\n- Some neurons' average firing rates differ noticeably between train and test (one goes from 4.4 to 6.3 spikes, another from 5.6 to 4.2). This suggests the test rows were built from different presentations, which usually costs some accuracy.\n- The predicted classes on test are uneven (64 / 38 / 42 / 56 for houses / mobility / phones / smallAnimal), while the training classes are close to balanced.\n\n**Data issues:** I found only one problem. Three pairs of labeled trials are exact duplicates: train rows 18 & 42, 82 & 100, and 83 & 145. Each pair has the same label and an identical 40-neuron count vector. With 120\u2013150 spikes spread across 40 neurons, that won't happen by chance, so these are most likely pseudo-population rows that were copied. I removed them before training and cross-validation, because duplicates would make cross-validation look better than it is. Otherwise:\n- Every label `y` matches its `category`.\n- No test trial duplicates a labeled trial.\n- The test set has no duplicates within itself.",
+ "ttft_ms": 4330,
+ "type": "result",
+ "duration_ms": 62240,
+ "uuid": "da3191c8-a669-460c-b625-15c25930f914",
+ "ttft_stream_ms": 2000,
+ "time_to_request_ms": 97,
+ "first_content_frame_ms": 2001,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 63.4
+}

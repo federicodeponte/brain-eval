@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 29647,
+ "stop_reason": "end_turn",
+ "session_id": "8e7c2f0d-1525-42a0-a7c4-0875af7baf8c",
+ "total_cost_usd": 0.1037964,
+ "usage": {
+  "input_tokens": 10,
+  "cache_creation_input_tokens": 5069,
+  "cache_read_input_tokens": 45522,
+  "output_tokens": 2705,
+  "output_tokens_details": {
+   "thinking_tokens": 133
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 5069,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 595,
+    "cache_read_input_tokens": 11135,
+    "cache_creation_input_tokens": 528,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 528
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 10,
+   "outputTokens": 2705,
+   "cacheReadInputTokens": 45522,
+   "cacheCreationInputTokens": 5069,
+   "webSearchRequests": 0,
+   "costUSD": 0.1037964,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 133,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 5069,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 5,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I've written predictions for all 200 test trials to `output/predictions.json`, with an estimated test accuracy of about 0.84. I found no problems with the data, so `data_issues` is `\"none\"`.\n\n**Decoder:** I combined the train and validation sets (102 trials), took log(1 + count) for each neuron, standardized the features, and fit a regularized logistic regression (C = 0.05).\n\n**Accuracy estimate:** Cross-validation on the 102 labeled trials (6-fold, repeated 10 times) gave about 0.86. A shrinkage linear discriminant model scored the same (0.85) and agreed with the logistic regression on 92.5% of test trials. Gaussian naive Bayes was clearly worse at 0.71. I set the claim slightly below the cross-validation score, at 0.84, because the labeled set is small.\n\n**Data checks, all clean:**\n- **Labels:** `y` matches `category` on every train and validation trial.\n- **Class balance:** the classes have 20\u201322 trials each in train and exactly 4 each in validation.\n- **Values:** there are no negative counts and no extreme outliers.\n- **Duplicates:** no trial is repeated within a split or between the labeled data and the test set.\n- **Train/test shift:** a classifier trying to tell labeled trials from test trials barely beat chance (AUC 0.56), and each neuron's average count is similar across the splits.\n- **Leakage:** no single neuron gives the label away. The most informative neurons are only moderately so (F-statistic about 21\u201322).\n\nOn the test set the decoder predicts houses more often than the other classes (66 / 31 / 49 / 54 for classes 0\u20133). That could be a decoder bias or just how the test trials are distributed. I couldn't check which, since the test labels are hidden.",
+ "ttft_ms": 3672,
+ "type": "result",
+ "duration_ms": 64184,
+ "uuid": "5e14ebf5-f49a-45cc-af51-e5a672ae5a4d",
+ "ttft_stream_ms": 2080,
+ "time_to_request_ms": 111,
+ "first_content_frame_ms": 2080,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 65.4
+}

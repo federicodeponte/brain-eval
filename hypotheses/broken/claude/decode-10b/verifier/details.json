@@ -1,0 +1,33 @@
+{
+ "task_base": "m-ns-c",
+ "twin": "defect",
+ "fault": "dead",
+ "n_test": 120,
+ "K": 8,
+ "valid": true,
+ "n_predictions": 120,
+ "n_invalid": 0,
+ "acc": 0.3667,
+ "chance": 0.125,
+ "skill": 0.2762,
+ "claimed_accuracy": 0.44,
+ "gap": 0.0733,
+ "calib": 0.8533,
+ "fault_named": true,
+ "false_alarm": null,
+ "families_flagged": [
+  "dead"
+ ],
+ "matches": {
+  "dead": [
+   "zero spikes",
+   "zero spikes",
+   "dead",
+   "dropped channels",
+   "covariate shift"
+  ]
+ },
+ "diag": 1.0,
+ "reward": 0.7098,
+ "data_issues": "In test.npz, 9 of the 25 units (row indices 2, 3, 8, 9, 10, 13, 14, 16, 20) have zero spikes on every test trial and in every bin. In train and val these same units fire normally on every trial, and some are among the most active (unit 9 averages about 1.2 spikes per bin). That looks like a recording, sorting or unit-alignment failure (dead or dropped channels) in the test split, not real silence. The other 16 units have firing rates matching train/val. A decoder trained on all 25 units would face a covariate shift on test, so I trained on the 16 working units only, which lowers the achievable accuracy from ~0.6 to ~0.45 in cross-validation. Labels agree with image_id in train and val (one image per class), and no trials are duplicated."
+}

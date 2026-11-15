@@ -238,7 +238,7 @@ Estimate: 45 tasks x ~$0.04 = ~$1.8 per pass, ~$5.4 for 3 passes (-n 3, as v3).
   mapping" no longer count; "val trials duplicate train trials (same image_id)" still does).
 - The unplanted experimental `mix` family is ignored (human envs document that neurons are pooled across sessions, so
   "combined across sessions" must not be a false alarm). test_grader.py: 50 cases + oracle 45/45, FAILS 0.
-- NOT pushed: the 45 task folders in dataset-broken-v4 and brain/broken-gym@2 (= @v4) still carry the earlier grader,
+- PUSHED as brain/broken-gym@3 (tags v4.1, latest); validate 0/0, oracle 45/45. @2 keeps tag v4 (grader used by the v4 full run).
   which is what the v4 full run used. The full run is regraded locally instead (gym/regrade_v4.py -> gym/full_results.md).
   To publish: for t in ~/work/vals-mouse/valkyrie/dataset-broken-v4/gym-*; do cp gym/grade.py $t/tests/; done;
   valkyrie dataset push brain/broken-gym ./dataset-broken-v4 --tag v4.2   (then move v4 with dataset tag --force if wanted).

@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 33999,
+ "stop_reason": "end_turn",
+ "session_id": "01abfd88-9d67-47e0-a156-3a35d2b6f6d8",
+ "total_cost_usd": 0.11004739999999999,
+ "usage": {
+  "input_tokens": 10,
+  "cache_creation_input_tokens": 6036,
+  "cache_read_input_tokens": 47997,
+  "output_tokens": 2606,
+  "output_tokens_details": {
+   "thinking_tokens": 367
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 6036,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 623,
+    "cache_read_input_tokens": 12083,
+    "cache_creation_input_tokens": 547,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 547
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 10,
+   "outputTokens": 2606,
+   "cacheReadInputTokens": 47997,
+   "cacheCreationInputTokens": 6036,
+   "webSearchRequests": 0,
+   "costUSD": 0.11004739999999999,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 367,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 6036,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 5,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I wrote predictions for all 200 test trials to `output/predictions.json`. I estimate they will be about 83% accurate, and I found no problems with the data.\n\n**Decoder:** logistic regression on log(1 + spike count) with fairly strong regularization (C = 0.1). The final model is trained on the train and validation trials together (87 trials).\n\n**Accuracy estimate:**\n- Trained on train only, it scored 88% on the 17 validation trials (15 of 17).\n- 5-fold cross-validation over all 87 labeled trials gave 84%.\n- A Gaussian naive Bayes model, tried for comparison, scored 80\u201382%.\n\nI put `claimed_accuracy` at 0.83, slightly below cross-validation, because the dataset is small and the validation figure rests on only 17 trials. Chance is 25%. The predicted test classes are fairly balanced (50, 42, 50 and 58 trials for classes 0\u20133).\n\n**Data checks:**\n- `y` matches `category` on every labeled trial.\n- There are no missing values or impossible counts.\n- No trial appears twice, and no test trial copies a train trial.\n- Average firing rate per neuron is about the same in train, validation and test.\n- Training trials are sorted by class, and the total count rises slightly with trial position (correlation 0.3). Since cross-validation shuffled the trials, this doesn't affect the estimate.\n- Test trials resemble each other on the high-rate neurons a bit more than they resemble training trials. That's what you'd expect if the 200 test pseudo-trials were built by reusing a limited pool of presentations. I didn't count it as a defect.\n\nSo I reported `data_issues` as \"none\". One general caveat: because each row stitches together presentations from different sessions rather than recording them at the same time, the decoder can't use any co-firing between neurons. That's how the dataset was built, not an error in it.",
+ "ttft_ms": 3429,
+ "type": "result",
+ "duration_ms": 59632,
+ "uuid": "11c58190-f820-4d8d-8b70-0af4d9813985",
+ "ttft_stream_ms": 2108,
+ "time_to_request_ms": 72,
+ "first_content_frame_ms": 2109,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 60.5
+}

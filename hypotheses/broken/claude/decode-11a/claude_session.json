@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 32364,
+ "stop_reason": "end_turn",
+ "session_id": "07b48947-2139-4890-8b1a-82bcaba13d67",
+ "total_cost_usd": 0.1099512,
+ "usage": {
+  "input_tokens": 10,
+  "cache_creation_input_tokens": 5302,
+  "cache_read_input_tokens": 45576,
+  "output_tokens": 2919,
+  "output_tokens_details": {
+   "thinking_tokens": 382
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 5302,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 651,
+    "cache_read_input_tokens": 11095,
+    "cache_creation_input_tokens": 801,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 801
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 10,
+   "outputTokens": 2919,
+   "cacheReadInputTokens": 45576,
+   "cacheCreationInputTokens": 5302,
+   "webSearchRequests": 0,
+   "costUSD": 0.1099512,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 382,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 5302,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 5,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I've written predictions for all 200 test trials to `output/predictions.json`, with a claimed accuracy of 0.77. That estimate comes from cross-validation; the real test labels are hidden, so it can't be checked directly.\n\n**The data problem:** 10 of the 30 neurons (indices 0, 1, 2, 3, 4, 5, 7, 10, 12, 17) are exactly zero on every test trial. They fire normally in train and val; neuron 1, for example, averages about 15 spikes per trial in training. That pattern points to channels or sessions lost in the test recordings, not neurons that really went quiet. A decoder trained on all 30 neurons would treat those zeros as real signal and do badly on test. That's what I put in `data_issues`.\n\n**Other checks came out clean:**\n- The labels `y` match the stimulus-log `category` exactly in both train and val.\n- No test trial duplicates a train or val trial.\n- Classes are balanced, at about 22 trials each in train.\n\n**Decoder:** I trained only on the 20 neurons that are still active in test, using train and val together (103 trials). The model is a heavily regularized logistic regression on square-root-transformed, standardized counts (C=0.01). The test predictions come out roughly balanced across the four classes: 50, 54, 50 and 46 trials.\n\n**Accuracy estimate:**\n\n| Features | Cross-validated accuracy |\n|---|---|\n| All 30 neurons | ~0.95 |\n| 20 live neurons | ~0.80 |\n\nShrinkage LDA and Gaussian naive Bayes scored about the same as the logistic regression on the 20 live neurons. I claimed 0.77, a little below the 0.80, because a few of the remaining neurons have somewhat different average firing in test than in training (neuron 20 averages about 13.6 spikes in test versus 11.2 in train).",
+ "ttft_ms": 3746,
+ "type": "result",
+ "duration_ms": 71322,
+ "uuid": "3518a1c7-5444-4f12-b268-c4b665892f80",
+ "ttft_stream_ms": 1940,
+ "time_to_request_ms": 64,
+ "first_content_frame_ms": 1940,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 72.1
+}

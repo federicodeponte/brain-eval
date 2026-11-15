@@ -60,17 +60,20 @@ GENERIC = {
 GROUP_OF = {"leak": "leak", "shift": "label", "noise": "label", "dead": "input", "perm": "input", "mix": "input"}
 NEG = re.compile(r"\b(no|not|never|without|nor|none|neither|free of|absence of|lack of|did ?n[o']t|didn't|don't|doesn't|isn't|aren't|wasn't|weren't|cannot|can't|unable to|rule[sd]? out|ruled out)\b")
 # "label leakage via orientation_deg" style remarks are about the documented stimulus-log column, not a data fault:
-# a leak-family word in a clause that names that column counts only if the clause also talks about copied trials.
+# a leak-family word in a sentence that names that column counts only if the sentence says trials/rows are copied.
 META_COL = re.compile(r"movie_time_s|image_id|orientation_deg|\bcategory\b|meta-?data|stimulus[- ]log|derivable|mapped to|as a feature")
-DUPE = re.compile(r"duplicat|cop(y|ies|ied)|near[- ]?identical|overlap|same (trials?|rows?)|repeated (trials?|rows?)")
+DUPE = re.compile(r"(duplicat|cop(y|ies|ied)|near[- ]?identical|repeated|overlap)\w*[^.;]{0,40}(trials?|rows?|samples?|examples?)|"
+                  r"(trials?|rows?|samples?|examples?)[^.;]{0,40}(duplicat|cop(y|ies|ied)|near[- ]?identical|repeated|overlap)|same (trials?|rows?)")
+SENT = re.compile(r"[.;\n!?](?=\s|$)")  # the stimulus-log rule works per sentence, so "Label leakage: image_id ..." is covered
 CLAUSE = re.compile(r"[.;:\n!?]|\bbut\b|\bhowever\b|\bwhereas\b|\balthough\b")
 
 
 def flagged(text):
     """Return ({family: snippets}, {group: snippets}) for non-negated mentions."""
     fam, gen = {}, {}
-    for clause in CLAUSE.split(text.lower()):
-        meta_only = bool(META_COL.search(clause)) and not DUPE.search(clause)
+    for sent in SENT.split(text.lower()):
+      meta_only = bool(META_COL.search(sent)) and not DUPE.search(sent)
+      for clause in CLAUSE.split(sent):
         for table, out in ((FAMILIES, fam), (GENERIC, gen)):
             for name, pats in table.items():
                 if table is FAMILIES and name == "leak" and meta_only:
@@ -86,6 +89,10 @@ def flagged(text):
 
 def diagnose(text, faults):
     fam, gen = flagged(text)
+    if "mix" not in faults:
+        # mix is experimental (not in the v4 dataset) and human envs document that neurons are pooled across sessions,
+        # so "combined across sessions" remarks are neither credit nor false alarm unless mix is actually planted.
+        fam.pop("mix", None)
     groups_flagged = {GROUP_OF[f] for f in fam} | set(gen)
     if not faults:
         return (0.0 if groups_flagged else 1.0), dict(false_alarm=bool(groups_flagged), named=None, extra=sorted(groups_flagged), fam=fam, gen=gen)

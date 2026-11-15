@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 33434,
+ "stop_reason": "end_turn",
+ "session_id": "c9260f22-c456-45a5-8e50-91a8581b66b8",
+ "total_cost_usd": 0.1134832,
+ "usage": {
+  "input_tokens": 12,
+  "cache_creation_input_tokens": 5753,
+  "cache_read_input_tokens": 57956,
+  "output_tokens": 2791,
+  "output_tokens_details": {
+   "thinking_tokens": 260
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 5753,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 584,
+    "cache_read_input_tokens": 11994,
+    "cache_creation_input_tokens": 353,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 353
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 12,
+   "outputTokens": 2791,
+   "cacheReadInputTokens": 57956,
+   "cacheCreationInputTokens": 5753,
+   "webSearchRequests": 0,
+   "costUSD": 0.1134832,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 260,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 5753,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 6,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I've written the predictions file at `output/predictions.json`. It has 120 predictions, an estimated test accuracy of **0.62**, and `data_issues` set to `\"none\"`.\n\n**Decoder:** a logistic regression (C=0.1) on square-root spike counts. It uses all 25 units in time bins 1\u20134 (50\u2013250 ms after stimulus onset), trained on train and val combined (280 trials). I left out bin 0 (0\u201350 ms) because it carries essentially no information about the image (F-statistic about 1.1, against 4\u201310 for the later bins). That fits the normal delay before V1 neurons respond.\n\n**Accuracy estimate:** 5-fold cross-validation, repeated with 5 shuffles on the 280 labelled trials, gave about 0.62. With 8 classes, chance is 0.125. Earlier variants scored between 0.56 and 0.63 (trained on train only and scored on val: 0.53\u20130.56). Since the test set is only 120 trials, the real test score will probably land within about \u00b10.05 of 0.62.\n\n**Data checks (no problems found):**\n- **Labels:** every `y` matches its `image_id` exactly, and the classes are balanced (25 per class in train, 10 in val).\n- **Duplicates:** no trial appears twice within or across train, val and test.\n- **Train vs test:** a classifier trying to tell training trials from test trials did no better than a coin flip (AUC 0.50). Firing rates per unit and per time bin also match across splits, so there's no sign of a shift or of units being shuffled in test.\n- **Minor:** unit 22 never fires (all zeros), which is harmless.\n\nThe predicted classes are reasonably balanced across the test set, ranging from 11 to 22 trials per class.",
+ "ttft_ms": 3384,
+ "type": "result",
+ "duration_ms": 110994,
+ "uuid": "15300b48-bff4-4986-8cb1-a17fb3f4aeef",
+ "ttft_stream_ms": 2040,
+ "time_to_request_ms": 103,
+ "first_content_frame_ms": 2040,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 112.1
+}

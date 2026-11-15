@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 52166,
+ "stop_reason": "end_turn",
+ "session_id": "3c10d2bd-b566-4e72-bab3-acad50c9c2d3",
+ "total_cost_usd": 0.19182260000000004,
+ "usage": {
+  "input_tokens": 14,
+  "cache_creation_input_tokens": 9738,
+  "cache_read_input_tokens": 77113,
+  "output_tokens": 4922,
+  "output_tokens_details": {
+   "thinking_tokens": 342
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 9738,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 600,
+    "cache_read_input_tokens": 15518,
+    "cache_creation_input_tokens": 814,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 814
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 14,
+   "outputTokens": 4922,
+   "cacheReadInputTokens": 77113,
+   "cacheCreationInputTokens": 9738,
+   "webSearchRequests": 0,
+   "costUSD": 0.19182260000000004,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 342,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 9738,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 7,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I wrote predictions for all 120 test trials to `output/predictions.json`. I expect accuracy of about **0.44** (chance is 0.125). The test data has a serious problem that lowers that number.\n\n**Data problem:** 9 of the 25 units (rows 2, 3, 8, 9, 10, 13, 14, 16, 20) have zero spikes on every test trial, in every bin. In train and val those same units fire on every trial, and some are among the busiest; unit 9 averages about 1.2 spikes per 50 ms bin. That points to dead channels or a sorting/alignment failure in the test recording, not real silence. The other 16 units fire at the same rates in all three splits, and the labels in train and val agree with `image_id` (25 and 10 trials per class). No trial is duplicated.\n\n**Decoder:** A model trained on all 25 units would see those units suddenly read zero on test, so I used only the 16 working units. The model is a Poisson naive Bayes on spike counts for each unit in each time bin, fit on train and val together (280 trials).\n\n**Accuracy estimate:**\n- On the 16 working units, repeated 10-fold cross-validation gives about 0.45. Shrinkage LDA and logistic regression scored about the same. Total counts without time bins did worse, at about 0.37.\n- With all 25 units the same kind of decoder reaches about 0.6, so losing the 9 units costs about 15 points.\n- I claimed 0.44, slightly under cross-validation to allow for noise. With only 120 test trials, the real result could easily land 0.05\u20130.08 either side.\n\nThe analysis script is at `/tmp/claude-broken/scripts/ev.py`, outside the data directory.",
+ "ttft_ms": 4140,
+ "type": "result",
+ "duration_ms": 109001,
+ "uuid": "a6c9f1f4-f235-4fc7-9384-e636ea309aa0",
+ "ttft_stream_ms": 2197,
+ "time_to_request_ms": 136,
+ "first_content_frame_ms": 2197,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 110.4
+}

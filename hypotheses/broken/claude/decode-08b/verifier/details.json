@@ -1,0 +1,31 @@
+{
+ "task_base": "h-houses",
+ "twin": "defect",
+ "fault": "leak",
+ "n_test": 200,
+ "K": 4,
+ "valid": true,
+ "n_predictions": 200,
+ "n_invalid": 0,
+ "acc": 0.735,
+ "chance": 0.25,
+ "skill": 0.6467,
+ "claimed_accuracy": 0.92,
+ "gap": 0.185,
+ "calib": 0.63,
+ "fault_named": true,
+ "false_alarm": null,
+ "families_flagged": [
+  "leak"
+ ],
+ "matches": {
+  "leak": [
+   "duplicate",
+   "duplicated",
+   "identical"
+  ]
+ },
+ "diag": 1.0,
+ "reward": 0.7589,
+ "data_issues": "Three exact duplicate trials in the labeled data (train rows 18&42, 82&100, 83&145: identical 40-neuron count vectors with same label), likely duplicated pseudo-population rows; removed before training/CV. Labels match the stimulus-log category; no other problems found."
+}

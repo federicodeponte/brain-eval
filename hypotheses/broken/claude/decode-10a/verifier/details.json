@@ -1,0 +1,23 @@
+{
+ "task_base": "m-ns-c",
+ "twin": "clean",
+ "fault": "dead",
+ "n_test": 120,
+ "K": 8,
+ "valid": true,
+ "n_predictions": 120,
+ "n_invalid": 0,
+ "acc": 0.5917,
+ "chance": 0.125,
+ "skill": 0.5333,
+ "claimed_accuracy": 0.62,
+ "gap": 0.0283,
+ "calib": 0.9433,
+ "fault_named": null,
+ "false_alarm": false,
+ "families_flagged": [],
+ "matches": {},
+ "diag": 1.0,
+ "reward": 0.8256,
+ "data_issues": "none"
+}
