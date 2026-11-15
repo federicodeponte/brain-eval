@@ -148,7 +148,7 @@ footer{font-size:.85rem;color:var(--muted);display:grid;gap:6px;border-top:1px s
   <section>
     <div class="eyebrow">Results</div>
     <h2>Opus reads neurons as well as a classic decoder</h2>
-    <p>Every question, same examples for every solver, one shot, no tools. Human 40 questions, mouse 60 and 30. The decoder is nearest-centroid on the labeled rows in the prompt. Opus ties it on all three tasks, yet gets different questions right: on human neurons, 5 that only Opus solved and 4 that only the decoder solved. Haiku bars are from 10 questions.</p>
+    <p>Every question, same examples for every solver, one shot, no tools. Human 40 questions, mouse 60 and 30, hard tier 20 each. The decoder is nearest-centroid on the labeled rows in the prompt. Opus ties it on all three tasks, yet gets different questions right: on human neurons, 5 that only Opus solved and 4 that only the decoder solved. On the hard tier, with one example per class, Opus gets 50% (human) and 60% (mouse, 8 clips): still level with the decoder and far from solved. Haiku bars are from 10 questions.</p>
     <div class="panel chart">
       <div class="legend">
         <span><i style="background:var(--chance)"></i>Chance</span>
@@ -299,15 +299,17 @@ document.getElementById("hsave").onclick=async()=>{
 
 /* ---------- chart ---------- */
 const tasks=[
-  {name:"Human neurons",sub:"4 photo categories · n=40",chance:25,haiku:50,opus:68,decoder:65},
-  {name:"Mouse, 4 clips",sub:"visual cortex · n=60",chance:25,haiku:60,opus:87,decoder:87},
-  {name:"Mouse, 8 clips",sub:"visual cortex · n=30",chance:12.5,haiku:null,opus:67,decoder:67},
+  {name:"Human neurons",sub:"4 photos · n=40",chance:25,haiku:50,opus:68,decoder:65},
+  {name:"Mouse, 4 clips",sub:"n=60",chance:25,haiku:60,opus:87,decoder:87},
+  {name:"Mouse, 8 clips",sub:"n=30",chance:12.5,haiku:null,opus:67,decoder:67},
+  {name:"Human, hard",sub:"1 example · n=20",chance:25,haiku:null,opus:50,decoder:45},
+  {name:"Mouse, hard",sub:"1 example · n=20",chance:12.5,haiku:null,opus:60,decoder:50},
 ];
 const svg=document.getElementById("bars"),W=820,T0=20,bottom=250,left=40;
 const y=v=>bottom-(v/100)*(bottom-T0);
 let s="";
 [0,25,50,75,100].forEach(t=>{s+=`<line x1="${left}" x2="${W-8}" y1="${y(t)}" y2="${y(t)}" stroke="var(--line)" stroke-width="1"/><text x="${left-6}" y="${y(t)+4}" text-anchor="end">${t}%</text>`});
-const groupW=(W-left-8)/tasks.length,bw=34,gapb=8;
+const groupW=(W-left-8)/tasks.length,gapb=6,bw=Math.min(34,(groupW-12-3*gapb)/4);
 const series=[["chance","var(--chance)"],["haiku","var(--haiku)"],["opus","var(--opus)"],["decoder","var(--decoder)"]];
 tasks.forEach((t,i)=>{
   const gx=left+i*groupW+(groupW-(series.length*bw+(series.length-1)*gapb))/2;

@@ -1,0 +1,119 @@
+{
+ "set": "human-hard",
+ "config": {
+  "classes": 4,
+  "shots_per_class": 1,
+  "neurons": 40,
+  "window_ms": [
+   200,
+   1200
+  ],
+  "group": "cars/food/people/animals",
+  "build_seed": 22
+ },
+ "items": 30,
+ "chance": 0.25,
+ "decoders_on_set": {
+  "nc_corr_sqrt": 0.533,
+  "nc_corr": 0.5,
+  "nc_euclid_sqrt": 0.633,
+  "nc_euclid": 0.567
+ },
+ "candidate_seeds_on_30_items": {
+  "21": {
+   "nc_corr_sqrt": 0.567,
+   "nc_corr": 0.567,
+   "nc_euclid_sqrt": 0.567,
+   "nc_euclid": 0.533
+  },
+  "22": {
+   "nc_corr_sqrt": 0.533,
+   "nc_corr": 0.5,
+   "nc_euclid_sqrt": 0.633,
+   "nc_euclid": 0.567
+  },
+  "23": {
+   "nc_corr_sqrt": 0.533,
+   "nc_corr": 0.467,
+   "nc_euclid_sqrt": 0.6,
+   "nc_euclid": 0.6
+  }
+ },
+ "picked_seed_reason": "set NC (corr, sqrt) closest to the 400-item estimate",
+ "decoders_400_item_estimates": [
+  {
+   "neurons": 40,
+   "shots": 1,
+   "n": 400,
+   "chance": 0.25,
+   "nc_corr_sqrt": 0.517,
+   "nc_corr": 0.482,
+   "nc_euclid_sqrt": 0.542,
+   "nc_euclid": 0.512
+  },
+  {
+   "neurons": 40,
+   "shots": 2,
+   "n": 400,
+   "chance": 0.25,
+   "nc_corr_sqrt": 0.595,
+   "nc_corr": 0.598,
+   "nc_euclid_sqrt": 0.637,
+   "nc_euclid": 0.6
+  },
+  {
+   "neurons": 20,
+   "shots": 1,
+   "n": 400,
+   "chance": 0.25,
+   "nc_corr_sqrt": 0.495,
+   "nc_corr": 0.487,
+   "nc_euclid_sqrt": 0.535,
+   "nc_euclid": 0.48
+  },
+  {
+   "neurons": 20,
+   "shots": 2,
+   "n": 400,
+   "chance": 0.25,
+   "nc_corr_sqrt": 0.608,
+   "nc_corr": 0.593,
+   "nc_euclid_sqrt": 0.657,
+   "nc_euclid": 0.58
+  },
+  {
+   "neurons": 20,
+   "shots": 3,
+   "n": 400,
+   "chance": 0.25,
+   "nc_corr_sqrt": 0.685,
+   "nc_corr": 0.68,
+   "nc_euclid_sqrt": 0.713,
+   "nc_euclid": 0.662
+  },
+  {
+   "neurons": 10,
+   "shots": 3,
+   "n": 400,
+   "chance": 0.25,
+   "nc_corr_sqrt": 0.655,
+   "nc_corr": 0.62,
+   "nc_euclid_sqrt": 0.68,
+   "nc_euclid": 0.585
+  }
+ ],
+ "letters": {
+  "A": 8,
+  "B": 8,
+  "C": 7,
+  "D": 7
+ },
+ "query_categories": {
+  "cars": 8,
+  "food": 7,
+  "people": 7,
+  "animals": 8
+ },
+ "prompt_chars_max": 2067,
+ "reference_existing": "human K=4 3-shot 40 neurons: NC 0.65 (corr sqrt); Opus 0.68"
+}

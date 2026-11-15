@@ -17,8 +17,10 @@ Frontier models get raw spike counts from real neurons plus a few labeled exampl
 | Human neurons | 40 | 68% | 65% | 25% | 5 / 4 |
 | Mouse, 4 clips | 60 | 87% | 87% | 25% | 5 / 5 |
 | Mouse, 8 clips | 30 | 67% | 67% | 12.5% | 3 / 3 |
+| Human, hard (1 example per class) | 20 | 50% | 45% | 25% | 5 / 4 |
+| Mouse, hard (8 clips, 1 example each) | 20 | 60% | 50% | 12.5% | 3 / 1 |
 
-Opus ties a nearest-centroid decoder on all three tasks from 3 in-prompt examples per class, but solves different items. Answer letters are balanced; Opus picks are spread evenly across letters.
+Opus ties a nearest-centroid decoder on all three tasks from 3 in-prompt examples per class, but solves different items. On the hard tier (1 example per class, built in hard/) Opus stays level with the decoder at 50% and 60%: far from solved. A logistic decoder trained on many more trials reaches 73% (mouse) and 97% (human), so the signal is there; with one example in the prompt, neither Opus nor the simple decoder gets it. Answer letters are balanced; Opus picks are spread evenly across letters.
 
 ## Controls (does the model learn from the examples?)
 In `hypotheses/controls/` and `mouse/valkyrie/dataset-*`:
