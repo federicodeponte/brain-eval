@@ -1,0 +1,127 @@
+{
+ "set": "mouse-hard",
+ "config": {
+  "K": 8,
+  "shots": 1,
+  "units": 40,
+  "bins": 10,
+  "bin_ms": 100.0,
+  "seed": 7
+ },
+ "items": 30,
+ "chance": 0.125,
+ "decoders_on_set": {
+  "nc_corr": 0.5,
+  "nc_euclid": 0.567,
+  "nc_corr_sqrt": 0.667,
+  "logreg": 0.733
+ },
+ "decoders_600_item_estimate": [
+  {
+   "K": 8,
+   "shots": 1,
+   "units": 40,
+   "n": 600,
+   "chance": 0.125,
+   "nc_corr": 0.558,
+   "nc_euclid": 0.538,
+   "nc_corr_sqrt": 0.693,
+   "logreg": 0.698
+  }
+ ],
+ "candidates": [
+  {
+   "K": 8,
+   "shots": 1,
+   "units": 40,
+   "n": 600,
+   "chance": 0.125,
+   "nc_corr": 0.558,
+   "nc_euclid": 0.538,
+   "nc_corr_sqrt": 0.693,
+   "logreg": 0.698
+  },
+  {
+   "K": 8,
+   "shots": 1,
+   "units": 20,
+   "n": 600,
+   "chance": 0.125,
+   "nc_corr": 0.48,
+   "nc_euclid": 0.478,
+   "nc_corr_sqrt": 0.573,
+   "logreg": 0.665
+  },
+  {
+   "K": 8,
+   "shots": 2,
+   "units": 40,
+   "n": 600,
+   "chance": 0.125,
+   "nc_corr": 0.677,
+   "nc_euclid": 0.608,
+   "nc_corr_sqrt": 0.788,
+   "logreg": 0.808
+  },
+  {
+   "K": 10,
+   "shots": 1,
+   "units": 40,
+   "n": 600,
+   "chance": 0.1,
+   "nc_corr": 0.51,
+   "nc_euclid": 0.463,
+   "nc_corr_sqrt": 0.653,
+   "logreg": 0.697
+  },
+  {
+   "K": 12,
+   "shots": 1,
+   "units": 40,
+   "n": 600,
+   "chance": 0.083,
+   "nc_corr": 0.483,
+   "nc_euclid": 0.418,
+   "nc_corr_sqrt": 0.573,
+   "logreg": 0.652
+  },
+  {
+   "K": 12,
+   "shots": 1,
+   "units": 20,
+   "n": 600,
+   "chance": 0.083,
+   "nc_corr": 0.39,
+   "nc_euclid": 0.408,
+   "nc_corr_sqrt": 0.528,
+   "logreg": 0.635
+  },
+  {
+   "K": 8,
+   "shots": 1,
+   "units": 10,
+   "n": 600,
+   "chance": 0.125,
+   "nc_corr": 0.392,
+   "nc_euclid": 0.39,
+   "nc_corr_sqrt": 0.505,
+   "logreg": 0.59
+  }
+ ],
+ "letters": {
+  "A": 4,
+  "B": 4,
+  "C": 4,
+  "D": 4,
+  "E": 4,
+  "F": 4,
+  "G": 3,
+  "H": 3
+ },
+ "prompt_chars_max": 8087,
+ "prompt_chars_mean": 8053,
+ "reference_existing": {
+  "k4_3shot_40u": "NC 0.817 (v2), Opus 0.87 vs NC 0.87 (v1)",
+  "k8_3shot_40u": "NC 0.833 (v2), Opus 0.67 vs NC 0.67 (v1)"
+ }
+}

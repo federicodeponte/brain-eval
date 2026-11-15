@@ -56,3 +56,4 @@ Add `--provider modal` (or daytona) if the org has no default provider.
 ## Human neurons dataset (added 2026-11-14)
 - dataset-human/: 40 tasks from ~/work/vals-hyp/human-neurons/tasks.jsonl (k=4 added), same builder.
 - Push: valkyrie dataset push human-v1/mcq ./dataset-human --tag v1
+- dataset-mouse-hard/, dataset-human-hard/ (30 tasks each, HARD tier, 1-shot): see ~/work/vals-hyp/hard/STATE.md

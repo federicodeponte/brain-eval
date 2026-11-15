@@ -12,6 +12,8 @@ SRC['label-swap']=C/'label-swap/tasks.jsonl'; SRC['shot01']=C/'shot-curve/tasks.
 for d in (Path.home()/'work/vals-hyp').iterdir():
     if (d/'tasks.jsonl').exists() and d.name not in ('smell',):
         SRC[d.name] = d/'tasks.jsonl'
+for d in (Path.home()/'work/vals-hyp/hard').glob('*/tasks.jsonl'):
+    SRC[d.parent.name] = d  # hard tier: mouse-hard, human-hard
 
 def parse(txt):
     m = re.search(r'(?i)answer\s*[:is]*\s*\**\s*\(?([A-H])\b', txt)

@@ -36,3 +36,6 @@ Status: built and validated offline. No model calls made. No new downloads (reus
 - swap-out NM1 examples come from a different stimulus block. Rate or adaptation differences could let a model flag the "odd" option. The NM3 swaps (the same movie, a clip outside the item) guard against that, so compare the E rate by swap type.
 - n=40 per set: one item is 2.5 points, and a 95% CI is about ±15 points near 0.5.
 - The v2 baselines differ from v1 partly by sampling (new items), not only by the selection change.
+
+## HARD tier
+- ~/work/vals-hyp/hard/ (mouse-hard, human-hard, 1-shot). See its STATE.md.

@@ -42,3 +42,4 @@ K=4 is about 11.4k chars; K=8 is about 21.3k chars.
 
 ## v2 (2026-11-14)
 - tasks_v2.jsonl (60 K=4 + 30 K=8): units chosen per item from non-query repeats only (fixes the caveat above). NC 0.817/0.833, LR 0.967/0.867. Built by ~/work/vals-hyp/controls/scripts/mouse_controls.py; report build_report_v2.json; Valkyrie folder valkyrie/dataset-v2. Controls: ~/work/vals-hyp/controls/STATE.md
+- HARD tier (1-shot): ~/work/vals-hyp/hard/STATE.md (mouse-hard K=8 NC 0.50, human-hard NC 0.53)

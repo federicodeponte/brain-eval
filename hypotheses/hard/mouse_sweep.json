@@ -1,0 +1,79 @@
+[
+ {
+  "K": 8,
+  "shots": 1,
+  "units": 40,
+  "n": 600,
+  "chance": 0.125,
+  "nc_corr": 0.558,
+  "nc_euclid": 0.538,
+  "nc_corr_sqrt": 0.693,
+  "logreg": 0.698
+ },
+ {
+  "K": 8,
+  "shots": 1,
+  "units": 20,
+  "n": 600,
+  "chance": 0.125,
+  "nc_corr": 0.48,
+  "nc_euclid": 0.478,
+  "nc_corr_sqrt": 0.573,
+  "logreg": 0.665
+ },
+ {
+  "K": 8,
+  "shots": 2,
+  "units": 40,
+  "n": 600,
+  "chance": 0.125,
+  "nc_corr": 0.677,
+  "nc_euclid": 0.608,
+  "nc_corr_sqrt": 0.788,
+  "logreg": 0.808
+ },
+ {
+  "K": 10,
+  "shots": 1,
+  "units": 40,
+  "n": 600,
+  "chance": 0.1,
+  "nc_corr": 0.51,
+  "nc_euclid": 0.463,
+  "nc_corr_sqrt": 0.653,
+  "logreg": 0.697
+ },
+ {
+  "K": 12,
+  "shots": 1,
+  "units": 40,
+  "n": 600,
+  "chance": 0.083,
+  "nc_corr": 0.483,
+  "nc_euclid": 0.418,
+  "nc_corr_sqrt": 0.573,
+  "logreg": 0.652
+ },
+ {
+  "K": 12,
+  "shots": 1,
+  "units": 20,
+  "n": 600,
+  "chance": 0.083,
+  "nc_corr": 0.39,
+  "nc_euclid": 0.408,
+  "nc_corr_sqrt": 0.528,
+  "logreg": 0.635
+ },
+ {
+  "K": 8,
+  "shots": 1,
+  "units": 10,
+  "n": 600,
+  "chance": 0.125,
+  "nc_corr": 0.392,
+  "nc_euclid": 0.39,
+  "nc_corr_sqrt": 0.505,
+  "logreg": 0.59
+ }
+]
