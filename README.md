@@ -141,6 +141,7 @@ In `hypotheses/controls/` and `mouse/valkyrie/dataset-*`:
 - Human rows are pseudo-trials (neurons pooled across sessions by photo category); the mouse tier uses neurons recorded together in one session.
 - Hard-tier sets have n=20, so one question is 5 points; differences there are within noise.
 - Opus answered the reading tier via `claude -p`, GPT-5 via the Valkyrie one-shot agent: same prompts and grader, different clients.
+- The 45 published gym environments, their keys and oracle solutions are in this repo, and `gym/gen.py` regenerates any seed exactly, so they can leak into training data. Score agents on fresh seeds you have not published; the generator makes as many as you need.
 
 ## Layout
 - `mouse/` build scripts, tasks (`tasks_v2.jsonl` = units chosen from training repeats only), `valkyrie/` datasets, one-shot MCQ agent, grader, leaderboard
