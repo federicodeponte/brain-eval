@@ -114,12 +114,12 @@ footer{font-size:.85rem;color:var(--muted);display:grid;gap:6px;border-top:1px s
   </header>
 
   <section>
-    <div class="eyebrow">The hard part</div>
+    <div class="eyebrow">Agent tier · The hard part</div>
     <h2>Give an agent broken data: with two faults, Codex claims 79% and gets 24%. Claude Opus gets 61%</h2>
     <p>A coding agent gets real recordings, builds a decoder and reports how accurate it is. Some copies of the data carry one hidden fault. Plain code scores the real accuracy on a hidden test, the gap to the claim, and whether the fault was named. Bars: Codex (gpt-5.3-codex), 3 passes over 24 tasks. Claude Opus on the same tasks: claimed 72%, got 63% on broken data, named 11 of 12 faults. The benchmark tells agents apart.</p>
     <div class="key"><span><i style="background:var(--haiku)"></i>Accuracy the agent claimed</span><span><i style="background:var(--opus)"></i>Accuracy on the hidden test</span></div>
     <div class="cr"><div class="lab">Clean data<small>control</small></div><div class="bars"><div class="b claim" style="width:75%">75%</div><div class="b real" style="width:71%">71%</div></div><div class="lab">Leaked trials<small>named 0 of 12</small></div><div class="bars"><div class="b claim" style="width:98%">98%</div><div class="b real" style="width:65%">65%</div></div><div class="lab">Shifted clock<small>named 12 of 12</small></div><div class="bars"><div class="b claim" style="width:80%">80%</div><div class="b real" style="width:24%">24%</div></div><div class="lab">Dead channels<small>named 8 of 12</small></div><div class="bars"><div class="b claim" style="width:71%">71%</div><div class="b real" style="width:36%">36%</div></div></div>
-    <p style="margin-top:14px;color:var(--muted);font-size:.9rem">On the shifted clock Codex names the fault every time and still reports the inflated number.</p>
+    <p style="margin-top:14px;color:var(--muted);font-size:.9rem"><b>On the shifted clock Codex names the fault every time and still reports the inflated number.</b></p>
     <h3 style="margin-top:28px">The gym: endless broken environments</h3>
     <p>The generator makes a new environment from any seed: 45 so far, 5 fault types (leaked trials, shifted clock, dead channels, mislabelled trials, shuffled channels), single or combined, each checked so a careful analyst can catch it. Two faults at once:</p>
     <div class="cr"><div class="lab">Codex<small>3 passes · reward 0.45</small></div><div class="bars"><div class="b claim" style="width:79%">79%</div><div class="b real" style="width:24%">24%</div></div><div class="lab">Claude Opus<small>1 pass · reward 0.76</small></div><div class="bars"><div class="b claim" style="width:71%">71%</div><div class="b real" style="width:61%">61%</div></div></div>
@@ -127,7 +127,7 @@ footer{font-size:.85rem;color:var(--muted);display:grid;gap:6px;border-top:1px s
   </section>
 
   <section>
-    <div class="eyebrow">Through a mouse's eyes</div>
+    <div class="eyebrow">Reading tier · Can a model read neurons at all?</div>
     <h2>Which second of the movie was the mouse watching?</h2>
     <p>A mouse watched a black-and-white film ten times while 40 neurons in its visual cortex were recorded. The model sees the spike grid on the left (40 neurons, ten 100 ms steps) plus three recorded viewings of each candidate second. Click the frame you think it is.</p>
     <div class="panel">
