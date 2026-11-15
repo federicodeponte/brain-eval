@@ -11,13 +11,13 @@ Codex (gpt-5.3-codex), 3 passes x 24 tasks:
 
 | Data | Claimed | Real (hidden test) | Fault named |
 |---|---|---|---|
-| Clean | 75% | 71% | false alarm 12/36 |
-| Leaked trials | 98% | 65% | 1/12 |
+| Clean | 75% | 71% | false alarm 6/36 |
+| Leaked trials | 98% | 65% | 0/12 |
 | Shifted clock | 80% | 24% | 12/12, never fixed |
 | Dead channels | 71% | 36% | 8/12 |
 | **All faulty** | **83%** | **42%** | |
 
-Mean reward 0.73 on clean data, 0.40 on faulty data. A naive pipeline shows the same gaps (validation in `broken/STATE.md`): each fault inflates the in-sample estimate by 30-73 points while the hidden test stays honest.
+Mean reward 0.79 on clean data, 0.39 on faulty data (scored with the fixed grader, `broken/regraded.md`: an earlier grader version counted the agent calling a documented label column "leakage" as naming the leak fault). A naive pipeline shows the same gaps (validation in `broken/STATE.md`): each fault inflates the in-sample estimate by 30-73 points while the hidden test stays honest.
 
 ## Reading tier: multiple choice, every question, same items for every solver
 Opus via claude -p; GPT-5 on Valkyrie (oneshot-mcq agent, Modal sandboxes).
