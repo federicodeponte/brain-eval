@@ -4,7 +4,7 @@ Vals AI Hackathon (Nov 14-15 2026), Build Your Own Eval track, built on [Valkyri
 
 Frontier models get raw spike counts from real neurons plus a few labeled examples in the prompt, and must decode what the animal or person was seeing. A 10-line decoder (nearest centroid on the same in-prompt examples) is the baseline.
 
-## Headline: agents claim 83%, get 42%
+## Headline: the benchmark separates agents. Codex claims 83% on broken data and gets 42%; Claude Opus catches most faults
 **Broken-instrument tier** (`broken/`, Valkyrie dataset `brain/broken@v3`): an agent gets real spike recordings, builds a decoder, predicts held-out trials and reports its own accuracy. Each of 12 recordings (8 mouse, 4 human) comes as a clean copy and a copy with one planted fault. Scored by plain code, no model judge: real accuracy on a hidden test, gap between claimed and real accuracy, and whether the fault was named.
 
 Codex (gpt-5.3-codex), 3 passes x 24 tasks:
@@ -16,6 +16,8 @@ Codex (gpt-5.3-codex), 3 passes x 24 tasks:
 | Shifted clock | 80% | 24% | 12/12, never fixed |
 | Dead channels | 71% | 36% | 8/12 |
 | **All faulty** | **83%** | **42%** | |
+
+Claude Opus 5.5 via Claude Code (1 pass x 24, same tasks, same grader, run locally in an isolated sandbox; `broken/claude_aggregate.md`): on faulty data it claimed 72% and got 63%, named the fault 11/12, fixed the shifted clock on all 4 tasks, and raised 0/12 false alarms on clean data. Mean reward 0.81 vs Codex 0.59. Its one miss: duplicated trials, where it reported "no duplicates", claimed 82% and got 48%.
 
 Mean reward 0.79 on clean data, 0.39 on faulty data (scored with the fixed grader, `broken/regraded.md`: an earlier grader version counted the agent calling a documented label column "leakage" as naming the leak fault). A naive pipeline shows the same gaps (validation in `broken/STATE.md`): each fault inflates the in-sample estimate by 30-73 points while the hidden test stays honest.
 
