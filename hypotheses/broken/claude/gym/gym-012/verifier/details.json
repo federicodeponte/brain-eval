@@ -1,0 +1,49 @@
+{
+ "task_id": "gym-012",
+ "env_seed": 4039,
+ "faults": [
+  "shift",
+  "dead"
+ ],
+ "kind": "movie",
+ "n_test": 45,
+ "K": 9,
+ "valid": true,
+ "n_predictions": 45,
+ "n_invalid": 0,
+ "acc": 0.4444,
+ "chance": 0.1111,
+ "skill": 0.375,
+ "claimed_accuracy": 0.3,
+ "gap": 0.1444,
+ "calib": 0.7111,
+ "diag": 1.0,
+ "faults_named": {
+  "shift": true,
+  "dead": true
+ },
+ "false_alarm": null,
+ "extra_groups": [],
+ "families_flagged": [
+  "dead",
+  "shift"
+ ],
+ "generic_flagged": [],
+ "matches": {
+  "shift": [
+   "shift, label",
+   "cyclic"
+  ],
+  "dead": [
+   "dead",
+   "zero spikes",
+   "zero spikes",
+   "dropout"
+  ]
+ },
+ "fix_applies": true,
+ "fix_target": 0.4444,
+ "fix": 1.0,
+ "reward": 0.7715,
+ "data_issues": "(1) Label mis-mapping: in fit and holdout the label column does not match movie_time_s / classes.json. It is a consistent cyclic shift, label = (movie_time_s - 21) mod 9 (e.g. 19 s is labelled 7, 21 s is labelled 0), when it should be movie_time_s - 19. I treated the stimulus-log movie_time_s as ground truth and predicted in the classes.json convention. (2) Dead units in the test set: 8 of the 27 units (indices 4, 11, 15, 17, 19, 21, 22, 25) record exactly zero spikes on all 45 eval trials, though they are among the most active units in fit/holdout (e.g. unit 21 averages about 5.3 spikes per bin). This looks like a recording or channel dropout or a unit-sorting mismatch. A decoder trained on all units predicts a single class for every test trial, so I trained on only the 19 surviving units, which lowers the achievable accuracy."
+}

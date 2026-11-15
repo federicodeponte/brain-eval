@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 61146,
+ "stop_reason": "end_turn",
+ "session_id": "a0940517-72fe-4f71-a17e-a469951957de",
+ "total_cost_usd": 0.18006540000000001,
+ "usage": {
+  "input_tokens": 16,
+  "cache_creation_input_tokens": 7711,
+  "cache_read_input_tokens": 84367,
+  "output_tokens": 5072,
+  "output_tokens_details": {
+   "thinking_tokens": 879
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 7711,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 833,
+    "cache_read_input_tokens": 13845,
+    "cache_creation_input_tokens": 460,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 460
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 16,
+   "outputTokens": 5072,
+   "cacheReadInputTokens": 84367,
+   "cacheCreationInputTokens": 7711,
+   "webSearchRequests": 0,
+   "costUSD": 0.18006540000000001,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 879,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 7711,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 8,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I wrote all 114 test predictions to `output/predictions.json`, with a claimed accuracy of **0.80** and `data_issues` set to `\"none\"`.\n\n**Decoder:** I used logistic regression (C=1) on the full 20 units \u00d7 8 bins, after a square-root transform of the spike counts, trained on train and val together.\n- In 10-fold cross-validation it scored about 0.91, and about 0.87 when trained on train only and tested on val.\n- The most common mistake was confusing opposite directions: 135\u00b0 with 315\u00b0 (26 trials), and less often 45\u00b0 with 225\u00b0 (8 trials). That fits gratings that share an orientation but move opposite ways, so it looks like real biology, not a labelling problem.\n\n**Why I claimed 0.80 rather than 0.91:** the test trials look slightly different from the labelled ones.\n- Firing rates are about 8% lower (188 vs 204 spikes per trial, Mann-Whitney p \u2248 0.03), lower in most units and time bins.\n- The decoder is less sure of itself on test: its average top-class probability is 0.79, against 0.88 in cross-validation, where that figure tracked actual accuracy (0.91) fairly closely.\n- When I simulated an 8% drop in spikes, cross-validation accuracy hardly moved. So the drop in confidence probably comes from more than the lower rates, and I used the test confidence as my estimate. The real figure could reasonably be anywhere from about 0.78 to 0.90.\n\n**Data checks:**\n- Every label matches its `orientation_deg` value.\n- There are no duplicate trials within the labelled data or the test set, and no test trial also appears in train or val.\n- The classes are roughly balanced in every split, including the test predictions.\n- 180\u00b0 and 270\u00b0 are not among the six classes. That's how the task is defined, not an error, and the balanced test predictions don't suggest the test contains trials from those directions.\n\nThe lower test firing rates point to the recording drifting over time. It's a mild effect and it didn't look like a fault in the data, so I left `data_issues` as `\"none\"`. If you'd rather flag it, change that field to something like \"test trials have ~8% lower firing rates than train/val (recording drift)\".",
+ "ttft_ms": 4664,
+ "type": "result",
+ "duration_ms": 198796,
+ "uuid": "6c8cc506-4005-4b6d-a962-0921abeb0b3f",
+ "ttft_stream_ms": 3028,
+ "time_to_request_ms": 96,
+ "first_content_frame_ms": 3029,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 199.7
+}

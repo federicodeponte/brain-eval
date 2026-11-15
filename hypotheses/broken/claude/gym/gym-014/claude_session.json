@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 43258,
+ "stop_reason": "end_turn",
+ "session_id": "00d83fb7-3b56-471e-8f82-67900b959c9c",
+ "total_cost_usd": 0.1519508,
+ "usage": {
+  "input_tokens": 14,
+  "cache_creation_input_tokens": 7968,
+  "cache_read_input_tokens": 74254,
+  "output_tokens": 3665,
+  "output_tokens_details": {
+   "thinking_tokens": 363
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 7968,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 547,
+    "cache_read_input_tokens": 13799,
+    "cache_creation_input_tokens": 763,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 763
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 14,
+   "outputTokens": 3665,
+   "cacheReadInputTokens": 74254,
+   "cacheCreationInputTokens": 7968,
+   "webSearchRequests": 0,
+   "costUSD": 0.1519508,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 363,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 7968,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 7,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I've written all 100 test predictions to `output/predictions.json`. I estimate they will be about **56% accurate** (chance is 10%), and I found no problems with the data.\n\n**Decoder:** a logistic regression on the square root of the spike counts, with C=0.03. It uses the counts in each 50 ms bin for every unit, plus each unit's total over the 250 ms. Adding the totals raised cross-validated accuracy from about 0.53 to 0.575. The final model was fit on train and validation together (290 trials).\n\n**Accuracy estimate:** cross-validation on the 290 labelled trials, repeated three times, gave 0.575. A model trained on train alone scored 0.51 on the validation set. I set the estimate a bit below the cross-validation figure, at 0.56. With only 100 test trials, the real result could easily land 5 to 10 points either side.\n\n**Data checks, all clean:**\n- **Labels:** every trial's class matches its `image_id` (class 0 is image 1, class 1 is image 18, and so on).\n- **Class balance:** 20 trials per class in train, 9 in validation.\n- **Duplicates:** no trial appears more than once within or across the three files.\n- **Shift between splits:** the 21 units' firing rates and the timing of responses across the 5 bins are similar in all three files.\n- **Label swaps:** the average response to each image in the validation set matches the same image's average in train.\n\nClass 6 (image 69) is decoded worst and is often mistaken for classes 5 or 0. As far as I can tell that's because the units respond to those images in similar ways, not because of a labelling error. I've reported `data_issues` as \"none\".",
+ "ttft_ms": 4934,
+ "type": "result",
+ "duration_ms": 190919,
+ "uuid": "cb44b5af-ee36-42d2-a471-c42bf2ca4575",
+ "ttft_stream_ms": 3225,
+ "time_to_request_ms": 101,
+ "first_content_frame_ms": 3225,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 192.2
+}

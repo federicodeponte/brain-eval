@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 68712,
+ "stop_reason": "end_turn",
+ "session_id": "275abff4-b507-49fa-b8f1-7aef51275112",
+ "total_cost_usd": 0.20656619999999998,
+ "usage": {
+  "input_tokens": 16,
+  "cache_creation_input_tokens": 9880,
+  "cache_read_input_tokens": 90511,
+  "output_tokens": 5468,
+  "output_tokens_details": {
+   "thinking_tokens": 1276
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 9880,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 581,
+    "cache_read_input_tokens": 15586,
+    "cache_creation_input_tokens": 888,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 888
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 16,
+   "outputTokens": 5468,
+   "cacheReadInputTokens": 90511,
+   "cacheCreationInputTokens": 9880,
+   "webSearchRequests": 0,
+   "costUSD": 0.20656619999999998,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 1276,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 9880,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 8,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I've written predictions for all 176 test trials to `output/predictions.json`, with an estimated test accuracy of **0.85**.\n\n**Decoder:** I used logistic regression on the log of the spike counts with each neuron standardised, trained on train and validation together (147 trials).\n- Repeated 5-fold cross-validation gave about 0.96 accuracy, and the validation split alone gave 0.93.\n- I didn't claim 0.96 because the model is less sure of itself on test: its average top-class probability is 0.83 there versus 0.89 in cross-validation. I set the estimate to roughly match the test confidence. That figure is a judgement, not a measurement.\n- Predicted counts per class on test are 53 houses, 28 mobility, 39 phones and 56 small animals.\n\n**Data checks:**\n- **Labels:** `label` matches `category` on every train and validation trial, so I found no mislabelling.\n- **Duplicate:** train rows 14 and 92 have the same counts on all 30 neurons (both labelled houses).\n- **Test set shifted:** a classifier trained to tell labelled rows from test rows separates them well (AUC about 0.95). Test rows repeat the same count values far more often. For example, neuron 24 has a count of 39 in 6 test rows, but never goes above 10 in training. My best guess is that the test pseudo-population reused the same per-session trials many times, i.e. it was sampled with replacement. That would make test rows depend on each other, and the shift is the main reason the real accuracy could miss my estimate in either direction.\n\nAll of this is recorded in the `data_issues` field.",
+ "ttft_ms": 5342,
+ "type": "result",
+ "duration_ms": 100494,
+ "uuid": "5215946f-d07c-440d-b586-453af19e6ff3",
+ "ttft_stream_ms": 3461,
+ "time_to_request_ms": 68,
+ "first_content_frame_ms": 3461,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 101.4
+}

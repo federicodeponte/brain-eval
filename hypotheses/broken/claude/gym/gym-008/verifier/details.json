@@ -1,0 +1,48 @@
+{
+ "task_id": "gym-008",
+ "env_seed": 4016,
+ "faults": [
+  "leak"
+ ],
+ "kind": "human",
+ "n_test": 176,
+ "K": 4,
+ "valid": true,
+ "n_predictions": 176,
+ "n_invalid": 0,
+ "acc": 0.6136,
+ "chance": 0.25,
+ "skill": 0.4848,
+ "claimed_accuracy": 0.85,
+ "gap": 0.2364,
+ "calib": 0.5273,
+ "diag": 0.75,
+ "faults_named": {
+  "leak": true
+ },
+ "false_alarm": null,
+ "extra_groups": [
+  "input"
+ ],
+ "families_flagged": [
+  "leak"
+ ],
+ "generic_flagged": [
+  "input"
+ ],
+ "matches": {
+  "leak": [
+   "duplicates"
+  ],
+  "generic:input": [
+   "distributionally shifted",
+   "test set is distributionally shifted from train/val (a train",
+   "shifted from train"
+  ]
+ },
+ "fix_applies": false,
+ "fix_target": 0.6193,
+ "fix": null,
+ "reward": 0.5874,
+ "data_issues": "No label problems found: label matches category on every train/val trial. Minor issues: train rows 14 and 92 are exact duplicates (same 30-neuron vector, both houses). The test set is distributionally shifted from train/val (a train-vs-test classifier reaches AUC ~0.95). Test rows reuse the same per-session trials many times, e.g. neuron 24 has count 39 in 6 test rows while its train max is 10, and there are fewer distinct values per neuron. This looks like the pseudo-population was resampled with replacement, which inflates the dependence between test rows. The decoder is also less confident on test than in CV."
+}

@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 62815,
+ "stop_reason": "end_turn",
+ "session_id": "4b592375-cfee-4ccb-8112-f465289ea34d",
+ "total_cost_usd": 0.186678,
+ "usage": {
+  "input_tokens": 18,
+  "cache_creation_input_tokens": 8697,
+  "cache_read_input_tokens": 100950,
+  "output_tokens": 4842,
+  "output_tokens_details": {
+   "thinking_tokens": 669
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 8697,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 646,
+    "cache_read_input_tokens": 14669,
+    "cache_creation_input_tokens": 622,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 622
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 18,
+   "outputTokens": 4842,
+   "cacheReadInputTokens": 100950,
+   "cacheCreationInputTokens": 8697,
+   "webSearchRequests": 0,
+   "costUSD": 0.186678,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 669,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 8697,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 9,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I've written predictions for all 45 test trials to `output/predictions.json`. I estimate they'll be about **30% accurate**, against 11% for chance with 9 classes. I found two problems in the data, and both shaped the decoder.\n\n**Data problems:**\n1. **The labels don't match the movie times.** In both the fit and holdout files, the `label` column is shifted around the 9 classes relative to `movie_time_s` and `classes.json`: label = (movie_time_s \u2212 21) mod 9. For example, trials starting at 19 s are labelled 7 and trials starting at 21 s are labelled 0. They should be movie_time_s \u2212 19. I treated the stimulus log (`movie_time_s`) as the truth, trained on movie_time_s \u2212 19, and my predictions follow the `classes.json` numbering. A check of whether the neural responses run smoothly from one segment into the next didn't settle which version is right. If the hidden test labels use the shifted version, my predictions will score badly.\n2. **Eight units are silent in the test set.** Units 4, 11, 15, 17, 19, 21, 22 and 25 record zero spikes on every test trial. In the fit data they are among the most active units; unit 21 averages about 5.3 spikes per bin. This looks like channel dropout or a mismatch in how units were sorted. A decoder using all 27 units put every test trial in the same class (6).\n\n**Decoder:** logistic regression with strong regularisation, on square-root spike counts from the 19 units that are still active (all 10 time bins), trained on fit plus holdout combined.\n\n**Accuracy estimate:** using only those 19 units, accuracy was about 41% on the holdout set (27 trials, so a noisy number) and 25\u201328% in 5-fold cross-validation across fit and holdout. I claimed 0.30. With all 27 units the model reached about 50\u201359%, so losing those units costs roughly half the accuracy.",
+ "ttft_ms": 3938,
+ "type": "result",
+ "duration_ms": 131860,
+ "uuid": "124a61fd-be1b-4a59-8ecf-ad3174801066",
+ "ttft_stream_ms": 2369,
+ "time_to_request_ms": 70,
+ "first_content_frame_ms": 2369,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 132.8
+}

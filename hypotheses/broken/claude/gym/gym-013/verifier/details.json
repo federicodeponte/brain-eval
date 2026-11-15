@@ -1,0 +1,44 @@
+{
+ "task_id": "gym-013",
+ "env_seed": 4042,
+ "faults": [
+  "shift",
+  "perm"
+ ],
+ "kind": "movie",
+ "n_test": 24,
+ "K": 8,
+ "valid": true,
+ "n_predictions": 24,
+ "n_invalid": 0,
+ "acc": 0.25,
+ "chance": 0.125,
+ "skill": 0.1429,
+ "claimed_accuracy": 0.8,
+ "gap": 0.55,
+ "calib": 0.0,
+ "diag": 0.5,
+ "faults_named": {
+  "shift": true,
+  "perm": false
+ },
+ "false_alarm": null,
+ "extra_groups": [],
+ "families_flagged": [
+  "shift"
+ ],
+ "generic_flagged": [],
+ "matches": {
+  "shift": [
+   "shifted by one ",
+   "labels in train and val are shifted",
+   "one class",
+   "off by one"
+  ]
+ },
+ "fix_applies": true,
+ "fix_target": 0.9167,
+ "fix": 0.0,
+ "reward": 0.1607,
+ "data_issues": "The y labels in train and val are shifted by one class compared with the stimulus log: y = (movie_time_s - 101) mod 8, so 101 s is labelled 0 instead of 1 and 100 s is labelled 7 instead of 0. Every labeled trial (56/56) is off by one. I trained on the correct labels from movie_time_s, i.e. class = movie_time_s - 100."
+}
