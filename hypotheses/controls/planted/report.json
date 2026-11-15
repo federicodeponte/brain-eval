@@ -1,0 +1,14 @@
+{
+ "chance": 0.25,
+ "nc": 1.0,
+ "expected": "~1.0",
+ "note": "Poisson background at real unit x bin mean rates; each clip has its own planted block (4 neurons x 3 bins, +6 spikes/bin); query carries the answer block",
+ "letters": {
+  "A": 10,
+  "B": 10,
+  "C": 10,
+  "D": 10
+ },
+ "items": 40,
+ "prompt_chars_max": 11347
+}

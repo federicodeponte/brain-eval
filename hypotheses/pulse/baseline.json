@@ -1,0 +1,12 @@
+{
+ "green_fft": 0.7,
+ "green_fft_MAE_bpm": 11.61293606880252,
+ "green_fft_within5bpm": 0.7,
+ "POS_fft": 0.7,
+ "POS_fft_MAE_bpm": 10.390117719850602,
+ "POS_fft_within5bpm": 0.65,
+ "CHROM_fft": 0.75,
+ "CHROM_fft_MAE_bpm": 13.598612500738744,
+ "CHROM_fft_within5bpm": 0.65,
+ "majority": 0.25
+}

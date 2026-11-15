@@ -1,0 +1,17 @@
+A room impulse response (RIR) was recorded by playing a click-like sound and recording what came back at the microphone. Below are two summaries of it, both measured from the direct sound (time 0).
+
+1) Schroeder energy-decay curve in dB (remaining energy relative to total), every 20 ms from 0 to 240 ms:
+0.0, -26.1, -33.3, -39.8, -44.0, -47.3, -50.0, -52.1, -54.4, -57.1, -62.0, -66.6, -71.1
+
+2) Early energy envelope in dB relative to the first 2 ms, every 2 ms from 0 to 58 ms:
+0.0, -28.5, -27.3, -26.5, -26.9, -29.8, -32.9, -33.7, -30.4, -29.9, -34.1, -36.8, -36.1, -37.5, -37.1, -35.6, -36.3, -40.1, -39.5, -41.1, -41.2, -43.3, -43.5, -43.9, -41.6, -48.2, -46.4, -47.6, -48.6, -48.1
+
+Where was it recorded?
+A = small enclosed room (bathroom, shower, bedroom, closet-sized room, car)
+B = medium indoor room (classroom, office, kitchen, living room, bar, restaurant, shop)
+C = large indoor hall (atrium, auditorium, gym, supermarket, station, ballroom, theater, library hall)
+D = outdoors (street, forest, field, parking lot)
+
+Answer with a single letter.
+
+[answer: A]

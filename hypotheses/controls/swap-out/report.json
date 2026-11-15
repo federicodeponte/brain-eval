@@ -1,0 +1,38 @@
+{
+ "chance_uniform": 0.2,
+ "always_E": 0.5,
+ "never_E_best": 0.5,
+ "nc_no_threshold": 0.5,
+ "nc_threshold_inprompt": 0.675,
+ "nc_threshold_inprompt_normal": 0.65,
+ "nc_threshold_inprompt_swap": 0.7,
+ "tau_calibrated": 0.24000000000000002,
+ "calibration_items": 400,
+ "calibration_acc": 0.645,
+ "nc_threshold_calibrated": 0.675,
+ "nc_threshold_calibrated_normal": 0.4,
+ "nc_threshold_calibrated_swap": 0.95,
+ "nc_threshold_inprompt_on_calibration": 0.6125,
+ "sqrt_tau_calibrated": 0.31,
+ "sqrt_calibration_acc": 0.725,
+ "nc_sqrt_threshold_calibrated": 0.7,
+ "nc_sqrt_threshold_calibrated_normal": 0.65,
+ "nc_sqrt_threshold_calibrated_swap": 0.75,
+ "nc_sqrt_calibrated_swap_nm1": 0.7,
+ "nc_sqrt_calibrated_swap_nm3": 0.8,
+ "swap_types": {
+  "normal": 20,
+  "swap_nm1": 10,
+  "swap_nm3": 10
+ },
+ "note": "threshold rule: predict E if correlation distance to the nearest centroid > tau. in-prompt tau = midpoint of median leave-one-out own-class and nearest-other distances among the examples; calibrated tau tuned on 400 separate items (seed 101).",
+ "letters": {
+  "A": 5,
+  "B": 5,
+  "C": 5,
+  "D": 5,
+  "E": 20
+ },
+ "items": 40,
+ "prompt_chars_max": 11606
+}

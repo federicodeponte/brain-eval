@@ -1,0 +1,1 @@
+{"items": 40, "M": 40, "K": 3, "group": "1cars", "sessions": 25, "chance": 0.25, "nc_inprompt": 0.65, "lr_heldout": 0.775, "letters": {"A": 10, "B": 10, "C": 10, "D": 10}, "chars_max": 3419, "chars_mean": 3419, "regions": {"LA": 13, "LH": 4, "RA": 20, "RH": 3}}

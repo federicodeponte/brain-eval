@@ -1,0 +1,25 @@
+schema_version = "1.4"
+
+[task]
+name = "vals-mouse/k4-059"
+
+[metadata]
+id = "k4-059"
+k = 4
+session_id = 732592105
+query_repeat = 1
+stimulus = "natural_movie_three"
+bin_ms = 100.0
+n_bins = 10
+
+[agent]
+timeout_sec = 1800
+
+[verifier]
+timeout_sec = 120.0
+
+[environment]
+docker_image = "python:3.12-slim"
+workdir = "/app"
+cpus = 1
+memory_mb = 1024

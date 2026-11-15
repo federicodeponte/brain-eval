@@ -1,0 +1,33 @@
+Sperm whales off Dominica communicate with codas: short bursts of clicks. A coda is described by its inter-click intervals (ICIs), the gaps in milliseconds between consecutive clicks. All codas below have 5 clicks (4 ICIs).
+Coda types: A = 1+1+3, B = 5R1, C = 5R2, D = 5R3.
+
+Labeled examples:
+- ICIs (ms): 119, 138, 124, 141 -> C
+- ICIs (ms): 244, 237, 267, 266 -> D
+- ICIs (ms): 439, 424, 211, 199 -> A
+- ICIs (ms): 119, 138, 115, 152 -> C
+- ICIs (ms): 327, 351, 330, 348 -> D
+- ICIs (ms): 124, 138, 132, 131 -> C
+- ICIs (ms): 87, 91, 77, 75 -> B
+- ICIs (ms): 391, 364, 239, 197 -> A
+- ICIs (ms): 422, 389, 177, 144 -> A
+- ICIs (ms): 256, 244, 252, 256 -> D
+- ICIs (ms): 102, 76, 59, 47 -> B
+- ICIs (ms): 84, 84, 72, 74 -> B
+- ICIs (ms): 285, 290, 293, 303 -> D
+- ICIs (ms): 275, 273, 189, 151 -> A
+- ICIs (ms): 118, 129, 113, 121 -> C
+- ICIs (ms): 450, 450, 210, 202 -> A
+- ICIs (ms): 133, 127, 118, 133 -> C
+- ICIs (ms): 301, 308, 314, 309 -> D
+- ICIs (ms): 357, 350, 347, 363 -> D
+- ICIs (ms): 85, 88, 63, 68 -> B
+- ICIs (ms): 99, 94, 72, 64 -> B
+- ICIs (ms): 117, 148, 116, 125 -> C
+- ICIs (ms): 96, 93, 77, 67 -> B
+- ICIs (ms): 388, 404, 189, 195 -> A
+
+New coda ICIs (ms): 341, 327, 153, 151
+Which coda type is it? Answer with a single letter.
+
+[answer: A]

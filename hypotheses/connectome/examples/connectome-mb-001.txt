@@ -1,0 +1,48 @@
+Below is a summary of one neuron from the adult fruit fly (Drosophila) whole-brain connectome (FlyWire). For each brain region (standard FlyWire neuropil abbreviations; _L/_R = left/right hemisphere) you get the number of synapses where the neuron receives input and where it makes output. Regions are sorted by count.
+
+Classes:
+A = Kenyon cell (mushroom body intrinsic neuron)
+B = mushroom body output neuron (MBON)
+C = dopaminergic neuron (DAN)
+D = antennal lobe projection neuron (ALPN)
+
+Labeled examples:
+Example (class C):
+  inputs (synapses received, 765 total): MB_ML_R 235, SMP_R 194, CRE_R 189, MB_ML_L 71, CRE_L 71, SMP_L 4, EB 1
+  outputs (synapses made, 330 total): MB_ML_R 126, CRE_R 104, CRE_L 45, MB_ML_L 34, SMP_R 21
+
+Example (class D):
+  inputs (synapses received, 71 total): AL_L 49, SLP_L 16, MB_CA_L 4, LH_L 2
+  outputs (synapses made, 983 total): SLP_L 455, LH_L 360, MB_CA_L 112, PLP_L 55, AL_L 1
+
+Example (class C):
+  inputs (synapses received, 240 total): MB_ML_R 73, SMP_R 62, MB_ML_L 61, CRE_R 24, CRE_L 20
+  outputs (synapses made, 222 total): MB_ML_R 118, MB_ML_L 39, CRE_R 31, CRE_L 28, SMP_R 6
+
+Example (class D):
+  inputs (synapses received, 244 total): AL_L 150, LH_L 91, LAL_L 1, MB_PED_L 1, PLP_L 1
+  outputs (synapses made, 923 total): LH_L 897, PLP_L 18, AL_L 8
+
+Example (class B):
+  inputs (synapses received, 8261 total): CRE_L 3562, MB_ML_L 1909, SMP_L 1429, SMP_R 586, CRE_R 420, SIP_R 346, EB 7, SCL_R 2
+  outputs (synapses made, 16092 total): SMP_R 3927, CRE_R 3567, CRE_L 3530, SIP_R 2602, SMP_L 2110, MB_ML_L 299, MB_VL_R 50, SCL_R 7
+
+Example (class A):
+  inputs (synapses received, 191 total): MB_CA_L 68, MB_ML_L 66, MB_VL_L 26, MB_PED_L 21, SIP_L 6, LAL_L 2, CRE_L 1, PLP_L 1
+  outputs (synapses made, 206 total): MB_ML_L 91, MB_VL_L 43, MB_PED_L 29, MB_CA_L 20, SIP_L 11, CRE_L 3, ICL_L 3, PLP_L 3, SCL_L 2, LAL_L 1
+
+Example (class A):
+  inputs (synapses received, 231 total): MB_CA_L 104, MB_VL_L 46, MB_ML_L 40, MB_PED_L 25, CRE_L 7, PLP_L 3, SIP_L 3, EB 2, LAL_L 1
+  outputs (synapses made, 271 total): MB_ML_L 117, MB_VL_L 65, MB_PED_L 46, SIP_L 14, MB_CA_L 13, CRE_L 9, EB 4, PLP_L 3
+
+Example (class B):
+  inputs (synapses received, 6653 total): MB_VL_R 4674, SMP_R 646, SIP_R 527, CRE_R 404, SIP_L 106, LH_R 84, LH_L 72, SLP_R 71, SLP_L 46, SMP_L 23
+  outputs (synapses made, 10661 total): SIP_R 2481, SIP_L 1736, LH_L 1335, LH_R 1237, SLP_R 1086, SMP_R 964, SLP_L 935, MB_VL_R 557, SMP_L 312, CRE_R 18
+
+Query neuron:
+  inputs (synapses received, 1349 total): AL_L 1233, LH_L 91, MB_CA_L 25
+  outputs (synapses made, 6575 total): LH_L 3199, MB_CA_L 1773, AL_L 1603
+
+Which class is the query neuron? Answer with a single letter.
+
+[answer: D]

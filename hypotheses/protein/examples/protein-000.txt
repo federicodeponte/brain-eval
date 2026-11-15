@@ -1,0 +1,12 @@
+Protein sequence (211 residues, 1-indexed):
+MFKRLMMVALLVIAPLSAATAADQTNPYKLMDEAAQKTFDRLKNEQPQIRANPDYLRTIVDQELLPYVQVKYAGALVLGQYYKSATPAQREAYFAAFREYLKQAYGQALAMYHGQTYQIAPEQPLGDKTIVPIRVTIIDPNGRPPVRLDFQWRKNSQTGNWQAYDMIAEGVSMITTKQNEWGTLLRTKGIDGLTAQLKSISQQKITLEEKK
+
+Below are four single amino-acid substitutions (format: wild-type residue, position, new residue). A deep mutational scan measured how each one affects the protein's function. Exactly one of them is strongly damaging; the other three are tolerated.
+A. L10K
+B. T158R
+C. T25L
+D. T175L
+
+Which substitution damages function the most? Answer with a single letter.
+
+[answer: A]

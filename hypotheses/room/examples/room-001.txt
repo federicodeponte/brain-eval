@@ -1,0 +1,17 @@
+A room impulse response (RIR) was recorded by playing a click-like sound and recording what came back at the microphone. Below are two summaries of it, both measured from the direct sound (time 0).
+
+1) Schroeder energy-decay curve in dB (remaining energy relative to total), every 20 ms from 0 to 960 ms:
+0.0, -10.5, -13.4, -16.4, -19.0, -21.9, -24.0, -25.4, -27.7, -29.3, -30.7, -32.3, -33.7, -34.6, -35.2, -36.5, -37.4, -38.1, -39.2, -40.2, -41.9, -42.6, -43.8, -44.4, -44.8, -45.8, -48.3, -48.8, -50.2, -54.5, -56.3, -57.6, -58.2, -58.7, -58.9, -59.3, -61.4, -62.1, -63.2, -64.3, -66.0, -67.4, -68.7, -70.9, -71.6, -72.4, -76.6, -79.7, -80.0
+
+2) Early energy envelope in dB relative to the first 2 ms, every 2 ms from 0 to 58 ms:
+0.0, -11.3, -13.2, -20.1, -20.1, -14.3, -17.2, -24.3, -19.4, -26.7, -22.6, -22.5, -24.7, -19.3, -21.7, -23.3, -21.8, -23.8, -23.5, -22.9, -20.5, -24.9, -24.4, -26.8, -28.0, -24.4, -28.2, -26.4, -29.4, -26.7
+
+Where was it recorded?
+A = small enclosed room (bathroom, shower, bedroom, closet-sized room, car)
+B = medium indoor room (classroom, office, kitchen, living room, bar, restaurant, shop)
+C = large indoor hall (atrium, auditorium, gym, supermarket, station, ballroom, theater, library hall)
+D = outdoors (street, forest, field, parking lot)
+
+Answer with a single letter.
+
+[answer: B]

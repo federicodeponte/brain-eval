@@ -1,0 +1,29 @@
+{
+ "baselines": {
+  "k4": {
+   "n": 60,
+   "chance": 0.25,
+   "centroid_corr": 0.8166666666666667,
+   "logreg": 0.9666666666666667
+  },
+  "k8": {
+   "n": 30,
+   "chance": 0.125,
+   "centroid_corr": 0.8333333333333334,
+   "logreg": 0.8666666666666667
+  }
+ },
+ "note": "units selected per item from non-query repeats",
+ "letters": {
+  "A": 19,
+  "B": 19,
+  "C": 19,
+  "D": 19,
+  "E": 4,
+  "F": 4,
+  "G": 3,
+  "H": 3
+ },
+ "items": 90,
+ "prompt_chars_max": 21322
+}

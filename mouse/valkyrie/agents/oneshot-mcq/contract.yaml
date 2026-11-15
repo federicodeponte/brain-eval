@@ -1,0 +1,27 @@
+name: oneshot-mcq
+
+# No install step: the agent is one stdlib-only Python file, the task image ships python3.
+install_cmd: ""
+
+run_cmd: >-
+  python3 /bundle/oneshot-mcq/run.py "{problem_statement_path}" --model "{model}"
+  --max-tokens "{max_tokens}" --temperature "{temperature}" --out /app/answer.txt
+
+final_output: /logs/agent
+output_artifacts:
+  - {path: oneshot-mcq/response.json, source: /logs/agent/response.json, required: false}
+
+defaults:
+  model:
+    type: str
+    required: true
+    description: "provider/model, provider in anthropic|openai|google|openrouter|mock (mock/A answers A, no API call)"
+
+kwargs:
+  max_tokens: {type: str, required: false, default: "16000"}
+  temperature: {type: str, required: false, default: "", description: "empty = provider default"}
+
+provided: >-
+  Single-turn model call: sends instruction.md as one user message, writes the reply to
+  /app/answer.txt. Reads OPENAI_/ANTHROPIC_/GOOGLE_GEMINI_/OPENROUTER_ BASE_URL + API key env
+  vars, which the Vals Model Gateway sets per project (or pass -s KEY secret-name).

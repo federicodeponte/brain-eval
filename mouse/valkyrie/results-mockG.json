@@ -1,0 +1,165 @@
+{
+    "benchmark_id": "9ec8dfc0-4423-4e80-af11-aa072b4002d0",
+    "benchmark_name": "dataset-dummy",
+    "started_at": "2026-11-15T02:30:00.124550",
+    "finished_at": "2026-11-15T02:30:13.297266",
+    "status": "FINISHED",
+    "benchmark_arguments": {
+        "contract": {
+            "name": "oneshot-mcq",
+            "model": "mock/G",
+            "install_cmd": "",
+            "run_cmd": "python3 /bundle/oneshot-mcq/run.py \"{problem_statement_path}\" --model \"{model}\" --max-tokens \"{max_tokens}\" --temperature \"{temperature}\" --out /app/answer.txt",
+            "final_output": "/logs/agent",
+            "output_artifacts": [
+                {
+                    "path": "oneshot-mcq/response.json",
+                    "source": "/logs/agent/response.json",
+                    "required": false
+                }
+            ],
+            "egress_allowlist": [],
+            "allow_provider_tools": false,
+            "isolate_agent_uid": false,
+            "inference_settings_attested": true
+        },
+        "agent_attempts": [],
+        "concurrency": 3,
+        "sandbox_provider": "docker",
+        "environment": "local",
+        "properties": {
+            "data_root": "/home/federicodeponte/work/vals-mouse/valkyrie/.local/data",
+            "secrets_file": "/home/federicodeponte/work/vals-mouse/valkyrie/.env"
+        }
+    },
+    "final_evaluation": {
+        "id": "c6b87a2d-aea1-4bb3-b8ac-12ff339cb838",
+        "org_id": "ff03a3d9-b67f-40b4-9242-13ae3ce67558",
+        "benchmark": "9ec8dfc0-4423-4e80-af11-aa072b4002d0",
+        "final_score": 33.33333333333333,
+        "properties": {
+            "total": 3,
+            "n_trials": 3,
+            "n_errors": 0,
+            "metrics": [
+                {
+                    "mean": 0.3333333333333333
+                }
+            ],
+            "reward_stats": {
+                "reward": {
+                    "0.0": [
+                        "dummy-002",
+                        "dummy-001"
+                    ],
+                    "1.0": [
+                        "dummy-003"
+                    ]
+                }
+            },
+            "score_key": "mean",
+            "mean_reward": 0.3333333333333333
+        }
+    },
+    "average_task_breakdown": {
+        "sandbox_build_duration": 0.6909298699659606,
+        "agent_run_duration": 0.4787725043327858,
+        "evaluation_run_duration": 2.3163655002911887,
+        "sandbox_run_duration": 4.891396131599322
+    },
+    "evaluation_results": {
+        "dummy-002": {
+            "task_id": "dummy-002",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=None expected=C correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 0.5018612039275467,
+                "sandbox_run_duration": 4.925134759861976,
+                "sandbox_build_duration": 0.717915321001783,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 2.2853421699255705,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 0.5018631140701473
+            },
+            "attempts": 1
+        },
+        "dummy-003": {
+            "task_id": "dummy-003",
+            "rewards": {
+                "reward": 1.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 1.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=G expected=G correct=True\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 0.49896548711694777,
+                "sandbox_run_duration": 4.91275112493895,
+                "sandbox_build_duration": 0.6433997768908739,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 2.3439480669330806,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 0.49896763800643384
+            },
+            "attempts": 1
+        },
+        "dummy-001": {
+            "task_id": "dummy-001",
+            "rewards": {
+                "reward": 0.0
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.0
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "predicted=None expected=A correct=False\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 0.4354908219538629,
+                "sandbox_run_duration": 4.83630250999704,
+                "sandbox_build_duration": 0.7114745120052248,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 2.3198062640149146,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 0.43549267295747995
+            },
+            "attempts": 1
+        }
+    }
+}

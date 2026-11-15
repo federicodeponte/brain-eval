@@ -1,0 +1,23 @@
+{
+ "chance": 0.25,
+ "nc_by_shots": {
+  "0": 0.25,
+  "1": 0.65,
+  "3": 0.925,
+  "5": 0.925
+ },
+ "lr_by_shots": {
+  "3": 0.95,
+  "5": 0.95
+ },
+ "items_per_level": 40,
+ "note": "0-shot has no examples; decoder = chance by construction. examples nested (1 in 3 in 5).",
+ "letters": {
+  "A": 40,
+  "B": 40,
+  "C": 40,
+  "D": 40
+ },
+ "items": 160,
+ "prompt_chars_max": 18000
+}

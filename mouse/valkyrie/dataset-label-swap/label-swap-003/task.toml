@@ -1,0 +1,20 @@
+schema_version = "1.4"
+
+[task]
+name = "vals-controls-label-swap/label-swap-003"
+
+[metadata]
+id = "label-swap-003"
+k = 4
+
+[agent]
+timeout_sec = 1800
+
+[verifier]
+timeout_sec = 120.0
+
+[environment]
+docker_image = "python:3.12-slim"
+workdir = "/app"
+cpus = 1
+memory_mb = 1024

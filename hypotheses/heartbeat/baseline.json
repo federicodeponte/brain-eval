@@ -1,0 +1,8 @@
+{
+ "LR_100Hz": 0.575,
+ "RF_100Hz": 0.675,
+ "LR_50Hz": 0.775,
+ "RF_50Hz": 0.675,
+ "1NN_prompt_examples_only_50Hz": 0.5,
+ "1NN_prompt_only_selfscaled": 0.45
+}

@@ -1,0 +1,13 @@
+{
+ "chance": 0.25,
+ "nc": 0.25,
+ "expected": "chance (0.25); answer letters are arbitrary",
+ "letters": {
+  "A": 10,
+  "B": 10,
+  "C": 10,
+  "D": 10
+ },
+ "items": 40,
+ "prompt_chars_max": 11394
+}

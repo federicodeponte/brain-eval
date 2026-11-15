@@ -1,0 +1,48 @@
+Below is a summary of one neuron from the adult fruit fly (Drosophila) whole-brain connectome (FlyWire). For each brain region (standard FlyWire neuropil abbreviations; _L/_R = left/right hemisphere) you get the number of synapses where the neuron receives input and where it makes output. Regions are sorted by count.
+
+Classes:
+A = central brain intrinsic neuron
+B = descending neuron (brain to ventral nerve cord)
+C = ascending neuron (ventral nerve cord to brain)
+D = visual projection neuron (optic lobe to central brain)
+
+Labeled examples:
+Example (class C):
+  inputs (synapses received, 286 total): GNG 92, PVLP_R 46, SAD 27, SCL_R 23, FLA_R 21, PRW 20, LH_R 19, AVLP_R 16, PLP_R 12, VES_R 8, WED_R 2
+  outputs (synapses made, 4300 total): PVLP_R 1125, GNG 902, SCL_R 656, LH_R 454, PLP_R 411, PRW 245, VES_R 177, FLA_R 150, AVLP_R 113, SAD 47, WED_R 20
+
+Example (class D):
+  inputs (synapses received, 339 total): LO_R 249, PVLP_R 88, AVLP_R 2
+  outputs (synapses made, 596 total): PVLP_R 583, AVLP_R 8, LO_R 5
+
+Example (class C):
+  inputs (synapses received, 58 total): IPS_R 20, GNG 14, WED_R 13, LAL_R 5, SAD 5, SPS_R 1
+  outputs (synapses made, 5652 total): IPS_R 1978, GNG 1662, WED_R 1208, LAL_R 357, SAD 237, SPS_R 210
+
+Example (class D):
+  inputs (synapses received, 486 total): LO_R 430, PLP_R 40, SPS_R 16
+  outputs (synapses made, 522 total): PLP_R 359, SPS_R 86, LO_R 77
+
+Example (class B):
+  inputs (synapses received, 2284 total): SAD 1088, AMMC_R 865, GNG 118, AVLP_R 104, WED_R 97, AMMC_L 12
+  outputs (synapses made, 5592 total): SAD 2426, AMMC_L 1554, GNG 547, AMMC_R 490, AVLP_R 304, WED_R 121, AVLP_L 101, None 34, AL_L 15
+
+Example (class A):
+  inputs (synapses received, 189 total): SLP_R 96, LH_R 44, SCL_R 27, PVLP_R 18, PLP_R 4
+  outputs (synapses made, 1067 total): SLP_R 645, LH_R 209, SCL_R 152, PVLP_R 50, PLP_R 11
+
+Example (class A):
+  inputs (synapses received, 618 total): LH_L 201, PLP_L 157, WED_L 49, SIP_L 49, SAD 38, SLP_L 26, AL_R 16, CRE_L 14, IPS_L 13, SMP_L 12, AL_L 12, MB_CA_L 11, other regions 20
+  outputs (synapses made, 3461 total): AL_L 1859, AL_R 1067, VES_L 348, VES_R 106, AVLP_L 30, LH_L 28, IPS_L 10, SMP_L 3, PLP_L 3, SLP_L 3, WED_L 2, LAL_L 1, other regions 1
+
+Example (class B):
+  inputs (synapses received, 175 total): IPS_L 116, IPS_R 24, SAD 21, GNG 13, WED_L 1
+  outputs (synapses made, 509 total): IPS_R 235, GNG 181, SAD 91, IPS_L 2
+
+Query neuron:
+  inputs (synapses received, 369 total): ME_R 334, LO_R 18, AOTU_R 17
+  outputs (synapses made, 789 total): ME_R 387, AOTU_R 202, LO_R 200
+
+Which class is the query neuron? Answer with a single letter.
+
+[answer: D]

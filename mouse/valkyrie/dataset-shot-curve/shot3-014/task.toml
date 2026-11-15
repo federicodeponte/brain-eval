@@ -1,0 +1,24 @@
+schema_version = "1.4"
+
+[task]
+name = "vals-controls-shot-curve/shot3-014"
+
+[metadata]
+id = "shot3-014"
+k = 4
+shots = 3
+base_item = 14
+session_id = 732592105
+query_repeat = 4
+
+[agent]
+timeout_sec = 1800
+
+[verifier]
+timeout_sec = 120.0
+
+[environment]
+docker_image = "python:3.12-slim"
+workdir = "/app"
+cpus = 1
+memory_mb = 1024

@@ -1,0 +1,13 @@
+Buchwald-Hartwig amination run in a 96-well high-throughput screen: aryl halide + p-toluidine, Pd precatalyst (Buchwald G3 palladacycle of the listed ligand), DMSO, 60 C, 16 h. One equivalent of an isoxazole-type additive is present in each well.
+
+Aryl halide: 1-bromo-4-ethylbenzene (SMILES CCc1ccc(Br)cc1)
+
+Which condition set gave the HIGHEST yield?
+A) ligand t-BuBrettPhos, base MTBD, additive 3-methylisoxazole
+B) ligand t-BuBrettPhos, base MTBD, additive methyl-5-(furan-2-yl)isoxazole-3-carboxylate
+C) ligand XPhos, base BTMG, additive methyl-isoxazole-5-carboxylate
+D) ligand XPhos, base MTBD, additive 3-methyl-5-phenylisoxazole
+
+Answer with a single letter.
+
+[answer: A  yields: {'A': 79.5, 'B': 58.0, 'C': 4.9, 'D': 25.8}]

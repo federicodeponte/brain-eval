@@ -1,0 +1,89 @@
+Sperm whales off Dominica live in stable family units. All codas below are the same coda type (5R1: five evenly spaced clicks), given as 4 inter-click intervals in milliseconds. Units may differ subtly in tempo and rhythm.
+Family units: A = unit A, B = unit F, C = unit J, D = unit U.
+
+Labeled examples:
+- ICIs (ms): 100, 105, 72, 62 -> D
+- ICIs (ms): 86, 65, 66, 89 -> B
+- ICIs (ms): 91, 103, 82, 62 -> D
+- ICIs (ms): 99, 100, 78, 56 -> B
+- ICIs (ms): 97, 82, 71, 69 -> A
+- ICIs (ms): 108, 84, 81, 79 -> D
+- ICIs (ms): 95, 103, 80, 61 -> D
+- ICIs (ms): 90, 94, 80, 72 -> D
+- ICIs (ms): 113, 100, 70, 66 -> A
+- ICIs (ms): 70, 60, 69, 84 -> B
+- ICIs (ms): 91, 90, 74, 63 -> C
+- ICIs (ms): 85, 112, 86, 53 -> C
+- ICIs (ms): 92, 80, 66, 64 -> C
+- ICIs (ms): 97, 76, 68, 75 -> A
+- ICIs (ms): 89, 101, 79, 62 -> B
+- ICIs (ms): 140, 98, 62, 94 -> A
+- ICIs (ms): 93, 112, 79, 61 -> C
+- ICIs (ms): 102, 97, 88, 93 -> A
+- ICIs (ms): 82, 87, 63, 55 -> B
+- ICIs (ms): 94, 96, 74, 70 -> B
+- ICIs (ms): 97, 105, 71, 77 -> A
+- ICIs (ms): 92, 105, 69, 68 -> A
+- ICIs (ms): 85, 88, 63, 68 -> A
+- ICIs (ms): 96, 103, 100, 92 -> A
+- ICIs (ms): 85, 84, 72, 65 -> C
+- ICIs (ms): 104, 77, 74, 102 -> B
+- ICIs (ms): 85, 116, 77, 54 -> C
+- ICIs (ms): 99, 93, 72, 68 -> A
+- ICIs (ms): 91, 82, 71, 63 -> C
+- ICIs (ms): 92, 116, 80, 65 -> B
+- ICIs (ms): 91, 92, 80, 73 -> D
+- ICIs (ms): 98, 92, 71, 77 -> A
+- ICIs (ms): 99, 100, 73, 51 -> C
+- ICIs (ms): 108, 91, 68, 73 -> A
+- ICIs (ms): 106, 78, 74, 84 -> D
+- ICIs (ms): 96, 103, 75, 65 -> B
+- ICIs (ms): 76, 73, 63, 72 -> B
+- ICIs (ms): 62, 84, 63, 86 -> A
+- ICIs (ms): 93, 97, 72, 62 -> B
+- ICIs (ms): 89, 105, 76, 66 -> B
+- ICIs (ms): 71, 88, 73, 77 -> A
+- ICIs (ms): 96, 88, 58, 74 -> D
+- ICIs (ms): 80, 83, 72, 71 -> B
+- ICIs (ms): 82, 101, 86, 76 -> C
+- ICIs (ms): 112, 89, 80, 78 -> B
+- ICIs (ms): 81, 108, 67, 75 -> C
+- ICIs (ms): 88, 100, 76, 67 -> C
+- ICIs (ms): 49, 59, 65, 90 -> B
+- ICIs (ms): 97, 92, 82, 100 -> B
+- ICIs (ms): 98, 89, 82, 84 -> D
+- ICIs (ms): 101, 97, 76, 61 -> C
+- ICIs (ms): 129, 94, 67, 71 -> A
+- ICIs (ms): 96, 95, 74, 62 -> B
+- ICIs (ms): 83, 79, 70, 66 -> C
+- ICIs (ms): 96, 89, 80, 73 -> D
+- ICIs (ms): 113, 96, 71, 64 -> A
+- ICIs (ms): 88, 92, 62, 78 -> D
+- ICIs (ms): 88, 100, 69, 56 -> D
+- ICIs (ms): 96, 92, 70, 64 -> D
+- ICIs (ms): 111, 73, 68, 74 -> D
+- ICIs (ms): 94, 106, 83, 52 -> B
+- ICIs (ms): 89, 92, 77, 71 -> D
+- ICIs (ms): 122, 100, 73, 88 -> A
+- ICIs (ms): 77, 82, 78, 89 -> A
+- ICIs (ms): 74, 104, 81, 66 -> C
+- ICIs (ms): 45, 64, 65, 93 -> B
+- ICIs (ms): 91, 99, 77, 68 -> C
+- ICIs (ms): 98, 107, 80, 63 -> D
+- ICIs (ms): 117, 88, 76, 64 -> B
+- ICIs (ms): 93, 85, 68, 61 -> C
+- ICIs (ms): 85, 89, 73, 64 -> D
+- ICIs (ms): 88, 94, 78, 67 -> D
+- ICIs (ms): 81, 85, 72, 67 -> C
+- ICIs (ms): 90, 91, 67, 70 -> A
+- ICIs (ms): 92, 87, 71, 63 -> C
+- ICIs (ms): 92, 100, 73, 54 -> D
+- ICIs (ms): 105, 95, 68, 76 -> A
+- ICIs (ms): 95, 89, 77, 69 -> D
+- ICIs (ms): 89, 82, 67, 63 -> C
+- ICIs (ms): 88, 85, 72, 64 -> C
+
+New coda ICIs (ms): 102, 92, 65, 49
+Which family unit produced it? Answer with a single letter.
+
+[answer: C]

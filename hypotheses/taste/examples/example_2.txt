@@ -1,0 +1,11 @@
+What is the dominant taste of the molecule below, as reported by human taste panels?
+
+SMILES: CC(C)CC(N)C(=O)NCC(=O)NCC(=O)NCC(=O)O
+
+A) sweet
+B) bitter
+C) umami (savory)
+
+Answer with a single letter.
+
+[answer: B]

@@ -1,0 +1,3 @@
+{"id": "dummy-001", "k": 4, "prompt": "Spike counts (neurons x bins):\n3 0 1\n0 2 5\nExample: [[1,0],[0,1]] -> A\nWhich stimulus produced the matrix above?\nA) gratings 0deg\nB) gratings 45deg\nC) gratings 90deg\nD) gratings 135deg", "answer": "A"}
+{"id": "dummy-002", "k": 4, "prompt": "Spike counts:\n1 1\n4 0\nWhich stimulus?\nA) a\nB) b\nC) c\nD) d", "answer": "C"}
+{"id": "dummy-003", "k": 8, "prompt": "Spike counts:\n0 0 9\nWhich of 8 stimuli?\nA) 1\nB) 2\nC) 3\nD) 4\nE) 5\nF) 6\nG) 7\nH) 8", "answer": "G"}
