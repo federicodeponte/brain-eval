@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 37269,
+ "stop_reason": "end_turn",
+ "session_id": "0f0457e2-b157-407e-9d2e-25c9639decf2",
+ "total_cost_usd": 0.1286346,
+ "usage": {
+  "input_tokens": 10,
+  "cache_creation_input_tokens": 6759,
+  "cache_read_input_tokens": 48813,
+  "output_tokens": 3238,
+  "output_tokens_details": {
+   "thinking_tokens": 371
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 6759,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 660,
+    "cache_read_input_tokens": 12196,
+    "cache_creation_input_tokens": 1157,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 1157
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 10,
+   "outputTokens": 3238,
+   "cacheReadInputTokens": 48813,
+   "cacheCreationInputTokens": 6759,
+   "webSearchRequests": 0,
+   "costUSD": 0.1286346,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 371,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 6759,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 5,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I wrote predictions for all 50 test trials to `output/predictions.json`, and I estimate about 86% accuracy on them. The labels in the training and validation data are wrong, so I trained on corrected labels instead.\n\n**The problem with the data:** every label in `y` is shifted by one class compared with the stimulus log. A trial whose segment starts at movie time 10+k s has label `y = (k\u22121) mod 10`. For example, the 10 s segment is labelled 9 instead of 0, and the 11 s segment is labelled 0 instead of 1. All 150 labelled trials are affected, in both train and validation. Since the labels were supposedly derived from `movie_time_s` and `classes.json` defines each class by its movie time, I treated `movie_time_s` as correct and relabelled every trial as `movie_time_s \u2212 10`.\n\nOne caveat: I couldn't independently confirm from the neural data which of the two labellings is correct. I tried checking whether the end of one segment matches the start of the next one, but the result was too noisy to settle it. If `y` turns out to be the correct one, every prediction would be off by exactly one class.\n\nOtherwise the data looked fine: no trial appears twice across the three files, and each class has 15 labelled trials.\n\n**The decoder:** it averages the outputs of two standard linear classifiers (logistic regression and LDA). Each one uses the square root of all 200 spike counts per trial (20 units \u00d7 10 bins). I trained it on train and validation together, 150 trials.\n\n**How I got the 86%:**\n- Repeated 5-fold cross-validation on all 150 labelled trials gave 0.86, which is the number I claimed.\n- Training on the train set alone and testing on the validation set gave 0.93, but with only 30 validation trials that number is unreliable.\n\nThe predictions cover every class, though unevenly: class 1 gets only 1 of the 50 trials and class 3 gets 8.",
+ "ttft_ms": 3710,
+ "type": "result",
+ "duration_ms": 84946,
+ "uuid": "c46e5512-38d3-41bf-a046-570c93f1b192",
+ "ttft_stream_ms": 1882,
+ "time_to_request_ms": 70,
+ "first_content_frame_ms": 1882,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 85.9
+}

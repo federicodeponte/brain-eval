@@ -14,7 +14,7 @@ Faults (all detectable from the visible files by a careful analyst):
   shift : train+val labels lag the stimulus log by L segments (movies only; stimulus-log column is correct)
   dead  : the most informative 20-35% of units are all-zero in the test inputs only
   noise : 25-35% of train+val trials have their labels shuffled among themselves (stimulus-log column is correct)
-  mix   : 35-50% of train+val rows come from a different set of units (another recording) in the same columns
+  mix   : (experimental, off by default) 35-50% of train+val rows come from a disjoint unit set in the same columns
   perm  : the unit (column) order of the test file is permuted for 50-100% of units
 """
 import argparse
@@ -35,11 +35,12 @@ SESSION = 732592105
 CACHE = os.path.join(HERE, "cache_allen.pkl")
 AREAS = {"VISp": "primary visual cortex (VISp)", "VISal": "anterolateral visual area (VISal)",
          "VISpm": "posteromedial visual area (VISpm)", "VISrl": "rostrolateral visual area (VISrl)"}
-TRAIN_SIDE = ["leak", "shift", "noise", "mix"]
-TEST_SIDE = ["dead", "perm"]
-ALL_FAULTS = TRAIN_SIDE + TEST_SIDE
+# mix is implemented but EXPERIMENTAL: in validation it gave no CV-test gap (-0.01), modest harm (-0.11) and the
+# fault-aware pipeline recovered it in only 2/12 envs, so it is not drawn by default and not in the v4 dataset.
+ALL_FAULTS = ["leak", "shift", "noise", "dead", "perm"]
+EXPERIMENTAL = ["mix"]
 FIXABLE = {"leak", "shift", "noise", "mix", "perm"}
-COMBOS = [("leak", "dead"), ("shift", "dead"), ("noise", "dead"), ("mix", "dead"), ("leak", "perm"),
+COMBOS = [("leak", "dead"), ("shift", "dead"), ("noise", "dead"), ("leak", "perm"),
           ("shift", "perm"), ("noise", "perm"), ("leak", "shift"), ("leak", "noise")]
 
 

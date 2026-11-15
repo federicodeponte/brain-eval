@@ -69,6 +69,11 @@ cases = [  # (planted faults, data_issues, expected diag)
     (["shift", "perm"], "Labels lag movie_time_s by one segment; test channel order is permuted.", 1),
     (["shift"], "Labels lag movie_time_s by one segment. Validation rows are duplicates of training rows.", 0.75),
     (["noise", "dead"], "Label noise in ~30% of trials; dead units in test.", 1),
+    # hosted v4 smoke strings (run ddb9b286): stimulus-log column called "leakage" is neither credit nor false alarm
+    (["leak"], "orientation_deg is included only for labeled splits and is deterministically mapped to label; this metadata leakage is unavailable for test and should not be used for decoding from neural counts. also class 135 deg is absent (7 classes are not evenly spaced around 360).", 0),
+    ([], "orientation_deg is included only for labeled splits and is deterministically mapped to label; this metadata leakage is unavailable for test and should not be used for decoding from neural counts.", 1),
+    (["noise"], "train labels inconsistent with movie_time_s; val labels inconsistent with movie_time_s; label is directly derivable from movie_time_s in labeled splits; this metadata would leak class if used as a feature, but test lacks movie_time_s", 1),
+    (["leak"], "Val trials are near-copies of train trials, which leaks into the image_id-matched validation score.", 1),
 ]
 for faults, txt, exp in cases:
     dg, dd = diagnose(txt, faults)

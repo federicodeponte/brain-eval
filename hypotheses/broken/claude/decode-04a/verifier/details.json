@@ -1,0 +1,23 @@
+{
+ "task_base": "m-nm3-a",
+ "twin": "clean",
+ "fault": "shift",
+ "n_test": 30,
+ "K": 10,
+ "valid": true,
+ "n_predictions": 30,
+ "n_invalid": 0,
+ "acc": 0.9333,
+ "chance": 0.1,
+ "skill": 0.9259,
+ "claimed_accuracy": 0.88,
+ "gap": 0.0533,
+ "calib": 0.8933,
+ "fault_named": null,
+ "false_alarm": false,
+ "families_flagged": [],
+ "matches": {},
+ "diag": 1.0,
+ "reward": 0.9398,
+ "data_issues": "none"
+}

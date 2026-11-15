@@ -1,0 +1,11 @@
+Done — I trained a decoder and wrote the required file:
+
+- `/app/output/predictions.json`
+
+It contains:
+
+- `predictions`: 133 class indices in test-trial order
+- `claimed_accuracy`: `0.9`
+- `data_issues`: notes about label leakage via `orientation_deg` and the missing `135°` class
+
+If you want, I can also provide a tiny reproducible script in `/app/output/` that re-generates the same JSON from scratch.

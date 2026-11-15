@@ -1,0 +1,64 @@
+{
+ "task_id": "decode-02a",
+ "rewards": {
+  "reward": 0.8444
+ },
+ "verifier_result": {
+  "rewards": {
+   "reward": 0.8444
+  }
+ },
+ "metadata": {
+  "reward_source": "/home/federicodeponte/work/vals-hyp/broken/claude/decode-02a/verifier/reward.txt",
+  "verifier_exit_code": 0,
+  "verifier_output": "{\"task_base\": \"m-nm1-b\", \"twin\": \"defect\", \"fault\": \"shift\", \"acc\": 0.76, \"claimed_accuracy\": 0.86, \"gap\": 0.1, \"fault_named\": true, \"false_alarm\": null, \"families_flagged\": [\"shift\"], \"reward\": 0.8444}\n"
+ },
+ "agent_caused_exit_reason": null,
+ "task_breakdown": {
+  "agent_run_duration": 85.9
+ },
+ "claude": {
+  "total_cost_usd": 0.1286346,
+  "num_turns": 5,
+  "is_error": false,
+  "subtype": "success",
+  "duration_ms": 84946,
+  "usage": {
+   "input_tokens": 10,
+   "cache_creation_input_tokens": 6759,
+   "cache_read_input_tokens": 48813,
+   "output_tokens": 3238,
+   "output_tokens_details": {
+    "thinking_tokens": 371
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 6759,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 660,
+     "cache_read_input_tokens": 12196,
+     "cache_creation_input_tokens": 1157,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 1157
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "returncode": 0,
+  "stop_reason": "end_turn"
+ },
+ "attempts": 1
+}

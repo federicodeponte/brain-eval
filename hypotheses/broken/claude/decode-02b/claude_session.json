@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 48392,
+ "stop_reason": "end_turn",
+ "session_id": "8dfa5b8f-b052-4915-92b6-e9930e0fac26",
+ "total_cost_usd": 0.15873820000000002,
+ "usage": {
+  "input_tokens": 12,
+  "cache_creation_input_tokens": 8686,
+  "cache_read_input_tokens": 64311,
+  "output_tokens": 3817,
+  "output_tokens_details": {
+   "thinking_tokens": 826
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 8686,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 629,
+    "cache_read_input_tokens": 14041,
+    "cache_creation_input_tokens": 1239,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 1239
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 12,
+   "outputTokens": 3817,
+   "cacheReadInputTokens": 64311,
+   "cacheCreationInputTokens": 8686,
+   "webSearchRequests": 0,
+   "costUSD": 0.15873820000000002,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 826,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 8686,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 6,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I've written predictions for all 50 test trials and expect about 85% of them to be right (chance is 10%). I found nothing wrong with the data, so `data_issues` is set to `\"none\"`.\n\n**Decoder:** I took the square root of the spike counts, scaled each trial to the same total activity, flattened it to 200 features (20 units \u00d7 10 bins), and fit a logistic regression (C=0.3) on the 150 labelled train and val trials. The scaling makes it less sensitive to overall firing rate changing from trial to trial.\n\n**Accuracy estimate (0.85):**\n- Trained on train only and scored on val: 0.87\u20130.93, but val is only 30 trials.\n- 5-fold cross-validation on train and val together, repeated over 5 random splits: about 0.86.\n- The cross-validation mistakes are spread across classes rather than piling up between two neighbouring seconds.\n- The model's predictions on test are spread fairly evenly, 3 to 7 trials per class.\n\n**Data checks, all passed:**\n- Each label matches its `movie_time_s` exactly (class k starts at movie time 10+k s).\n- Classes are balanced: 12 per class in train, 3 per class in val.\n- No trial appears twice within or across the three splits.\n- The totals add up to 200 trials, which is 10 segments \u00d7 20 repeats.\n- Averaged over val trials, the class responses look most like the train averages for the same class, so the responses aren't misaligned with the labels.\n\n**One thing I noted but didn't count as an error:** val trials fire about 18% more than train or test (total spikes per trial average about 236, against about 195 in train). That gap is too large to be random sampling. It looks like the animal's state drifting across repeats, which is normal in these recordings. Test firing looks like train, so it shouldn't hurt the test predictions.\n\nOutput is in `output/predictions.json`.",
+ "ttft_ms": 5131,
+ "type": "result",
+ "duration_ms": 105075,
+ "uuid": "db38d0ad-5d4a-4622-b954-24ee36b8db15",
+ "ttft_stream_ms": 3092,
+ "time_to_request_ms": 75,
+ "first_content_frame_ms": 3092,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 105.9
+}

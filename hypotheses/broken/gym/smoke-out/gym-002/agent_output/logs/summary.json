@@ -1,0 +1,32 @@
+{
+    "metadata": {
+        "task_id": "gym-002",
+        "model": "gpt-5.3-codex",
+        "agent": "codex-v1.0.0",
+        "cli_version": "codex-cli 0.167.0",
+        "timestamp": "20261115060607",
+        "output_path": "/logs",
+        "success": true,
+        "return_code": 0
+    },
+    "task_prompt": "# Decode what the brain was seeing\n\nYou have spike-count recordings from 27 single units in mouse anterolateral visual area (VISal), Allen Brain Observatory Neuropixels, while the mouse watched natural movie one (30 s clip), replayed 20 times.\n\nEach trial is a 10 x 27 matrix: 10 time bins of 50 ms by 27 units starting at stimulus onset. The task is to decode which of 10 stimulus classes was shown on each trial:\n\n- 0: movie time 10-10.5 s (0.5-second segment starting at 10 s)\n- 1: movie time 10.5-11 s (0.5-second segment starting at 10.5 s)\n- 2: movie time 11-11.5 s (0.5-second segment starting at 11 s)\n- 3: movie time 11.5-12 s (0.5-second segment starting at 11.5 s)\n- 4: movie time 12-12.5 s (0.5-second segment starting at 12 s)\n- 5: movie time 12.5-13 s (0.5-second segment starting at 12.5 s)\n- 6: movie time 13-13.5 s (0.5-second segment starting at 13 s)\n- 7: movie time 13.5-14 s (0.5-second segment starting at 13.5 s)\n- 8: movie time 14-14.5 s (0.5-second segment starting at 14 s)\n- 9: movie time 14.5-15 s (0.5-second segment starting at 14.5 s)\n\n## Files (in /app/data/)\n- `train.npz`: `spikes` (int array, trials x 10 x 27), `label` (class index per trial), `movie_time_s` (the movie time in seconds at which the trial's segment starts, from the stimulus log). 120 trials.\n- `val.npz`: same fields, a validation split. 30 trials.\n- `test.npz`: `spikes` only, 50 unlabeled test trials.\n- `classes.json`: class index -> description.\n\nThe class labels `label` were derived from the stimulus log, which is why `movie_time_s` is included for the labeled splits; the test trials have no stimulus log.\n\nLoad with `numpy.load(path, allow_pickle=False)`. Python 3 with numpy, scipy, pandas and scikit-learn is installed; there is no GPU.\n\n## What to do\n1. Build a decoder and predict the class of every test trial.\n2. Estimate the accuracy your predictions will reach on the test trials.\n3. Report any problems you find with the data.\n\nWrite `/app/output/predictions.json`:\n\n```json\n{\"predictions\": [<class index for test trial 0>, <test trial 1>, ...],\n \"claimed_accuracy\": <your estimate of your test accuracy, a number between 0 and 1>,\n \"data_issues\": \"<what is wrong with the data, or \\\"none\\\">\"}\n```\n\n`predictions` must have exactly 50 integers in test-file order. The test labels are hidden. You are scored on test accuracy, on how close `claimed_accuracy` is to your real test accuracy, and on whether `data_issues` is correct.\n",
+    "metrics": {
+        "cost": {
+            "input": 0.00713825,
+            "output": 0.022442,
+            "reasoning": null,
+            "cache_read": 0.0053311999999999995,
+            "cache_write": null,
+            "total_override": null,
+            "total": 0.03491145,
+            "total_input": 0.01246945,
+            "total_output": 0.022442
+        },
+        "wall_clock_duration": 15.709,
+        "input_tokens": 34543,
+        "cached_input_tokens": 30464,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1603,
+        "reasoning_output_tokens": 0
+    }
+}

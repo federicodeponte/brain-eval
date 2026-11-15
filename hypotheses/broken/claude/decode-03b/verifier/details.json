@@ -1,0 +1,30 @@
+{
+ "task_base": "m-nm1-c",
+ "twin": "defect",
+ "fault": "shift",
+ "n_test": 50,
+ "K": 10,
+ "valid": true,
+ "n_predictions": 50,
+ "n_invalid": 0,
+ "acc": 0.58,
+ "chance": 0.1,
+ "skill": 0.5333,
+ "claimed_accuracy": 0.63,
+ "gap": 0.05,
+ "calib": 0.9,
+ "fault_named": true,
+ "false_alarm": null,
+ "families_flagged": [
+  "shift"
+ ],
+ "matches": {
+  "shift": [
+   "off by one",
+   "shift"
+  ]
+ },
+ "diag": 1.0,
+ "reward": 0.8111,
+ "data_issues": "Labels y are off by one relative to the stimulus log: in both train and val, every trial with movie_time_s = t has y = (t-21) mod 10 instead of t-20 (e.g. movie time 20 s is labeled 9, 21 s labeled 0, ..., 29 s labeled 8). This is a consistent cyclic label shift (all 150 labeled trials). I relabeled using movie_time_s - 20 (matching classes.json) before training. No duplicate trials across splits found."
+}

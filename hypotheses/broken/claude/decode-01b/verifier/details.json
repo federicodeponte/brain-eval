@@ -1,0 +1,31 @@
+{
+ "task_base": "m-nm1-a",
+ "twin": "defect",
+ "fault": "shift",
+ "n_test": 50,
+ "K": 10,
+ "valid": true,
+ "n_predictions": 50,
+ "n_invalid": 0,
+ "acc": 0.74,
+ "chance": 0.1,
+ "skill": 0.7111,
+ "claimed_accuracy": 0.8,
+ "gap": 0.06,
+ "calib": 0.88,
+ "fault_named": true,
+ "false_alarm": null,
+ "families_flagged": [
+  "shift"
+ ],
+ "matches": {
+  "shift": [
+   "shifted",
+   "off-by-one",
+   "mislabeled"
+  ]
+ },
+ "diag": 1.0,
+ "reward": 0.8637,
+ "data_issues": "Labels y in train and val are shifted by one class relative to the stimulus log: every trial has y = (movie_time_s - 1) mod 10 (e.g. movie_time 0 s labeled 9, 1 s labeled 0). The movie_time_s field matches the class definitions, so y is mislabeled (off-by-one). I relabeled with class = movie_time_s before training."
+}

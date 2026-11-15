@@ -1,0 +1,10 @@
+Done — I trained a decoder, generated test predictions, estimated test accuracy, and wrote the required file:
+
+- `/app/output/predictions.json`
+
+It contains:
+- `predictions`: 50 class indices in test-trial order
+- `claimed_accuracy`: `0.30333333333333334`
+- `data_issues`: reports that `label` and `movie_time_s` are inconsistent in both train and validation splits, and notes leakage risk from `movie_time_s` in labeled data (while missing in test)
+
+If you want, I can also provide a short confusion-matrix summary from validation to show where the decoder is most/least reliable.

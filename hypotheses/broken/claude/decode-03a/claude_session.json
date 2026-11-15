@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 54083,
+ "stop_reason": "end_turn",
+ "session_id": "c631fda2-4fd9-4218-a0b7-d59be42a5d95",
+ "total_cost_usd": 0.2170316,
+ "usage": {
+  "input_tokens": 14,
+  "cache_creation_input_tokens": 13578,
+  "cache_read_input_tokens": 87658,
+  "output_tokens": 4541,
+  "output_tokens_details": {
+   "thinking_tokens": 584
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 13578,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 774,
+    "cache_read_input_tokens": 19388,
+    "cache_creation_input_tokens": 784,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 784
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 14,
+   "outputTokens": 4541,
+   "cacheReadInputTokens": 87658,
+   "cacheCreationInputTokens": 13578,
+   "webSearchRequests": 0,
+   "costUSD": 0.2170316,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 584,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 13578,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 7,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I wrote predictions for all 50 test trials to `output/predictions.json`. I estimate they'll be about **66% accurate**, against 10% for guessing. I didn't find any problems with the data, so `data_issues` is `\"none\"`.\n\n**Decoder.** It's a logistic regression trained on all 150 labeled trials (train plus val). Each trial's spike counts are square-root transformed, averaged into five 200 ms bins per unit and scaled to a common range (C=0.01). In repeated 5-fold cross-validation it scored 0.667. That beat plain logistic regression (about 0.59\u20130.64), LDA (about 0.61\u20130.65) and Gaussian naive Bayes (about 0.41\u20130.47). Weaker regularization scored slightly higher in the same runs (0.68\u20130.69 at C=0.02\u20130.05), but I didn't switch because those runs were also what I used to pick the setting.\n\n**Accuracy estimate.** The 0.66 comes from that cross-validation. With only 50 test trials, expect about \u00b17 percentage points either way just from which trials are in the test set. Accuracy differs a lot by class: seconds 28\u201329 and 29\u201330 (classes 8 and 9) were decoded perfectly in cross-validation. Seconds 21\u201322 and 24\u201325/25\u201326 (classes 1, 4 and 5) were often confused with their neighbours.\n\n**What I checked:**\n- The labels match `movie_time_s` exactly in both labeled splits.\n- Every class appears equally often (12 train and 3 val trials each, so 5 per class are probably in test, which makes 20 repeats).\n- No trial appears twice, including between splits, and no two trials are suspiciously close to each other.\n- Firing rates per unit look the same in train, val and test.\n- Matching each trial against the averaged response of the continuous movie showed no consistent timing shift and no labels pointing to the wrong segment.\n\nThe near-perfect scores on classes 8 and 9 come from real responses tied to the stimulus, such as unit 18 firing across the boundary between seconds 28 and 29. They don't look like an artifact. Unit 3 and unit 17 barely fire (36 and 18 spikes across all training trials), which is typical for these recordings rather than an error.",
+ "ttft_ms": 5777,
+ "type": "result",
+ "duration_ms": 152700,
+ "uuid": "d5e3ad7f-fcd9-4742-b7ae-c5208b0ad6d4",
+ "ttft_stream_ms": 3401,
+ "time_to_request_ms": 70,
+ "first_content_frame_ms": 3401,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 153.7
+}

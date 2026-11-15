@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 32153,
+ "stop_reason": "end_turn",
+ "session_id": "baaaad2f-2a14-421f-a6e9-cc8a4796afdc",
+ "total_cost_usd": 0.11104739999999999,
+ "usage": {
+  "input_tokens": 10,
+  "cache_creation_input_tokens": 5894,
+  "cache_read_input_tokens": 47677,
+  "output_tokens": 2716,
+  "output_tokens_details": {
+   "thinking_tokens": 265
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 5894,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 574,
+    "cache_read_input_tokens": 11496,
+    "cache_creation_input_tokens": 992,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 992
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 10,
+   "outputTokens": 2716,
+   "cacheReadInputTokens": 47677,
+   "cacheCreationInputTokens": 5894,
+   "webSearchRequests": 0,
+   "costUSD": 0.11104739999999999,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 265,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 5894,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 5,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I've written predictions for all 50 test trials to `output/predictions.json`. I expect about 63% test accuracy, against 10% for random guessing.\n\n**Data problem: the labels are shifted by one.** In both train and val, every `y` disagrees with the stimulus log `movie_time_s`, always the same way. A trial starting at movie time *t* is labelled `(t \u2212 21) mod 10` instead of `t \u2212 20`. So 20 s is labelled 9, 21 s is labelled 0, and so on up to 29 s labelled 8. All 150 labelled trials have this shift. `classes.json` and the log agree that class = movie time \u2212 20, so I rebuilt the labels from `movie_time_s` before training.\n\nThe neural data alone can't show which labelling is correct, because a consistent shift just renames the classes. I trusted the log because it is the source the labels came from. If the hidden test labels actually use the shifted scheme, every prediction will be wrong.\n\nI found no other problems. There are no duplicate trials within or across splits, and firing rates are similar in all three splits.\n\n**Decoder:** logistic regression (C = 0.1) on the square root of all 200 spike counts per trial, trained on train and val together (150 trials). Linear discriminant analysis scored the same; Gaussian naive Bayes was worse (about 0.42).\n\n**How I got the 0.63 estimate:**\n- With the 120 training trials, the model scored 0.73 on the 30 validation trials. That set is small, so the number is noisy.\n- Repeated 5-fold cross-validation on all 150 trials gave about 0.61. Each fold trains on 120 trials.\n- The final model trains on all 150 trials, so I nudged the estimate slightly above 0.61.",
+ "ttft_ms": 4110,
+ "type": "result",
+ "duration_ms": 81853,
+ "uuid": "e42972c6-53d2-4715-b89a-c69d480194e7",
+ "ttft_stream_ms": 2025,
+ "time_to_request_ms": 96,
+ "first_content_frame_ms": 2025,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 82.9
+}

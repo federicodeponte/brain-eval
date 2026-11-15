@@ -59,6 +59,10 @@ GENERIC = {
 }
 GROUP_OF = {"leak": "leak", "shift": "label", "noise": "label", "dead": "input", "perm": "input", "mix": "input"}
 NEG = re.compile(r"\b(no|not|never|without|nor|none|neither|free of|absence of|lack of|did ?n[o']t|didn't|don't|doesn't|isn't|aren't|wasn't|weren't|cannot|can't|unable to|rule[sd]? out|ruled out)\b")
+# "label leakage via orientation_deg" style remarks are about the documented stimulus-log column, not a data fault:
+# a leak-family word in a clause that names that column counts only if the clause also talks about copied trials.
+META_COL = re.compile(r"movie_time_s|image_id|orientation_deg|\bcategory\b|meta-?data|stimulus[- ]log|derivable|mapped to|as a feature")
+DUPE = re.compile(r"duplicat|cop(y|ies|ied)|near[- ]?identical|overlap|same (trials?|rows?)|repeated (trials?|rows?)")
 CLAUSE = re.compile(r"[.;:\n!?]|\bbut\b|\bhowever\b|\bwhereas\b|\balthough\b")
 
 
@@ -66,8 +70,11 @@ def flagged(text):
     """Return ({family: snippets}, {group: snippets}) for non-negated mentions."""
     fam, gen = {}, {}
     for clause in CLAUSE.split(text.lower()):
+        meta_only = bool(META_COL.search(clause)) and not DUPE.search(clause)
         for table, out in ((FAMILIES, fam), (GENERIC, gen)):
             for name, pats in table.items():
+                if table is FAMILIES and name == "leak" and meta_only:
+                    continue
                 for p in pats:
                     for m in re.finditer(p, clause):
                         words = clause[max(0, m.start() - 40):m.start()].split()[-4:]
