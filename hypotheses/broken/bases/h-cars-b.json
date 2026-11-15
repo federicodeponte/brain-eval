@@ -1,0 +1,61 @@
+{
+ "species": "human",
+ "stim": "DANDI000004 1cars/2food/3people/5animals",
+ "kind": "images",
+ "K": 4,
+ "bin_ms": 1000,
+ "n_bins": 1,
+ "n_sessions": 14,
+ "regions": [
+  "Right Amygdala",
+  "Left Amygdala",
+  "Right Amygdala",
+  "Left Amygdala",
+  "Right Amygdala",
+  "Right Amygdala",
+  "Right Amygdala",
+  "Right Amygdala",
+  "Right Amygdala",
+  "Right Amygdala",
+  "Right Amygdala",
+  "Left Hippocampus",
+  "Right Amygdala",
+  "Right Hippocampus",
+  "Right Amygdala",
+  "Right Amygdala",
+  "Left Hippocampus",
+  "Right Amygdala",
+  "Right Hippocampus",
+  "Left Amygdala",
+  "Right Hippocampus",
+  "Right Hippocampus",
+  "Left Amygdala",
+  "Right Amygdala",
+  "Left Amygdala",
+  "Left Hippocampus",
+  "Right Hippocampus",
+  "Left Amygdala",
+  "Left Amygdala",
+  "Left Hippocampus"
+ ],
+ "meta_name": "category",
+ "desc": "30 single neurons in human medial temporal lobe (amygdala and hippocampus, depth electrodes in epilepsy patients, DANDI 000004) while the person viewed photographs from 4 categories. Neurons come from 14 recording sessions and are combined into a pseudo-population: each row joins one presentation per session of a photo from the same category. Counts are spikes 200-1200 ms after photo onset (one bin)",
+ "classes": [
+  "cars",
+  "food",
+  "people",
+  "animals"
+ ],
+ "base_id": "h-cars-b",
+ "n": 303,
+ "shape": [
+  303,
+  30,
+  1
+ ],
+ "n_split": {
+  "train": 87,
+  "val": 16,
+  "test": 200
+ }
+}
