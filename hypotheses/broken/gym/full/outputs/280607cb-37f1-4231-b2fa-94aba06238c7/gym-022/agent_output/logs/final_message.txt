@@ -1,0 +1,11 @@
+Done — I trained a decoder, generated predictions, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+Contents written:
+
+- `predictions`: `[0, 2, 2, 2, 3, 2, 0, 0, 0, 6, 0, 5, 4, 6]`
+- `claimed_accuracy`: `0.64`
+- `data_issues`: label/log mismatch description plus small-sample warning
+
+If you want, I can also save a short reproducible script in `/app/output/` showing the exact training/evaluation pipeline I used.

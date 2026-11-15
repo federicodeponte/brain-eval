@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 38161,
+ "stop_reason": "end_turn",
+ "session_id": "b64c7311-f5fe-4cdb-91e5-21b8656d2371",
+ "total_cost_usd": 0.1288936,
+ "usage": {
+  "input_tokens": 10,
+  "cache_creation_input_tokens": 7176,
+  "cache_read_input_tokens": 50528,
+  "output_tokens": 3067,
+  "output_tokens_details": {
+   "thinking_tokens": 414
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 7176,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 503,
+    "cache_read_input_tokens": 12753,
+    "cache_creation_input_tokens": 1017,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 1017
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 10,
+   "outputTokens": 3067,
+   "cacheReadInputTokens": 50528,
+   "cacheCreationInputTokens": 7176,
+   "webSearchRequests": 0,
+   "costUSD": 0.1288936,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 414,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 7176,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 5,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I wrote predictions for all 30 test trials to `output/predictions.json`, with a claimed accuracy of 0.87.\n\n**Data problem: the labels are shifted by one class.** In every train and val trial, `y` equals `(movie_time_s \u2212 61) mod 10` instead of `movie_time_s \u2212 60`. For example, the segment starting at movie time 60 s is labeled 9 and the one at 61 s is labeled 0. The class definitions are tied to movie time, so I treated `movie_time_s \u2212 60` as the true label and retrained on that. Trained on the labels as given, every prediction would be one class off. The neural data can't detect this: the shift is identical on every trial, so it just renames the classes and the cross-validated accuracy is the same either way. The fix relies on trusting the stimulus log over `y`.\n\n**Decoder:** logistic regression on the square root of the spike counts, using all 25 units \u00d7 10 bins as features (C=1), trained on the 70 corrected train and val trials.\n\n**Accuracy estimate:**\n- Leave-one-out accuracy on the 70 labeled trials was 0.89 at C=1 and 0.86\u20130.91 for C between 0.1 and 10. A Poisson naive Bayes decoder did worse, at about 0.79.\n- A model trained only on the train split got 9 of 10 val trials right.\n- I put the claim slightly below the cross-validation number to allow for picking C on the same data.\n\nThe predicted classes cover all 10 options, between 1 and 6 trials each.",
+ "ttft_ms": 3980,
+ "type": "result",
+ "duration_ms": 159649,
+ "uuid": "7923c991-659c-4325-89f2-57f7f48e6ada",
+ "ttft_stream_ms": 2451,
+ "time_to_request_ms": 70,
+ "first_content_frame_ms": 2451,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 160.5
+}

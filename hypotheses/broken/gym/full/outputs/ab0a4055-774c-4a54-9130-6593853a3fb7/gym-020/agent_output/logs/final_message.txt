@@ -1,0 +1,14 @@
+Done — I built a decoder, generated predictions for all 114 test trials, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I found**
+- Best model by pooled CV (`train+val`) was an `SVC` with RBF kernel on flattened `17x8` spike bins.
+- Estimated test accuracy (`claimed_accuracy`) set to `0.590149359886202`.
+
+**Data issues**
+- I checked label consistency thoroughly.
+- `label`, `orientation_deg`, and `classes.json` are internally consistent on both train and val splits.
+- Reported `data_issues` as `"none"`.
+
+If you want, I can also save a small reproducible training script in `/app/output/` so you can rerun the exact pipeline.

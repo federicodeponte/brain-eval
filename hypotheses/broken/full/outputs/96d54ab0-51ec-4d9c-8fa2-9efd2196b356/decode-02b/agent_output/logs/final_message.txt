@@ -1,0 +1,22 @@
+Done — I trained a decoder, generated predictions, and wrote:
+
+- `output/predictions.json`
+
+**What I used**
+- Model: `SVC` (RBF kernel) with `StandardScaler`
+- Features: flattened `20 x 10` spike-count matrix (`200` features)
+- Training data for final fit: combined `train + val` (150 labeled trials)
+
+**Estimated test accuracy**
+- Set `claimed_accuracy` to `0.78` based on:
+  - Validation accuracy peak around `0.867` on the provided `val` split
+  - More conservative 5-fold CV on combined labeled data around `0.727` mean
+  - Chosen midpoint-ish estimate to reduce overconfidence risk
+
+**Data issues found**
+- `data_issues` set to `"none"` because:
+  - Shapes, dtypes, and class balance are consistent
+  - `y` is consistent with `movie_time_s` (`y == movie_time_s - 10`) in labeled splits
+  - No missing/invalid labels or obvious corruption
+
+If you want, I can also provide a quick confusion-matrix analysis on `val` to show which movie-second classes are most confusable.

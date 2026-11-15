@@ -1,0 +1,13 @@
+Done — I built a decoder, generated test predictions, estimated accuracy, checked for data issues, and wrote:
+
+- `/app/output/predictions.json`
+
+Contents written:
+- `predictions`: 27 class indices in test-trial order
+- `claimed_accuracy`: `0.46`
+- `data_issues`: `"none"`
+
+I also verified:
+- Label balance is uniform in train/val (5 and 2 per class respectively).
+- `movie_time_s` and `label` are consistent on all labeled trials.
+- No obvious structural issues (shapes/dtypes/ranges are valid).

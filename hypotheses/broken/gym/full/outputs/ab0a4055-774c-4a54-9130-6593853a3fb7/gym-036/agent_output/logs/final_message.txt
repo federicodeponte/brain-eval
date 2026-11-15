@@ -1,0 +1,7 @@
+Done — I built a decoder, generated predictions for all 65 test trials, estimated test accuracy, and wrote the required file:
+
+- `/app/output/predictions.json`
+
+I used model comparison on `train`/`val` (LogReg, LDA, SVM, RF), then trained the selected decoder on combined labeled data to predict `test`.
+
+If you want, I can also output a small reproducible training script in `/app/output/` documenting the exact pipeline used.

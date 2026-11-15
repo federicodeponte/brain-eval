@@ -1,0 +1,10 @@
+Done — I built a decoder, generated predictions for all 54 eval trials, and wrote:
+
+- `/app/output/predictions.json`
+
+I used a `StandardScaler` + shrinkage `LinearDiscriminantAnalysis` model trained on `fit + holdout` labels, estimated test accuracy as `0.44`, and checked labeled data consistency.
+
+No concrete data issues were found (`data_issues: "none"`):  
+- `y` matches `movie_time_s` exactly in both labeled splits.  
+- Class balance is perfect (`11/class` in `fit`, `3/class` in `holdout`).  
+- Shapes and value ranges look consistent.

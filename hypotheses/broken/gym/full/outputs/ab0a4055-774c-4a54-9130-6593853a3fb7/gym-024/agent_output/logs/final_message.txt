@@ -1,0 +1,17 @@
+Done — I trained and selected a decoder, generated test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I used**
+- Best model by validation performance: `RandomForestClassifier` (400 trees).
+- Input features: flattened spike counts (`19x1 -> 19`).
+
+**Estimated performance**
+- Validation accuracy of chosen model: `0.95` (40-val split).
+- Conservative claimed test accuracy written: `0.9003401360544218`.
+
+**Data issue reported**
+- Found repeated feature vectors across splits, indicating possible leakage/low uniqueness:
+  - `3` validation trials have spike-count vectors identical to training trials.
+
+If you want, I can also print the exact 50 predicted class indices here for quick inspection.

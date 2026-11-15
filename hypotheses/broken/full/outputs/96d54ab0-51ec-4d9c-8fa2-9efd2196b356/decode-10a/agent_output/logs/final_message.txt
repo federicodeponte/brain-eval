@@ -1,0 +1,11 @@
+Done — I built a VISp decoder, generated test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+It contains:
+
+- `predictions`: 120 class indices in test order
+- `claimed_accuracy`: `0.59`
+- `data_issues`: reports a distribution mismatch (`test` has higher per-bin spike counts than labeled splits)
+
+If you want, I can also quickly dump a confusion matrix and per-class validation accuracy for the chosen model.

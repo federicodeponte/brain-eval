@@ -1,0 +1,14 @@
+Done — I built a decoder, generated test predictions, estimated accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I used**
+- Best validation model was `MultinomialNB` on spike counts (val accuracy `0.7619` on 21 trials), so I trained it on `train+val` and predicted all 128 test trials.
+
+**Estimated test accuracy**
+- Set `claimed_accuracy` to `0.73` (close to validation performance but slightly conservative due to small split size and label issues).
+
+**Data problems found**
+- `stim_class` and `category` are not one-to-one in labeled splits.
+- Example: in `train`, `animals` includes mostly class `3` but also class `0`; `cars`, `food`, and `people` also appear in multiple class indices.
+- This indicates label noise or misalignment between `stim_class` and `category` (likely from pseudo-population construction/log alignment).

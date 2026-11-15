@@ -1,0 +1,12 @@
+Done — I built a decoder, generated test predictions, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+I used a `RandomForestClassifier` trained on combined `train+val` labeled trials (flattened `28x5` features), after comparing multiple models on validation/CV.
+
+**What I found**
+- `y` and `image_id` are internally consistent in both labeled splits.
+- Class balance is perfectly even in both splits (`train`: 21/class, `val`: 8/class).
+- No obvious data integrity issues (shapes/dtypes/ranges look valid).
+
+So `data_issues` is set to `"none"` and `claimed_accuracy` to `0.52` based on held-out/CV performance.

@@ -1,0 +1,11 @@
+Done — I built a decoder, generated test predictions, estimated accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+It contains:
+
+- `predictions`: 160 class indices in test order
+- `claimed_accuracy`: `0.77`
+- `data_issues`: notes on the pseudo-population/session-mixing issue and small labeled sample size (high-variance estimate)
+
+If you want, I can also share a small reproducible training script file in `/app/output/` for auditing.

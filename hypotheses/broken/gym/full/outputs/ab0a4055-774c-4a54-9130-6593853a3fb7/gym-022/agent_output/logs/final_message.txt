@@ -1,0 +1,11 @@
+Done — I trained a decoder, generated test predictions, estimated performance, and wrote:
+
+- `/app/output/predictions.json`
+
+Contents written:
+
+- `predictions`: `[1, 2, 2, 2, 3, 2, 4, 3, 0, 4, 0, 5, 4, 0]`
+- `claimed_accuracy`: `0.64`
+- `data_issues`: `"movie_time_s is inconsistent with y in labeled splits (labels are not equal to movie_time_s-48, indicating stimulus-log/label mismatch or shuffled metadata)."`
+
+I also verified the issue directly: in both labeled files, `y != movie_time_s - 48` for many trials.

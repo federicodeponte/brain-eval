@@ -1,0 +1,11 @@
+Done — I built a decoder, generated test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+It contains:
+
+- `predictions`: 114 class indices in test order
+- `claimed_accuracy`: `0.9186060606060608`
+- `data_issues`: `"none"`
+
+I also checked label consistency in labeled splits (`orientation_deg` vs `label`) and found no mismatches.

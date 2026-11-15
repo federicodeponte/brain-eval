@@ -1,0 +1,11 @@
+Done — I built a decoder, generated predictions, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+It contains:
+
+- `predictions`: 200 class indices in test order
+- `claimed_accuracy`: `0.97`
+- `data_issues`: notes on key dataset problems (pseudo-population mixing across sessions, class imbalance, tiny validation split causing high-variance estimates)
+
+If you want, I can also run a quick model-ensemble pass and overwrite `predictions.json` if it improves robustness.

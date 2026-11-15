@@ -1,0 +1,14 @@
+Done — I built a decoder, generated test predictions, estimated accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I used**
+- Trained/evaluated several models on labeled data; best validation accuracy was `LDA` at `0.6875` on `val_labeled`.
+- Used stratified CV on combined labeled data to estimate test performance (`~0.60` mean), and set:
+  - `claimed_accuracy = 0.6`
+
+**Data issues found**
+- `image_id` in labeled splits is `float64` even though IDs are integer-valued categories.
+- Class mapping consistency is otherwise correct (`image_id` ↔ `stim_class` has no conflicts), and class balance is perfectly uniform in train/val.
+
+If you want, I can also save the exact training script to `/app/output/decoder_report.py` for reproducibility.

@@ -1,0 +1,12 @@
+Done — I built a decoder, generated predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+I used a `RandomForestClassifier` on flattened `10x17` spike-count features (trained on `fit.npz`) and estimated test accuracy from `holdout.npz`.
+
+**Output summary**
+- `predictions`: 66 class indices (in eval-trial order)
+- `claimed_accuracy`: `0.6166666666666667`
+- `data_issues`: `"none"`
+
+I also checked label consistency: `y` and `image_id` mappings are consistent across `fit` and `holdout`, and class balance is uniform in labeled splits.

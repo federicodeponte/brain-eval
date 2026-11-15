@@ -1,0 +1,13 @@
+Done — I built a decoder, generated predictions, and wrote:
+
+- `output/predictions.json`
+
+**What I used**
+- Multinomial logistic regression on flattened `10x16` spike-count vectors.
+- Trained on combined train+val labeled data for final test predictions.
+- Validation accuracy (train→val) was `0.875`, so I set `claimed_accuracy` to `0.84` as a conservative test estimate.
+
+**Data issue found**
+- `y` is inconsistent with `movie_time_s` and the provided class definitions.
+- Expected relation is `class = movie_time_s - 100`, but every labeled trial violates that.
+- This suggests a systematic label permutation/remapping (or label/log misalignment).

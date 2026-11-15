@@ -1,0 +1,16 @@
+Done — I built a decoder, generated predictions, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I used**
+- Flattened `counts` from `(trials, 1, 30)` to `(trials, 30)`.
+- Benchmarked several classifiers with 5-fold stratified CV on train:
+  - Best CV: `StandardScaler + SVC(rbf)` with mean CV accuracy `0.9772`.
+- Trained the selected model on `train + val`, then predicted all 176 test trials.
+
+**Data issues reported**
+- Single-bin response per trial (no temporal dynamics retained).
+- `label` is a direct encoding of `category` on labeled splits (potential leakage if `category` is misused).
+- Very small validation split (14 trials), so holdout accuracy is high-variance.
+
+If you want, I can also save a small reproducible training script in `/app/output/` that regenerates the same JSON.

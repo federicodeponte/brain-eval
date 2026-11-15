@@ -1,0 +1,12 @@
+Done — I built a decoder, generated test predictions, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+Key data issue found:
+
+- `stim_class` is systematically misaligned with `movie_time_s` in labeled data.
+- Exact mapping is: time 16→class 8, 17→9, 18→0, 19→1, …, 25→7 (a circular shift), so labels are not consistent with the class definitions in `classes.json`.
+
+I used a multinomial logistic regression decoder on flattened spike counts (`22x10 -> 220` features), trained on `fit + holdout`, and set:
+
+- `claimed_accuracy`: `0.56` (based on holdout/CV performance).

@@ -1,0 +1,9 @@
+Done — I built and selected a decoder, generated test predictions, and wrote:
+
+- `output/predictions.json`
+
+It contains:
+
+- `predictions`: 152 class indices in test-trial order
+- `claimed_accuracy`: `0.64` (estimated from train/val model performance)
+- `data_issues`: notes that `label` is exactly derived from `orientation_deg` in labeled data (duplicative/possible leakage metadata) and naming ambiguity (`orientation_deg` used for direction classes).

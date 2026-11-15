@@ -1,0 +1,11 @@
+Done — I built a decoder, generated test predictions, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+Contents written:
+
+- `predictions`: `[3, 1, 4, 8, 2, 2, 0, 1, 5, 6, 8, 7, 3, 1, 4, 5, 8, 4, 0, 0]`
+- `claimed_accuracy`: `0.9`
+- `data_issues`: `stim_class is inconsistent with movie_time_s in all labeled trials: expected stim_class = movie_time_s - 38, but none match (likely an indexing/offset or shuffled-label issue).`
+
+I selected predictions from a strong linear model/ensemble based on CV and validation behavior, while flagging the clear metadata-label inconsistency.

@@ -1,0 +1,12 @@
+Done — I trained several decoders, selected the best on validation (`RandomForestClassifier`, 200 trees), retrained on `train+val`, predicted all 120 test trials, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I found**
+- `predictions` length is exactly 120 integers in test order.
+- `claimed_accuracy` is set to `0.63125` (blending held-out val and 5-fold CV estimate).
+- `data_issues` is `"none"` based on checks:
+  - Shapes and dtypes match expectations.
+  - Labels are in range `0..7`.
+  - Class balance is perfectly uniform in both labeled splits.
+  - `y` ↔ `image_id` mapping is internally consistent and matches the prompt mapping.

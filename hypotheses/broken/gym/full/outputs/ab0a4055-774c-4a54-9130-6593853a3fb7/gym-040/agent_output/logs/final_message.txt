@@ -1,0 +1,18 @@
+Done — I built a decoder, generated test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I used**
+- Trained on `train+val` with a linear SVM (`StandardScaler` + `SVC(kernel='linear')`).
+- Chosen based on strong small-sample performance:
+  - 5-fold CV on labeled data (84 trials): ~`0.787`
+  - Holdout val accuracy (train→val): `0.8947` (17/19)
+
+**Claimed test accuracy**
+- Set to `0.79` in the JSON (a conservative estimate near CV performance).
+
+**Data issues**
+- Checked label/category consistency on train/val and found no mismatches.
+- Reported `"data_issues": "none"`.
+
+If you want, I can also drop a reproducible training script into `/app/output/` so you can regenerate the same predictions exactly.

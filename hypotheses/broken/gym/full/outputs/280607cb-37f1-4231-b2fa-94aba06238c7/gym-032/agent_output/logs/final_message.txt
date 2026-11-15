@@ -1,0 +1,11 @@
+Done — I built a decoder, generated predictions for all 164 eval trials, estimated test accuracy, and wrote:
+
+- `output/predictions.json`
+
+I used a random forest (best holdout performance among tested models), trained on `fit + holdout` labels, and predicted `eval`.
+
+Also flagged key data issues in the JSON:
+- pseudo-population trials combine different sessions (non-simultaneous neurons),
+- `category` is redundant with `y` in labeled splits and missing in eval.
+
+If you want, I can also save the exact training script to `/app/output/` for reproducibility.

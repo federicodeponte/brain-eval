@@ -1,0 +1,12 @@
+Done — I built a decoder, generated predictions, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+I used a `RandomForestClassifier` trained on `train+val` (flattened `25x5` spike counts), with expected test accuracy set to `0.60` based on train-CV/val performance (~0.58–0.60 range).
+
+I also reported the key data issue:
+
+- `image_id` in labeled splits is a perfect proxy for `y` (one-to-one mapping), i.e., leakage if used as a feature.
+- Minor schema issue: `image_id` is stored as `float64` even though IDs are integers.
+
+If you want, I can also save a small reproducible training script under `/app/output/` for auditability.

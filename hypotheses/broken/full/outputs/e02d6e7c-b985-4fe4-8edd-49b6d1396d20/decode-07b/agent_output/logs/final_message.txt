@@ -1,0 +1,12 @@
+Done — I built a decoder, generated all 200 test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+Summary of what I used:
+- Best model: `SVC` with RBF kernel on flattened `30`-feature spike counts.
+- Selection basis: highest validation accuracy (`0.875`, tied best) with strongest CV support.
+- Claimed test accuracy: `0.82` (from combined train+val CV mean ≈ `0.824`).
+
+Data issues reported:
+- Pseudo-population construction mixes neurons from different sessions/patients per “trial,” so true simultaneous covariance is not preserved.
+- `test.npz` lacks `category` (stimulus-log metadata) present in labeled splits.

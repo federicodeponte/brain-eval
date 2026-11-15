@@ -1,0 +1,10 @@
+Done — I built a decoder, generated predictions, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+Summary:
+- Model used: linear SVM on flattened spike counts (`31` features).
+- Selection basis: best validation accuracy among several classifiers.
+- `predictions`: 136 integers in test order.
+- `claimed_accuracy`: `0.8646218487394958`
+- `data_issues`: notes the key issue that this is a pseudo-population across sessions (synthetic trials, not simultaneously recorded) plus small sample size/high variance.

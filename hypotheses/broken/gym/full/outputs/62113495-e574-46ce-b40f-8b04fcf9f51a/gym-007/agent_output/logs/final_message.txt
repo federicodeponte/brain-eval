@@ -1,0 +1,11 @@
+Done — I trained a decoder, generated predictions, estimated expected test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+Using a multinomial logistic-regression decoder on flattened `10x30` spike counts, the file contains:
+
+- `predictions`: 20 class indices in test-trial order
+- `claimed_accuracy`: `0.8` (estimated from held-out validation accuracy)
+- `data_issues`: a real issue I found — `y` is inconsistent with `movie_time_s`-derived class labels in many labeled trials.
+
+If you want, I can also quickly produce a small diagnostic table showing exactly which train/val trials have mismatched `y` vs `movie_time_s`.

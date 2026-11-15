@@ -1,0 +1,16 @@
+Done — I built a decoder, generated test predictions, estimated expected test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I used**
+- Flattened each trial from `33x1` to `33` features (spike counts).
+- Trained an L1-regularized multinomial logistic regression (`saga`, `C=0.5`) on `train + val`.
+- Model selection was based on CV over train and checked on val.
+
+**Estimated performance**
+- `claimed_accuracy` set to `0.97` (based on strong CV/val performance and near-balanced class distributions).
+
+**Data issues found**
+- Labeled splits are internally consistent (`category` ↔ `label` mapping is exact).
+- But the dataset is a pseudo-population across 17 sessions/patients, so neurons are not simultaneously recorded (potential distributional/independence mismatch).
+- Test split lacks `category` metadata, so that label-log consistency cannot be verified on test.

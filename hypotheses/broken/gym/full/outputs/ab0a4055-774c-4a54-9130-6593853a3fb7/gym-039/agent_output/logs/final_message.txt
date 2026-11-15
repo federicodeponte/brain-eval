@@ -1,0 +1,11 @@
+Done — I trained a decoder, generated test predictions, estimated expected test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+Using a multinomial logistic regression on flattened `29x10` spike bins, the `claimed_accuracy` is set from 5-fold CV on train+val (`~0.6808`).
+
+**Data issues found**
+- No hard label mismatch: `y` and `orientation_deg` are consistent on train/val.
+- Mild schema issue: the field name `orientation_deg` is potentially misleading, since classes are direction-specific (includes opposite directions separately), not orientation-invariant.
+
+If you want, I can also produce a small reproducible training script in `/app/output/` so the exact pipeline is documented.

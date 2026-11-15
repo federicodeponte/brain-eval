@@ -1,0 +1,17 @@
+Done — I built a decoder, generated test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I used**
+- Model: `StandardScaler + SVC(kernel='rbf', C=1, gamma='scale')`
+- Training data: combined `train.npz` + `val.npz` labeled trials
+- Accuracy estimate: 5-fold stratified CV on labeled data (`0.7` mean accuracy)
+
+**Data issue found**
+- `stim_class` and `category` are inconsistent in labeled splits.
+- Using `classes.json`, I found mismatches on:
+  - train: `5/73` trials
+  - val: `6/17` trials
+- This indicates likely label noise and/or stimulus-log misalignment.
+
+If you want, I can also produce an alternate `predictions.json` from a Naive Bayes model (second-best CV) for comparison.

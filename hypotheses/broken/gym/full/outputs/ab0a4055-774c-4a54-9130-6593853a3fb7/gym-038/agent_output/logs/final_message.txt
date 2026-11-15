@@ -1,0 +1,10 @@
+Done — I built a decoder, analyzed the splits, and wrote:
+
+- `/app/output/predictions.json`
+
+Key points:
+- `predictions` contains exactly 70 class indices in test order.
+- `claimed_accuracy` is set to `0.2` (conservative estimate under apparent mismatch).
+- `data_issues` reports the likely problem: the test distribution appears shifted/inconsistent relative to train/val, which severely degrades decodability from the provided labeled data.
+
+If you want, I can also save a small reproducible training script in `/app/output/` showing the exact model-selection steps I used.

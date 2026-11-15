@@ -1,0 +1,8 @@
+Done — I trained a decoder, generated test predictions, estimated test accuracy, and wrote the required output file.
+
+- Wrote `/app/output/predictions.json` with exactly 133 class predictions.
+- Decoder used: `StandardScaler + SVC(RBF)` trained on combined labeled data (`train + val`).
+- Estimated test accuracy (`claimed_accuracy`) set from 5-fold CV on all labeled data: `0.9011`.
+- Data checks found no inconsistencies: `label` matches `orientation_deg` mapping exactly in both labeled splits, valid class range, no missing fields.
+
+If you want, I can also produce a short reproducible training script in `/app/output/` for auditability.

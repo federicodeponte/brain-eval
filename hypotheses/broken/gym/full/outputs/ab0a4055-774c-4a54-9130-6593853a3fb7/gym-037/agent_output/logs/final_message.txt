@@ -1,0 +1,14 @@
+Done — I trained a decoder, generated test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+It contains:
+
+- `predictions`: 54 class indices in eval-trial order
+- `claimed_accuracy`: `0.4074074074074074` (estimated from holdout accuracy)
+- `data_issues`: `"none"`
+
+I also checked for label integrity issues and found:
+- `y` matches `movie_time_s` exactly in both labeled splits
+- Balanced class counts in both splits (fit: 11/class, holdout: 3/class)
+- No obvious structural/data-consistency problems in the provided files

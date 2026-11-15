@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 59919,
+ "stop_reason": "end_turn",
+ "session_id": "df1ec232-df4a-4008-a79e-23720e33e367",
+ "total_cost_usd": 0.21009560000000002,
+ "usage": {
+  "input_tokens": 16,
+  "cache_creation_input_tokens": 9735,
+  "cache_read_input_tokens": 93758,
+  "output_tokens": 5670,
+  "output_tokens_details": {
+   "thinking_tokens": 911
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 9735,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 659,
+    "cache_read_input_tokens": 16039,
+    "cache_creation_input_tokens": 290,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 290
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 16,
+   "outputTokens": 5670,
+   "cacheReadInputTokens": 93758,
+   "cacheCreationInputTokens": 9735,
+   "webSearchRequests": 0,
+   "costUSD": 0.21009560000000002,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 911,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 9735,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 8,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I've written predictions for all 152 test trials to `output/predictions.json`. I expect them to be right about 70% of the time, and I found no problems with the data.\n\n**Decoder:** I added up each unit's spikes over the full 2 seconds, took the square root, and fed the 30 resulting values per trial to a standard linear classifier (LDA with shrinkage 0.1). The final model was fitted on train and val together (440 trials). Using all 8 time bins separately scored slightly worse than the totals.\n\n**Accuracy estimate (`claimed_accuracy` = 0.70):** Chance is 12.5%.\n- Trained on train only and scored on val, it got 0.69.\n- Repeated 10-fold cross-validation on train plus val gave 0.71.\n- The two agree, so I put 0.70.\n\n**Data checks (`data_issues` = \"none\"):**\n- **Labels:** `y` matches `orientation_deg` exactly on every labeled trial, and both splits have equal numbers of each class.\n- **Duplicates:** no trial appears twice across train, val and test.\n- **Train vs test:** firing rates and how they change over the 2 s look the same in all three splits. The predicted classes on test are roughly balanced (15\u201324 per class).\n- **Unit tuning:** most units prefer the same directions in train and val.\n\n**One thing that looks odd but I don't think is a fault:** the decoder mostly can't tell 135\u00b0 (class 3) from 315\u00b0 (class 7), which are opposite directions. It separates them only about 60% of the time, versus 80\u201395% for the other opposite pairs. I checked whether those labels had been scrambled. There's no sign of hidden subgroups in those trials. The more likely explanation is that few of these 30 units distinguish motion direction along that axis, so most of the remaining error comes from this pair.\n\nThe analysis scripts are in `/tmp/scr_dec/`, outside the project.",
+ "ttft_ms": 6087,
+ "type": "result",
+ "duration_ms": 98371,
+ "uuid": "2ded739a-23dd-4879-a950-7d9788e14d68",
+ "ttft_stream_ms": 2369,
+ "time_to_request_ms": 64,
+ "first_content_frame_ms": 2369,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 99.3
+}

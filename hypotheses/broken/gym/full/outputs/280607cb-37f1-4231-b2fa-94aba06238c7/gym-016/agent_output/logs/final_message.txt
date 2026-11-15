@@ -1,0 +1,15 @@
+Done — I trained a decoder, generated test predictions, estimated accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I found**
+- Best-performing simple model was multinomial logistic regression on flattened `26x20` spike bins.
+- Validation accuracy: `0.8889` (16/18).
+- 5-fold CV on all labeled data: mean `0.7889` (std `0.1018`).
+- Claimed test accuracy set to `0.8388888888888888` (between val and CV estimates).
+
+**Data issue detected**
+- `y` and `movie_time_s` are inconsistent in all labeled trials:
+  - In both train and val, every trial violates expected mapping `y == movie_time_s - 3`.
+  - Reported in `data_issues` as:
+  - `train: y mismatches movie_time_s for 72 trials; val: y mismatches movie_time_s for 18 trials`

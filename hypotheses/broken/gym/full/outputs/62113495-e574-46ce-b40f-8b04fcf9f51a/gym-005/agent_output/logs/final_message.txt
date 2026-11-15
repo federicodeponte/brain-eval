@@ -1,0 +1,10 @@
+Done — I trained several decoders, selected the best (`RandomForestClassifier` by train→val tie-broken with CV), generated test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I found**
+- `movie_time_s` is inconsistent with the provided class definition.
+- In both train and validation splits, `movie_time_s - stim_class` is `{6, 16}` instead of always `14` (per your class mapping 0→14s, …, 9→23s).
+- So the data issue is a label/log alignment inconsistency in `movie_time_s` (while `stim_class` itself still appears usable for supervised training).
+
+If you want, I can also produce a short diagnostic table showing which classes map to which observed `movie_time_s` values.

@@ -1,0 +1,12 @@
+Done — I trained a decoder, generated predictions for all 114 test trials, and wrote:
+
+- `/app/output/predictions.json`
+
+I used a tuned `RandomForestClassifier` on flattened `17x8` spike-count features. Best validation accuracy was `0.60`, and I used that as `claimed_accuracy`.
+
+I also checked data consistency:
+- `orientation_deg` maps cleanly and consistently to `label`
+- class balance is perfectly uniform in train/val
+- no obvious structural/data-integrity problems found
+
+So `data_issues` is set to `"none"`.

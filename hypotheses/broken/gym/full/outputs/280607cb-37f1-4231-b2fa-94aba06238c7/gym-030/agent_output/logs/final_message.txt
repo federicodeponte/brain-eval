@@ -1,0 +1,12 @@
+Done — I built a decoder, generated test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+I used a small model comparison on the provided train/val split (flattened 2×27 features), where `LDA` performed best on validation (`~0.653`). I then produced test predictions with an ensemble vote of top models and set a conservative claimed test accuracy estimate.
+
+Also checked data integrity:
+- `y` matches `image_id` mapping perfectly in both labeled splits
+- class balance is perfectly uniform in train (24 each) and val (7 each)
+- no obvious structural/data-label issues found
+
+If you want, I can also save the exact training script to `/app/output/` for reproducibility.

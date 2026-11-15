@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 74185,
+ "stop_reason": "end_turn",
+ "session_id": "f78f3c89-8f2f-4f47-bcfb-f437a0d87337",
+ "total_cost_usd": 0.24529239999999997,
+ "usage": {
+  "input_tokens": 20,
+  "cache_creation_input_tokens": 11430,
+  "cache_read_input_tokens": 127162,
+  "output_tokens": 6417,
+  "output_tokens_details": {
+   "thinking_tokens": 1134
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 11430,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 751,
+    "cache_read_input_tokens": 17407,
+    "cache_creation_input_tokens": 617,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 617
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 20,
+   "outputTokens": 6417,
+   "cacheReadInputTokens": 127162,
+   "cacheCreationInputTokens": 11430,
+   "webSearchRequests": 0,
+   "costUSD": 0.24529239999999997,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 1134,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 11430,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 10,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I wrote predictions for all 120 test trials to `output/predictions.json`, and I estimate they'll be about **82%** accurate. That estimate is lower than cross-validation because the test recordings look different from the training ones (below).\n\n**Decoder:** a logistic regression (C=3) on square-root spike counts from all 25 units \u00d7 5 bins except unit 24, trained on train and val together. In 10-fold cross-validation over those 480 trials it gets 91% (chance is 12.5%). Trained on train only, it scored about 95% on val.\n\n**Accuracy estimate (0.82):** I expect test accuracy below 91% for two reasons:\n- When I randomly removed spikes from the held-out cross-validation trials to match the lower test firing rates, accuracy fell to about 87%.\n- The decoder is less sure of itself on test trials than in cross-validation: average top-class probability is 0.76 versus 0.86. In cross-validation, accuracy ran about 0.06 above that confidence figure, which puts test at roughly 0.82. This step is an extrapolation, so treat 0.82 as approximate.\n\n**Data issues found:**\n- **The labels look fine.** `y` matches `image_id` exactly in train and val, and no trial is duplicated within or across splits.\n- **The test split has drifted.** Several low-firing units fire less on test trials than on train/val trials:\n  - Unit 24 is almost silent, at about 8% of its training rate. I left it out of the decoder; dropping it cost nothing in cross-validation.\n  - Units 3, 11, 21, 22 and 23 fire at about 45\u201360% of their training rates. These differences are statistically significant (p < 0.02).\n  - A classifier trained to tell test trials from train/val trials does a bit better than chance (AUC 0.62).\n  - This pattern fits units drifting or being lost over the recording session.\n- **Part of the confidence drop is unexplained.** The lower firing rates alone don't account for all of it. The test set may also include some trials that are just harder to decode, or ones from outside the 8 classes, but I couldn't confirm either.\n- **The val split is unbalanced:** 6\u201314 trials per class, versus exactly 50 per class in train.\n\nAll of this is written in the `data_issues` field.",
+ "ttft_ms": 3611,
+ "type": "result",
+ "duration_ms": 155821,
+ "uuid": "eb0a6fe6-8c05-432f-a1df-f63f8a852bc4",
+ "ttft_stream_ms": 1869,
+ "time_to_request_ms": 68,
+ "first_content_frame_ms": 1869,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 156.7
+}

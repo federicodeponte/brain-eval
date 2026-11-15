@@ -1,0 +1,14 @@
+Done — I built a decoder, generated predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I used**
+- Flattened `35 x 1` spike-count vectors to 35 features.
+- Trained a `StandardScaler + LogisticRegression` model on combined `train+val` labeled data.
+- Chose claimed accuracy from CV/holdout behavior (~0.80–0.89 observed on tiny splits), reported conservatively.
+
+**Data issues reported**
+- Pseudo-population construction mixes neurons across sessions (not simultaneous), so true cross-neuron correlations are not preserved.
+- Very small labeled set (84 trials total) makes performance estimates noisy/high-variance.
+
+If you want, I can also output an ensemble-based `predictions.json` variant (same format) for comparison.

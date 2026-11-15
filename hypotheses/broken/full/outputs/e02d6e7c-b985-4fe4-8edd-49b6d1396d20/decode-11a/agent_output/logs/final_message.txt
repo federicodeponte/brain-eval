@@ -1,0 +1,14 @@
+Done — I built a decoder, generated test predictions, estimated expected test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I used**
+- Standardized multinomial logistic regression (`sklearn`) on flattened `30x1` spike-count vectors.
+- Model selection checked against alternatives (`SVM`, `RandomForest`) using 5-fold stratified CV on labeled data and validation accuracy.
+
+**Estimated performance**
+- `claimed_accuracy` set to `0.9670268107242896` (from CV + validation-based estimate).
+
+**Data issue found**
+- Test split has spike-count values outside labeled range (`max 58` in test vs `max 43` in train/val), indicating a distribution/range shift.
+- Label/category mapping itself appears consistent in labeled data (no mismatch there).

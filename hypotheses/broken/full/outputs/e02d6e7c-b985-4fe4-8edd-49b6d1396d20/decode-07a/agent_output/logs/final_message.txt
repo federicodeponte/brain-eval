@@ -1,0 +1,12 @@
+Done — I built a decoder, generated predictions for all 200 test trials, and wrote:
+
+- `/app/output/predictions.json`
+
+I also checked the labeled splits and found:
+
+- `y` is perfectly consistent with `category` in both train and val.
+- Main data issues are methodological/statistical:
+  - very small, imbalanced validation set (`n=16`, only one `smallAnimal`), so estimated accuracy is high-variance;
+  - pseudo-population construction mixes sessions (neurons not recorded simultaneously), which can distort joint population statistics.
+
+If you want, I can also save a small reproducible training script (with fixed seed and model choice) into `/app/output/` for auditability.

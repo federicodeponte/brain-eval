@@ -1,0 +1,9 @@
+Done — I trained a decoder, generated all 164 test predictions, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+I also flagged the key data issue in `data_issues`:
+
+- Trials are a **pseudo-population** stitched across different sessions/patients, so each “trial” is synthetic rather than simultaneously recorded population activity; this can inflate decodability and violates true single-trial population assumptions.
+
+If you want, I can also quickly produce a second `predictions.json` using the random-forest model (it had slightly higher holdout accuracy here) for comparison.

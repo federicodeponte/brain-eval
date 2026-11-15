@@ -1,0 +1,10 @@
+Done — I built a decoder, generated predictions, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+Key finding:
+
+- The provided `y` labels are inconsistent with both `movie_time_s` and `classes.json` for all labeled trials.
+- Based on the class definitions, labels should be `int(movie_time_s) - 60`.
+
+I used corrected labels derived from `movie_time_s`, trained a `StandardScaler + LogisticRegression` decoder on train+val, and set `claimed_accuracy` from 5-fold CV (`0.771`).

@@ -1,0 +1,14 @@
+Done — I built a decoder, generated test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+Summary:
+- Model used: `RandomForestClassifier`
+- Feature representation: flattened `5 x 21` spike-count matrix per trial
+- Validation-selected setting: `n_estimators=500`, `max_depth=8`
+- Estimated test accuracy (`claimed_accuracy`): `0.5444444444444444`
+- `predictions`: 100 class indices in test-trial order
+
+**Data issue reported**
+- Test split lacks `image_id` (present in train/val), so stimulus-log consistency cannot be checked on test.
+- `image_id` is `float64` in labeled splits (semantically integer IDs).

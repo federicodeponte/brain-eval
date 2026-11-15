@@ -1,0 +1,13 @@
+Done — I trained a decoder, generated predictions for all 100 test trials, and wrote:
+
+- `/app/output/predictions.json`
+
+Using a multinomial logistic regression on flattened `5x21` spike counts, the held-out validation accuracy is `0.4`, so I set:
+
+- `claimed_accuracy`: `0.4`
+
+I also checked label/log consistency and found no mapping mismatches; the only data issue I reported is:
+
+- `image_id` is stored as `float64` instead of integer IDs.
+
+If you want, I can run a slightly broader model sweep and recalibrate `claimed_accuracy` (e.g., using cross-validated ensembling) for a potentially tighter estimate.

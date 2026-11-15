@@ -1,0 +1,10 @@
+Done — I trained a decoder, generated predictions for all 66 eval trials, estimated accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+Summary of what I found:
+- Best-performing approach on the provided validation split was a regularized multinomial logistic decoder on flattened `10x17` spike counts (with scaling), then retrained on `fit+holdout` for eval predictions.
+- Estimated test accuracy (`claimed_accuracy`) set to `0.5892063492063492` based on holdout/CV performance.
+- Data checks found no label-mapping inconsistencies or split issues; `data_issues` is `"none"`.
+
+If you want, I can also run a small ensemble variant and produce an alternative `predictions.json` for comparison.

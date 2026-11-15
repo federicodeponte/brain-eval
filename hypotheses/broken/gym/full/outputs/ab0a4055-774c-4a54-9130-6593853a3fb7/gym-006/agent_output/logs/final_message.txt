@@ -1,0 +1,13 @@
+Done — I trained a decoder, generated all 200 test predictions, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I found**
+- Best-performing model was a `StandardScaler + LogisticRegression` pipeline.
+- Cross-validated performance on labeled data is high; estimated test accuracy is `~0.952` (stored as `claimed_accuracy`).
+- Data issues reported in the JSON:
+  - single time bin only (no temporal dynamics),
+  - very small labeled sample size (123 train + 15 holdout),
+  - pseudo-population construction across sessions (breaks within-trial neuron correlation structure).
+
+If you want, I can also export a small reproducible training script (with fixed seed) into `/app/output/` for auditability.

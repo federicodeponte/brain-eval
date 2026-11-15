@@ -37,7 +37,6 @@ cases = [  # (planted faults, data_issues, expected diag)
     ([], "Labels are consistent with movie_time_s; no mismatch.", 1),
     ([], "No dead or silent channels; no distribution shift between train and test.", 1),
     ([], "Some units are low-rate, class balance is fine.", 1),
-    ([], "Label leakage/tautology: y exactly equals movie_time_s for all train and val trials.", 0),
     ([], "Test inputs show a distribution shift.", 0),
     ([], "Validation rows are near-copies of training rows.", 0),
     (["leak"], "Many validation trials are near-duplicates of training trials, so val accuracy is inflated.", 1),
@@ -64,6 +63,7 @@ cases = [  # (planted faults, data_issues, expected diag)
     (["mix"], "Training rows form two clusters: part of the data seems to come from a different recording session with different units in the same columns.", 1),
     (["mix"], "About 40% of train and val trials look like they come from another population of neurons (bimodal per-unit rates).", 1),
     (["mix"], "none", 0),
+    ([], "Neurons come from different recording sessions combined into a pseudo-population.", 1),
     (["leak", "dead"], "Val trials are near-copies of train trials. Also, a third of the units are all zeros in test.", 1),
     (["leak", "dead"], "Val trials are near-copies of train trials.", 0.5),
     (["shift", "perm"], "Labels lag movie_time_s by one segment; test channel order is permuted.", 1),
@@ -74,6 +74,14 @@ cases = [  # (planted faults, data_issues, expected diag)
     ([], "orientation_deg is included only for labeled splits and is deterministically mapped to label; this metadata leakage is unavailable for test and should not be used for decoding from neural counts.", 1),
     (["noise"], "train labels inconsistent with movie_time_s; val labels inconsistent with movie_time_s; label is directly derivable from movie_time_s in labeled splits; this metadata would leak class if used as a feature, but test lacks movie_time_s", 1),
     (["leak"], "Val trials are near-copies of train trials, which leaks into the image_id-matched validation score.", 1),
+    # sentence-level rule (ported from grade_v3fix.py; hosted Codex v3 strings)
+    ([], "Label leakage in labeled splits: image_id is included and maps one-to-one to class y (perfect predictor). Also image_id is float64 though it encodes integer IDs.", 1),
+    ([], "Potential data leakage: in labeled splits, class label is exactly encoded by movie_time_s (y == movie_time_s - 10 for every trial), so metadata alone reveals labels. Test split omits movie_time_s.", 1),
+    ([], "Label leakage/tautology: y exactly equals movie_time_s for all train and val trials.", 1),
+    ([], "Pseudo-population combines neurons across sessions. Also category duplicates y mapping.", 1),
+    (["leak"], "Label field y is a deterministic remapping of orientation_deg in labeled splits (exact 1:1 mapping with zero mismatches), so orientation_deg leaks the class and should not be used as an independent feature.", 0),
+    (["leak"], "Leakage: val trials duplicate train trials (same image_id).", 1),
+    (["leak"], "Label leakage via orientation_deg. Separately, 40% of validation rows are near-copies of training rows.", 1),
 ]
 for faults, txt, exp in cases:
     dg, dd = diagnose(txt, faults)

@@ -1,0 +1,8 @@
+Done — I trained a decoder, generated test predictions, estimated expected accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+Summary of what I found:
+- `predictions` contains exactly 120 class indices in test order.
+- `claimed_accuracy` is set to `0.96` based on strong train CV (~0.987 mean) and held-out validation accuracy (`0.9375`) across several models.
+- `data_issues` reports a real inconsistency: `category` is string-valued class names while `label` is numeric, and they are never elementwise equal in train/val (so `category` is not a direct numeric mirror of `label`).

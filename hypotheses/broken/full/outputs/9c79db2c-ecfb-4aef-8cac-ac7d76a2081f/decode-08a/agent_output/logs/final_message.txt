@@ -1,0 +1,13 @@
+Done — I trained a decoder, generated test predictions, estimated expected test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I found**
+- Best-performing model by train-CV + val performance was a linear SVM on z-scored features.
+- Estimated test accuracy (`claimed_accuracy`) is `0.7939215686274509` (about `79.4%`).
+
+**Data issue detected**
+- Validation set contains spike counts exceeding 40 in a single 1-second bin (`max = 44`), which is inconsistent with typical “count in 200–1200 ms” expectations and suggests a data-quality/unit/binning inconsistency.
+- I reported this in `data_issues`.
+
+If you want, I can also dump a short reproducible training script into `/app/output/` for auditing.

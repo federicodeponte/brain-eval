@@ -1,0 +1,17 @@
+Done — I built a decoder, generated test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I used**
+- Flattened each `5x21` trial into a 105-dim feature vector.
+- Trained several models on `train`, selected `RandomForestClassifier` based on validation accuracy.
+- Best held-out validation accuracy observed: `0.5222222222222223` (used as `claimed_accuracy`).
+- Retrained that model on `train+val` and predicted all 100 test trials.
+
+**Data issues found**
+- No labeling inconsistencies found in labeled splits.
+- `y` ↔ `image_id` mapping is perfectly consistent and matches `classes.json`.
+- Class balance is perfectly even in both labeled splits.
+- So I reported: `"data_issues": "none"`.
+
+If you want, I can also produce a short reproducible script in `/app/output/` that regenerates the same JSON end-to-end.

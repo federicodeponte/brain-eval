@@ -1,0 +1,11 @@
+Done — I built a decoder, generated test predictions, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+Used output:
+
+- `predictions`: `[3, 1, 4, 8, 2, 2, 0, 1, 5, 6, 8, 7, 3, 1, 4, 5, 8, 4, 0, 0]`
+- `claimed_accuracy`: `0.941`
+- `data_issues`: flagged that `stim_class` conflicts with documented class↔`movie_time_s` mapping in both labeled splits.
+
+If you want, I can also save a short reproducible training script in `/app/output/` for auditability.

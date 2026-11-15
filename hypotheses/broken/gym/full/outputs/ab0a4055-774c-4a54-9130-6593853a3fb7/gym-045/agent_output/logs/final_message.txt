@@ -1,0 +1,10 @@
+Done — I built a decoder, generated test predictions, estimated expected test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+Contents include:
+- `predictions`: 48 class indices in test order
+- `claimed_accuracy`: `0.48`
+- `data_issues`: `"none"`
+
+If you want, I can also save the exact training script I used into `/app/output/` for reproducibility.

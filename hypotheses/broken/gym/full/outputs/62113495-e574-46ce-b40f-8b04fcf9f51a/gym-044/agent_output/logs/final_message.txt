@@ -1,0 +1,10 @@
+Done — I built a decoder, generated predictions for all 160 test trials, and wrote:
+
+- `/app/output/predictions.json`
+
+It contains:
+- `predictions`: 160 class indices in test order
+- `claimed_accuracy`: `0.82`
+- `data_issues`: notes about pseudo-population mixing across sessions/patients and small-sample/high-variance estimation risk
+
+If you want, I can also save a short reproducible training script in `/app/output/` showing exactly how the file was produced.

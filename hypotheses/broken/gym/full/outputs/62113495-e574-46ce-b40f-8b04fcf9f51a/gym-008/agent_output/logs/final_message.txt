@@ -1,0 +1,11 @@
+Done — I built a decoder, generated test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+It contains:
+
+- `predictions`: 176 class indices in test order
+- `claimed_accuracy`: `0.9731` (estimated from 5-fold CV on train+val)
+- `data_issues`: notes that this is a pseudo-population (neurons from different sessions), so inter-neuron trial correlations are artificial and can inflate apparent decoding performance
+
+If you want, I can also quickly produce an alternative submission using an ensemble (e.g., logistic + linear SVM) to hedge model risk.

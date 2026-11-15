@@ -1,0 +1,10 @@
+Done — I built a decoder, generated test predictions, estimated accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+Key findings:
+- The labeled splits have a clear data issue: `y` is inconsistent with `movie_time_s` for **all** labeled trials (`120/120` mismatches in train, `30/30` in val).
+- Per your description, labels should come from stimulus log time; using `movie_time_s.astype(int)` as corrected labels is consistent with class definitions.
+- Best decoder on validation (using corrected labels) was a `RandomForestClassifier` on flattened `20x10` spike counts, with validation accuracy `0.8666666666666667` (used as `claimed_accuracy`).
+
+If you want, I can also save a small reproducible training script in `/app/output/` that regenerates the JSON exactly.

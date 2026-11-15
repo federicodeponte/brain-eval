@@ -1,0 +1,19 @@
+{
+    "cost": {
+        "input": 0.0079555,
+        "output": 0.015484,
+        "reasoning": null,
+        "cache_read": 0.0076384,
+        "cache_write": null,
+        "total_override": null,
+        "total": 0.0310779,
+        "total_input": 0.0155939,
+        "total_output": 0.015484
+    },
+    "wall_clock_duration": 11.57,
+    "input_tokens": 48194,
+    "cached_input_tokens": 43648,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 1106,
+    "reasoning_output_tokens": 0
+}

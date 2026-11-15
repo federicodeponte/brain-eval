@@ -1,0 +1,10 @@
+Done — I trained a decoder, generated test predictions, estimated accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+I also found a real data issue:
+
+- `y` is not consistent with `movie_time_s` in both labeled splits (`train.npz` and `val.npz`), even though labels are supposed to come from stimulus time.
+- This indicates mislabeled/misaligned trials from the stimulus-log mapping.
+
+If you want, I can also save a short reproducible script (e.g. `/app/output/solve.py`) that regenerates the same JSON.

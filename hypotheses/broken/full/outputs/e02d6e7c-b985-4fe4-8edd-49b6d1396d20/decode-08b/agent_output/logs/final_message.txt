@@ -1,0 +1,7 @@
+Done — I trained a 4-class decoder, generated predictions for all 200 test trials, and wrote:
+
+- `/app/output/predictions.json`
+
+I also flagged the key data issue: `X` does not look like true spike counts (bounded tiny integers with very limited unique values), which is inconsistent with raw/count-like neural spike features and suggests feature corruption or heavy quantization/index encoding.
+
+If you want, I can also print a quick summary of predicted class distribution from the saved file.

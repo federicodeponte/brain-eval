@@ -1,0 +1,10 @@
+Done — I built a decoder, generated all 200 test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+I used a `StandardScaler + LogisticRegression` model trained on `train+val`, with validation performance around perfect on the small val split and ~0.962 mean in 5-fold CV on labeled data.
+
+**What I reported in `data_issues`:**
+- A clear distribution shift/out-of-range issue: `test` has spike counts up to `58`, while labeled `train/val` only go up to `43`. This suggests some test trials/neurons are outside the labeled range.
+
+If you want, I can also share a quick confusion-matrix-style sanity check on the labeled splits and an alternative ensemble prediction file.

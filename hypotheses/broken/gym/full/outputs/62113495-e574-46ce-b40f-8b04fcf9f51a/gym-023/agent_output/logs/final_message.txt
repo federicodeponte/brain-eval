@@ -1,0 +1,13 @@
+Done — I trained a decoder, generated test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+Key findings:
+- The labeled data has a major issue: `y` disagrees with `orientation_deg` on exactly **25%** of trials in both splits (`78/312` fit, `22/88` holdout).
+- `orientation_deg` itself maps cleanly to the 8 classes via `class = orientation_deg / 45`, so I treated this as the reliable target source.
+- Using that corrected target definition, I trained a `RandomForestClassifier` and predicted all 152 eval trials.
+
+The JSON includes:
+- `predictions`: 152 class indices in eval order
+- `claimed_accuracy`: `0.5341`
+- `data_issues`: description of the label inconsistency

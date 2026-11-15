@@ -1,0 +1,8 @@
+Done — I built a decoder, generated predictions, estimated test accuracy, and wrote the required file.
+
+- Output file: `/app/output/predictions.json`
+- `predictions`: 120 class indices in test-trial order
+- `claimed_accuracy`: `0.9828`
+- `data_issues`: `"none"`
+
+I also verified that labeled splits are internally consistent (`label` matches `category` for all train/val trials) and found no obvious structural issues (shapes/types/ranges all valid).

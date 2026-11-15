@@ -1,0 +1,14 @@
+Done — I trained a decoder, generated test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+What I found:
+
+- `stim_class` and `orientation_deg` are fully consistent in both labeled splits (0 mismatches).
+- Class balance is perfect in both splits (`train`: 38 each class, `val`: 14 each class).
+- I did not find a concrete data integrity issue, so `data_issues` is `"none"`.
+
+Model choice summary:
+
+- Best generalization signal came from using per-unit spike sums across the 2 s window (27 features) with `StandardScaler + LogisticRegression`.
+- Validation accuracy was about `0.878` on the provided val split; I set `claimed_accuracy` to `0.82` as a conservative estimate for hidden test performance.

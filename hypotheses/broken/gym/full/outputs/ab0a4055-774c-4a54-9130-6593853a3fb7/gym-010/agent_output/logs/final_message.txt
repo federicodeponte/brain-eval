@@ -1,0 +1,10 @@
+Done — I trained a decoder, generated predictions for all 152 test trials, and wrote:
+
+- `/app/output/predictions.json`
+
+I used an ensemble of multinomial logistic and random-forest decoders over flattened `4x24` spike-count features, trained on combined train+val labeled data.
+
+Included in the JSON:
+- `predictions`: 152 class indices in test order
+- `claimed_accuracy`: `0.60`
+- `data_issues`: `"none"` (I checked `orientation_deg` vs `label` on train/val and found perfect consistency, with no obvious structural/data-integrity issues)

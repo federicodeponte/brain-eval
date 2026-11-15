@@ -1,0 +1,13 @@
+Done — I trained a decoder, generated predictions, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+I also found a clear data issue and encoded it in `data_issues`:
+
+- The provided label `y` is off by one relative to the class definitions and `movie_time_s`.
+- Correct class mapping appears to be `class = (movie_time_s - 21) mod 10` (not `movie_time_s - 20`).
+
+The JSON contains:
+- `predictions`: 50 class indices in test order
+- `claimed_accuracy`: `0.6533333333333333` (5-fold CV estimate on labeled data with corrected mapping)
+- `data_issues`: description of the label-shift problem

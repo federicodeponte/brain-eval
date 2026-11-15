@@ -1,0 +1,8 @@
+Done — I built a decoder, generated test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+I used a `StandardScaler + LogisticRegression` model trained on `train+val` (150 labeled trials total), with expected test accuracy estimated at `0.66` based on validation and CV performance.
+
+I also flagged a clear data issue in the output:
+- `movie_time_s` is inconsistent with `y` in all labeled samples (`train: 120/120`, `val: 30/30` mismatches against expected `y = movie_time_s - 20`).

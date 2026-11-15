@@ -1,0 +1,17 @@
+Done — I built a decoder, generated test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I found**
+- `stim_class` is partially inconsistent with `category`/`classes.json` on labeled splits.
+- Mismatch rate is about:
+  - `train`: `5/73` (~6.8%)
+  - `val`: `6/17` (~35.3%)
+- So the data issue is label corruption/inconsistency in `stim_class`; I used `category` mapped through `classes.json` as the reliable label source.
+
+**Modeling**
+- Trained several classifiers on train and checked val.
+- Best val performance came from an RBF SVM (val accuracy `1.0` on this small val set), with linear/logistic close behind.
+- For a more stable estimate, I used cross-validation on combined labeled data with corrected labels and wrote a conservative `claimed_accuracy` based on CV mean.
+
+If you want, I can also save a small reproducible training script (`/app/output/train_and_predict.py`) that recreates the exact JSON output.

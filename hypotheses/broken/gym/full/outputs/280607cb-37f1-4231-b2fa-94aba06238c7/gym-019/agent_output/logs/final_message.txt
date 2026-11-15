@@ -1,0 +1,10 @@
+Done — I built a decoder, generated test predictions, estimated expected accuracy, checked for data issues, and wrote:
+
+- `/app/output/predictions.json`
+
+I also found a clear data problem:
+
+- `stim_class` and `movie_time_s` are systematically inconsistent in both labeled splits.
+- Based on your class definition, expected class should be `movie_time_s - 80`, but all labeled trials are offset (fit: 30/30 mismatches, holdout: 12/12 mismatches).
+
+So `data_issues` in the JSON reports that mismatch explicitly.

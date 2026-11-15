@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 55102,
+ "stop_reason": "end_turn",
+ "session_id": "b0724553-a716-4a99-a1f0-e2eddd536f4b",
+ "total_cost_usd": 0.18186819999999998,
+ "usage": {
+  "input_tokens": 16,
+  "cache_creation_input_tokens": 8079,
+  "cache_read_input_tokens": 83361,
+  "output_tokens": 5025,
+  "output_tokens_details": {
+   "thinking_tokens": 681
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 8079,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 527,
+    "cache_read_input_tokens": 13546,
+    "cache_creation_input_tokens": 1127,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 1127
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 16,
+   "outputTokens": 5025,
+   "cacheReadInputTokens": 83361,
+   "cacheCreationInputTokens": 8079,
+   "webSearchRequests": 0,
+   "costUSD": 0.18186819999999998,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 681,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 8079,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 8,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I've written predictions for all 152 test trials to `output/predictions.json`. I expect them to be about 68% correct, which is the `claimed_accuracy` I put in the file.\n\n**The main data problem: the labeled trials are copies of each other.** The 760 labeled trials (train plus val) come from only 320 real trials. 200 of them appear twice and 120 appear three times, each copy with small changes to the spike counts.\n- **How it shows:** each labeled trial is very close to some other labeled trial (distance about 3\u20134). Real separate trials, like those in the test set, are about 12\u201318 apart. Every group of copies carries a single label.\n- **Val leaks from train:** copies of the same trial sit on both sides of the split. A model trained on train scores 100% on val, and ordinary 5-fold cross-validation gives about 90%. Both numbers are inflated.\n- **Test is clean:** no test trial is a copy of any labeled trial.\n\n**The decoder and the estimate.** The model is logistic regression on the square root of each unit's total spike count over the 2 seconds. I trained it on train and val together. To get an honest estimate, I re-ran cross-validation keeping all copies of a trial in the same fold. That gave about 0.69\u20130.70 for this model. Adding per-time-bin features or using an SVM or Poisson naive Bayes did no better. I rounded the claim down slightly to 0.68.\n\n**Smaller observations, also noted in the file:**\n- The labels agree with the logged grating directions in every trial.\n- Val is unevenly split across classes, with 8 to 20 trials per class.",
+ "ttft_ms": 4688,
+ "type": "result",
+ "duration_ms": 274379,
+ "uuid": "651ff68f-74c1-42c2-8a81-66f40641b097",
+ "ttft_stream_ms": 2959,
+ "time_to_request_ms": 69,
+ "first_content_frame_ms": 2959,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 275.3
+}

@@ -1,0 +1,8 @@
+Done — I built a decoder, generated test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+I used a multinomial logistic regression decoder on per-unit spike counts summed across the 8 bins (`27` features/trial), trained on train+val.  
+Estimated test accuracy in the file is `0.86`.
+
+I also checked labeled data consistency (`stim_class` ↔ `orientation_deg`) and found no mapping inconsistencies, so `data_issues` is set to `"none"`.

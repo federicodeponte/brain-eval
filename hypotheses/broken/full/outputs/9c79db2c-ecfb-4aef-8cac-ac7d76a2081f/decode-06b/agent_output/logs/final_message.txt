@@ -1,0 +1,10 @@
+Done — I trained a decoder, generated test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+I used an `ExtraTreesClassifier` on per-unit spike totals across the 2-second window (`X.sum(axis=2)`), selected by validation performance.
+
+- `claimed_accuracy`: `0.725` (from held-out validation accuracy)
+- `data_issues`: `"none"` (labels and `orientation_deg` are fully consistent in train/val, and class balance is uniform)
+
+If you want, I can also drop a small reproducible training script in `/app/output/` for auditability.

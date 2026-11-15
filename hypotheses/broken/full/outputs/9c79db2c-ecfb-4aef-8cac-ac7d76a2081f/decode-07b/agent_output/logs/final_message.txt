@@ -1,0 +1,8 @@
+Done — I built a 4-way decoder, generated predictions for all 200 test trials, and wrote:
+
+- `/app/output/predictions.json`
+
+I used an RBF SVM on flattened spike counts (`30` features per trial), trained on `train+val` labeled data, and set:
+
+- `claimed_accuracy`: `0.86`
+- `data_issues`: notes about pseudo-population limitations, small sample size/high variance, and `category` duplicating `y` in labeled splits (potential leakage if used improperly).

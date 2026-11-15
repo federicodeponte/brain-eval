@@ -1,0 +1,9 @@
+Done — I built a decoder, generated predictions for all 50 test trials, estimated test accuracy, and wrote the required file:
+
+- `/app/output/predictions.json`
+
+I also checked the labeled splits and found a real data issue:
+
+- `y` is **not consistent** with `movie_time_s` in both `train.npz` and `val.npz` (despite labels being described as derived from stimulus log time), indicating a label/log mismatch.
+
+If you want, I can also share a quick confusion-matrix summary from validation for model behavior by class.

@@ -1,0 +1,14 @@
+Done — I built a decoder, generated test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+Summary:
+- Model used: `StandardScaler + SVC (RBF, C=3)`
+- Training for final predictions: combined `train + val` labeled data
+- Validation performance during model selection: up to `1.00` accuracy
+- Claimed test accuracy set to: `0.99`
+- Data issue check:
+  - `orientation_deg` maps exactly to class index via `class = orientation_deg / 45`
+  - No inconsistencies found, so `data_issues` is `"none"`.
+
+If you want, I can also quickly dump the per-class counts of the 152 test predictions for a sanity check.

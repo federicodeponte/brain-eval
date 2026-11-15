@@ -1,0 +1,13 @@
+Done — I built a decoder, generated test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I found**
+- Best validation model was `StandardScaler + LinearDiscriminantAnalysis(shrinkage='auto')` with `0.9667` on the provided validation split.
+- I trained that model on `train_labeled + val_labeled` and predicted all 60 test trials.
+
+**Data issue identified**
+- `stim_class` and `movie_time_s` are inconsistent on **every labeled trial** (`228/228` mismatches).
+- Based on the class definitions, expected class should be `movie_time_s - 14`, but labels are globally permuted, suggesting a relabeling/permutation bug in label derivation from stimulus logs.
+
+If you want, I can also save a small reproducible training script in `/app/output/` for auditability.

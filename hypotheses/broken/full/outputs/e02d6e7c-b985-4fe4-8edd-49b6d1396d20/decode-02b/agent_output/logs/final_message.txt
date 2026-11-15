@@ -1,0 +1,10 @@
+Done — I built a decoder, generated predictions, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+with:
+- `predictions`: 50 class indices in test order
+- `claimed_accuracy`: `0.9`
+- `data_issues`: `"none"`
+
+I also checked label integrity on labeled splits: `y` exactly matches `movie_time_s - 10` (rounded), so I didn’t find a dataset-label mismatch.

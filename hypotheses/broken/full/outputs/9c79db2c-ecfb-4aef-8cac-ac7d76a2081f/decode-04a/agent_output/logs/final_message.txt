@@ -1,0 +1,9 @@
+Done — I built a decoder, generated test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+It contains exactly 30 class predictions plus:
+- `claimed_accuracy`: `0.85`
+- `data_issues`: notes that labels are deterministically `y = movie_time_s - 60` in train/val (potential leakage/pathology) while `movie_time_s` is absent in test.
+
+If you want, I can also share a compact confusion/error analysis on the validation split.

@@ -1,0 +1,15 @@
+Done — I built the decoder, generated predictions, estimated accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I found**
+- `stim_class` is wrong in both labeled splits.
+- It is systematically mismatched with the provided class definition and `movie_time_s`.
+- Specifically, `movie_time_s - (stim_class + 16)` is always either `+2` or `-8` seconds (equivalent modulo 10), i.e. a fixed circular offset.
+- Using corrected labels from `movie_time_s` (`class = movie_time_s - 16`) gives coherent training targets.
+
+**Model used**
+- Linear multinomial decoder on flattened `22x10` spike counts (`220` features), with standardization + logistic regression.
+- Validation estimate (holdout, using corrected labels): `0.5666666666666667`.
+
+If you want, I can also save a small reproducible training script in `/app/output/` that regenerates this file end-to-end.

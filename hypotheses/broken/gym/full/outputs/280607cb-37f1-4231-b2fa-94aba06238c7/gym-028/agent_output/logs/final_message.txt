@@ -1,0 +1,18 @@
+Done — I built a decoder, generated predictions for all 200 test trials, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I used**
+- Compared multiple classifiers on train/val (`LogisticRegression`, `SVM`, `RandomForest`, `MultinomialNB`).
+- Produced final test predictions via a small ensemble vote (`logreg_l2` + `svm_rbf` + `mnb`) trained on combined labeled data.
+
+**Estimated accuracy**
+- Set `claimed_accuracy` to `0.73` (based on validation behavior and model agreement).
+
+**Data issue found**
+- `label` and `category` are inconsistent in labeled data (they should map 1:1 by class definition, but do not).
+- Measured consistency:
+  - train: `0.78125`
+  - val: `0.7333333333333333`
+
+So `data_issues` reports this label/category mismatch (likely noise or pseudo-population bookkeeping mismatch).

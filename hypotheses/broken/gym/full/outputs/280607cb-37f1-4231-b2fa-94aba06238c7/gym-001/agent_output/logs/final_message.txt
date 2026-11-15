@@ -1,0 +1,14 @@
+Done — I trained a decoder, generated test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I used**
+- Flattened `24 x 4` spike-count matrices to 96-D features.
+- Trained a `StandardScaler + LogisticRegression` multiclass model on `train + val`.
+- Model selection sanity-check on validation showed strong performance (`~0.96` on the provided val split for top models).
+
+**Claimed test accuracy**
+- Set to `0.88` in the JSON (based on cross-validation over labeled data and held-out validation behavior).
+
+**Data issues found**
+- Reported: the direction set is unusual/incomplete for a typical 8-direction grating panel (missing `135°`, while `180°` is included); otherwise `label` and `orientation_deg` are internally consistent on labeled splits.

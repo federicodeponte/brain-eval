@@ -1,0 +1,13 @@
+Done — I built a decoder, generated test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+It contains:
+
+- `predictions`: 70 class indices in test order
+- `claimed_accuracy`: `0.55`
+- `data_issues`: `"none"`
+
+Quick notes:
+- Best model on provided validation split was `StandardScaler + LDA` with ~`0.653` val accuracy.
+- Data appears internally consistent: balanced classes in train/val, and one-to-one mapping between `y` and `image_id` in labeled splits.

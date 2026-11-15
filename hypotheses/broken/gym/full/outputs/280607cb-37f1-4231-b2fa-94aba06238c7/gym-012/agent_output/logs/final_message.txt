@@ -1,0 +1,5 @@
+Done — I built a decoder, generated test predictions, estimated accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+I also checked data integrity and found a real issue: `label` is inconsistent with the class definition and appears shifted by 1 second relative to `movie_time_s` (labels match `movie_time_s - 20`, not `movie_time_s - 19`).

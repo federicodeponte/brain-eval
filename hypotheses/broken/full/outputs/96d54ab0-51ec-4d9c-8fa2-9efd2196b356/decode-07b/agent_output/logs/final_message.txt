@@ -1,0 +1,5 @@
+Done — I built a 4-class decoder, generated predictions for all 200 test trials, and wrote:
+
+- `/app/output/predictions.json`
+
+I used an `SVC` (`StandardScaler` + RBF SVM) trained on combined `train+val`, with held-out performance suggesting about **0.78** expected test accuracy. I also reported the key data issue: this is a **pseudo-population** (neurons combined across sessions/patients), so true simultaneous population correlations are not represented, and sample size is small/high-variance.

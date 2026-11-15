@@ -1,0 +1,11 @@
+Done — I built a decoder, generated predictions for all 200 test trials, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+I also checked data consistency and found:
+
+- `y` matches `category` perfectly in train/val.
+- Major train/val vs test distribution shift in firing rates: test has much lower total spikes per trial (about `74`) than train/val (about `153`/`157`), which likely hurts generalization.
+- This is consistent with a pseudo-population/session-scaling issue across splits.
+
+If you want, I can also try a shift-corrected decoder variant (e.g., per-trial normalization / domain calibration) and produce an alternative prediction file.

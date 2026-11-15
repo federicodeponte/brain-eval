@@ -1,0 +1,8 @@
+Done — I built a decoder, generated test predictions, estimated accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+I used a `StandardScaler + LogisticRegression` model on flattened `20x10` spike-count features, with validation performance around `0.70`, so I set `claimed_accuracy` to `0.70`.
+
+I also found a real data issue and recorded it in `data_issues`:
+- In both labeled splits, `y` is systematically inconsistent with `movie_time_s` and the documented mapping (`y != movie_time_s - 20` for all trials), suggesting a class-index permutation or offset mismatch.

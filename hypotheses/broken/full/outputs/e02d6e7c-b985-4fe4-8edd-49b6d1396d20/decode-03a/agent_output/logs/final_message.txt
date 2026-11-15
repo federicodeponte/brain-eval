@@ -1,0 +1,8 @@
+Done — I built a decoder, generated predictions, estimated test accuracy, and wrote the required file:
+
+- Output file: `/app/output/predictions.json`
+- `predictions`: 50 class indices in test order
+- `claimed_accuracy`: `0.66`
+- `data_issues`: notes a likely distribution/metadata issue (test spike-count range differs from train/val; test lacks `movie_time_s`)
+
+If you want, I can also save a small reproducible training script under `/app/output/` that regenerates the same predictions.

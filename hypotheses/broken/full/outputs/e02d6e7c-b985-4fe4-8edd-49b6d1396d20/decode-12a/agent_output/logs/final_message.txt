@@ -1,0 +1,10 @@
+Done — I built a decoder, generated test predictions, estimated expected accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+I used a `MultinomialNB` model (best validation performance among several baselines), trained final predictions on `train+val`, and set:
+
+- `claimed_accuracy`: `0.9412` (from held-out validation accuracy)
+- `data_issues`: potential distribution shift (test spike-count range is much lower than train/val)
+
+If you want, I can also save a small reproducible training script in `/app/output/` so you can rerun the exact pipeline.

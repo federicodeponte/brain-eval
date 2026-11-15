@@ -1,0 +1,13 @@
+Done — I built the decoder, generated test predictions, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+Summary:
+- `predictions` contains exactly 133 class indices in test order.
+- `claimed_accuracy` is set to `0.9103571428571429` (estimated from held-out validation + CV behavior).
+- `data_issues` is `"none"` based on checks:
+  - Labeled splits contain the expected 7 orientations only.
+  - Class-to-orientation mapping is one-to-one and consistent across train/val.
+  - Shapes and label ranges are valid.
+
+If you want, I can also dump a quick confusion matrix report for the validation split to show which directions are most confusable.

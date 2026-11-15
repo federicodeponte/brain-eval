@@ -1,0 +1,16 @@
+Done — I built a decoder, generated test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I found**
+- The provided `label` field is inconsistent with `movie_time_s`:
+  - Train mismatches: `36/120`
+  - Val mismatches: `8/30`
+- This is a clear data issue, so I treated `movie_time_s` as the reliable source for class targets on labeled splits.
+
+**Model/accuracy estimate**
+- Trained a `RandomForestClassifier` on train (using time-derived labels), checked on val:
+  - Estimated accuracy (`claimed_accuracy`): `0.43333333333333335`
+- Then retrained on train+val (time-derived labels) and predicted all 50 test trials.
+
+If you want, I can also share the exact 50 predicted class indices here in chat.

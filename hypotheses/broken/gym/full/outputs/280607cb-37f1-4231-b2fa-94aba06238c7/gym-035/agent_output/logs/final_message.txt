@@ -1,0 +1,10 @@
+Done — I built a 4-class decoder, generated predictions for all 168 eval trials, and wrote:
+
+- `/app/output/predictions.json`
+
+It contains:
+- `predictions`: 168 integer class predictions in eval-file order
+- `claimed_accuracy`: `0.82`
+- `data_issues`: notes on pseudo-population mixing across sessions/patients and limited/imbalanced sample size
+
+If you want, I can also drop a short reproducible training script in `/app/output/` showing the exact model-selection steps.

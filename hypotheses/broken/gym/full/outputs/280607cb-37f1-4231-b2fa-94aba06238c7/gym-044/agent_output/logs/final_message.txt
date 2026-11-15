@@ -1,0 +1,11 @@
+Done — I built a decoder, generated test predictions, estimated expected accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+This file contains:
+
+- `predictions`: 160 class indices in test order
+- `claimed_accuracy`: model-based estimate in `[0,1]`
+- `data_issues`: detected data caveat(s)
+
+I also checked the labeled splits for label/category consistency and pseudo-population artifacts before writing the output.

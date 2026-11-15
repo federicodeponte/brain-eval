@@ -1,0 +1,10 @@
+Done — I trained a decoder, generated test predictions, estimated expected test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+I used an `L1`-regularized multinomial logistic regression on flattened `29x2` spike counts, selected by validation performance, then retrained on `train+val` for test prediction.
+
+- `claimed_accuracy`: `0.7783783783783784` (5-fold CV estimate on labeled data)
+- `data_issues`: `"none"` (label↔image mapping is consistent, balanced classes in train/val, no obvious structural/data-integrity anomalies)
+
+If you want, I can also provide a short reproducible script file under `/app/output/` with the exact training/prediction pipeline.

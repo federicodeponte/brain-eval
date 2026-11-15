@@ -1,0 +1,11 @@
+Done — I built a VISp decoder, generated test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+I used a multinomial logistic regression model on engineered features from the 25×5 spike-count matrices (flattened counts + per-unit means + per-bin means + total count), selected based on validation performance.
+
+- `predictions`: 120 class indices in test order
+- `claimed_accuracy`: `0.60`
+- `data_issues`: `"none"`
+
+If you want, I can also save a small reproducible training script (e.g., `/app/output/train_and_predict.py`) with the exact pipeline I used.

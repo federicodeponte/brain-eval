@@ -1,0 +1,13 @@
+Done — I built a decoder, generated test predictions, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+I used an RBF SVM on per-trial unit counts summed across the 10 time bins (`spikes.sum(axis=1)`), which gave the best validation performance among quick model/feature comparisons.
+
+- `claimed_accuracy`: `0.3333333333333333` (from validation accuracy)
+- `data_issues`: label/stimulus-time inconsistency detected:
+  - `36/120` train trials
+  - `8/30` val trials  
+  have `label` that disagrees with the class implied by `movie_time_s` via `(movie_time_s - 10)/0.5`.
+
+If you want, I can also dump a short model-selection report (all tested models/features and val accuracies) to `/app/output/model_report.txt`.

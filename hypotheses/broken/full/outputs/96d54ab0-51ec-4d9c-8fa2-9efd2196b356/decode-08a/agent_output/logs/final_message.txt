@@ -1,0 +1,11 @@
+Done — I built a decoder, generated test predictions, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I found**
+- `y` and `category` are perfectly consistent in both labeled splits (0 mismatches).
+- The data are small (`86` train, `16` val), so performance estimates are noisy.
+- I used a `StandardScaler + LogisticRegression` decoder trained on `train+val`.
+- Accuracy estimate (`claimed_accuracy`) is from 5-fold stratified CV on labeled data: `0.8023809523809524`.
+
+If you want, I can also save a short reproducible training script in `/app/output/` for auditability.

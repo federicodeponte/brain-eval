@@ -1,0 +1,10 @@
+Done — I built a decoder, generated test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+Summary of what I found:
+- `y` and `orientation_deg` are perfectly consistent in both labeled splits (`train` and `val`), with exact mapping `class = orientation_deg / 45`.
+- A linear SVM on flattened `30 x 8` spike-count features reached `1.00` validation accuracy on `val`.
+- I used all labeled data (`train+val`) to train the final model and predict all 152 test trials.
+- I set `claimed_accuracy` to `0.99`.
+- I reported `data_issues` as `"none"` since no inconsistency/problem was detected in the provided fields.

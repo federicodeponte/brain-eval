@@ -1,0 +1,13 @@
+Done — I built a decoder, generated predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+It contains:
+- `predictions`: 30 class indices in test-trial order
+- `claimed_accuracy`: `0.9`
+- `data_issues`: `"none"`
+
+I also checked data consistency:
+- `y` exactly matches labels implied by `movie_time_s` in both `train` and `val`
+- Class balance is perfectly uniform in labeled splits (train: 12/class, val: 3/class)
+- No obvious structural issues (shapes/ranges look valid)

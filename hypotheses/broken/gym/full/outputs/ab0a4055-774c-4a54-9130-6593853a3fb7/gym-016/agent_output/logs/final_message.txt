@@ -1,0 +1,11 @@
+Done — I built a decoder, generated test predictions, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+Contents written:
+
+- `predictions`: 30 class indices in test order
+- `claimed_accuracy`: `0.74`
+- `data_issues`: detected a serious inconsistency: in both labeled splits, `y` disagrees with `movie_time_s` on **every** trial (expected mapping `y = movie_time_s - 3`), suggesting one field is wrong/shuffled.
+
+If you want, I can also provide a small reproducible script in `/app/output/` that reruns the training/prediction pipeline end-to-end.

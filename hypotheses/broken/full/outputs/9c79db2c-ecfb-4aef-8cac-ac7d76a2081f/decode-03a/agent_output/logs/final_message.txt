@@ -1,0 +1,12 @@
+Done — I built a decoder, generated test predictions, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I found**
+- Best decoder on held-out validation is multinomial logistic regression on flattened `20x10` spike counts.
+- Validation accuracy peaks at `0.7333` (with `C=0.03`).
+- I set `claimed_accuracy` to `0.6875` using a conservative blend of validation and train-CV performance.
+
+**Data issues reported**
+- `y` is perfectly determined by `movie_time_s` in labeled data (`y = movie_time_s - 20`), so metadata leaks the label.
+- `test.npz` has no `movie_time_s` and shows distribution shift in counts (lower max count), so leakage can’t be exploited on test and train/val vs test mismatch exists.

@@ -1,0 +1,14 @@
+Done — I built a decoder, generated predictions for all 120 test trials, estimated expected test accuracy, and wrote:
+
+- `output/predictions.json`
+
+**What I found**
+- Best holdout performance came from `StandardScaler + LinearDiscriminantAnalysis` (`val` accuracy `0.6875`).
+- A pooled out-of-fold estimate on all labeled data was `0.6321`.
+- I set `claimed_accuracy` to `0.6654` (weighted between holdout and pooled CV).
+
+**Data issues reported**
+- `image_id` is stored as `float64` rather than integer IDs.
+- In labeled splits, `image_id` maps perfectly to `stim_class` (potential label leakage if mistakenly used as a model feature).
+
+If you want, I can also dump a short reproducible training script to `/app/output/decoder_train_predict.py`.

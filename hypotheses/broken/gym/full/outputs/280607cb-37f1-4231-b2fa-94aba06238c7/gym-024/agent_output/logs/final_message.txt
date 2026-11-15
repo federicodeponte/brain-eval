@@ -1,0 +1,10 @@
+Done — I built and evaluated several decoders, selected a tuned tree-based model, generated predictions for all 50 test trials, and wrote:
+
+- `/app/output/predictions.json`
+
+It contains:
+- `predictions`: 50 class indices in test order
+- `claimed_accuracy`: `0.883` (estimated from 5-fold CV on all labeled data)
+- `data_issues`: `"image_id is stored as float64 instead of integer IDs; otherwise none"`
+
+If you want, I can also save a small reproducible training script in `/app/output/` that regenerates the same JSON.

@@ -1,0 +1,10 @@
+Done — I built a decoder, generated predictions, estimated accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+I also found a real data issue:
+
+- `label` is systematically inconsistent with `movie_time_s` in both `fit.npz` and `holdout.npz`.
+- Expected mapping from your class definition is `label = movie_time_s - 19` (for times 19..27), but provided labels are shifted by `-2 mod 9` for every trial.
+
+I trained using corrected labels derived from `movie_time_s`, then predicted all 45 eval trials and set `claimed_accuracy` from corrected-label holdout/CV performance.

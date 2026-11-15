@@ -1,0 +1,10 @@
+Done — I built a decoder, generated predictions, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+It contains:
+- `predictions`: 152 class indices in test order
+- `claimed_accuracy`: `0.99`
+- `data_issues`: notes that `y` is an exact deterministic remap of `orientation_deg` on labeled splits (label leakage risk if misused)
+
+If you want, I can also dump a quick confusion matrix/report from train→val runs into `/app/output/` for auditability.

@@ -1,0 +1,11 @@
+Done — I built a decoder, generated predictions for all 70 test trials, and wrote:
+
+- `/app/output/predictions.json`
+
+I used a `StandardScaler + LinearDiscriminantAnalysis` model on flattened `2x27` spike-count features, trained on `train+val`.  
+Validation performance suggests test accuracy around **0.60**, so I set:
+
+- `claimed_accuracy`: `0.60`
+- `data_issues`: `"none"`
+
+If you want, I can also provide a quick confusion-matrix summary from the validation split.

@@ -1,0 +1,11 @@
+Done — I trained a decoder, generated test predictions, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+It contains:
+
+- `predictions`: 176 class indices in test-trial order
+- `claimed_accuracy`: `0.93`
+- `data_issues`: notes on key dataset problems (pseudo-population across sessions, tiny validation set, and missing test stimulus-log/category metadata)
+
+If you want, I can also dump a quick confusion matrix on train/val and the per-class prediction counts for the test set.

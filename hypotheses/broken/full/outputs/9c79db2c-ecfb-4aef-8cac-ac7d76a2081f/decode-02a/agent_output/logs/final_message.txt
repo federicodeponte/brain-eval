@@ -1,0 +1,12 @@
+Done — I trained a decoder, generated test predictions, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I found**
+- Best validation performance was `0.8666666666666667` (SVM).
+- I set `claimed_accuracy` to that value.
+- Clear data issue detected: `y` and `movie_time_s` are inconsistent with the stated mapping (`y = movie_time_s - 10`).
+  - Train mismatches: `120/120`
+  - Val mismatches: `30/30`
+
+If you want, I can also print the exact 50 predicted labels here for quick inspection.

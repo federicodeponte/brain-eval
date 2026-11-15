@@ -1,0 +1,11 @@
+Done — I trained a decoder, generated test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+It contains:
+
+- `predictions`: 200 class indices in test-trial order
+- `claimed_accuracy`: `0.9417211328976035`
+- `data_issues`: test distribution shift note (test spike counts exceed train/val range: max `58` vs `43`)
+
+If you want, I can also save the exact training script to `/app/output/` for reproducibility.

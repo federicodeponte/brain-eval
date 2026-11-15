@@ -1,0 +1,16 @@
+Done — I trained a decoder, generated test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+It contains:
+- `predictions`: 120 class indices in test order
+- `claimed_accuracy`: `0.9041666666666668`
+- `data_issues`: `"none"`
+
+I also checked for common data issues:
+- shape mismatches
+- negative spike counts
+- inconsistent `y` ↔ `image_id` mapping
+- exact duplicate trials (within/across splits)
+
+No issues were detected.

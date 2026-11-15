@@ -1,0 +1,15 @@
+Done — I built a decoder, generated test predictions, estimated accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I used**
+- Model: `StandardScaler` + linear `SVC` (best validation performance among several tested baselines).
+- Training for final predictions: fit on `train + val` labeled data, predict all 136 `test` trials.
+- Claimed accuracy: `0.9047619047619048` (held-out `val` accuracy from train→val evaluation).
+
+**Data issues reported**
+- Pseudo-population mixes independent sessions, so cross-neuron correlations are not real simultaneous activity.
+- `category` in labeled splits is label-derived metadata (equivalent semantic target) and would leak target info if used as a feature.
+- Small sample sizes (`81` train, `21` val) make performance estimates high variance.
+
+If you want, I can also save a short reproducible script in `/app/output/` that regenerates the same `predictions.json`.

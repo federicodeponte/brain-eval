@@ -1,0 +1,14 @@
+Done — I built a decoder, generated test predictions, estimated test accuracy, and checked for data issues.
+
+- Wrote `output/predictions.json` with:
+  - `predictions`: 200 class indices in test order
+  - `claimed_accuracy`: `0.7359477124183006`
+  - `data_issues`: `"none"`
+- Decoder used: `StandardScaler + L1 multinomial logistic regression` (trained on `train+val`).
+- Accuracy estimate method: 5-fold stratified CV on combined labeled data.
+- Data checks:
+  - Shapes and dtypes are consistent with spec.
+  - `y` matches `category` mapping exactly in both train and val (0 mismatches).
+  - No missing/invalid class labels detected.
+
+If you want, I can also produce an alternative `predictions.json` from an ensemble (e.g., LR + RF) for a possible slight robustness bump.

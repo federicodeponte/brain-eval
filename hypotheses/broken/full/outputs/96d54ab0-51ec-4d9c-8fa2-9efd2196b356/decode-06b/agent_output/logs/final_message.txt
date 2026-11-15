@@ -1,0 +1,10 @@
+Done — I built a decoder, generated test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+Summary of what I found:
+- Best validation performance came from logistic regression on **unit-wise spike totals** (summing each unit over the 8 time bins), with validation accuracy about `0.65`.
+- I used that model (retrained on `train+val`) to predict all 152 test trials.
+- Data check: `orientation_deg` and `y` are fully consistent on both labeled splits (`y == orientation_deg/45 mod 8`), so I reported no data issues.
+
+If you want, I can also save a small reproducible training script in `/app/output/` showing the exact pipeline end-to-end.

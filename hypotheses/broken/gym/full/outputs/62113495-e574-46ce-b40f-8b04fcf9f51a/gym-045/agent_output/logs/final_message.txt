@@ -1,0 +1,13 @@
+Done — I trained a decoder, estimated performance, checked for data issues, and wrote:
+
+- `/app/output/predictions.json`
+
+It contains:
+- `predictions`: 48 class indices in test-trial order
+- `claimed_accuracy`: `0.65`
+- `data_issues`: `"none"`
+
+Quick notes:
+- Label integrity looks good: `y` exactly matches `movie_time_s`-derived class in both train and val.
+- Class balance is perfectly even in labeled data (11/class in train, 3/class in val).
+- CV/holdout suggest moderate accuracy (~0.64–0.67 for linear model; some variance due to small sample size).

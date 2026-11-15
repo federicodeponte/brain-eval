@@ -1,0 +1,15 @@
+Done — I built a decoder, generated test predictions, estimated accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+Key finding about the data:
+
+- `stim_class` is corrupted/inconsistent with direction: for a given class, `orientation_deg` contains multiple directions instead of a single one.
+- This happens in both `train_labeled.npz` and `val_labeled.npz`.
+- I treated `orientation_deg` as the reliable target for training, then mapped predicted direction bins back to class indices (0→0°, 1→45°, …, 7→315°).
+
+The JSON now contains:
+
+- `predictions`: 152 integers in test order
+- `claimed_accuracy`: `0.48670875420875426`
+- `data_issues`: description of the label inconsistency above

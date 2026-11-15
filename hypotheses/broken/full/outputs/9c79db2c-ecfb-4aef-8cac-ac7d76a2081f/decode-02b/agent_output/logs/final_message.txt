@@ -1,0 +1,9 @@
+Done — I built a decoder, generated predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+I used an `SVC` decoder on flattened spike counts (`20x10 -> 200` features), selected based on validation performance (~`0.867` on `val`), then retrained on `train+val` and predicted all 50 test trials.
+
+I also reported the key data issue:
+
+- `y` is perfectly determined by `movie_time_s` in both labeled splits (`y == movie_time_s - 10` for all samples), which is metadata leakage in labeled data (though `movie_time_s` is absent in test).

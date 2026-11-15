@@ -1,0 +1,10 @@
+Done — I trained a decoder, generated test predictions, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+Summary of what I found:
+- Best validation model was a `RandomForestClassifier` on flattened `20x10` spike counts.
+- Validation accuracy reached `0.8667` (26/30); train CV was around `0.77`, so I set `claimed_accuracy` to `0.80` as a conservative estimate.
+- Data issue detected: in both labeled splits, `y == int(movie_time_s)` for every trial, which means labels are deterministically derived from stimulus-log time metadata (potential leakage if metadata is used). Also, dataset is quite small.
+
+If you want, I can also dump the exact 50 predicted class indices here for quick inspection.

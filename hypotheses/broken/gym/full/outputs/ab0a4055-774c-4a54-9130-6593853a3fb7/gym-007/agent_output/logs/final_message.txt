@@ -1,0 +1,12 @@
+Done — I built a decoder, generated test predictions, estimated expected test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+I used a flattened-trial multinomial logistic regression (`StandardScaler` + `LogisticRegression`), selected based on validation performance (about `0.8` accuracy on `val_labeled`).
+
+I also found a clear data issue and included it in the JSON:
+
+- `y` is consistently offset from `movie_time_s` by one class (mod 10) in both train and val.
+- Specifically, the offset is constant: `y - (movie_time_s - 31) ≡ 9 (mod 10)`.
+
+If you want, I can also save a small reproducible training script in `/app/output/` for auditing.

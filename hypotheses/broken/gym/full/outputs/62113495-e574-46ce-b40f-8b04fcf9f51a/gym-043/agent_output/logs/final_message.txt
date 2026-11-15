@@ -1,0 +1,10 @@
+Done — I built and evaluated several decoders, generated test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+I used cross-validated model performance plus validation accuracy to set:
+
+- `claimed_accuracy`: `0.96`
+- `data_issues`: `"none"`
+
+If you want, I can also save the training/evaluation script into `/app/output/` for reproducibility.

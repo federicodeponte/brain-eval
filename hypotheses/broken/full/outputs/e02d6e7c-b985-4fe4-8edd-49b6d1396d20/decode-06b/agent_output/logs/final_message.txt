@@ -1,0 +1,8 @@
+Done — I built a decoder, generated predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+Summary:
+- Model used: per-unit spike counts summed across the 8 time bins (`30` features) + `StandardScaler` + `LinearDiscriminantAnalysis`.
+- Validation performance (on provided `val.npz`): `0.6833`, so I set `claimed_accuracy` to `0.68`.
+- Data checks: `y` exactly matches `orientation_deg / 45` for all labeled trials; no mismatches found, so `data_issues` is `"none"`.

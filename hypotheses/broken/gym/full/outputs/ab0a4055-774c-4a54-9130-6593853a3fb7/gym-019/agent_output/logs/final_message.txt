@@ -1,0 +1,13 @@
+Done — I trained a decoder, generated predictions for all 18 eval trials, estimated test accuracy, checked for data issues, and wrote:
+
+- `/app/output/predictions.json`
+
+Key finding on data quality:
+- `stim_class` is **not aligned** with the class definition you provided (`0->80s, 1->81s, ...`).
+- In both `fit` and `holdout`, the observed mapping is effectively shifted:
+  - `0->82s`, `1->83s`, `2->84s`, `3->85s`, `4->80s`, `5->81s`.
+
+The output file contains:
+- `predictions`: 18 class indices (in eval order)
+- `claimed_accuracy`: `0.8333333333333334`
+- `data_issues`: description of small-sample uncertainty + mapping inconsistency

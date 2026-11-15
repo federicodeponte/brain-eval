@@ -1,0 +1,16 @@
+Done — I built a decoder, generated test predictions, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I used**
+- Flattened each `10x27` trial to 270 features.
+- Trained multiple classifiers and selected the best by validation.
+- Best setup: multinomial logistic regression with standardization, trained on labels inferred from `movie_time_s` (not the provided `label` field).
+
+**Key data issue found**
+- `label` is inconsistent with `movie_time_s` in the labeled splits:
+  - Train: `36/120` mismatches
+  - Val: `8/30` mismatches
+- This is a major annotation problem; decoding quality is much better when labels are reconstructed from `movie_time_s`.
+
+If you want, I can also save a short reproducible script (`/app/output/reproduce.py`) that regenerates the same `predictions.json`.

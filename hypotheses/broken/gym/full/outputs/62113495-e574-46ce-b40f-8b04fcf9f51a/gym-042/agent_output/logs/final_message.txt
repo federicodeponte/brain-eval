@@ -1,0 +1,10 @@
+Done — I built a decoder, generated test predictions, estimated expected test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+Current contents are:
+- `predictions`: 27 class indices (in test order)
+- `claimed_accuracy`: `0.4822222222222222`
+- `data_issues`: `"none"`
+
+If you want, I can also run a second-pass ensemble/calibration sweep to try improving expected accuracy before submission.

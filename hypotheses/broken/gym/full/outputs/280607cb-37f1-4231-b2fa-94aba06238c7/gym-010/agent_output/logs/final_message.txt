@@ -1,0 +1,8 @@
+Done — I built a decoder, generated test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+I used a `RandomForestClassifier` trained on combined train+val data (flattened `4x24` counts), with claimed test accuracy set to `0.61` based on cross-validation behavior.  
+I also checked label integrity: `orientation_deg` maps perfectly to `label` in both train and val, so I reported:
+
+- `"data_issues": "none"`

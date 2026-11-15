@@ -1,0 +1,14 @@
+Done — I built a decoder, generated predictions, estimated expected test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I found**
+- There is a clear data issue: `y` is inconsistent with `movie_time_s` in all labeled trials.
+- Expected mapping from prompt would be `y = movie_time_s - 100`, but observed mapping is a cyclic shift:
+  - `100→7, 101→0, 102→1, ..., 107→6`
+- This affects `train_labeled.npz` (40/40 mismatches) and `val_labeled.npz` (16/16 mismatches).
+
+**Output contents**
+- `predictions`: 24 class indices in test order.
+- `claimed_accuracy`: `0.6875` (based on held-out validation performance of the chosen decoder).
+- `data_issues`: description of the systematic label/time mismatch.

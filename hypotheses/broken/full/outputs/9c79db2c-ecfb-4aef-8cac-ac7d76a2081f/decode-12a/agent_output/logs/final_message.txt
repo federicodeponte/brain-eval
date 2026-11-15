@@ -1,0 +1,17 @@
+Done — I built a decoder, generated predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I used**
+- Trained a `MultinomialNB` decoder on combined `train+val` (`87` labeled trials, 40 features/trial).
+- Predicted all `200` test trials in file order.
+- Set `claimed_accuracy` to `0.72` based on validation/CV performance and expected degradation from domain shift.
+
+**Data issues found**
+- Major distribution shift between labeled and test sets:
+  - Mean spike count: labeled ≈ `3.85`, test ≈ `1.85`
+  - Max spike count: labeled `38`, test `19`
+- This suggests non-stationarity/domain shift in pseudo-population activity.
+- No label-log mismatch in labeled data (`category` ↔ `y` is fully consistent).
+
+If you want, I can also produce an alternative prediction file from a different model (e.g., logistic regression or random forest) for comparison.

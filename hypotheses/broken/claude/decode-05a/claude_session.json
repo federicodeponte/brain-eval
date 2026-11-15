@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 40219,
+ "stop_reason": "end_turn",
+ "session_id": "72e9ad89-9d96-4038-9d95-84a11f22200f",
+ "total_cost_usd": 0.1414856,
+ "usage": {
+  "input_tokens": 12,
+  "cache_creation_input_tokens": 7393,
+  "cache_read_input_tokens": 61068,
+  "output_tokens": 3504,
+  "output_tokens_details": {
+   "thinking_tokens": 370
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 7393,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 617,
+    "cache_read_input_tokens": 12862,
+    "cache_creation_input_tokens": 1125,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 1125
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 12,
+   "outputTokens": 3504,
+   "cacheReadInputTokens": 61068,
+   "cacheCreationInputTokens": 7393,
+   "webSearchRequests": 0,
+   "costUSD": 0.1414856,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 370,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 7393,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 6,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I've written predictions for all 120 test trials, and I estimate they'll be about **59% accurate**, against 12.5% for random guessing. I didn't find any problems with the data, so `data_issues` is \"none\".\n\n**Decoder:** I averaged two linear classifiers, a logistic regression and an LDA. Both were trained on the square root of the spike counts across all 125 unit-by-bin values, using the train and val trials together (280 in total).\n\n**Accuracy estimate:** the 0.593 figure comes from 10-fold cross-validation on those 280 labelled trials, repeated three times. Each model on its own scored about 0.59\u20130.60 on the same test. Training on train only and scoring on val gave a slightly lower 0.55. With 120 test trials, expect the real test accuracy to land within roughly \u00b15 percentage points of 0.59. Class 4 (image #73) is the hardest to decode and gets confused with most of the other classes. The other seven come out at about 60\u201375%.\n\n**Data checks:**\n- **Labels:** `y` and `image_id` match exactly in train and val, and both splits are perfectly balanced (25 trials per class in train, 10 in val).\n- **Duplicates:** no trial appears twice, within or across splits.\n- **Shift between labelled and test data:** none found. A classifier trained to tell labelled trials from test trials did no better than chance (AUC 0.47). No single unit's firing differed significantly, and firing rates per unit and per time bin are similar across all three splits.\n\nThe predicted classes in the test set are uneven (from 9 to 23 trials per class). The test set may simply not be balanced, so I left the predictions as they are.\n\nThe file is at `/tmp/claude-broken/decode-05a-2sb_21j4/output/predictions.json`.",
+ "ttft_ms": 4017,
+ "type": "result",
+ "duration_ms": 97725,
+ "uuid": "7bc8719f-b36b-402a-b0e8-d3bf3364fb62",
+ "ttft_stream_ms": 2245,
+ "time_to_request_ms": 70,
+ "first_content_frame_ms": 2245,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 98.6
+}

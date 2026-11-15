@@ -1,0 +1,20 @@
+Done — I trained a decoder, generated test predictions, estimated accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I used**
+- Multinomial logistic regression (`StandardScaler` + `LogisticRegression`) on flattened `22×8` spike-count features.
+- Final model trained on combined labeled data (`train_labeled` + `val_labeled`) before predicting 152 test trials.
+
+**Estimated test accuracy**
+- `claimed_accuracy`: `0.288047138047138`
+  - Based on held-out validation accuracy (`0.30`) and 5-fold CV on train (`0.2761`).
+
+**Data issues found**
+- `stim_class` and `orientation_deg` are inconsistent in labeled data:
+  - Train mismatches: `76/272`
+  - Val mismatches: `17/80`
+- Distribution shift in spike count scale across splits:
+  - Max bin count: train `34`, val `22`, test `18`
+
+If you want, I can also provide a small reproducible script in `/app/output/` that regenerates the same JSON end-to-end.

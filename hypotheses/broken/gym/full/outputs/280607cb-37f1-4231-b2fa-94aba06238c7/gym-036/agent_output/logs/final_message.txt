@@ -1,0 +1,12 @@
+Done — I built a decoder, generated test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+I used a small model sweep on `train`→`val` and selected a `RandomForestClassifier` (best validation accuracy among tried models: `0.78`). Then I retrained on `train+val` and predicted all 65 test trials.
+
+I also checked data consistency:
+- `stim_class` maps one-to-one to `image_id` in both train and val.
+- Shapes and ranges are valid.
+- No obvious labeling/schema issue detected.
+
+So `data_issues` is set to `"none"` and `claimed_accuracy` is set to `0.76` (conservative near validation performance).

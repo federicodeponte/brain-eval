@@ -1,0 +1,14 @@
+Done — I built a decoder, generated predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I found**
+- The provided `y` labels are inconsistent with stimulus metadata.
+- Using `orientation_deg` mapped as `class = orientation_deg / 45` (mod 8), mismatches are:
+  - `78/312` in `fit.npz`
+  - `22/88` in `holdout.npz`
+- This indicates label corruption/misalignment in `y`; `orientation_deg` is the reliable target.
+
+**Model + estimate**
+- Decoder: flattened `8x22` spike counts → `StandardScaler` + `LinearDiscriminantAnalysis` (shrinkage).
+- Accuracy estimate used in JSON: `0.5857480333286784` (blended from CV on fit and corrected-label holdout performance).

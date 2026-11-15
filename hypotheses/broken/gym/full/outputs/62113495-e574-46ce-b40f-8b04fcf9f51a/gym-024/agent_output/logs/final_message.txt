@@ -1,0 +1,13 @@
+Done — I trained and selected a decoder, generated predictions for all 50 test trials, and wrote:
+
+- `/app/output/predictions.json`
+
+Summary of what I used:
+- Best model on provided validation split: `RandomForestClassifier` (`n_estimators=500`), val accuracy `0.95`.
+- Claimed test accuracy is estimated from 5-fold CV on combined labeled data: `0.8795112781954888`.
+
+Data issues reported:
+- Redundant singleton time dimension (`19 x 1`; no temporal structure within trial).
+- `3` validation trials are exact duplicate spike-count vectors of training trials.
+
+If you want, I can also print the exact 50 predicted class indices here for quick inspection.

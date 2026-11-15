@@ -1,0 +1,10 @@
+Done — I built a decoder, generated predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+Contents include:
+- `predictions`: 27 class indices in test-trial order
+- `claimed_accuracy`: `0.3796296296296296`
+- `data_issues`: `"very small labeled dataset (63 trials total; only 1 validation trial per class), so accuracy estimates are high-variance"`
+
+I also checked label integrity: `label` matches `movie_time_s` perfectly on both train and val, so no label-time mismatch issue was found.

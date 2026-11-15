@@ -1,0 +1,8 @@
+Done — I trained a decoder, generated test predictions, estimated test accuracy, and wrote the required file.
+
+- Output written: `output/predictions.json`
+- It contains exactly 120 integer predictions in test order.
+- `claimed_accuracy` is set to `0.36`.
+- `data_issues` reports a clear train/val vs test distribution shift in spike-count scale (test firing is much lower), while train/val `y` ↔ `image_id` mapping is consistent.
+
+If you want, I can also save a small reproducible training script in `/app/output/` showing exactly how I produced these predictions.

@@ -1,0 +1,16 @@
+Done — I built the decoder, generated predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I found**
+- The labeled splits have inconsistent targets: `stim_class` disagrees with `category` on multiple trials.
+- Cross-tab checks show this in both train and validation (not just one split), so `stim_class` appears noisy/mislabeled relative to the stimulus category.
+- A classifier trained to decode `category` from spikes performs much better for the intended task than training against `stim_class`.
+
+**Model choice used for output**
+- Features: flattened `34 x 1` spike counts.
+- Decoder: `StandardScaler + SVC(kernel='rbf', C=3, gamma='scale')`.
+- Selection criterion: validation accuracy against `category`-derived class index mapping.
+- Validation result for chosen model: `1.0` vs `category` labels (and only `0.647` vs noisy `stim_class`), supporting the label-issue diagnosis.
+
+If you want, I can also save the exact training script used into `/app/output/` for reproducibility.

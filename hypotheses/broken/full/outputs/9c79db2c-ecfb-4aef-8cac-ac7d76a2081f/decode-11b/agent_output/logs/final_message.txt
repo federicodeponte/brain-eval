@@ -1,0 +1,12 @@
+Done — I trained a decoder, generated all 200 test predictions, estimated test accuracy, and wrote the required file:
+
+- `/app/output/predictions.json`
+
+Summary of what I used:
+- Model: `StandardScaler` + multinomial `LogisticRegression` (best cross-validated performance on labeled data).
+- `claimed_accuracy`: `0.9423809523809524` (5-fold CV on combined train+val labeled set).
+- `data_issues`: reported two issues:
+  - pseudo-population construction (cross-session neuron combination breaks real simultaneity/correlation structure),
+  - distribution shift hint (test spike counts go up to 58, while train/val max is 43).
+
+If you want, I can also quickly produce a small script in `/app/output/` that reproduces the training and prediction pipeline end-to-end.

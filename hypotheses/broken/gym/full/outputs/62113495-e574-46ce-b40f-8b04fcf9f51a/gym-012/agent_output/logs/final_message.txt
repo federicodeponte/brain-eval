@@ -1,0 +1,10 @@
+Done — I built a decoder, estimated accuracy, identified a data issue, and wrote:
+
+- `/app/output/predictions.json`
+
+Summary of what I found:
+- Best simple model on provided labels: multinomial logistic regression on flattened `27x10` counts.
+- Validation (`holdout.npz`) accuracy: `0.5555555555555556` (used as `claimed_accuracy`).
+- Data issue: `label` does not match the class definition by `movie_time_s`; it is consistently shifted by `-2 mod 9` in both `fit` and `holdout` (e.g. `19s -> 7`, `20s -> 8`, `21s -> 0`, …, `27s -> 6`).
+
+If you want, I can also provide a quick script that reproduces training/prediction end-to-end from scratch.

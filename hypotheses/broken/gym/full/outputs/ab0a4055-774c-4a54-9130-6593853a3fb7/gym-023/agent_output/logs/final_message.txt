@@ -1,0 +1,14 @@
+Done — I trained a decoder and wrote `/app/output/predictions.json`.
+
+**What I used**
+- Model: `ExtraTreesClassifier` on flattened `8x22` spike-count features (`176` features/trial).
+- Estimated test accuracy: `0.3523` (from holdout accuracy `31/88`).
+
+**Data issue found**
+- The labels appear corrupted or misaligned relative to the stimulus log:
+  - In both `fit.npz` and `holdout.npz`, only `75%` of trials satisfy `y == orientation_deg / 45`.
+  - Each single `orientation_deg` value maps to multiple different class labels, which should not happen if labels are correct.
+
+**Output file**
+- Wrote predictions to: `output/predictions.json`  
+- Contains exactly 152 class predictions, plus `claimed_accuracy` and `data_issues` as requested.

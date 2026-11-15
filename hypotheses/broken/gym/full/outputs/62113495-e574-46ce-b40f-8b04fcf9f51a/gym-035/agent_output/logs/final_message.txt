@@ -1,0 +1,10 @@
+Done — I built a decoder, generated all 168 test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+It contains:
+- `predictions`: 168 class indices in eval-trial order
+- `claimed_accuracy`: `0.84`
+- `data_issues`: notes on pseudo-population construction, small labeled sample size, and a train/eval spike-range distribution shift
+
+If you want, I can also quickly dump a confusion matrix and per-class holdout performance used to choose the ensemble.

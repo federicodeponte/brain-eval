@@ -1,0 +1,10 @@
+Done — I trained a decoder, generated predictions for all 54 eval trials, and wrote:
+
+- `/app/output/predictions.json`
+
+Summary of what I found:
+- Best simple model on holdout was shrinkage LDA (`~0.407` holdout accuracy).
+- 5-fold CV on fit was `~0.454`; I set `claimed_accuracy` to a conservative blend: `0.4308089668615984`.
+- I checked label integrity: `y` exactly matches `movie_time_s - 15` on both labeled splits, so I reported `data_issues` as `"none"`.
+
+If you want, I can also run a small ensemble/stacking pass to try to squeeze a bit more test accuracy before final submission.

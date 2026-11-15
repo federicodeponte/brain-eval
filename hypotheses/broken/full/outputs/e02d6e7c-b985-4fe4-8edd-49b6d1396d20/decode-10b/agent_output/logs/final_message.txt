@@ -1,0 +1,12 @@
+Done — I built a decoder, generated test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+I also checked for data problems:
+
+- `y` ↔ `image_id` mapping is perfectly consistent in both train and val.
+- Class balance is exact in labeled splits (train: 25/class, val: 10/class).
+- No shape/type mismatches or missing fields.
+- The only notable anomaly is distribution shift in `test` (feature values extend beyond train/val max, and model predictions are highly skewed), but there is no clear labeling/log issue detectable from provided files.
+
+If you want, I can run a small ensemble/calibration sweep to improve the prediction spread and potentially increase expected test accuracy before final submission.

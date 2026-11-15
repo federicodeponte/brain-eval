@@ -1,0 +1,8 @@
+Done — I built a decoder, generated all test predictions, estimated accuracy, and wrote the required file:
+
+- Output file: `/app/output/predictions.json`
+- `predictions`: 114 class indices in test order
+- `claimed_accuracy`: `0.8974` (from held-out validation performance)
+- `data_issues`: flagged that `orientation_deg` is actually direction (not orientation), and the class direction set is asymmetric/incomplete (missing e.g. 180°, 270°)
+
+If you want, I can also share a short reproducible training script (`/app/output/make_predictions.py`) that regenerates the JSON exactly.

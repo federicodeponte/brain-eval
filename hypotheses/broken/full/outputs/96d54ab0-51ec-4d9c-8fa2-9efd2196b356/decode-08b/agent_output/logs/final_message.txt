@@ -1,0 +1,8 @@
+Done — I trained a high-performing decoder, generated test predictions, and wrote the required file.
+
+- Output file: `/app/output/predictions.json`
+- `predictions`: 200 class indices in test order
+- `claimed_accuracy`: `0.968` (estimated from cross-validation + validation behavior)
+- `data_issues`: `"none"` (no `y` vs `category` mismatches; shapes/types/classes are consistent)
+
+If you want, I can also dump a quick confusion-matrix report from train/val CV for auditability.

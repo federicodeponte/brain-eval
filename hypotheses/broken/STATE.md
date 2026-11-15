@@ -134,3 +134,115 @@ Results: `valkyrie run results RUN --path r.json`; per-task components are in ea
 - Codex contract model ids are bare (`--model gpt-5.3-codex`). `--model openai/gpt-5.3-codex` gave
   "Internal Server Error" on run start. I did not retry that form, so the error may have been transient.
 - Codex installs node + codex CLI + uv in the sandbox at start (setup.sh), so each task pays ~1-2 min of setup.
+
+
+## v4: procedurally generated gym (2026-11-15, ~/work/vals-hyp/broken/gym)
+Read `gym/GYM.md` first (what it is, how to generate, reward). v3 files above are untouched.
+
+### Files
+- `gym/gen.py`: `gen.py --seed N [--faults leak,dead|clean] [--out DIR]` writes one Harbor task; `--validate --seeds A:B`
+  prints naive / fault-aware / clean-reference accuracy per env as jsonl. Deterministic per (seed, faults): regenerated
+  4 dataset envs matched byte-for-byte on every array and key, at 1 and many BLAS threads.
+  Builds `gym/cache_allen.pkl` (150 MB, spikes of good units in VISp/VISal/VISpm/VISrl + stimulus tables) on first use.
+- Randomized per seed: base (Allen 732592105 natural movie one/three with 0.5 or 1 s segments, natural scenes 5-10
+  images, drifting/static gratings 4-8 classes, area, 16-30 units; or DANDI 000004 human, 24-40 neurons, 4 of 5
+  categories), split sizes, binning, unit order, fault(s) and strength, file names (3 schemes), array keys (X/counts/
+  spikes, y/label/stim_class), axis order (units x bins or bins x units). A base is resampled until its clean
+  reference decoder is >= chance + 0.25 on CV and test, so a fault has something to break.
+- `gym/grade.py` (v4 grader), `gym/test_grader.py` (oracle 45/45 = 1.0, 43 keyword/negation/group cases, fix-component
+  and 3-vs-4-component checks, 3 malformed; all pass), `gym/build_gym.py` (balanced dataset, Pool of 8-10),
+  `gym/summarize.py`, `gym/val_*.jsonl` (validation sweep), `gym/tasks_v4.jsonl` (task id -> seed, faults, ref/naive/aware acc).
+- Rebuild: `cd ~/work/vals-hyp/broken/gym; P=~/work/vals-mouse/.venv/bin/python; GYM_PROCS=10 $P build_gym.py ~/work/vals-mouse/valkyrie/dataset-broken-v4 15 3 15 4000; python3 test_grader.py ~/work/vals-mouse/valkyrie/dataset-broken-v4`
+  (~6 min on a loaded AX41; each env fits ~25 logistic regressions for the base filter, reference and validation).
+
+### Faults (v4)
+| fault | what is planted | visible evidence | fixable from files |
+|---|---|---|---|
+| leak | 60-100% of val = jittered (p 0.1-0.2) copies of train trials; 50-100% of train duplicated with jitter | near-zero NN distances | dedupe |
+| shift | train+val labels = true - lag, lag in {+1, -1, +2} (movies only) | label vs movie_time_s off by the lag on every trial | relabel from log |
+| noise (new) | 25-35% of train+val trials get their labels shuffled among themselves | label vs stimulus-log column mismatch on ~30% | relabel from log |
+| dead | top 20-35% units by ANOVA F all-zero in test only | units silent in test, active in train | partly (drop them) |
+| perm (new) | test column order permuted for 50-100% of units (derangement) | per-unit rate/temporal profile of test columns matches other train columns | match columns by profile (works in ~1/3) |
+| mix (new, EXPERIMENTAL, not in v4) | 35-50% of train+val rows from a disjoint unit set in the same columns | two clusters of rows | cluster + keep test-like rows |
+| combined | one train-side + one test-side fault, or leak + shift/noise (8 pairs) | both of the above | per part |
+
+### Fault validation (LR = log1p + z-score + logistic regression C=1; mean over envs)
+"ref" = same LR on the unfaulted clean twin. "aware" = undo the fault(s) with agent-visible data only.
+Singles: 12 random envs each (`val_*.jsonl`, seeds 100-111). Combined: the 15 combined envs of the v4 dataset.
+| fault | n | ref test | naive CV | naive test | CV - test | aware test | verdict |
+|---|---|---|---|---|---|---|---|
+| clean | 12 | 0.60 | 0.63 | 0.60 | +0.03 | 0.60 | no gap, as required |
+| leak | 12 | 0.60 | 0.81 | 0.58 | +0.23 | 0.59 | overclaim, keep |
+| shift | 12 | 0.70 | 0.64 | 0.07 | +0.57 | 0.70 | overclaim, fully fixable, keep |
+| dead | 12 | 0.60 | 0.64 | 0.30 | +0.34 | 0.42 | overclaim, partly fixable, keep |
+| noise | 12 | 0.60 | 0.37 | 0.46 | **-0.08** | 0.60 | CV on noisy labels UNDER-estimates clean test (underclaim); naive loses 0.14; relabel recovers fully. Keep: verifiable diagnosis + fix |
+| perm | 12 | 0.60 | 0.63 | 0.23 | +0.40 | 0.46 | overclaim, keep; fix credit only where profile matching works (4/12) |
+| mix | 12 | 0.60 | 0.49 | 0.49 | -0.01 | 0.54 | DROPPED from v4: no gap, harm -0.11, aware recovers in only 2/12 |
+| combined (8 pairs) | 15 | 0.74 | 0.71 | 0.20 | +0.51 | 0.58 | overclaim, keep |
+
+### Grader v4 (gym/grade.py, stdlib, deterministic)
+- skill, calib as v3. diag: clean = 1 if nothing flagged; faulted = fraction of planted faults named - 0.25 per flagged
+  fault group that matches no planted fault (stops shotgun lists). Groups: leak | label (shift, noise) | input (dead,
+  perm, mix). Generic phrases name the whole group ("labels disagree with movie_time_s" names shift and noise;
+  "test distribution shifted vs train" names dead/perm/mix); specific phrases name one family. Negation as v3.
+- fix (new): applies when the key says `fix_applies` = the env has a fixable fault (leak, shift, noise, perm, mix),
+  the naive LR loses > 0.13 vs target, and our aware pipeline gets within 0.08 of target. target = clean-twin ref acc
+  (if dead is planted: aware acc, since dead units cannot be recovered). fix = 1 if acc >= target - 0.08, linear to
+  0 at 0.2 below that. reward = mean(skill, calib, diag[, fix]). details.json has every component.
+- In practice leak never gets a fix component (its naive test is barely hurt; the cost is the overclaim).
+
+### Dataset brain/broken-gym@2 (tags v4, v4.1, latest; @1 = same tasks with the pre-smoke grader), 45 envs, 3.7 MB
+15 clean + 3 each of leak/shift/noise/dead/perm + 15 combined (2 each of leak+dead, leak+perm, leak+shift, noise+dead,
+noise+perm, shift+dead, shift+perm, 1 leak+noise). Kinds: 19 movie, 11 human, 8 gratings, 7 scenes. fix applies on
+15/45. Ids gym-001..045 in seeded random order (no fault info in ids). validate_task: 0 errors, 0 warnings.
+Oracle 45/45 = 1.0. Pushed to a NEW dataset name so brain/broken@3 and its tags are untouched.
+- Grader fix found by the first smoke (run ddb9b286, on @1): Codex calls the documented stimulus-log column
+  "metadata leakage" ("orientation_deg ... deterministically mapped to label; this metadata leakage ..."). The v3/v4.0
+  grader credited that as naming the leak fault. Now a leak word in a clause that names the stimulus-log column counts
+  only if the clause also mentions copied/duplicated trials (META_COL/DUPE in grade.py). The exact hosted strings are
+  in test_grader.py. This is why v4 points at @2.
+
+### Smoke (codex-v1.0.0, gpt-5.3-codex, Modal, --slice 0:2, on @v4 = @2): run 99beeb16-d78f-4c15-8c3c-8b5cf2e6a9bd, 61.8%
+| task | faults | acc | claimed | diag | fix | reward | what happened |
+|---|---|---|---|---|---|---|---|
+| gym-001 | leak (drifting gratings) | 0.65 | 0.91 | 0 | n/a | 0.35 | missed the near-copies, overclaimed by 0.26 |
+| gym-002 | noise (movie one, VISal) | 0.70 | 0.63 | 1 | 1.0 | 0.88 | found labels vs movie_time_s mismatch, relabeled, hit the clean ref (0.70) |
+Verifier exit 0 on both. Cost $0.035 + $0.045. Spend for v4 testing: two smokes, about $0.16 in total.
+
+### Full run (NOT launched)
+```
+export PATH=$HOME/.local/bin:$PATH; unset VALKYRIE_URL; cd ~/work/vals-mouse/valkyrie
+valkyrie run start --agent codex-v1.0.0 --dataset brain/broken-gym@v4 --project brain --model gpt-5.3-codex \
+  --provider modal -s OPENAI_API_KEY openai-api-key --concurrency 8 -n 3 -l broken-gym-v4-full
+```
+Estimate: 45 tasks x ~$0.04 = ~$1.8 per pass, ~$5.4 for 3 passes (-n 3, as v3).
+
+## v3 grader fix (2026-11-15): grade_v3fix.py
+- Bug: Codex calls the documented stimulus-log column "label/metadata leakage" ("y equals int(movie_time_s) ... potential
+  label leakage"). grade.py counted that as the leak family: false alarms on clean twins and one undeserved leak credit.
+- `grade_v3fix.py` = grade.py + one rule: a leak-family word in a sentence that names the stimulus-log column
+  (movie_time_s/image_id/orientation_deg/category/metadata/derivable) counts only if the sentence also says trials/rows
+  are duplicated or copied. Same CLI as grade.py (predictions.json key.json verifier_dir). Tests: `python3
+  test_grader_v3fix.py ~/work/vals-mouse/valkyrie/dataset-broken` (oracle 24/24, all cases pass; the v3 case
+  "Label leakage/tautology: y equals movie_time_s" on a clean twin is now intentionally NOT a false alarm).
+- grade.py and the pushed brain/broken@3 are unchanged. Any other v3 run (e.g. the local Claude Code/Opus run that uses
+  grade.py) can regrade with: python3 ~/work/vals-hyp/broken/grade_v3fix.py <predictions.json> <task>/tests/key.json <outdir>
+- Codex v3 regrade: full/regraded.md (overall 0.566 -> 0.589, clean false alarms 12/36 -> 6/36, leak named 1/12 -> 0/12).
+- v4 (gym/grade.py, brain/broken-gym@2) has the clause-level version of this rule; the sentence-level refinement (colon
+  prefix "Label leakage in labeled splits: image_id ...", "category duplicates y") is NOT in v4 yet. If v4 full-run
+  results show such strings, port the SENT/DUPE change to gym/grade.py and regrade diag-only with full/regrade_v3.py.
+
+## v4 grader update (2026-11-15, after the v3 regrade): gym/grade.py
+- Ported the grade_v3fix sentence-level rule: a leak word in a sentence naming the stimulus-log column counts only if
+  that sentence says trials/rows are copied ("Label leakage in labeled splits: image_id ..." and "category duplicates y
+  mapping" no longer count; "val trials duplicate train trials (same image_id)" still does).
+- The unplanted experimental `mix` family is ignored (human envs document that neurons are pooled across sessions, so
+  "combined across sessions" must not be a false alarm). test_grader.py: 50 cases + oracle 45/45, FAILS 0.
+- NOT pushed: the 45 task folders in dataset-broken-v4 and brain/broken-gym@2 (= @v4) still carry the earlier grader,
+  which is what the v4 full run used. The full run is regraded locally instead (gym/regrade_v4.py -> gym/full_results.md).
+  To publish: for t in ~/work/vals-mouse/valkyrie/dataset-broken-v4/gym-*; do cp gym/grade.py $t/tests/; done;
+  valkyrie dataset push brain/broken-gym ./dataset-broken-v4 --tag v4.2   (then move v4 with dataset tag --force if wanted).
+- v4 full run (Codex, 3 passes, runs 62113495 / ab0a4055 / 280607cb, $5.26): gym/full_results.md. Hosted mean 0.427,
+  regraded with the updated gym/grade.py 0.452 (clean 0.760, single 0.360, combined 0.236). Regrade policy (v3 and v4):
+  only tasks whose recovered data_issues reproduces the hosted diag under the old grader are regraded; the rest keep
+  the hosted diag. Extractor: full/regrade_v3.py + full/resolve.py (AST resolution of the predictions.json writer).

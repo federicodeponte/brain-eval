@@ -1,0 +1,14 @@
+Done — I built a decoder, generated predictions for all 200 test trials, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I found**
+- `category` ↔ `y` mapping is fully consistent in both labeled splits (no mismatches).
+- There is a likely distribution shift in `test` vs `train/val`:
+  - `train/val` max spike count is `43`, but `test` reaches `58`.
+  - `test` overall mean firing is lower (`4.13` vs `~5.48` in train).
+
+**Model used**
+- Multiclass logistic regression with standardization, trained on `train + val` (flattened 30 features per trial).
+
+If you want, I can also produce an alternative `predictions.json` from a Poisson/Naive Bayes decoder (sometimes more robust for count data) so you can compare submissions.

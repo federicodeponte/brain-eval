@@ -1,0 +1,8 @@
+Done — I built a decoder, generated all 200 test predictions, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+I used a `StandardScaler + LogisticRegression` classifier (trained on `fit + holdout` for final inference), with performance around the mid/high-90% range on internal validation, and set:
+
+- `claimed_accuracy`: `0.96`
+- `data_issues`: pseudo-population synthetic-trial issue (cross-session stitching, missing true simultaneity/correlation structure)

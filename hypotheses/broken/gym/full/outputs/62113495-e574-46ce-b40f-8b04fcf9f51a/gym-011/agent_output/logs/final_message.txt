@@ -1,0 +1,12 @@
+Done — I trained/evaluated decoders and wrote the required output file.
+
+- Output file: `/app/output/predictions.json`
+- It contains:
+  - `predictions` (30 class indices, in test order)
+  - `claimed_accuracy` = `0.9368888888888891`
+  - `data_issues` = `"none"`
+
+I also checked for data problems:
+- `y` is perfectly consistent with `movie_time_s` in both train and val.
+- Class balance is perfectly even in labeled splits.
+- No obvious invalid spike-count issues (e.g., negatives/non-integer dtype).

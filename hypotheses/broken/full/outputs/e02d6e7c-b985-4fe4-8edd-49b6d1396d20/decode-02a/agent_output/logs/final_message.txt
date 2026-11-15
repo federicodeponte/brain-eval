@@ -1,0 +1,13 @@
+Done — I built a VISp decoder, generated predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+It contains:
+
+- `predictions`: 50 class indices in test order
+- `claimed_accuracy`: `0.87`
+- `data_issues`: documented label inconsistency
+
+**Key data problem found**
+- Labels are systematically shifted: `y = (movie_time_s - 11) mod 10`, not `movie_time_s - 10` as implied by the class descriptions.
+- This creates a `100%` mismatch between `y` and `classes.json` semantics on both train and val.

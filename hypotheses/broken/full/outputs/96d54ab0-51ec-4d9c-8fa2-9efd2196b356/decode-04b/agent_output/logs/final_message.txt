@@ -1,0 +1,9 @@
+Done — I built a decoder, generated test predictions, estimated accuracy, and wrote the required output file.
+
+- Wrote `/app/output/predictions.json` with exactly 30 class predictions.
+- Used a `LinearSVC` on flattened `25x10` spike-count features (trained on combined train+val for final predictions).
+- Set `claimed_accuracy` to `0.85` based on validation/CV behavior.
+- Reported a clear data issue: `y` is systematically inconsistent with `movie_time_s` in both labeled splits (all trials mismatch `y == movie_time_s - 60`).
+
+File created:
+- `/app/output/predictions.json`

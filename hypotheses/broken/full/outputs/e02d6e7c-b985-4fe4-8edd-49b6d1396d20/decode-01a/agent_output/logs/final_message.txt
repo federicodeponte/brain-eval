@@ -1,0 +1,12 @@
+Done — I trained a decoder, generated test predictions, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I used**
+- Best validation model: `RandomForestClassifier(n_estimators=500, random_state=0)` on flattened `20x10` spike-count features.
+- Validation accuracy (train→val): `0.8667`, used as `claimed_accuracy`.
+
+**Data issue found**
+- `y` is exactly equal to `movie_time_s.astype(int)` in both labeled splits, i.e. labels are deterministically derived from the stimulus log rather than independent annotation.
+
+If you want, I can also provide a small reproducible training script file in `/app/output/` for auditability.

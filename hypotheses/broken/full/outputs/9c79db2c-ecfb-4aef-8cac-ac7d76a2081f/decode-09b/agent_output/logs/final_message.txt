@@ -1,0 +1,8 @@
+Done — I trained a decoder, generated test predictions, estimated accuracy, and wrote the required file.
+
+- Output written to: `/app/output/predictions.json`
+- Decoder used: `RandomForestClassifier` on per-unit spike counts summed over the 5 time bins (`25` features/trial)
+- Validation-guided estimated test accuracy: `0.64`
+- Data issue reported: `image_id` stored as `float64` (not integer), while label mapping is consistent and train/val are class-balanced; unlabeled `test` lacking `image_id` appears intentional.
+
+If you want, I can also produce a small reproducible script in `/app/output/` documenting the exact training/inference pipeline.

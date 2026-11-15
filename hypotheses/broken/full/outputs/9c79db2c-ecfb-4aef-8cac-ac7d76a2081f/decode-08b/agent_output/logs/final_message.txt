@@ -1,0 +1,7 @@
+Done — I built a 4-class decoder, generated predictions for all 200 test trials, and wrote:
+
+- `/app/output/predictions.json`
+
+I used an `SVC` (`RBF`) model on flattened `40x1` trial vectors, trained on `train + val` after checking that train-CV and val were both near-perfect for several classifiers.
+
+I also reported a likely data issue in `data_issues`: the “spike counts” are suspiciously bounded (max values `39/27/34` in train/val/test), which is implausible for 1-second spike counts and suggests a preprocessing/indexing corruption.

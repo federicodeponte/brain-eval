@@ -1,0 +1,13 @@
+Done — I built a decoder, generated predictions, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+I used flattened spike counts (`10x28 -> 280` features) with several classifiers and selected a robust ensemble-weighted prediction (top individual holdout model: random forest at `0.8333` holdout accuracy; others around `0.7778`).  
+I set `claimed_accuracy` to `0.8` as a conservative estimate for hidden test performance.
+
+I also checked for data issues:
+- labels are perfectly balanced in `fit` and `holdout`
+- `label` exactly matches `movie_time_s - 6` in all labeled trials
+- no obvious structural inconsistencies
+
+So `data_issues` is set to `"none"`.

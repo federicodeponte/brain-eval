@@ -1,0 +1,11 @@
+Done — I built a decoder, generated predictions, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+It contains:
+
+- `predictions`: 133 class indices in test-trial order
+- `claimed_accuracy`: `0.83`
+- `data_issues`: `"stimulus set omits 0/360 deg direction (only 45..315 by 45), so labels cover 7 classes rather than the full 8-direction set"`
+
+I used a `LogisticRegression` decoder on per-trial unit activity summed across the 8 time bins (`27` features per trial), selected by CV on labeled data (`train+val`).

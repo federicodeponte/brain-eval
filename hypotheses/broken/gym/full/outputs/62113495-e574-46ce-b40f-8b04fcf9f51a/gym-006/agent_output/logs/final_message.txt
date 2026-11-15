@@ -1,0 +1,16 @@
+Done — I built the decoder, generated predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I used**
+- Flattened `counts` from `(trials, 35, 1)` to `(trials, 35)`.
+- Trained a multinomial logistic regression with standardization on labeled data.
+- Verified performance with CV on `fit` and with `holdout`.
+
+**Estimated performance**
+- `claimed_accuracy` set to `0.9818840579710144` based on strong CV/holdout performance.
+
+**Data issues found**
+- `data_issues` reports: `duplicate trial vectors across splits`
+- Specifically, there is 1 exact duplicate feature vector between `fit.npz` and `holdout.npz`.  
+  (No duplicates found against `eval.npz`.)

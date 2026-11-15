@@ -1,0 +1,12 @@
+Done — I trained a decoder, generated predictions, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+I used an `ExtraTreesClassifier` on flattened `25x5` spike-count features, trained on combined `train+val` labeled trials.  
+Estimated test accuracy is `0.61` (based on cross-validation and held-out validation behavior).
+
+I also checked for data issues:
+- `y` is perfectly consistent with `image_id` on train/val.
+- Class balance is exact in train/val.
+- Shapes and value ranges are valid.
+- Reported `data_issues` as `"none"`.

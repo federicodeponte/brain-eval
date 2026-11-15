@@ -1,0 +1,14 @@
+Done — I built a decoder, generated test predictions, estimated accuracy, and wrote:
+
+- `output/predictions.json`
+
+Summary of what I used:
+
+- Decoder: `StandardScaler + SVC(RBF)`
+- Training target: `category` mapped via `classes.json` (`cars/food/people/animals -> 0/1/2/3`)
+- Estimated test accuracy (`claimed_accuracy`): `0.7619047619047619` (from validation on that target)
+
+Data issue reported:
+
+- `stim_class` is inconsistent with `category`/`classes.json` on many labeled trials (e.g., class 0 appearing with non-`cars` categories), indicating label corruption/mismatch in `stim_class`.
+- `category` appears to be the reliable label source and was used for decoding.

@@ -1,0 +1,12 @@
+Done — I trained a decoder, generated predictions for all 60 eval trials, and wrote:
+
+- `/app/output/predictions.json`
+
+I also checked data consistency and found a clear issue:
+
+- `stim_class` is inconsistent with `movie_time_s` in **all labeled rows**.
+- If classes are defined as 16→0, 17→1, …, 25→9, then `stim_class` should equal `movie_time_s - 16`, but every row mismatches.
+
+I set `data_issues` accordingly in the JSON, and used holdout performance to set:
+
+- `claimed_accuracy`: `0.5666666666666667`

@@ -1,0 +1,10 @@
+Done — I built a decoder, generated test predictions, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I found**
+- Best validation model among quick baselines was `RandomForestClassifier`.
+- Validation accuracy used as test estimate: `0.5625`.
+- I checked label mapping consistency and split integrity; no data problems were detected.
+
+If you want, I can also share a small training script in `/app/output/` so this is fully reproducible end-to-end.

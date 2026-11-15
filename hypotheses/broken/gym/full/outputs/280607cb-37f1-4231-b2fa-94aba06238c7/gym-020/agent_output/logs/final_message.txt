@@ -1,0 +1,10 @@
+Done — I built a decoder, generated predictions for all 114 test trials, and wrote:
+
+- `/app/output/predictions.json`
+
+It contains:
+- `predictions`: 114 class indices in test order
+- `claimed_accuracy`: `0.5333` (estimated from held-out validation performance)
+- `data_issues`: notes the leakage issue (`orientation_deg` is perfectly mapped to label in labeled data but missing in test)
+
+If you want, I can also dump a quick confusion-matrix summary from validation so you can see which directions are most confusable.

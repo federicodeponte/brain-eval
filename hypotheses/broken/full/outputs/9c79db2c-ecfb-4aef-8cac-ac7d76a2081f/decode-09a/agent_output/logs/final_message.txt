@@ -1,0 +1,10 @@
+Done — I trained/validated decoders and wrote:
+
+- `/app/output/predictions.json`
+
+It contains:
+- `predictions`: 120 class indices in test order
+- `claimed_accuracy`: `0.6875`
+- `data_issues`: notes the clear train/val vs test distribution shift (much lower test spike counts, lower max), which is the main data problem likely to hurt generalization.
+
+If you want, I can also dump a short reproducible training script into `/app/output/` for auditability.

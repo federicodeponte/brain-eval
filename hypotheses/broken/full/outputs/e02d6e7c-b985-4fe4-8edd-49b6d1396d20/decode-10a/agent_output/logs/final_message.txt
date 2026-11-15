@@ -1,0 +1,10 @@
+Done — I built a decoder, generated test predictions, estimated accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+I used an `ExtraTreesClassifier` (best validation performance among tested models, ~0.5875 on `val`) trained on `train+val` for final test predictions, and set:
+
+- `claimed_accuracy`: `0.56`
+- `data_issues`: noted split mismatch in spike-count range (test bins up to 13 vs labeled splits up to 10/8), which suggests a likely preprocessing/distribution inconsistency.
+
+If you want, I can also share the exact model-comparison table and confusion matrix from validation.

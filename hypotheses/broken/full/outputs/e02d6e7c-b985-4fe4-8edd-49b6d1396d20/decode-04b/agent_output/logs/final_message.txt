@@ -1,0 +1,9 @@
+Done — I trained a decoder, generated predictions, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+I also found a clear data issue:
+
+- In labeled splits, `movie_time_s` is fully inconsistent with `y` (`60/60` mismatches in train, `10/10` in val if expecting `y = movie_time_s - 60`), so `movie_time_s` appears wrong/shifted and is not reliable for decoding labels.
+
+If you want, I can also save a small reproducible script in `/app/output/` that trains the model and regenerates the same JSON.

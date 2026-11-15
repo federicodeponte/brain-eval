@@ -1,0 +1,18 @@
+Done — I built a decoder, found a major data issue, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I used**
+- Flattened spike counts (`24x10 -> 240` features).
+- Trained classifiers and compared CV/validation.
+- Detected that provided `y` is frequently inconsistent with `movie_time_s`.
+- Recomputed labels from `movie_time_s` via `round((movie_time_s - 5.0)/0.5)` and trained on corrected labels.
+- Final model for test predictions: `SVC` (`RBF`, standardized inputs), then fit on all labeled data with corrected labels.
+
+**Data issue reported**
+- The labels are partially wrong:
+  - train mismatch: `27/119` (`22.69%`)
+  - val mismatch: `5/18` (`27.78%`)
+- This is included in `data_issues` in the JSON.
+
+If you want, I can also drop a small reproducible script in `/app/output/` that regenerates the same predictions file end-to-end.

@@ -1,0 +1,10 @@
+Done — I built a decoder, generated test predictions, estimated accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+Contents written:
+- `predictions`: 27 class indices in test-trial order
+- `claimed_accuracy`: `0.6666666666666666` (from held-out validation performance)
+- `data_issues`: `"test split has higher spike-count max than labeled splits (possible distribution shift)"`
+
+If you want, I can also quickly dump a confusion matrix on the validation split for interpretability.

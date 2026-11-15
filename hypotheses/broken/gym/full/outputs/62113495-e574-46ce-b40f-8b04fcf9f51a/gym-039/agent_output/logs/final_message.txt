@@ -1,0 +1,11 @@
+Done — I trained a decoder, generated test predictions, estimated accuracy, and wrote the required output file.
+
+- Output file: `/app/output/predictions.json`
+- `predictions`: 114 class indices in test-trial order
+- `claimed_accuracy`: `0.7095238095238096` (from 5-fold CV on combined labeled data)
+- `data_issues`: reports the metadata issue found
+
+**What I found about data issues**
+- `orientation_deg` is perfectly deterministic from `y` in both labeled splits (same mapping every trial), so it is label-derived metadata and would be leakage if used as a feature.
+- It is also absent in test, so any model relying on it would not transfer.
+- Minor naming inconsistency: field name `orientation_deg` while classes are described as motion direction labels.

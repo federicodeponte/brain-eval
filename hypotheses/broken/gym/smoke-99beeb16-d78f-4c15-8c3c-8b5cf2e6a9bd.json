@@ -1,0 +1,135 @@
+{
+    "benchmark_id": "99beeb16-d78f-4c15-8c3c-8b5cf2e6a9bd",
+    "benchmark_name": "brain",
+    "started_at": "2026-11-15T06:13:59.747963",
+    "finished_at": "2026-11-15T06:15:16.501432",
+    "status": "FINISHED",
+    "benchmark_arguments": {
+        "contract": {
+            "name": "codex-v1.0.0",
+            "model": "gpt-5.3-codex",
+            "install_cmd": "bash setup.sh",
+            "run_cmd": "bash -lc 'set -o pipefail && mkdir -p /logs && AGENT_OUTPUT_ROOT=/logs /bundle/codex-v1.0.0/.venv/bin/python3 /bundle/codex-v1.0.0/collect_outputs.py {problem_statement_path} --task-id {task_id} --model {model}'",
+            "final_output": "/logs",
+            "output_artifacts": [],
+            "egress_allowlist": [],
+            "allow_provider_tools": false,
+            "isolate_agent_uid": false,
+            "inference_settings_attested": true
+        },
+        "agent_attempts": [],
+        "concurrency": 2,
+        "slice_str": "0:2",
+        "dataset": "broken-gym",
+        "dataset_version": {
+            "id": "brain/broken-gym@2"
+        },
+        "sandbox_provider": "modal",
+        "sandbox_provider_secret_name": "valkyrie/tenants/3c0f03bb-4d7f-4592-8131-25d0b575a404/modal-credentials",
+        "environment": "aws",
+        "properties": {
+            "region": "us-east-1",
+            "s3_bucket": "valkyrie-629807611108-prod-f12840637e1d0318",
+            "log_group": "/valkyrie/benchmarks-prod/tenants/3c0f03bb-4d7f-4592-8131-25d0b575a404",
+            "log_retention_days": 365
+        }
+    },
+    "final_evaluation": {
+        "id": "927a3300-3c75-40d1-8306-b62ad0834752",
+        "org_id": "3c0f03bb-4d7f-4592-8131-25d0b575a404",
+        "benchmark": "99beeb16-d78f-4c15-8c3c-8b5cf2e6a9bd",
+        "final_score": 61.834999999999994,
+        "properties": {
+            "total": 2,
+            "n_trials": 2,
+            "n_errors": 0,
+            "metrics": [
+                {
+                    "mean": 0.61835
+                }
+            ],
+            "reward_stats": {
+                "reward": {
+                    "0.8833": [
+                        "gym-002"
+                    ],
+                    "0.3534": [
+                        "gym-001"
+                    ]
+                }
+            },
+            "score_key": "mean",
+            "mean_reward": 0.61835
+        }
+    },
+    "average_task_breakdown": {
+        "sandbox_build_duration": 0.44249689049999574,
+        "agent_run_duration": 27.969062879000006,
+        "evaluation_run_duration": 0.7007711904999923,
+        "sandbox_run_duration": 48.51096889850001
+    },
+    "evaluation_results": {
+        "gym-001": {
+            "task_id": "gym-001",
+            "rewards": {
+                "reward": 0.3534
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.3534
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-001\", \"faults\": [\"leak\"], \"acc\": 0.6466, \"claimed_accuracy\": 0.9104, \"diag\": 0.0, \"faults_named\": {\"leak\": false}, \"false_alarm\": null, \"extra_groups\": [], \"fix\": null, \"reward\": 0.3534}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 29.951442517000004,
+                "sandbox_run_duration": 49.141566232,
+                "sandbox_build_duration": 0.46710589399998526,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.6394872969999881,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 29.95144464500001
+            },
+            "attempts": 1
+        },
+        "gym-002": {
+            "task_id": "gym-002",
+            "rewards": {
+                "reward": 0.8833
+            },
+            "verifier_result": {
+                "rewards": {
+                    "reward": 0.8833
+                }
+            },
+            "metadata": {
+                "reward_source": "/logs/verifier/reward.txt",
+                "verifier_exit_code": 0,
+                "verifier_output": "{\"task_id\": \"gym-002\", \"faults\": [\"noise\"], \"acc\": 0.7, \"claimed_accuracy\": 0.6333, \"diag\": 1.0, \"faults_named\": {\"noise\": true}, \"false_alarm\": null, \"extra_groups\": [], \"fix\": 1.0, \"reward\": 0.8833}\n"
+            },
+            "agent_caused_exit_reason": null,
+            "task_breakdown": {
+                "agent_run_duration": 25.98668324100001,
+                "sandbox_run_duration": 47.88037156500002,
+                "sandbox_build_duration": 0.41788788700000623,
+                "base_generation_allowance_seconds": 1800.0,
+                "external_service_overhead_seconds": null,
+                "external_service_credit_revision": null,
+                "evaluation_run_duration": 0.7620550839999964,
+                "accounting_id": null,
+                "cumulative_time_credit_cap_seconds": null,
+                "external_service_credit_applied_seconds": null,
+                "generation_elapsed_seconds": 25.98668518299999
+            },
+            "attempts": 1
+        }
+    }
+}

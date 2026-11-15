@@ -1,0 +1,15 @@
+Done — I built a decoder, generated test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I used**
+- Flattened `25x5` spike-count features (`125` dims).
+- `StandardScaler + SVC(RBF, C=3, gamma='scale')`.
+- Model selection was based on validation performance (best hit `1.00` on `val.npz`).
+
+**Reported in JSON**
+- `predictions`: 120 class indices in test order.
+- `claimed_accuracy`: `0.98` (conservative estimate given perfect validation on this split).
+- `data_issues`: `"image_id is stored as float64 instead of integer-coded IDs; otherwise none"`.
+
+If you want, I can also dump a short reproducible training script to `/app/output/train_and_predict.py`.

@@ -1,0 +1,9 @@
+Done — I built a decoder, generated predictions for all 27 test trials, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+I also checked for data problems:
+- `label` is perfectly consistent with `movie_time_s` in both `train.npz` and `val.npz`.
+- Main issue is statistical: `val.npz` has only 9 trials (exactly 1 per class), so validation accuracy is very noisy/high-variance.
+
+If you want, I can also produce a short reproducible script in `/app/output/` that reruns the training + JSON export end-to-end.

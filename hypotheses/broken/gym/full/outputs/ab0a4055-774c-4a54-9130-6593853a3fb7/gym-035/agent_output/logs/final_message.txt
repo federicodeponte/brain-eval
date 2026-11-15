@@ -1,0 +1,10 @@
+Done — I trained a decoder, generated test predictions, estimated expected test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+Summary of what I used:
+- Model: `StandardScaler + SVC(RBF)` (selected by holdout performance)
+- `claimed_accuracy`: `0.7956730769230769` (8-fold CV on all labeled data)
+- `data_issues`: reports the pseudo-population confound plus small labeled sample size
+
+If you want, I can also dump a short reproducible training script to `/app/output/train_and_predict.py`.

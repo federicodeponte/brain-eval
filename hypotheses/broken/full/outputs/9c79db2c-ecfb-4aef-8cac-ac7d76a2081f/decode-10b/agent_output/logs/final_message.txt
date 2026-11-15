@@ -1,0 +1,18 @@
+Done — I built a decoder, generated predictions, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I used**
+- Model: `StandardScaler` + RBF `SVC` (`C=3`, `gamma='scale'`)
+- Features: spike counts summed across the 5 time bins (`25` features/trial)
+
+**Estimated accuracy**
+- Validation accuracy used as estimate: `0.6125`
+
+**Data issue found**
+- Test split contains spike-count values outside the labeled range:
+  - `train/val` max count = `10`
+  - `test` max count = `13`
+- Reported in `data_issues` accordingly.
+
+If you want, I can also run a small ensemble and rewrite `predictions.json` only if it improves validation robustness.

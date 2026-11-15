@@ -1,0 +1,10 @@
+Done — I built a decoder, generated all 136 test predictions, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+I used a linear SVM on flattened spike counts (`31` features per trial) trained on `train+val` labels, and set:
+
+- `claimed_accuracy`: `0.82`
+- `data_issues`: notes on label leakage risk via `category`↔`y` mapping and pseudo-population synthetic trial construction.
+
+If you want, I can also produce a small reproducible training script in `/app/output/` showing the exact model-selection steps I used.

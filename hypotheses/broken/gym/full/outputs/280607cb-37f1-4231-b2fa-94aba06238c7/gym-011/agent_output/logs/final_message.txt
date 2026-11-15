@@ -1,0 +1,11 @@
+Done — I built a decoder, generated test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+I used a multinomial logistic regression decoder on flattened `28x5` spike-count features, trained on combined train+val (90 labeled trials).  
+Estimated test accuracy is based on 6-fold stratified CV over labeled data (mean ≈ `0.944`, conservative claim set to `0.93`).
+
+`data_issues` is set to `"none"` because:
+- Shapes/ranges are consistent across splits.
+- Labels are balanced/valid (`0..5`).
+- `y` matches `movie_time_s` exactly on train/val (no mismatches).

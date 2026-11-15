@@ -1,0 +1,14 @@
+Done — I built a decoder, generated predictions, estimated accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I found**
+- Best simple model on this small dataset was `StandardScaler + LogisticRegression`.
+- I trained using labels derived from `movie_time_s` (`class = int(movie_time_s - 104)`), because provided `y` has inconsistencies.
+- Estimated test accuracy (`claimed_accuracy`) is `0.7777777777777778` (from validation against movie-time-derived labels).
+
+**Data issue detected**
+- `y` and `movie_time_s` disagree on multiple labeled trials:
+  - train mismatches: `13/45`
+  - val mismatches: `1/18`
+- This indicates a label/stimulus-log alignment or export issue.

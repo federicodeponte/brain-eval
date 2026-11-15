@@ -1,0 +1,8 @@
+Done — I built a decoder, generated test predictions, estimated performance, and wrote:
+
+- `/app/output/predictions.json`
+
+I used a `RandomForestClassifier` (best among tried models on cross-validation over train+val), predicted all 128 test trials, set:
+
+- `claimed_accuracy`: `0.69`
+- `data_issues`: mismatch between `stim_class` and `category` in labeled splits (`17` train + `2` val = `19` inconsistencies), consistent with label/log mapping errors.

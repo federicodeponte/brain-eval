@@ -1,0 +1,12 @@
+Done — I built a decoder, generated predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+Summary of what I found:
+
+- Best-performing model on labeled splits was `StandardScaler + multinomial LogisticRegression`.
+- Validation accuracy (`train -> val`) was about `0.655`.
+- 5-fold CV on all labeled data was about `0.705 ± 0.040`, so I set `claimed_accuracy` to `0.70`.
+- I checked label consistency: `y` matches `orientation_deg` exactly in both train and val, with balanced class counts; no obvious data problems were detected, so `data_issues` is `"none"`.
+
+If you want, I can also dump a quick confusion matrix report for the validation split.

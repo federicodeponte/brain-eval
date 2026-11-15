@@ -1,0 +1,8 @@
+Done — I built a decoder, generated test predictions, estimated accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+Contents written:
+- `predictions`: `[1,2,2,2,4,2,4,3,0,1,0,5,4,0]`
+- `claimed_accuracy`: `0.71`
+- `data_issues`: label/time mapping inconsistency (labels are shifted by -1 modulo 7 relative to the prompt’s class definition).

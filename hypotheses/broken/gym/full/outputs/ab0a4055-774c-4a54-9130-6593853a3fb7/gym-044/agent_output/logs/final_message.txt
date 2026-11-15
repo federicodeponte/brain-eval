@@ -1,0 +1,10 @@
+Done — I built a decoder, generated all 160 test predictions, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+I used a `StandardScaler + LinearDiscriminantAnalysis(shrinkage='auto')` model trained on the combined labeled data (`train + val`), and set:
+
+- `claimed_accuracy`: `0.87`
+- `data_issues`: notes about pseudo-population non-simultaneity and small labeled sample size/high variance.
+
+If you want, I can also provide a quick script to reproduce the training/evaluation and output file end-to-end.

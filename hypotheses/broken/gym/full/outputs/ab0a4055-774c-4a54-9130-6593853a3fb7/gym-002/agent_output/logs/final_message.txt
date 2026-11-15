@@ -1,0 +1,10 @@
+Done — I trained a decoder, generated predictions for all 50 test trials, estimated expected test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+I also checked data integrity and reported issues in `data_issues`:
+
+- Label/time mismatch: `label` disagrees with `movie_time_s`-derived class for `36/120` train and `8/30` val trials.
+- Distribution anomaly: `val` spike counts cap at `8`, while `train`/`test` reach `9`.
+
+If you want, I can also save a short reproducible script in `/app/output/` that reruns the exact training + JSON generation.

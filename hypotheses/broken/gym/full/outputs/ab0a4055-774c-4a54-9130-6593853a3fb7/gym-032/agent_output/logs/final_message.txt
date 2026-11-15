@@ -1,0 +1,16 @@
+Done — I trained a multinomial decoder on the spike counts, generated predictions for all 164 eval trials, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I used**
+- Final model: `StandardScaler` + `LinearDiscriminantAnalysis` (`lsqr`, shrinkage=`auto`)
+- Training data for final fit: combined `fit.npz` + `holdout.npz` labeled trials (102 total)
+
+**Estimated accuracy**
+- Set `claimed_accuracy` to `0.89` based on CV + holdout behavior of top models.
+
+**Data issues reported**
+- The main issue is pseudo-population assembly (combining separate sessions per trial), which removes true simultaneous-neuron correlation structure and can bias decoding estimates.
+- Also noted small labeled sample size relative to dimensionality.
+
+If you want, I can also produce a quick companion file with per-trial class probabilities (confidence) for the 164 predictions.

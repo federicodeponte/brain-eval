@@ -1,0 +1,10 @@
+Done — I built a decoder, estimated expected performance, checked for issues, and wrote:
+
+- `/app/output/predictions.json`
+
+It contains:
+- `predictions`: 120 class indices in test-trial order
+- `claimed_accuracy`: `0.63`
+- `data_issues`: `"image_id stored as float64 despite representing discrete IDs; otherwise none"`
+
+If you want, I can also drop a small reproducible training script into `/app/output/` so you can rerun/tune the decoder easily.

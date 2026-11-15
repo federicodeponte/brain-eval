@@ -1,0 +1,14 @@
+Done — I built a decoder, generated test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I used**
+- Trained/evaluated multiple classifiers on `train_labeled.npz` → `val_labeled.npz`.
+- Best robust choice: `RandomForestClassifier` on flattened `20x8` spike features.
+- Validation accuracy for the final trained model: `0.8974358974358975` (used as `claimed_accuracy`).
+
+**Data issue found**
+- The direction class set is irregular/incomplete for 45°-step gratings: present are `0,45,90,135,225,315`, while `180` and `270` are missing.
+- Label↔`orientation_deg` mapping itself is internally consistent in both labeled splits, but the stimulus class design is atypical and likely problematic.
+
+If you want, I can also save a small reproducible training script in `/app/output/` for auditing.

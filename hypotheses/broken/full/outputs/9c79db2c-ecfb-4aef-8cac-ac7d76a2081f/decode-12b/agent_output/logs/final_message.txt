@@ -1,0 +1,8 @@
+Done — I trained a decoder, generated test predictions, estimated held-out accuracy, and wrote the required file:
+
+- Output file: `/app/output/predictions.json`
+- `predictions`: 200 class indices in test order
+- `claimed_accuracy`: `0.8278` (from 10-fold CV on combined train+val)
+- `data_issues`: reports key issues/caveats found in this dataset setup
+
+If you want, I can also provide a short reproducible training script in `/app/output/` that regenerates the same JSON.

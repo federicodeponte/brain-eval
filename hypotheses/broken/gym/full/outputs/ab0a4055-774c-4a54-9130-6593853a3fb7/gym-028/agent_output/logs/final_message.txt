@@ -1,0 +1,16 @@
+Done — I built a decoder, generated test predictions, estimated expected accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+It contains:
+- `predictions`: 200 class indices in test order
+- `claimed_accuracy`: `0.53`
+- `data_issues`: reports a real inconsistency in the labeled data
+
+**Key data issue found**
+- `label` and `category` disagree on many labeled trials.
+- Using mapping `fruit=0, kids=1, military=2, space=3`, mismatches are:
+  - `14/64` in `train_labeled.npz`
+  - `4/15` in `val_labeled.npz`
+
+If you want, I can also save a small reproducible training script in `/app/output/` that regenerates the same JSON exactly.

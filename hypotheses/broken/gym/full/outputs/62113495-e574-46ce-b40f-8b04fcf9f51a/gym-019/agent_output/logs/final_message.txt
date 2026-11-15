@@ -1,0 +1,10 @@
+Done — I trained a decoder and wrote:
+
+- `/app/output/predictions.json`
+
+with:
+- `predictions`: 18 class indices in eval-trial order
+- `claimed_accuracy`: `0.89`
+- `data_issues`: reports the systematic label/time mismatch
+
+I also verified the key issue: in both `fit.npz` and `holdout.npz`, `stim_class` is consistently offset/permuted relative to `movie_time_s` and `classes.json` (not random noise).

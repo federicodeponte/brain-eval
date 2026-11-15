@@ -1,0 +1,10 @@
+Done — I trained a decoder, generated test predictions, estimated expected test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I found**
+- Best model on held-out validation was `RandomForestClassifier` (val accuracy `0.7778`).
+- Estimated test accuracy (5-fold CV on all labeled data): `0.7957671957671957`.
+- Data issue detected: `movie_time_s` is inconsistent with class labels `y` in both train and val (the expected fixed mapping 0→5.0, 1→5.5, …, 5→7.5 does not hold exactly in the files).
+
+If you want, I can also dump a quick confusion matrix/report for train/val to show which adjacent movie segments are most confusable.

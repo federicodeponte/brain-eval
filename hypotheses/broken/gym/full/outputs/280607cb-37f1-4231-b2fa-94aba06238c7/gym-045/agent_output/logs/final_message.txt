@@ -1,0 +1,12 @@
+Done — I trained a decoder, generated predictions for all 48 test trials, estimated expected test accuracy, checked for label/data consistency issues, and wrote:
+
+- `/app/output/predictions.json`
+
+I used a `log1p`-transformed flattened count feature with `StandardScaler + LogisticRegression`, trained on all labeled data after validation checks.
+
+Key checks:
+- `y` exactly matches `movie_time_s` mapping in both labeled splits.
+- Class balance is perfectly even in train/val.
+- No obvious structural data problems found in provided files.
+
+If you want, I can also run an ensemble (e.g., logistic + SVM vote) and produce an alternative `predictions.json` to hedge for leaderboard scoring.

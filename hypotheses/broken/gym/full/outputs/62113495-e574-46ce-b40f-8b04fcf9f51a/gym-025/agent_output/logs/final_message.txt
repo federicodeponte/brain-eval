@@ -1,0 +1,10 @@
+Done — I trained a decoder, generated test predictions, estimated accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+Contents written:
+- `predictions`: 30 class indices in test order
+- `claimed_accuracy`: `0.7777777777777778` (from held-out validation accuracy of the selected model)
+- `data_issues`: `"label mismatch: y disagrees with movie_time_s in 27/119 train and 5/18 val trials"`
+
+I also checked multiple model families; `RandomForestClassifier` performed best on the provided validation split.

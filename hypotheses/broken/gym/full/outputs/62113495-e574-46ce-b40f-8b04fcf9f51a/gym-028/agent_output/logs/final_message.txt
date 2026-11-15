@@ -1,0 +1,10 @@
+Done — I trained a decoder, generated predictions for all 200 test trials, and wrote:
+
+- `output/predictions.json`
+
+I used a `MultinomialNB` decoder on flattened spike counts (`40x1 -> 40` features), trained on combined train+val labeled data, and set:
+
+- `claimed_accuracy`: `0.544` (5-fold CV estimate on labeled data)
+
+I also reported data issues in the JSON.  
+If you want, I can also provide a quick comparison file with predictions from the top 2–3 alternative models (e.g., SVM/logistic) for ensembling.

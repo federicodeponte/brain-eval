@@ -1,0 +1,7 @@
+Done — I trained a decoder, generated predictions for all 27 test trials, estimated test accuracy, checked for data problems, and wrote:
+
+- `/app/output/predictions.json`
+
+I found a clear data issue: `y` is inconsistent with `movie_time_s` in labeled splits (13 mismatches in train, 1 in val), which should not happen if labels were derived directly from stimulus log as described.
+
+If you want, I can also write a small audit script that prints the exact mismatched trial indices and values.

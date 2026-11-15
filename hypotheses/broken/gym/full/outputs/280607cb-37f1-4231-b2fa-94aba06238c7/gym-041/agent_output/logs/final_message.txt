@@ -1,0 +1,14 @@
+Done — I built a decoder, generated test predictions, estimated accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+Key outcomes:
+- `predictions`: 152 class indices in test-trial order.
+- `claimed_accuracy`: `0.48295454545454547` (from 8-fold CV on corrected labels).
+- `data_issues`: reported a major label problem.
+
+Detected data issue:
+- `stim_class` is inconsistent with `orientation_deg` in labeled data:
+  - train: `76/272` mismatches
+  - val: `17/80` mismatches
+- This suggests `stim_class` is partially corrupted/misaligned; `orientation_deg` appears reliable and was used to derive training labels.

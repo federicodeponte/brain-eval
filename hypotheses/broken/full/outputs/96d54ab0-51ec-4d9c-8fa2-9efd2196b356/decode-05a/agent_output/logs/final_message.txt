@@ -1,0 +1,11 @@
+Done — I built a decoder, generated test predictions, and wrote:
+
+- `/app/output/predictions.json`
+
+I used a `RandomForestClassifier` selected from validation performance (best val accuracy among tried models: `0.5875`), then retrained on `train + val` and predicted all 120 test trials.
+
+- `predictions`: 120 integers in test order
+- `claimed_accuracy`: `0.59`
+- `data_issues`: `"none"` (I checked class balance, label/image_id consistency, shapes/dtypes; no dataset issue found)
+
+If you want, I can also save the exact training script into `/app/output/` for reproducibility.

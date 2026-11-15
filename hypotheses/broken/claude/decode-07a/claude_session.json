@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 44361,
+ "stop_reason": "end_turn",
+ "session_id": "356fd468-129b-4726-8cd8-7ef357a38ee9",
+ "total_cost_usd": 0.15168519999999996,
+ "usage": {
+  "input_tokens": 16,
+  "cache_creation_input_tokens": 7351,
+  "cache_read_input_tokens": 85666,
+  "output_tokens": 3784,
+  "output_tokens_details": {
+   "thinking_tokens": 441
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 7351,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 640,
+    "cache_read_input_tokens": 13606,
+    "cache_creation_input_tokens": 339,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 339
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 16,
+   "outputTokens": 3784,
+   "cacheReadInputTokens": 85666,
+   "cacheCreationInputTokens": 7351,
+   "webSearchRequests": 0,
+   "costUSD": 0.15168519999999996,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 441,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 7351,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 8,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I wrote `output/predictions.json` with all 200 test predictions. My estimated test accuracy is **0.88**.\n\n**Problems with the data:**\n- **Duplicate trials in train:** 5 trials appear twice with exactly the same counts on all 30 neurons. They are train indices 24/60, 95/113 and 121/142 (phones), 65/163 (smallAnimal) and 162/169 (mobility). This is why phones has 46 trials while every other class has 42. With low spike counts across 30 neurons, real trials shouldn't match exactly.\n- **Overlap between val and train:** val trial 15 is an exact copy of train trial 117 (mobility), so a score on val would look better than it really is.\n- **Labels are fine:** `y` matches the `category` field on every labeled trial.\n- **Small, unbalanced val:** there are only 16 trials, and just 1 of them is smallAnimal.\n\n**Decoder:** I combined train and val, removed the duplicates (182 unique trials left), took the square root of the counts, standardized them, and fit a logistic regression (C=3). Five-fold cross-validation, repeated 5 times, gave about 96% accuracy. Shrinkage LDA scored 88% and Gaussian naive Bayes 77%.\n\n**Why I claim 0.88 rather than 0.96:** the test set looks different from the training data.\n- The predicted classes are uneven: 74 houses, 61 phones, 46 smallAnimal and only 19 mobility, while training is roughly balanced.\n- Test firing rates have shifted on some neurons. The neuron that responds most to mobility averages 0.5 spikes in test against 1.3 in train.\n- The model is less sure on test: its average top probability is 0.89.\n\nThe low firing on that neuron could simply mean test has fewer mobility trials. Even so, I lowered the claim below the cross-validation figure because of this drift.",
+ "ttft_ms": 3587,
+ "type": "result",
+ "duration_ms": 92573,
+ "uuid": "c5a7cc8c-69c8-479f-a24e-432b5759f6d5",
+ "ttft_stream_ms": 1815,
+ "time_to_request_ms": 84,
+ "first_content_frame_ms": 1815,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 93.7
+}

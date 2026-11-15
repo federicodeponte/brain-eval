@@ -1,0 +1,10 @@
+Done — I built a decoder, generated test predictions, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+Summary of what I used:
+- Model: multinomial logistic regression on flattened `29x10` spike counts, with standardization.
+- Accuracy estimate: held-out validation accuracy (`26/27 = 0.9629629629629629`).
+- Data issues reported:
+  - Very small/imbalanced validation split (high variance estimate).
+  - `stim_class` is deterministically derived from `movie_time_s` in labeled data (potential leakage if `movie_time_s` were used as a feature).

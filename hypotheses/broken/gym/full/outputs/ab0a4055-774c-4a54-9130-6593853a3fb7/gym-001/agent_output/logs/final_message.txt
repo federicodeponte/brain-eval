@@ -1,0 +1,15 @@
+Done — I trained a multinomial logistic-regression decoder on flattened `24x4` spike-count features, tuned on the provided validation split, predicted all 133 test trials, and wrote:
+
+- `/app/output/predictions.json`
+
+**What I put in it**
+- `predictions`: 133 integer class labels in test order.
+- `claimed_accuracy`: `0.9240594594594593` (estimated from validation + CV performance).
+- `data_issues`: `"none"`.
+
+**Quick checks performed**
+- Verified shapes and class balance across train/val.
+- Verified `label` ↔ `orientation_deg` mapping is consistent with `classes.json`.
+- No inconsistencies found in labeled data metadata.
+
+If you want, I can also share the exact training script as a standalone file in `/app/output/` for reproducibility.

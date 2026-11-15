@@ -1,0 +1,8 @@
+Done — I built a decoder, generated test predictions, estimated test accuracy, and wrote the output file.
+
+- Output written to `/app/output/predictions.json`.
+- `predictions` contains exactly 60 class indices in test order.
+- `claimed_accuracy` is set to `0.9` (based on CV/validation performance around ~0.87–0.97 depending on model/split).
+- `data_issues` reports the main issue: strong class imbalance in the validation split (and slight imbalance in train), which makes validation accuracy noisy/high-variance.
+
+If you want, I can also provide a short reproducible training script in `/app/output/` that regenerates the same predictions.

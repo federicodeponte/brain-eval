@@ -1,0 +1,11 @@
+Done — I built a decoder, generated test predictions, estimated performance, and wrote:
+
+- `/app/output/predictions.json`
+
+Summary of what I found:
+- Best-performing model family on this data was tree-based (`RandomForestClassifier`), with very high CV/validation performance.
+- Final `claimed_accuracy` is set to `0.9736842105263157` (5-fold CV on combined train+val).
+- I checked label integrity on labeled splits: `y` matches `category` for all train/val trials.
+- Reported `data_issues` as `"none"`.
+
+If you want, I can also provide a quick confusion-matrix report on train/val for interpretability.

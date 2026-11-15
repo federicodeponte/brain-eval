@@ -1,0 +1,10 @@
+Done — I trained a decoder, generated predictions, estimated test accuracy, and wrote:
+
+- `/app/output/predictions.json`
+
+It contains:
+- `predictions`: 50 class indices in test-trial order
+- `claimed_accuracy`: `0.8466666666666667`
+- `data_issues`: notes that in labeled data `y` is perfectly determined by `movie_time_s` (metadata-derived labels), while test lacks `movie_time_s`, which is a potential leakage/shortcut risk in dataset construction.
+
+If you want, I can also save a small reproducible training script in `/app/output/` showing exactly how this file was produced.
