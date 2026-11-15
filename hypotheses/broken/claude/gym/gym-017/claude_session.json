@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 70006,
+ "stop_reason": "end_turn",
+ "session_id": "45384ffc-4b1e-4432-8fa4-205affd1dbf6",
+ "total_cost_usd": 0.23166239999999996,
+ "usage": {
+  "input_tokens": 18,
+  "cache_creation_input_tokens": 9956,
+  "cache_read_input_tokens": 100912,
+  "output_tokens": 6588,
+  "output_tokens_details": {
+   "thinking_tokens": 724
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 9956,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 666,
+    "cache_read_input_tokens": 15645,
+    "cache_creation_input_tokens": 905,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 905
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 18,
+   "outputTokens": 6588,
+   "cacheReadInputTokens": 100912,
+   "cacheCreationInputTokens": 9956,
+   "webSearchRequests": 0,
+   "costUSD": 0.23166239999999996,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 724,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 9956,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 9,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I've written `output/predictions.json` with 128 predictions and an estimated test accuracy of **0.84**. The test labels are hidden, so that number is an estimate from simulation, not a measurement.\n\n**Data problems found:**\n1. **The neuron columns in `test.npz` are in a different order than in train/val.** Each neuron's average firing rate in test correlated \u22120.17 with the same column in train. After I reordered the test columns, that correlation went to 0.99. A decoder trained on train and applied to the test file as given would mostly predict noise: 75 of 128 trials came out as \"animals\".\n2. **`stim_class` labels are wrong on 19 of the 102 labeled trials** (15 in train, 4 in val): they disagree with the photo category in the stimulus log. The spikes follow `category`. Trained on `category`, 5-fold cross-validated accuracy was about 0.89; trained on `stim_class` it was 0.58\u20130.72. So I treated `category` as the true label.\n\n**Decoder:** logistic regression on log-transformed spike counts, trained on all labeled trials with labels taken from `category`.\n\n**Reordering the test columns:** I first paired each test column with the train neuron whose spike-count distribution looked most similar. Then I refined the pairing iteratively, using a model of each neuron's typical spike count for each category.\n\n**Where the 0.84 comes from:** when I shuffled the columns of held-out labeled trials and ran the same recovery, it found the right neuron for about 73% of columns. Decoding accuracy was 0.86, against 0.88 with the true order. Those runs used only 35 trials each, so the 128 test trials should help the recovery. But some low-rate neurons are hard to tell apart, so a few columns are probably still mismatched, and I set the estimate slightly below the simulation. The predicted classes are uneven (16 cars, 46 food, 38 people, 28 animals), which may be partly due to those mismatches.",
+ "ttft_ms": 4304,
+ "type": "result",
+ "duration_ms": 138640,
+ "uuid": "e4dd0ec6-e986-4b1a-85ef-0367baafddce",
+ "ttft_stream_ms": 2530,
+ "time_to_request_ms": 94,
+ "first_content_frame_ms": 2530,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 139.6
+}

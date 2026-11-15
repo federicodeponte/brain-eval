@@ -1,0 +1,108 @@
+{
+ "duration_api_ms": 65325,
+ "stop_reason": "end_turn",
+ "session_id": "c599a961-6a53-4071-be70-9fa120cac971",
+ "total_cost_usd": 0.23549119999999998,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 1768,
+  "cache_read_input_tokens": 17000,
+  "output_tokens": 477,
+  "output_tokens_details": {
+   "thinking_tokens": 50
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 1768,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 477,
+    "cache_read_input_tokens": 17000,
+    "cache_creation_input_tokens": 1768,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 1768
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 22,
+   "outputTokens": 5497,
+   "cacheReadInputTokens": 140356,
+   "cacheCreationInputTokens": 12174,
+   "webSearchRequests": 0,
+   "costUSD": 0.23549119999999998,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 1025,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 12174,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "origin": {
+  "kind": "task-notification",
+  "producer": "session-task",
+  "runId": "0mwhix9or-dafe31f2"
+ },
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 1,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "The comparison that hadn't finished is done now, and it doesn't change anything. I'm keeping the predictions and the 0.78 estimate as written.\n\n| Setting | Units | Leave-one-out (90 trials) | Fit \u2192 holdout (18 trials) |\n|---|---|---|---|\n| C=0.003 | all 28 | 57.8% | 88.9% |\n| **C=0.01 (submitted)** | all 28 | **78.9%** | **88.9%** |\n| C=0.03 | all 28 | 81.1% | 83.3% |\n| C=0.003 | without unit 0 | 61.1% | 72.2% |\n| C=0.01 | without unit 0 | 77.8% | 77.8% |\n| C=0.03 | without unit 0 | 81.1% | 77.8% |\n\n- **Regularization:** C=0.03 is about 2 points higher in leave-one-out but lower on holdout. That's about the size of the noise with 90 trials, so it isn't worth switching.\n- **Unit 0:** dropping it doesn't help in any setting. Its drift costs nothing, and it still carries useful information.\n\nThe holdout score here (88.9%) differs from the 94% I gave before because that run used raw counts. This one uses square-root counts, the same as the submitted model.",
+ "ttft_ms": 3110,
+ "type": "result",
+ "duration_ms": 6642,
+ "uuid": "ff1eefc2-ba80-4e69-a8f4-f0fc700e04e7",
+ "ttft_stream_ms": 2558,
+ "time_to_request_ms": 38,
+ "first_content_frame_ms": 2558,
+ "queued_turn_count": 0,
+ "result_index": 1,
+ "returncode": 0,
+ "wall_s": 488.4
+}

@@ -1,0 +1,49 @@
+{
+ "task_id": "gym-017",
+ "env_seed": 4043,
+ "faults": [
+  "noise",
+  "perm"
+ ],
+ "kind": "human",
+ "n_test": 128,
+ "K": 4,
+ "valid": true,
+ "n_predictions": 128,
+ "n_invalid": 0,
+ "acc": 0.7734,
+ "chance": 0.25,
+ "skill": 0.6979,
+ "claimed_accuracy": 0.84,
+ "gap": 0.0666,
+ "calib": 0.8669,
+ "diag": 0.5,
+ "faults_named": {
+  "noise": true,
+  "perm": false
+ },
+ "false_alarm": null,
+ "extra_groups": [],
+ "families_flagged": [
+  "noise"
+ ],
+ "generic_flagged": [
+  "label"
+ ],
+ "matches": {
+  "noise": [
+   "labels are corrupted",
+   "19/102 labeled trials (15 train, 4 val) disagree"
+  ],
+  "generic:label": [
+   "class labels are corrupted",
+   "labeled trials (15 train, 4 val) disagree",
+   "disagree with the stimulus-log category"
+  ]
+ },
+ "fix_applies": false,
+ "fix_target": 0.8281,
+ "fix": null,
+ "reward": 0.6883,
+ "data_issues": "(1) Neuron columns in test.npz are permuted relative to train/val: per-neuron mean rates correlate -0.17 with train before realignment and 0.99 after. I recovered the mapping by quantile matching plus EM under a class-conditional Poisson model, then decoded on realigned columns. (2) stim_class labels are corrupted in train/val: 19/102 labeled trials (15 train, 4 val) disagree with the stimulus-log category. The spikes track category (CV acc ~0.89 vs ~0.6-0.7 on stim_class), so I trained on category."
+}

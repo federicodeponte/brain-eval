@@ -1,0 +1,47 @@
+{
+ "task_id": "gym-019",
+ "env_seed": 4034,
+ "faults": [
+  "shift",
+  "perm"
+ ],
+ "kind": "movie",
+ "n_test": 18,
+ "K": 6,
+ "valid": true,
+ "n_predictions": 18,
+ "n_invalid": 0,
+ "acc": 0.8889,
+ "chance": 0.1667,
+ "skill": 0.8667,
+ "claimed_accuracy": 0.85,
+ "gap": 0.0389,
+ "calib": 0.9222,
+ "diag": 0.5,
+ "faults_named": {
+  "shift": true,
+  "perm": false
+ },
+ "false_alarm": null,
+ "extra_groups": [],
+ "families_flagged": [
+  "shift"
+ ],
+ "generic_flagged": [
+  "label"
+ ],
+ "matches": {
+  "shift": [
+   "cyclic"
+  ],
+  "generic:label": [
+   "class labels in fit and holdout are wrong",
+   "disagree with movie_time_s (stimulus log"
+  ]
+ },
+ "fix_applies": false,
+ "fix_target": 0.9444,
+ "fix": null,
+ "reward": 0.763,
+ "data_issues": "(1) stim_class labels in fit and holdout are wrong: they disagree with movie_time_s (stimulus log) on every trial by a consistent cyclic shift (given stim_class = (movie_time_s-80+4) mod 6, e.g. 80 s labeled 4, 82 s labeled 0); I retrained on labels rederived from movie_time_s. (2) The unit (column) order in eval.npz is permuted relative to fit/holdout: per-unit firing rates do not match column-wise (e.g. the ~8 spk/bin unit is column 13 in fit but column 0 in eval). I recovered the mapping by matching rate statistics and maximizing Poisson-mixture likelihood (eval column for each train unit: [14, 13, 2, 3, 5, 16, 6, 4, 8, 12, 10, 7, 11, 0, 9, 15, 1, 17]), which gave a balanced 3 trials/class."
+}

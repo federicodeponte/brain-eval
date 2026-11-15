@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 70351,
+ "stop_reason": "end_turn",
+ "session_id": "09821bd9-39ef-4eaa-9091-1faa05b5c062",
+ "total_cost_usd": 0.23405679999999998,
+ "usage": {
+  "input_tokens": 18,
+  "cache_creation_input_tokens": 10798,
+  "cache_read_input_tokens": 106104,
+  "output_tokens": 6319,
+  "output_tokens_details": {
+   "thinking_tokens": 1081
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 10798,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 771,
+    "cache_read_input_tokens": 16903,
+    "cache_creation_input_tokens": 489,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 489
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 18,
+   "outputTokens": 6319,
+   "cacheReadInputTokens": 106104,
+   "cacheCreationInputTokens": 10798,
+   "webSearchRequests": 0,
+   "costUSD": 0.23405679999999998,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 1081,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 10798,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 9,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I wrote `output/predictions.json` with predictions for all 18 test trials. My accuracy estimate is about 0.85. I found two problems in the data.\n\n**1. The training labels are wrong.** In both `fit` and `holdout`, `stim_class` disagrees with the stimulus-log `movie_time_s` on every trial. The error is the same cyclic shift throughout: the given label equals (true class + 4) mod 6. For example, movie time 80 s is labelled 4 and 82 s is labelled 0. Since the task says the labels were derived from `movie_time_s`, I treated `movie_time_s \u2212 80` as the true class and trained on that.\n\n**2. The units in `eval.npz` are in a different order.** Its columns don't line up with the training units. For example, the fastest-firing unit (about 8 spikes per bin) is column 13 in `fit` but column 0 in `eval`. Before I fixed this, every test prediction fell into classes 0, 1 or 5, and no test trial looked like any training class. I recovered the mapping in two steps:\n- I first paired units by their firing-rate statistics.\n- I then swapped units around to find the order under which the test trials best fit a model of each class's firing rates (a Poisson model).\n\nThree of four random starting orders ended on the same mapping, and it splits the test trials into exactly 3 per class. The fourth stopped at a worse fit that differed only in which of two very sparsely firing units went where. The mapping is written out in `data_issues`.\n\n**Decoder and accuracy:**\n- **Validation:** a logistic regression on spike counts in 200 ms bins scored about 0.93 in repeated cross-validation over fit + holdout. Trained on `fit` alone, it got all 12 holdout trials right.\n- **Final predictions:** these come from the Poisson model instead. It agrees with the logistic regression on 16 of 18 test trials, and its predictions are balanced at 3 per class, which suggests it handles the two disputed trials better. I didn't cross-validate the Poisson model on its own, so this choice is untested.\n- **Why 0.85:** I set the estimate below the cross-validation score because the unit mapping is inferred and may still be partly wrong. With 18 test trials, each error costs about 0.06.",
+ "ttft_ms": 4191,
+ "type": "result",
+ "duration_ms": 106535,
+ "uuid": "a3a07d03-c4cd-4877-a542-2df7857ea3b2",
+ "ttft_stream_ms": 2629,
+ "time_to_request_ms": 158,
+ "first_content_frame_ms": 2630,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 107.8
+}

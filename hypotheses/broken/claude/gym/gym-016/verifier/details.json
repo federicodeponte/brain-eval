@@ -1,0 +1,46 @@
+{
+ "task_id": "gym-016",
+ "env_seed": 4020,
+ "faults": [
+  "shift"
+ ],
+ "kind": "movie",
+ "n_test": 30,
+ "K": 6,
+ "valid": true,
+ "n_predictions": 30,
+ "n_invalid": 0,
+ "acc": 0.7333,
+ "chance": 0.1667,
+ "skill": 0.68,
+ "claimed_accuracy": 0.74,
+ "gap": 0.0067,
+ "calib": 0.9867,
+ "diag": 1.0,
+ "faults_named": {
+  "shift": true
+ },
+ "false_alarm": null,
+ "extra_groups": [],
+ "families_flagged": [
+  "noise",
+  "shift"
+ ],
+ "generic_flagged": [],
+ "matches": {
+  "shift": [
+   "misaligned",
+   "shifted by one ",
+   "one class",
+   "cyclically"
+  ],
+  "noise": [
+   "mislabeled"
+  ]
+ },
+ "fix_applies": true,
+ "fix_target": 0.7333,
+ "fix": 1.0,
+ "reward": 0.9167,
+ "data_issues": "Labels y are misaligned with the stimulus log: in both train and val, y is cyclically shifted by one class relative to movie_time_s (3s->1, 4s->2, 5s->3, 6s->4, 7s->5, 8s->0, whereas classes.json says 3s->0 ... 8s->5). Every labeled trial is mislabeled under the class definitions. I rebuilt the labels from movie_time_s (class = movie_time_s - 3) before training."
+}

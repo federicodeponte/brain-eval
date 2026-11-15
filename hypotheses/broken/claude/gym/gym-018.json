@@ -1,0 +1,64 @@
+{
+ "task_id": "gym-018",
+ "rewards": {
+  "reward": 0.9067
+ },
+ "verifier_result": {
+  "rewards": {
+   "reward": 0.9067
+  }
+ },
+ "metadata": {
+  "reward_source": "/home/federicodeponte/work/vals-hyp/broken/claude/gym/gym-018/verifier/reward.txt",
+  "verifier_exit_code": 0,
+  "verifier_output": "{\"task_id\": \"gym-018\", \"faults\": [], \"acc\": 0.8, \"claimed_accuracy\": 0.78, \"diag\": 1.0, \"faults_named\": null, \"false_alarm\": false, \"extra_groups\": [], \"fix\": null, \"reward\": 0.9067}\n"
+ },
+ "agent_caused_exit_reason": null,
+ "task_breakdown": {
+  "agent_run_duration": 488.4
+ },
+ "claude": {
+  "total_cost_usd": 0.23549119999999998,
+  "num_turns": 1,
+  "is_error": false,
+  "subtype": "success",
+  "duration_ms": 6642,
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 1768,
+   "cache_read_input_tokens": 17000,
+   "output_tokens": 477,
+   "output_tokens_details": {
+    "thinking_tokens": 50
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 1768,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 477,
+     "cache_read_input_tokens": 17000,
+     "cache_creation_input_tokens": 1768,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 1768
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "returncode": 0,
+  "stop_reason": "end_turn"
+ },
+ "attempts": 1
+}

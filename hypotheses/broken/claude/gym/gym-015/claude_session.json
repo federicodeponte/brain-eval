@@ -1,0 +1,103 @@
+{
+ "duration_api_ms": 36325,
+ "stop_reason": "end_turn",
+ "session_id": "1f990470-dc06-4ef3-8012-efa7de2572fb",
+ "total_cost_usd": 0.1263958,
+ "usage": {
+  "input_tokens": 10,
+  "cache_creation_input_tokens": 6383,
+  "cache_read_input_tokens": 48359,
+  "output_tokens": 3281,
+  "output_tokens_details": {
+   "thinking_tokens": 271
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 6383,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 588,
+    "cache_read_input_tokens": 12404,
+    "cache_creation_input_tokens": 573,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 573
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5-5": {
+   "inputTokens": 10,
+   "outputTokens": 3281,
+   "cacheReadInputTokens": 48359,
+   "cacheCreationInputTokens": 6383,
+   "webSearchRequests": 0,
+   "costUSD": 0.1263958,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 271,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 6383,
+   "canonicalModel": "claude-opus-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 5,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I've written all 133 test predictions to `output/predictions.json` with a claimed accuracy of 0.50. That's low because 8 of the 27 units are dead in the test data.\n\n**The data problem:** in the test set, units 3, 4, 8, 11, 13, 18, 19 and 25 have exactly zero spikes on every trial. The same units fire normally in train and val, with between 579 and 6,846 spikes each, so this looks like lost channels or a mix-up in which recorded unit is which, not real silence. A decoder trained on all 27 units would read those zeros as real responses and get the test trials badly wrong.\n\n**What I built:** a logistic regression trained on train plus val, using only the 19 units that are active in test. For each unit it uses total spike count plus the count in each of the 8 time bins, log-transformed and standardized.\n\n**Accuracy estimate:**\n- Repeated 5-fold cross-validation with only those 19 units gives about 0.50, and the train-to-val check gives 0.51\u20130.53. That's where the claimed 0.50 comes from.\n- With all 27 units, cross-validated accuracy was about 0.79. That's what the decoder could reach if the test data were intact, so the dead channels cost about 30 points.\n- The 0.50 estimate assumes the test trials are otherwise like the labeled ones. The live units do fire at the same rates in test as in train and val (1.82 vs 1.83 spikes per bin), which supports that.\n\n**Checks that came back clean:** `stim_class` agrees with `orientation_deg` on every labeled trial, there are no duplicate trials, and each class has 38 train and 14 val trials. Separately, the 0\u00b0 direction isn't one of the 7 classes, which looks like a choice in how the task was set up rather than an error.",
+ "ttft_ms": 3822,
+ "type": "result",
+ "duration_ms": 101700,
+ "uuid": "55458145-3dfc-4744-be3b-b0d1439834e3",
+ "ttft_stream_ms": 2131,
+ "time_to_request_ms": 82,
+ "first_content_frame_ms": 2132,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "returncode": 0,
+ "wall_s": 102.7
+}

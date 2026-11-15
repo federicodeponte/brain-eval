@@ -1,0 +1,41 @@
+{
+ "task_id": "gym-015",
+ "env_seed": 4025,
+ "faults": [
+  "dead"
+ ],
+ "kind": "gratings",
+ "n_test": 133,
+ "K": 7,
+ "valid": true,
+ "n_predictions": 133,
+ "n_invalid": 0,
+ "acc": 0.5639,
+ "chance": 0.1429,
+ "skill": 0.4912,
+ "claimed_accuracy": 0.5,
+ "gap": 0.0639,
+ "calib": 0.8722,
+ "diag": 1.0,
+ "faults_named": {
+  "dead": true
+ },
+ "false_alarm": null,
+ "extra_groups": [],
+ "families_flagged": [
+  "dead"
+ ],
+ "generic_flagged": [],
+ "matches": {
+  "dead": [
+   "zero spikes",
+   "zero spikes",
+   "dead"
+  ]
+ },
+ "fix_applies": false,
+ "fix_target": 0.5338,
+ "fix": null,
+ "reward": 0.7878,
+ "data_issues": "In the test set, 8 of the 27 units (indices 3, 4, 8, 11, 13, 18, 19, 25) record exactly zero spikes on every trial, while the same units fire actively in train and val (hundreds to thousands of spikes in total). This looks like dropped/dead channels or a unit-mapping failure in the test recording, not real silence. A decoder trained on all 27 units would read these zeros as real signal and do badly. I trained only on the 19 units that are live in test: cross-validated accuracy is ~0.50, down from ~0.79 with all units. Firing rates of the live units match between splits. Labels agree with orientation_deg in train and val, with no duplicate trials and balanced classes. Note that the 0 deg direction is not among the classes."
+}
