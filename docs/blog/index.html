@@ -1,10 +1,10 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta property="og:title" content="In-Context Brain Decoding: Claude can natively read human neurons">
+<meta property="og:title" content="Brain-Space Reading: Claude can natively read human neurons">
 <meta property="og:description" content="Raw spike counts from human brains, 3 examples per picture, zero brain training: 68% vs 25% chance.">
 <meta property="og:image" content="https://federicodeponte.github.io/brain-eval/blog/card.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://federicodeponte.github.io/brain-eval/blog/card.png">
-<title>In-Context Brain Decoding</title>
+<title>Brain-Space Reading</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Claude read raw neuron recordings from human brains with 3 examples per picture and no brain training: 68% vs 25% chance.">
 <style>
@@ -62,7 +62,7 @@ ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}
 
 </head><body style="margin:0"><main>
   <header class="hero" id="hero" style="padding-left:0">
-    <div class="series">In-Context Brain Decoding</div>
+    <div class="series">Brain-Space Reading</div>
     <h1>Claude can natively read human neurons</h1>
     <p class="authors"><span>Federico De Ponte and Octavian Cosmin C</span> · Vals AI hackathon, San Francisco</p>
   </header>
@@ -122,7 +122,7 @@ Answer with a single letter.</div>
 
   <h2>Why it matters</h2>
   <p>Every brain-reading system I could find, from MindEye to the Brain-IT work MIT Technology Review covered in October, was trained on brain data first. I found no published work that puts raw single-neuron spike counts into a frontier model's prompt and scores it against a decoder. Here the model had never been trained on any of it.</p>
-  <p class="callout">I call this In-Context Brain Decoding: frontier models can now read human neural activity from a few examples in the prompt.</p>
+  <p class="callout">We call this Brain-Space Reading: frontier models can now read human neural activity from a few examples in the prompt.</p>
 
   <h2>The catch: agents can't tell when the data is lying</h2>
   <p>The second half of the benchmark gives coding agents the same kind of recordings with planted faults: leaked trials, a shifted clock, dead or shuffled channels, wrong labels. They build a decoder, predict hidden trials and report their own accuracy.</p>
